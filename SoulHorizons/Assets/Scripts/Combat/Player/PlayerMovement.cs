@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class scr_player : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
 
     struct Coords
