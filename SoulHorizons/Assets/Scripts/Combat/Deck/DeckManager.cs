@@ -2,14 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Contains references to all parts of the deck system. Anything outside the deck system should use the public functions in this class for deck information.
+/// </summary>
 public class DeckManager : MonoBehaviour {
 
-	// Use this for initialization
+	public GameObject[] cardUI; //references to the cards UI
+	Deck deck_scr;
+	Spells spells_scr;
+
 	void Start () {
 		
 	}
 	
-	// Update is called once per frame
 	void Update () {
 		
 	}

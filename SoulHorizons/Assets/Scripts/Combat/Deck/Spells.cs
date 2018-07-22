@@ -3,17 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Contains the deck and discard piles. Handles shuffling and drawing.
+/// Contains all spell functionality.
 /// </summary>
-public class Deck : MonoBehaviour {
+public class Spells : MonoBehaviour {
 
-	public int deckSize = 30;
-
-
+	// Use this for initialization
 	void Start () {
 		
 	}
 	
+	// Update is called once per frame
 	void Update () {
 		
 	}
