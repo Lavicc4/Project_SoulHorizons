@@ -280,6 +280,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd20247bcf93902419f5d1b7b9d8757b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardUI:
+  - {fileID: 1176692297}
+  - {fileID: 1318322865}
+  - {fileID: 690201928}
+  - {fileID: 1792995764}
+  - {fileID: 73501673}
 --- !u!4 &283017071
 Transform:
   m_ObjectHideFlags: 0
