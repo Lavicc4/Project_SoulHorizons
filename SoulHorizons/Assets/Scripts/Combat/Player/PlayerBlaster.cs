@@ -1,9 +1,10 @@
-﻿using System.Collections;
+﻿//Colin
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Manages 
+/// Manages the player blaster functionality. Receives user input and passes information to the projectile when firing.
 /// </summary>
 public class PlayerBlaster : MonoBehaviour {
 

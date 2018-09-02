@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿//Colin
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,13 +10,47 @@ public class DeckManager : MonoBehaviour {
 
 	public GameObject[] cardUI; //references to the cards UI
 	Deck deck_scr;
-	Spells spells_scr;
+    int currentCard = 0;
 
-	void Start () {
-		
+	void Start ()
+    {
+        UpdateGUI();
 	}
-	
-	void Update () {
-		
-	}
+
+    void Update()
+    {
+        if (UserInput())
+        {
+            UpdateGUI();
+        }
+    }
+
+    /// <summary>
+    /// Gets user input.
+    /// </summary>
+    /// <returns>true if any input was detected, false otherwise.</returns>
+    bool UserInput()
+    {
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            //play the current card
+        }
+        else if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            currentCard--;
+            if(currentCard < 0)
+            {
+                currentCard = deck_scr.handSize;
+            }
+        }
+        return false;
+    }
+
+    /// <summary>
+    /// Update the deck system GUI.
+    /// </summary>
+    void UpdateGUI()
+    {
+
+    }
 }

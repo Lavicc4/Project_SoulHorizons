@@ -1,8 +1,12 @@
-﻿using System;
+﻿//Colin
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Attached to the projectile the player fires.
+/// </summary>
 public class PlayerProjectile : MonoBehaviour {
 	private float speed;
 	private float damage;
