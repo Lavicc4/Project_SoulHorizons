@@ -10,6 +10,6 @@ public class LightningBolt : Card {
     public override void Activate()
     {
         //implement functionality here
-        Debug.Log("Zap!");
+        Debug.Log(name + ": Zap!");
     }
 }

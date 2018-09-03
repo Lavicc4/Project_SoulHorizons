@@ -6,11 +6,18 @@ using UnityEngine;
 /// <summary>
 /// Contains references to all parts of the deck system. Anything outside the deck system should use the public functions in this class for deck information.
 /// </summary>
+[RequireComponent(typeof(Deck))]
 public class DeckManager : MonoBehaviour {
 
 	public GameObject[] cardUI; //references to the cards UI
 	Deck deck_scr;
     int currentCard = 0;
+
+    void Awake()
+    {
+        //get references
+        deck_scr = GetComponent<Deck>();
+    }
 
 	void Start ()
     {
@@ -34,6 +41,7 @@ public class DeckManager : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             //play the current card
+            deck_scr.Activate(currentCard);
         }
         else if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
@@ -51,6 +59,12 @@ public class DeckManager : MonoBehaviour {
     /// </summary>
     void UpdateGUI()
     {
+        //TODO: interact with the UI components
+        //change selection highlight
+        //start an animation on the currently selected card if it was played
+        //shift cards if one was played
+        //give the UI element the information for a newly drawn card; play animation for loading
+        Debug.Log("Currently selected Card: " + deck_scr.hand[currentCard]);
 
     }
 }
