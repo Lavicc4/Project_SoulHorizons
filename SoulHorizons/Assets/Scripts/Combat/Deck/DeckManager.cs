@@ -42,14 +42,21 @@ public class DeckManager : MonoBehaviour {
         {
             //play the current card
             deck_scr.Activate(currentCard);
+            return true;
         }
         else if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             currentCard--;
             if(currentCard < 0)
             {
-                currentCard = deck_scr.handSize;
+                currentCard = deck_scr.handSize - 1;
             }
+            return true;
+        }
+        else if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            currentCard = (currentCard + 1) % deck_scr.handSize;
+            return true;
         }
         return false;
     }
@@ -64,7 +71,8 @@ public class DeckManager : MonoBehaviour {
         //start an animation on the currently selected card if it was played
         //shift cards if one was played
         //give the UI element the information for a newly drawn card; play animation for loading
-        Debug.Log("Currently selected Card: " + deck_scr.hand[currentCard]);
+        Debug.Log("CurrentCard index: " + currentCard);
+        Debug.Log("Currently selected Card: " + deck_scr.hand[currentCard].cardName);
 
     }
 }
