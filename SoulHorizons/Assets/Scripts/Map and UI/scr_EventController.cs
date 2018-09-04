@@ -40,16 +40,17 @@ public class scr_EventController : MonoBehaviour {
 	void CycleEvents(){
 
 		//for loop to turn off all buttons
-		for (int i = 0; i < buttons.Length; i++) {
-			buttons [i].gameObject.SetActive (false);
+		for (int i = 0; i < numberOfActiveEvents; i++) {
+			//int picked[] = new int[
+			buttons [i].gameObject.SetActive (true);
 		}
-
+		/*
 		int activate1 = Random.Range (0, buttons.Length);
 		buttons [activate1].gameObject.SetActive (true);
 		int activate2 = Random.Range (0, buttons.Length);
 		buttons [activate2].gameObject.SetActive (true);
 		int activate3 = Random.Range (0, buttons.Length);
 		buttons [activate3].gameObject.SetActive (true);
-		
+		*/
 	}
 }

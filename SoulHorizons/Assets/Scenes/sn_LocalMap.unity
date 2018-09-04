@@ -1268,6 +1268,7 @@ MonoBehaviour:
   - {fileID: 712082793}
   - {fileID: 553386025}
   - {fileID: 159164816}
+  numberOfActiveEvents: 5
 --- !u!1 &1177386238
 GameObject:
   m_ObjectHideFlags: 0
