@@ -6,7 +6,7 @@ using UnityEngine;
 /// <summary>
 /// Manages the player blaster functionality. Receives user input and passes information to the projectile when firing.
 /// </summary>
-public class PlayerBlaster : MonoBehaviour {
+public class scr_PlayerBlaster : MonoBehaviour {
 
 	public float baseDamage = 5f;
 	public float baseSpeed = 10f; //the speed at which the projectile moves
@@ -16,12 +16,12 @@ public class PlayerBlaster : MonoBehaviour {
 
 	private float timePressed = 0f; //the time the fire button has been held
 	private bool pressed;
-	private ObjectPool objectPool_scr;
+	private scr_ObjectPool objectPool_scr;
 	
 
 	void Awake()
 	{
-		objectPool_scr = GetComponent<ObjectPool>();
+		objectPool_scr = GetComponent<scr_ObjectPool>();
 	}
 	
 	void Start () {
@@ -44,7 +44,7 @@ public class PlayerBlaster : MonoBehaviour {
 
 		if(Input.GetKeyUp(KeyCode.Space))
 		{
-			PlayerProjectile proj = objectPool_scr.CreateObject(transform.position, transform.rotation).GetComponent<PlayerProjectile>();
+			scr_PlayerProjectile proj = objectPool_scr.CreateObject(transform.position, transform.rotation).GetComponent<scr_PlayerProjectile>();
 			float damage = baseDamage + damageIncreaseRate * timePressed;
 			//check if charged
 			if (timePressed < chargeTime1)

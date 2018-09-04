@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerTransform : MonoBehaviour {
+public class scr_PlayerTransform : MonoBehaviour {
 
     bool powerup; //whether player is in soul form or not
     float timer; //timer that keeps track of time elapsed to end soul form

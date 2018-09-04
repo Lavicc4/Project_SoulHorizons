@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Card : ScriptableObject {
+public abstract class scr_Card : ScriptableObject {
 
     public List<string> keywords;
     public string cardName;

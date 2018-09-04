@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class scr_EnemyMovement : MonoBehaviour {
+public class scr_EnemyAI : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {

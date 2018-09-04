@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu (menuName = "Cards/LightningBolt")]
-public class LightningBolt : Card {
+public class scr_LightningBolt : scr_Card {
 
     public float damage = 6f;
 

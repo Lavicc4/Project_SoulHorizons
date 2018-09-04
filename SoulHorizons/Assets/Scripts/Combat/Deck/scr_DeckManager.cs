@@ -7,19 +7,19 @@ using UnityEngine.UI;
 /// <summary>
 /// Contains references to all parts of the deck system. Anything outside the deck system should use the public functions in this class for deck information.
 /// </summary>
-[RequireComponent(typeof(Deck))]
-public class DeckManager : MonoBehaviour {
+[RequireComponent(typeof(scr_Deck))]
+public class scr_DeckManager : MonoBehaviour {
 
 	public GameObject[] cardUI; //references to the cards UI
     Text[] cardNames; //the card names
     Color textColor; //the default text of the color when not in focus
-	Deck deck_scr;
+	scr_Deck deck_scr;
     int currentCard = 0;
 
     void Awake()
     {
         //get references
-        deck_scr = GetComponent<Deck>();
+        deck_scr = GetComponent<scr_Deck>();
         cardNames = new Text[cardUI.Length];
         int i = 0;
         foreach (GameObject card in cardUI)

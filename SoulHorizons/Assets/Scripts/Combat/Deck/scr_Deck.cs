@@ -8,15 +8,15 @@ using UnityEngine;
 /// <summary>
 /// Contains the deck and discard piles. Handles shuffling and drawing.
 /// </summary>
-public class Deck : MonoBehaviour {
+public class scr_Deck : MonoBehaviour {
 
 	public int deckSize = 30;
     public int handSize = 5;
-    public NameToCard cardMapping; //maps card name to the scriptable object for that card
+    public scr_NameToCard cardMapping; //maps card name to the scriptable object for that card
     public string DeckList; //the name of the file that contains the deck list
-    [HideInInspector] public List<Card> hand = new List<Card>();
-    List<Card> deck = new List<Card>();
-    List<Card> discard = new List<Card>();
+    [HideInInspector] public List<scr_Card> hand = new List<scr_Card>();
+    List<scr_Card> deck = new List<scr_Card>();
+    List<scr_Card> discard = new List<scr_Card>();
 
     public void Awake()
     {
@@ -65,7 +65,7 @@ public class Deck : MonoBehaviour {
             int quantity = int.Parse(parsedLine[1]);
 
             //attempt to retrieve the object reference from cardMapping
-            Card nextCard = cardMapping.ConvertNameToCard(parsedLine[0]);
+            scr_Card nextCard = cardMapping.ConvertNameToCard(parsedLine[0]);
             if (nextCard == null)
             {
                 continue;
@@ -83,7 +83,7 @@ public class Deck : MonoBehaviour {
             Debug.Log("DeckSize is " + deckSize + ", but " + deck.Count + " cards were added to the deck");
         }
 
-        ShuffleHelper<Card>(deck);
+        ShuffleHelper<scr_Card>(deck);
         CheckHandSize();
     }
 
@@ -95,40 +95,40 @@ public class Deck : MonoBehaviour {
     {
         if (list.Equals("deck"))
         {
-            ShuffleHelper<Card>(deck);
+            ShuffleHelper<scr_Card>(deck);
         }
         else if(list.Equals("discard"))
         {
-            ShuffleHelper<Card>(discard);
+            ShuffleHelper<scr_Card>(discard);
             return;
         }
         else if(list.Equals("discard into deck"))
         {
             //move discard into deck
-            foreach (Card card in discard)
+            foreach (scr_Card card in discard)
             {
                 deck.Add(card);
                 discard.Remove(card);
             }
             //shuffle
-            ShuffleHelper<Card>(deck);
+            ShuffleHelper<scr_Card>(deck);
         }
         else if(list.Equals("all"))
         {
             //move everything into deck
-            foreach (Card card in discard)
+            foreach (scr_Card card in discard)
             {
                 deck.Add(card);
                 discard.Remove(card);
             }
-            foreach (Card card in hand)
+            foreach (scr_Card card in hand)
             {
                 deck.Add(card);
                 hand.Remove(card);
             }
 
             //shuffle
-            ShuffleHelper<Card>(deck);
+            ShuffleHelper<scr_Card>(deck);
             //draw a new hand
             CheckHandSize();
         }
@@ -152,7 +152,7 @@ public class Deck : MonoBehaviour {
 
             Debug.Log("Shuffled deck");
             int i = 1;
-            foreach (Card item in deck)
+            foreach (scr_Card item in deck)
             {
                 Debug.Log(i++ + ": " + item.cardName);
             }
@@ -174,7 +174,7 @@ public class Deck : MonoBehaviour {
         }
         */
         int i = 0;
-        foreach (Card item in hand)
+        foreach (scr_Card item in hand)
         {
             if(item == null)
             {
@@ -210,7 +210,7 @@ public class Deck : MonoBehaviour {
     /// <param name="index"></param>
     public void Activate(int index)
     {
-        Card cardToPlay = hand[index];
+        scr_Card cardToPlay = hand[index];
         hand[index].Activate();
         discard.Add(cardToPlay);
         //hand.Remove(cardToPlay);

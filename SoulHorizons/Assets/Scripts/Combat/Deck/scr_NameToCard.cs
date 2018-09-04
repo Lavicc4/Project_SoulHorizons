@@ -7,7 +7,7 @@ using UnityEngine;
 /// <summary>
 /// Connects the data loaded from the save file to the object that corresponds to that card. Holds a list of all the card objects.
 /// </summary>
-public class NameToCard : ScriptableObject {
+public class scr_NameToCard : ScriptableObject {
 
     /// <summary>
     /// This class contains fields that can be edited in the inspector to put all card information in one object.
@@ -16,7 +16,7 @@ public class NameToCard : ScriptableObject {
     public class CardEntry
     {
         public string name;
-        public Card cardObject;
+        public scr_Card cardObject;
     }
     public List<CardEntry> cards = new List<CardEntry>();
 
@@ -25,7 +25,7 @@ public class NameToCard : ScriptableObject {
     /// </summary>
     /// <param name="name"></param>
     /// <returns>Returns the scriptable object or NULL.</returns>
-    public Card ConvertNameToCard(string name)
+    public scr_Card ConvertNameToCard(string name)
     {
         foreach (CardEntry entry in cards)
         {

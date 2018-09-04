@@ -7,7 +7,7 @@ using UnityEngine;
 /// <summary>
 /// Attached to the projectile the player fires.
 /// </summary>
-public class PlayerProjectile : MonoBehaviour {
+public class scr_PlayerProjectile : MonoBehaviour {
 	private float speed;
 	private float damage;
 	private int chargeLevel;

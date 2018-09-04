@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class scr_PlayerMovement : MonoBehaviour
 {
 
     struct Coords
@@ -65,7 +65,7 @@ public class PlayerMovement : MonoBehaviour
             gridpos.y += 1;
         }
         transform.position = Vector3.MoveTowards(transform.position, pos, Time.deltaTime * speed);    // Move there
-        Debug.Log(gridpos.x + " " + gridpos.y);
+        //Debug.Log(gridpos.x + " " + gridpos.y);
     }
 
 }

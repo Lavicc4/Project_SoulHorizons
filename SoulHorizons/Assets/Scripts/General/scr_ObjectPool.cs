@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// A supply of objects to be used as needed in place of creating new objects during gameplay
 /// </summary>
-public class ObjectPool : MonoBehaviour {
+public class scr_ObjectPool : MonoBehaviour {
 
 	private List<GameObject> supplyPool = new List<GameObject>(); //the pool of created objects
 	public int initialPoolSize = 10; //the number of objects created initially
