@@ -20,8 +20,14 @@ public class Deck : MonoBehaviour {
 
     public void Awake()
     {
+        //make sure the deck has the correct number of elements
+        for (int i = 0; i < handSize; i++)
+        {
+            hand.Add(null);
+        }
         
         LoadDeckList();
+
     }
 
     /// <summary>
@@ -157,6 +163,7 @@ public class Deck : MonoBehaviour {
     /// </summary>
     void CheckHandSize()
     {
+        /*
         if (hand.Count < handSize)
         {
             int cardsToDraw = handSize - hand.Count;
@@ -165,22 +172,35 @@ public class Deck : MonoBehaviour {
                 Draw();
             }
         }
+        */
+        int i = 0;
+        foreach (Card item in hand)
+        {
+            if(item == null)
+            {
+                Draw(i);
+            }
+            i++;
+        }
     }
 
     /// <summary>
     /// Remove the top card from the deck and add it to the hand.
     /// </summary>
-    public void Draw()
+    /// <param name="index">The index to put the new card at</param>
+    public void Draw(int index)
     {
         if (deck.Count > 0)
         {
             Debug.Log("Drew " + deck[0].cardName);
-            hand.Add(deck[0]);
+            //hand.Add(deck[0]);
+            hand[index] = deck[0];
             deck.RemoveAt(0);
         }
         else
         {
             //TODO: What do we do when the deck runs out?
+            Shuffle("discard into deck");
         }
     }
 
@@ -193,7 +213,8 @@ public class Deck : MonoBehaviour {
         Card cardToPlay = hand[index];
         hand[index].Activate();
         discard.Add(cardToPlay);
-        hand.Remove(cardToPlay);
+        //hand.Remove(cardToPlay);
+        hand[index] = null;
         //make sure hand size is correct
         CheckHandSize();
     }

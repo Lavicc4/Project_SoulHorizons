@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// Contains references to all parts of the deck system. Anything outside the deck system should use the public functions in this class for deck information.
@@ -10,6 +11,8 @@ using UnityEngine;
 public class DeckManager : MonoBehaviour {
 
 	public GameObject[] cardUI; //references to the cards UI
+    Text[] cardNames; //the card names
+    Color textColor; //the default text of the color when not in focus
 	Deck deck_scr;
     int currentCard = 0;
 
@@ -17,10 +20,17 @@ public class DeckManager : MonoBehaviour {
     {
         //get references
         deck_scr = GetComponent<Deck>();
+        cardNames = new Text[cardUI.Length];
+        int i = 0;
+        foreach (GameObject card in cardUI)
+        {
+            cardNames[i++] = card.GetComponent<Text>();
+        }
     }
 
 	void Start ()
     {
+        textColor = cardNames[0].color;
         UpdateGUI();
 	}
 
@@ -71,8 +81,24 @@ public class DeckManager : MonoBehaviour {
         //start an animation on the currently selected card if it was played
         //shift cards if one was played
         //give the UI element the information for a newly drawn card; play animation for loading
-        Debug.Log("CurrentCard index: " + currentCard);
-        Debug.Log("Currently selected Card: " + deck_scr.hand[currentCard].cardName);
+        Debug.Log("Currently selected Card: \"" + deck_scr.hand[currentCard].cardName + "\" at index " + currentCard);
 
+        //highlight the current card
+        for (int i = 0; i < cardNames.Length; i++)
+        {  
+            cardNames[i].color = textColor;
+        }
+        cardNames[currentCard].color = Color.white;
+
+        SetCardNames();
+        //TODO: need to check if the UI matches the current hand. If not, need to start a fade out animation for the out of date cards, followed by a fade in for their replacement
+    }
+
+    void SetCardNames()
+    {
+        for (int i = 0; i < cardNames.Length; i++)
+        {
+            cardNames[i].text = deck_scr.hand[i].cardName;
+        }
     }
 }
