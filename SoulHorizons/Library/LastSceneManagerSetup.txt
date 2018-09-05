@@ -1,8 +1,4 @@
 sceneSetups:
-<<<<<<< HEAD
-- path: Assets/Scenes/sn_gridtest.unity
-=======
 - path: Assets/Scenes/sn_LocalMap.unity
->>>>>>> Cameron'sBrokenBranch
   isLoaded: 1
   isActive: 1
