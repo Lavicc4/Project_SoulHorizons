@@ -2,12 +2,46 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
+
+[System.Serializable] 
+public class Scenario{
+
+	public string name; 
+	public Button thisButton; 
+	public bool completed; 
+	public bool active;
+	public GameObject[] enemies = new GameObject[5];
+
+	public void Init(){ 
+		thisButton.onClick.AddListener (ButtonClick);
+	} 
+	public void DeActivate(){
+		active = false;
+		thisButton.gameObject.SetActive (false); 
+	}
+
+	public bool Activate(){
+		
+		if (!active && !completed) {
+			active = true; 
+			thisButton.gameObject.SetActive (true); 
+			return true;
+		}
+		return false; 
+	}
+
+	public void ButtonClick(){
+		Debug.Log (name); 
+	}
+}
 
 
 public class scr_EventController : MonoBehaviour {
+	
 
-	public Button[] buttons = new Button[10]; 
-	public int numberOfActiveEvents;
+	public Scenario[] scenarios = new Scenario[10]; 
+	public int numberOfActiveScenarios;
 	 
 
 	void Start () {
@@ -15,8 +49,8 @@ public class scr_EventController : MonoBehaviour {
 
 
 		//for loop to turn off all buttons
-		for (int i = 0; i < buttons.Length; i++) {
-			buttons [i].gameObject.SetActive (false);
+		for (int i = 0; i < scenarios.Length; i++) {
+			scenarios [i].DeActivate ();
 		}
 
 
@@ -30,7 +64,6 @@ public class scr_EventController : MonoBehaviour {
 			CycleEvents (); 
 		}
 		if (Input.GetKeyDown (KeyCode.E)) {	
-			Debug.Log(TestingGeneration (0, 10,3)); 
 		}
 
 
@@ -40,30 +73,21 @@ public class scr_EventController : MonoBehaviour {
 	void CycleEvents(){
 
 
-		for (int i = 0; i < buttons.Length; i++) {
-			buttons [i].gameObject.SetActive (false);
+		for (int i = 0; i < scenarios.Length; i++) {
+			scenarios [i].DeActivate (); 
+		} 
+
+		for (int i = 0; i < numberOfActiveScenarios; i++) {
+			bool good = false; 
+			int tries = 0; 
+			while (!good  && tries < 50) {
+				int num = Random.Range (0, scenarios.Length); 
+				good = scenarios [num].Activate (); 
+				tries++; 
+			}
 		}
-
-		int[] temp = new int[numberOfActiveEvents];
-
-		temp = TestingGeneration (0, buttons.Length, numberOfActiveEvents);
-		for(int i = 0; i < temp.Length;i++){
-			
-		}
-
 	}
 
 		
-	int[] TestingGeneration(int min, int max, int length){
-		int[] testArray = new int[length];
-		HashSet<int> h = new HashSet<int>();
 
-		while (h.Count < testArray.Length){
-			h.Add(Random.Range(min, max));
-			h.CopyTo(testArray);
-		}
-		return testArray;
-
-
-	}
 }
