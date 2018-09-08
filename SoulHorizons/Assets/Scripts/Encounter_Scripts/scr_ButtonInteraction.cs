@@ -16,10 +16,5 @@ public class scr_ButtonInteraction : MonoBehaviour {
 		
 	}
 
-	public void GoToEncounter(Encounter encounterName){
-		//Here is where we will put all of our info about the encounter
-		//SceneManager.LoadScene or whatever (encounterName.Scene); 
-		string nameOfEncounter = encounterName.name;
-		Debug.Log (nameOfEncounter); 
-	}
+	
 }

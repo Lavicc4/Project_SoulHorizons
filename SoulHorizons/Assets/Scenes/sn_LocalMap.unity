@@ -414,19 +414,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 214278582}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 214278580}
-        m_MethodName: GoToEncounter
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 72b1fc99bceadb847bf67272c5cfd390,
-            type: 2}
-          m_ObjectArgumentAssemblyTypeName: Encounter, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &214278582
@@ -775,19 +763,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 373030925}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 373030923}
-        m_MethodName: GoToEncounter
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: d254575948118ce4db4cd7022bd9b211,
-            type: 2}
-          m_ObjectArgumentAssemblyTypeName: Encounter, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &373030925
@@ -979,19 +955,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 550084721}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 550084719}
-        m_MethodName: GoToEncounter
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 7b9e6aac2b628ee45b9c67901090897e,
-            type: 2}
-          m_ObjectArgumentAssemblyTypeName: Encounter, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &550084721
@@ -1265,19 +1229,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 966318113}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 966318111}
-        m_MethodName: GoToEncounter
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: d55c812663ef94a43b3ed9085a354438,
-            type: 2}
-          m_ObjectArgumentAssemblyTypeName: Encounter, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &966318113
@@ -1476,19 +1428,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1025428989}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1025428987}
-        m_MethodName: GoToEncounter
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: ce06314bf28398c499ca1abfded5a0e3,
-            type: 2}
-          m_ObjectArgumentAssemblyTypeName: Encounter, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1025428989
@@ -1576,7 +1516,29 @@ MonoBehaviour:
   - {fileID: 373030924}
   - {fileID: 1025428988}
   - {fileID: 966318112}
-  numberOfActiveScenarios: 5
+  activeScenarios: 10
+  totalButtons: 10
+  tier1Encounters:
+  - {fileID: 11400000, guid: ac9450fd621f1d14da869927b83f2293, type: 2}
+  - {fileID: 11400000, guid: 70a18bd86e6b510419d868a4030eb91b, type: 2}
+  - {fileID: 11400000, guid: 72b1fc99bceadb847bf67272c5cfd390, type: 2}
+  - {fileID: 11400000, guid: 15bf3d17b2e13d94a8587bffaa2fa23b, type: 2}
+  - {fileID: 11400000, guid: c731736450df85b4f99299f7f3fdd50a, type: 2}
+  - {fileID: 11400000, guid: 41a7eba75ea03a44b9e34eb3843c82a9, type: 2}
+  - {fileID: 11400000, guid: 7b9e6aac2b628ee45b9c67901090897e, type: 2}
+  - {fileID: 11400000, guid: d254575948118ce4db4cd7022bd9b211, type: 2}
+  - {fileID: 11400000, guid: ce06314bf28398c499ca1abfded5a0e3, type: 2}
+  - {fileID: 11400000, guid: d55c812663ef94a43b3ed9085a354438, type: 2}
+  tier2Encounters:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  tier3Encounters:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &1321266179
 GameObject:
   m_ObjectHideFlags: 0
@@ -1664,19 +1626,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1321266183}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1321266181}
-        m_MethodName: GoToEncounter
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 70a18bd86e6b510419d868a4030eb91b,
-            type: 2}
-          m_ObjectArgumentAssemblyTypeName: Encounter, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1321266183
@@ -1875,19 +1825,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1496574935}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1496574933}
-        m_MethodName: GoToEncounter
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 15bf3d17b2e13d94a8587bffaa2fa23b,
-            type: 2}
-          m_ObjectArgumentAssemblyTypeName: Encounter, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1496574935
@@ -2011,19 +1949,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1677863994}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1677863992}
-        m_MethodName: GoToEncounter
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 41a7eba75ea03a44b9e34eb3843c82a9,
-            type: 2}
-          m_ObjectArgumentAssemblyTypeName: Encounter, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1677863994
@@ -2221,7 +2147,6 @@ GameObject:
   - component: {fileID: 1965743007}
   - component: {fileID: 1965743006}
   - component: {fileID: 1965743005}
-  - component: {fileID: 1965743008}
   m_Layer: 5
   m_Name: Button0
   m_TagString: Untagged
@@ -2286,19 +2211,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1965743006}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1965743008}
-        m_MethodName: GoToEncounter
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: ac9450fd621f1d14da869927b83f2293,
-            type: 2}
-          m_ObjectArgumentAssemblyTypeName: Encounter, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1965743006
@@ -2335,17 +2248,6 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1965743003}
   m_CullTransparentMesh: 0
---- !u!114 &1965743008
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1965743003}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6811a1c0fa1240645834e09df00bdb7f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2087497188
 GameObject:
   m_ObjectHideFlags: 0
@@ -2433,19 +2335,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2087497192}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2087497190}
-        m_MethodName: GoToEncounter
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: c731736450df85b4f99299f7f3fdd50a,
-            type: 2}
-          m_ObjectArgumentAssemblyTypeName: Encounter, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &2087497192
