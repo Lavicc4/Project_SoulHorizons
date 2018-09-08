@@ -7,15 +7,38 @@ using UnityEngine.UI;
 
 public class scr_EncounterController : MonoBehaviour {
 
-	public Button[] buttons = new Button[10];
-	public int numberOfActiveScenarios; 
+    public Button[] buttons = new Button[10];
+	public int activeScenarios;
+    public int totalButtons; 
+    public Encounter[] tier1Encounters = new Encounter[10];
+    public Encounter[] tier2Encounters = new Encounter[5];
+    public Encounter[] tier3Encounters = new Encounter[3];
+
+    private Button[] listeners;
 
 	void Start () {
 
-		//for Loop to deactivate all of the buttons
-		for (int i = 0; i < buttons.Length; i++) {
+
+        
+        listeners = new Button[totalButtons];
+
+        //for Loop to deactivate all of the buttons
+        for (int i = 0; i < buttons.Length; i++) {
 			buttons [i].gameObject.SetActive(false); 
 		}
+
+
+        for(int i = 0; i < buttons.Length; i++)
+        {
+            listeners[i] = buttons[i].GetComponent<Button>();
+            //need to make sure we dont pick the same Encounter 2x. 
+            //here is where we will decide if the button gets to be a t1, t2 or t3 encounter.
+            int num = Random.Range(0, tier1Encounters.Length);
+            listeners[i].onClick.AddListener(delegate { GoToEncounter(tier1Encounters[num]); });
+
+        }
+
+
 	}
 	
 
@@ -35,7 +58,7 @@ public class scr_EncounterController : MonoBehaviour {
 		} 
 
 		//Loop to Randomize which buttons are on/off.  Also probably not exactly what we want, but will do for now. - Plus it dont even work right 
-		for (int i = 0; i < numberOfActiveScenarios; i++) {							//Will run as many times as you want Active Scenarios
+		for (int i = 0; i < activeScenarios; i++) {							//Will run as many times as you want Active Scenarios
 			bool good = false; 														//temp bool for incoming while loop
 			int tries = 0; 															// This is not necessary, but a precaution.  If numberOfActiveScenariosn > the total number of buttons in the array, Unity dies.  This prevents it from running more than x times.  <see while loop> 
 			while (!good  && tries < 50) {
@@ -52,4 +75,12 @@ public class scr_EncounterController : MonoBehaviour {
 			}
 		}
 	}
+
+    public void GoToEncounter(Encounter encounterName)
+    {
+        //Here is where we will put all of our info about the encounter
+        //SceneManager.LoadScene or whatever (encounterName.Scene); 
+        string nameOfEncounter = encounterName.name;
+        Debug.Log(nameOfEncounter);
+    }
 }
