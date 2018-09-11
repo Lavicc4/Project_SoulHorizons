@@ -7,12 +7,14 @@ using UnityEngine.UI;
 
 public class scr_EncounterController : MonoBehaviour {
 
+    public GameObject sceneManager;
     public Button[] buttons = new Button[10];
 	public int activeScenarios;
     public int totalButtons; 
     public Encounter[] tier1Encounters = new Encounter[10];
     public Encounter[] tier2Encounters = new Encounter[5];
     public Encounter[] tier3Encounters = new Encounter[3];
+    
 
     private Button[] listeners;
 
@@ -34,7 +36,9 @@ public class scr_EncounterController : MonoBehaviour {
             //need to make sure we dont pick the same Encounter 2x. 
             //here is where we will decide if the button gets to be a t1, t2 or t3 encounter.
             int num = Random.Range(0, tier1Encounters.Length);
-            listeners[i].onClick.AddListener(delegate { GoToEncounter(tier1Encounters[num]); });
+            
+            //THIS STATEMENT BELOW WILL PICK A RANDOM TIER 1 ENCOUNTER IN ADDITION TO WHATEVER WE ATTACHED TO THE BUTTON 
+            //listeners[i].onClick.AddListener(delegate { GoToEncounter(tier1Encounters[num]); });
 
         }
 
@@ -82,5 +86,6 @@ public class scr_EncounterController : MonoBehaviour {
         //SceneManager.LoadScene or whatever (encounterName.Scene); 
         string nameOfEncounter = encounterName.name;
         Debug.Log(nameOfEncounter);
+        sceneManager.GetComponent<scr_SceneManager>().ChangeScene(encounterName.sceneName);  
     }
 }

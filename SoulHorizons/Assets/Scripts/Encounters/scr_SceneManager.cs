@@ -15,7 +15,7 @@ public class scr_SceneManager : MonoBehaviour {
 		
 	}
 
-	public void ChangeScene(){
-		SceneManager.LoadScene ("sn_LocalMap");
+	public void ChangeScene(string sceneName){
+		SceneManager.LoadScene (sceneName);
 	}
 }
