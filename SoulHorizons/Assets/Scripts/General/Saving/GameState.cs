@@ -11,6 +11,7 @@ using System.IO;
 public class GameState {
 
     PlayerState player;
+    InventoryState inventory;
     List<RegionState> regions = new List<RegionState>();
     
 
@@ -81,4 +82,10 @@ public class RegionState
 public class PlayerState
 {
     public int playerLevel;
+}
+
+[System.Serializable]
+public class InventoryState
+{
+
 }

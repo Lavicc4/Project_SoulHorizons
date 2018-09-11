@@ -7,7 +7,7 @@ public class scr_SceneManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+        DontDestroyOnLoad(this.gameObject); 
 	}
 	
 	// Update is called once per frame
@@ -18,4 +18,20 @@ public class scr_SceneManager : MonoBehaviour {
 	public void ChangeScene(string sceneName){
 		SceneManager.LoadScene (sceneName);
 	}
+
+    public void EnableSettings()
+    {
+        Debug.Log("SETTINGS ARE OPEN");
+
+    }
+    public void DisableSettings()
+    {
+        Debug.Log("settings are closed");
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+        Debug.Log("quit"); 
+    }
 }
