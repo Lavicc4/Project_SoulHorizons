@@ -248,7 +248,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deckSize: 30
   handSize: 5
-  cardMapping: {fileID: 11400000, guid: 55cc4c3df4d741645843507ee3dfb045, type: 2}
+  cardMapping: {fileID: 11400000, guid: 7fd815c874a2e11489c9eedb255bd7dd, type: 2}
   DeckList: starterDeck
   hand: []
 --- !u!1 &290868838
