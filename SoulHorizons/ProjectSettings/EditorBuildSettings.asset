@@ -11,13 +11,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/sn_LocalMap.unity
     guid: 41ee3098af9f98b40976eb1096fdccf5
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/Scene_1.unity
-    guid: 083ff0b8f1f70da4395f6ab885c63a35
-  - enabled: 1
-    path: Assets/Scenes/sn_gridtest.unity
+    path: Assets/Scenes/sn_GridTest.unity
     guid: fa41c8c1839f34d4da13f0424a84b243
-  - enabled: 1
-    path: Assets/Scenes/sn_overworldtest.unity
-    guid: a6091432603fc884ca068f22d7440191
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects: {}

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: Portal to Elsewhere
   m_EditorClassIdentifier: 
   keywords:
-  - Air
+  - Void
   cardName: Portal to Elsewhere
   castingTime: 1
   damage: 6

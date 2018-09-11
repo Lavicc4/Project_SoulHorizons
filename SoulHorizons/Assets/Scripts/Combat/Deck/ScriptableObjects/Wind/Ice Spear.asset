@@ -9,10 +9,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8e0f1ef2afb6ae346a6f4703def4bb8e, type: 3}
-  m_Name: Lightning Bolt
+  m_Name: Ice Spear
   m_EditorClassIdentifier: 
   keywords:
-  - Air
-  cardName: Lightning Bolt
+  - Wind
+  cardName: Ice Spear
   castingTime: 1
   damage: 6

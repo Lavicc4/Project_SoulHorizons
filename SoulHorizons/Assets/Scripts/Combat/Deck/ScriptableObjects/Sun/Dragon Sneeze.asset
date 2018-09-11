@@ -11,7 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e0f1ef2afb6ae346a6f4703def4bb8e, type: 3}
   m_Name: Dragon Sneeze
   m_EditorClassIdentifier: Assembly-CSharp::scr_LightningBolt
-  keywords: []
-  cardName: 
+  keywords:
+  - Sun
+  cardName: Dragon Sneeze
   castingTime: 1
   damage: 6
