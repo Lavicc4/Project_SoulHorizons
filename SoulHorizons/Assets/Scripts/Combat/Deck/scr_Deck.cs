@@ -13,7 +13,8 @@ public class scr_Deck : MonoBehaviour {
 	public int deckSize = 30;
     public int handSize = 5;
     public scr_NameToCard cardMapping; //maps card name to the scriptable object for that card
-    public string DeckList; //the name of the file that contains the deck list
+    //public string DeckList; //the name of the file that contains the deck list
+    public TextAsset deckList;
     [HideInInspector] public List<scr_Card> hand = new List<scr_Card>();
     List<scr_Card> deck = new List<scr_Card>();
     List<scr_Card> discard = new List<scr_Card>();
@@ -36,6 +37,7 @@ public class scr_Deck : MonoBehaviour {
     void LoadDeckList()
     {
         Debug.Log("Loading deck list");
+        /*
         //load the list, use cardMapping to get the card object from the name in the list and put the cards in the deck
         StreamReader file = new StreamReader(Path.Combine("Assets/Scripts/Combat/Deck/Deck Lists", DeckList + ".txt"));
         if (file == null)
@@ -43,10 +45,14 @@ public class scr_Deck : MonoBehaviour {
             Debug.Log("File did not open");
             return;
         }
+        */
 
-        while (!file.EndOfStream)
+        StringReader reader = new StringReader(deckList.text);
+        string strLine;
+
+        while ((strLine = reader.ReadLine()) != null)
         {
-            string strLine = file.ReadLine();
+            //string strLine = file.ReadLine();
             string[] parsedLine = strLine.Split( ':');
             //check that there was only one colon in the line
             if (parsedLine.Length != 2)
@@ -78,9 +84,17 @@ public class scr_Deck : MonoBehaviour {
             }
         }
 
+
         if (deck.Count != deckSize)
         {
             Debug.Log("DeckSize is " + deckSize + ", but " + deck.Count + " cards were added to the deck");
+        }
+
+        Debug.Log("Unshuffled Deck List");
+        int j = 1;
+        foreach (scr_Card item in deck)
+        {
+            Debug.Log(j++ + ": \"" + item.cardName + "\"");
         }
 
         ShuffleHelper<scr_Card>(deck);
@@ -154,7 +168,7 @@ public class scr_Deck : MonoBehaviour {
             int i = 1;
             foreach (scr_Card item in deck)
             {
-                Debug.Log(i++ + ": " + item.cardName);
+                Debug.Log(i++ + ": \"" + item.cardName + "\"");
             }
     }
 
@@ -192,7 +206,8 @@ public class scr_Deck : MonoBehaviour {
     {
         if (deck.Count > 0)
         {
-            Debug.Log("Drew " + deck[0].cardName);
+            Debug.Log("Deck size: " + deck.Count);
+            Debug.Log((deck[0] == null) ? ("first deck element is null") : ("Drew " + deck[0].cardName));
             //hand.Add(deck[0]);
             hand[index] = deck[0];
             deck.RemoveAt(0);
