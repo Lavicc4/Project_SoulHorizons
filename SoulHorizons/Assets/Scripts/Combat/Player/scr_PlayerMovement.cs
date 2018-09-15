@@ -32,11 +32,11 @@ public class scr_PlayerMovement : MonoBehaviour
     void Start()
     {
 
-        //int[,] grid = new int[xsize, ysize];
-        //pos = transform.position;          // Take the initial position
         gridpos = new Coords(startx, starty);
         myGrid = GameObject.FindGameObjectWithTag("Player_Grid").GetComponent<scr_Grid>();
         transform.position = new Vector3(myGrid.grid[startx, starty].transform.position.x, myGrid.grid[startx, starty].transform.position.y, 0);
+        myGrid.grid[startx, starty].GetComponent<scr_Tile>().occupied = true;
+        Debug.Log("OCC: " + myGrid.grid[startx, starty].GetComponent<scr_Tile>().occupied);
         Debug.Log("XSIZE: " + myGrid.xsize);
         Debug.Log("CENTERX " + myGrid.grid[0, 0].transform.position.x);
     }
@@ -46,28 +46,37 @@ public class scr_PlayerMovement : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.A) && gridpos.x - 1 >= 0)
         {        // Left
-            //Debug.Log("CENTERX " + grid.grid[gridpos.x - 1, gridpos.y].transform.position.x);
+            myGrid.grid[gridpos.x, gridpos.y].GetComponent<scr_Tile>().occupied = false;
             gridpos.x -= 1;
-            transform.position = new Vector3(myGrid.grid[gridpos.x, gridpos.y].transform.position.x, myGrid.grid[gridpos.x, gridpos.y].transform.position.y, 0);
-            Debug.Log(transform.position);
+            GameObject tile = myGrid.grid[gridpos.x, gridpos.y];
+            transform.position = new Vector3(tile.transform.position.x, tile.transform.position.y, 0);
+            tile.GetComponent<scr_Tile>().occupied = true;
+            
+            //Debug.Log(transform.position);
         }
         if (Input.GetKeyDown(KeyCode.D) && gridpos.x + 1 < myGrid.xsize)
         {        // Right
-
+            myGrid.grid[gridpos.x, gridpos.y].GetComponent<scr_Tile>().occupied = false;
             gridpos.x += 1;
-            transform.position = new Vector3(myGrid.grid[gridpos.x, gridpos.y].transform.position.x, myGrid.grid[gridpos.x, gridpos.y].transform.position.y, 0);
+            GameObject tile = myGrid.grid[gridpos.x, gridpos.y];
+            transform.position = new Vector3(tile.transform.position.x, tile.transform.position.y, 0);
+            tile.GetComponent<scr_Tile>().occupied = true;
         }
         if (Input.GetKeyDown(KeyCode.W) && gridpos.y - 1 >= 0)
         {        // Up
-
+            myGrid.grid[gridpos.x, gridpos.y].GetComponent<scr_Tile>().occupied = false;
             gridpos.y -= 1;
-            transform.position = new Vector3(myGrid.grid[gridpos.x, gridpos.y].transform.position.x, myGrid.grid[gridpos.x, gridpos.y].transform.position.y, 0);
+            GameObject tile = myGrid.grid[gridpos.x, gridpos.y];
+            transform.position = new Vector3(tile.transform.position.x, tile.transform.position.y, 0);
+            tile.GetComponent<scr_Tile>().occupied = true;
         }
         if (Input.GetKeyDown(KeyCode.S) && gridpos.y + 1 < myGrid.ysize)
         {        // Down
-
+            myGrid.grid[gridpos.x, gridpos.y].GetComponent<scr_Tile>().occupied = false;
             gridpos.y += 1;
-            transform.position = new Vector3(myGrid.grid[gridpos.x, gridpos.y].transform.position.x, myGrid.grid[gridpos.x, gridpos.y].transform.position.y, 0);
+            GameObject tile = myGrid.grid[gridpos.x, gridpos.y];
+            transform.position = new Vector3(tile.transform.position.x, tile.transform.position.y, 0);
+            tile.GetComponent<scr_Tile>().occupied = true;
         }
 
     }
