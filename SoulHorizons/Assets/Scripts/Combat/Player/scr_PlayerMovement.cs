@@ -35,7 +35,8 @@ public class scr_PlayerMovement : MonoBehaviour
         //int[,] grid = new int[xsize, ysize];
         //pos = transform.position;          // Take the initial position
         gridpos = new Coords(startx, starty);
-        myGrid = gameObject.GetComponent<scr_Grid>();
+        myGrid = GameObject.FindGameObjectWithTag("Player_Grid").GetComponent<scr_Grid>();
+        transform.position = new Vector3(myGrid.grid[startx, starty].transform.position.x, myGrid.grid[startx, starty].transform.position.y, 0);
         Debug.Log("XSIZE: " + myGrid.xsize);
         Debug.Log("CENTERX " + myGrid.grid[0, 0].transform.position.x);
     }
