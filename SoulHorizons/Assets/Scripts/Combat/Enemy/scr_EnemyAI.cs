@@ -4,13 +4,44 @@ using UnityEngine;
 
 public class scr_EnemyAI : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
+
+    [SerializeField]
+    float movementInterval;
+
+    int spawnX;
+    int spawnY;
+    scr_Grid grid;
+    GameObject enemyGridController; 
+
+
+	void Awake () {
+
+        enemyGridController = GameObject.FindGameObjectWithTag("EnemyGridController");
+        grid = enemyGridController.GetComponent<scr_Grid>(); 
+
 	}
 	
-	// Update is called once per frame
+	
 	void Update () {
-		
+        
 	}
+
+
+
+
+    void Attack1()
+    {
+
+
+    }
+
+    void Attack2()
+    {
+
+    }
+
+    IEnumerator Movement()
+    {
+        yield return new WaitForSeconds(movementInterval);
+    }
 }
