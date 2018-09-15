@@ -2,23 +2,41 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
-//Colin 9/9/18
+//Colin 9/15/18
 
 [System.Serializable]
 /// <summary>
 /// Stores all saved information about the state of the game.
+/// Rather than creating everything at once, create new objects as it beconmes necessary to save data about them.
 /// </summary>
 public class GameState {
 
     PlayerState player;
     InventoryState inventory;
     List<RegionState> regions = new List<RegionState>();
+    public bool lastGamePlayed;
+
+    public GameState()
+    {
+        //creating a new save file; initialize things as needed
+        //initialize player object
+        player.playerLevel = 1;
+
+        //TODO: initialize inventory
+
+        //TODO: initialize anything else?
+    }
     
 
     /*Player related methods */
     public int GetPlayerLevel()
     {
         return player.playerLevel;
+    }
+
+    public string GetPlayerName()
+    {
+        return player.name;
     }
 
 
@@ -82,6 +100,7 @@ public class RegionState
 public class PlayerState
 {
     public int playerLevel;
+    internal string name;
 }
 
 [System.Serializable]
