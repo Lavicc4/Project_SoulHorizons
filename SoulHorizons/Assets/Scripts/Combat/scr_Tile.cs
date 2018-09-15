@@ -5,25 +5,11 @@ using UnityEngine;
 public class scr_Tile : MonoBehaviour{
 
 
-    bool occupied;
-    bool harmful;
-    public Vector3 center;
-
-    public scr_Tile()
-    {
-        harmful = false;
-        occupied = false;
-    }
-    public scr_Tile(int a, int b)
-    {
-        harmful = false;
-        occupied = false;
-        center = new Vector3(a, b, 0);
-        
-    }
+    public bool occupied;
+    public bool harmful;
 
     // Use this for initialization
-    void Start()
+    void Awake()
     {
         harmful = false;
         occupied = false;

@@ -9,14 +9,14 @@ public class scr_Grid : MonoBehaviour{
     public GameObject[,] grid;
     public GameObject tile;
 
-    private void Start()
+    private void Awake()
     {
         grid = new GameObject[xsize, ysize];
         for (int i = 0; i < xsize; i++)
         {
             for (int j = 0; j < ysize; j++)
             {
-                Debug.Log(i + " " + j);
+                //Debug.Log(i + " " + j);
                 GameObject tiletoadd = (GameObject)Instantiate(tile, new Vector3(gameObject.transform.position.x + i, gameObject.transform.position.y - j, 0), Quaternion.identity);
                 grid[i, j] = tiletoadd;
             }
