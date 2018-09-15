@@ -20,9 +20,11 @@ public class GameState {
     {
         //creating a new save file; initialize things as needed
         //initialize player object
+        player = new PlayerState();
         player.playerLevel = 1;
 
         //TODO: initialize inventory
+        inventory = new InventoryState();
 
         //TODO: initialize anything else?
     }
