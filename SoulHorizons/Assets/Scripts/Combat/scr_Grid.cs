@@ -12,6 +12,10 @@ public class scr_Grid : MonoBehaviour{
     public float yOffset; 
     public scr_Tile[,] grid;
     public scr_Tile tile;
+    private SpriteRenderer spriteR;
+    private Sprite[] tile_sprites;
+    private int spriteTracker = 0;
+    public bool flipped;
 
 
     private void Start()
@@ -25,6 +29,7 @@ public class scr_Grid : MonoBehaviour{
 
     private void BuildGrid()
     {
+        tile_sprites = Resources.LoadAll<Sprite>("tiles_spritesheet");
         grid = new scr_Tile[xSizeMax, ySizeMax];
         for (int i = 0; i < xSizeMax; i++)
         {
@@ -35,7 +40,16 @@ public class scr_Grid : MonoBehaviour{
                 tileToAdd.territory = scr_SceneManager.globalSceneManager.currentEncounter.territoryColumn[i].territoryRow[j];
                 tileToAdd.gridPositionX = i;
                 tileToAdd.gridPositionY = j;
+
+                spriteR = tileToAdd.GetComponent<SpriteRenderer>();
+                spriteR.sprite = tile_sprites[spriteTracker];
+                spriteR.color = Color.white;
+                spriteR.flipX = flipped;
+                if (tile_sprites[spriteTracker] == null) Debug.Log("MISSING SPRITE");
+
                 grid[i, j] = tileToAdd;
+
+                spriteTracker++;
             }
         }
     }
