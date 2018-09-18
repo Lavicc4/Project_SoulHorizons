@@ -31,9 +31,10 @@ public class scr_Grid : MonoBehaviour{
     {
         tile_sprites = Resources.LoadAll<Sprite>("tiles_spritesheet");
         grid = new scr_Tile[xSizeMax, ySizeMax];
-        for (int i = 0; i < xSizeMax; i++)
+   
+        for (int j = 0; j < ySizeMax; j++)
         {
-            for (int j = 0; j < ySizeMax; j++)
+            for (int i = 0; i < xSizeMax; i++)
             {
                 //Debug.Log(i + " " + j);
                 scr_Tile tileToAdd = (scr_Tile)Instantiate(tile, new Vector3(i + xOffset, j + yOffset, 0), Quaternion.identity);
@@ -52,6 +53,7 @@ public class scr_Grid : MonoBehaviour{
                 spriteTracker++;
             }
         }
+        
     }
 
 
