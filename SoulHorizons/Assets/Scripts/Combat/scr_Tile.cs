@@ -23,7 +23,7 @@ public class scr_Tile : MonoBehaviour{
     public int gridPositionY;
     
 
-    Vector2 spriteSize = new Vector2 (1,1);
+    Vector2 spriteSize = new Vector2 (.15f,.15f);
     SpriteRenderer spriteRenderer;
      
 
