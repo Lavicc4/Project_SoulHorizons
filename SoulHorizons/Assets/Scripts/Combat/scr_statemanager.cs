@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class scr_statemanager : MonoBehaviour {
+public class scr_StateManager : MonoBehaviour {
 
     public Text rewardMessage;
     bool endCombat = false;
@@ -26,7 +26,7 @@ public class scr_statemanager : MonoBehaviour {
             if (Input.GetKey(KeyCode.V))
             {
                 Debug.Log("Switching Scenes");
-                SceneManager.LoadScene("sn_overworldtest");
+                SceneManager.LoadScene("sn_WorldMap");
             }
         }
 	}

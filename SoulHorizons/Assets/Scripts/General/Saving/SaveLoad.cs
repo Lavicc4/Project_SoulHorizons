@@ -1,0 +1,73 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
+//Colin 9/15/18
+
+public static class SaveLoad {
+
+    public static List<GameState> savedGames = new List<GameState>(3);
+    static GameState currentGame;
+
+    /// <summary>
+    /// Create a new save file. Limit how many they can have?
+    /// </summary>
+    public static void NewGame()
+    {
+        GameState newGame = new GameState();
+        currentGame = newGame;
+        newGame.lastGamePlayed = true;
+
+        for (int i = 0; i < 3; i++)
+        {
+            if (savedGames[i] == null)
+            {
+                savedGames[i] = newGame;
+            }
+            else
+            {
+                savedGames[i].lastGamePlayed = false;
+            }
+        }
+
+    }
+
+    public static void Save()
+    {
+        //TODO:Need to add GameState to list?
+        BinaryFormatter bf = new BinaryFormatter();
+        //Application.persistentDataPath is a string, so if you wanted you can put that into debug.log if you want to know where save games are located
+        FileStream file = File.Create(Application.persistentDataPath + "/savedGames.gd"); //you can call it anything you want
+        bf.Serialize(file, savedGames);
+        file.Close();
+    }
+
+    /// <summary>
+    /// Loads the list from a file and puts it into an object
+    /// </summary>
+    public static void Load()
+    {
+        if (File.Exists(Application.persistentDataPath + "/savedGames.gd"))
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Open(Application.persistentDataPath + "/savedGames.gd", FileMode.Open);
+            savedGames = (List<GameState>)bf.Deserialize(file);
+            file.Close();
+
+            //set lastPlayed game to currentGame for the continue option in the menu
+            foreach (GameState item in savedGames)
+            {
+                if (item.lastGamePlayed)
+                {
+                    currentGame = item;
+                    Debug.Log("Loaded game " + currentGame.GetPlayerName());
+                    return;
+                }
+            }
+        }
+        //else no save file exists
+        Debug.Log("No save file exists");
+    }
+
+}

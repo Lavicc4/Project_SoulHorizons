@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/sn_gridtest.unity
+- path: Assets/Scenes/sn_GridTest.unity
   isLoaded: 1
   isActive: 1
