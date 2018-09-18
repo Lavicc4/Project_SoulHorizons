@@ -24,7 +24,7 @@ public class scr_Grid : MonoBehaviour{
                 for (int i = 0; i < xsize; i++)
                 {
                     //Debug.Log(i + " " + j);
-                    GameObject tiletoadd = (GameObject)Instantiate(tile, new Vector3(gameObject.transform.position.x + (float)i/1.15f, gameObject.transform.position.y - (float)j/2.25f, 0), Quaternion.identity);
+                    GameObject tiletoadd = (GameObject)Instantiate(tile, new Vector3(gameObject.transform.position.x + (float)i/1.1f, gameObject.transform.position.y - (float)j/2.25f, 0), Quaternion.identity);
                     spriteR = tiletoadd.GetComponent<SpriteRenderer>();
                     spriteR.sprite = tile_sprites[spriteTracker];
                     spriteR.color = Color.white;
