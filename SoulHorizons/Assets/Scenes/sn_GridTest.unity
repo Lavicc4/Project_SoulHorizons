@@ -304,7 +304,7 @@ GameObject:
   m_Layer: 0
   m_Name: EnemyGridController
   m_TagString: EnemyGridController
-  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -400,12 +400,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: cb46086ce3a4fd24a89e71b6f2955e01, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6585156582d3da34e806342ccad856f6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.3, y: 0.375}
+  m_Size: {x: 3.1874998, y: 4.125}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1476,8 +1476,7 @@ Prefab:
     - target: {fileID: 1116592492456940, guid: b387f74aa494e87418203518d827b6f5, type: 2}
       propertyPath: m_Icon
       value: 
-      objectReference: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000,
-        type: 0}
+      objectReference: {fileID: 0}
     - target: {fileID: 61906949573251334, guid: b387f74aa494e87418203518d827b6f5,
         type: 2}
       propertyPath: m_Offset.y
@@ -1905,7 +1904,7 @@ GameObject:
   m_Layer: 0
   m_Name: Player_Grid
   m_TagString: Player_Grid
-  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
