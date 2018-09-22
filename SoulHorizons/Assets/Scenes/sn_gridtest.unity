@@ -972,7 +972,7 @@ SpriteRenderer:
   m_Size: {x: 0.16, y: 0.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &690201928
@@ -2148,6 +2148,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xSizeMax: 6
   ySizeMax: 3
-  xOffset: -2.5
+  xOffset: -2.75
   yOffset: -1
   tile: {fileID: 114124032091846856, guid: c0f8ab25b0d628140b13fe6f1ec791c8, type: 2}

@@ -37,7 +37,7 @@ public class scr_Grid : MonoBehaviour{
             for (int i = 0; i < xSizeMax/2; i++)
             {
                 Debug.Log(i + " " + j);
-                scr_Tile tileToAdd = (scr_Tile)Instantiate(tile, new Vector3((float)i / (1f + .05f *j) + xOffset + .1f*j, (float)j / (2.25f + .15f * j) + yOffset, 0), Quaternion.identity);
+                scr_Tile tileToAdd = (scr_Tile)Instantiate(tile, new Vector3((float)i / (.95f + .05f *j) + xOffset + .1f*j, (float)j / (2.25f + .15f * j) + yOffset, 0), Quaternion.identity);
                 tileToAdd.territory = scr_SceneManager.globalSceneManager.currentEncounter.territoryColumn[i].territoryRow[j];
                 tileToAdd.gridPositionX = i;
                 tileToAdd.gridPositionY = j;
@@ -58,7 +58,7 @@ public class scr_Grid : MonoBehaviour{
         {
             for (int i = xSizeMax-1; i >= xSizeMax/2; i--)
             {
-                scr_Tile tileToAdd = (scr_Tile)Instantiate(tile, new Vector3((float)i / (1f + .05f * j) + xOffset + .1f * j, (float)j / (2.25f + .15f * j) + yOffset, 0), Quaternion.identity);
+                scr_Tile tileToAdd = (scr_Tile)Instantiate(tile, new Vector3((float)i / (.95f + .05f * j) + xOffset + .155f * j, (float)j / (2.25f + .15f * j) + yOffset, 0), Quaternion.identity);
                 tileToAdd.territory = scr_SceneManager.globalSceneManager.currentEncounter.territoryColumn[i].territoryRow[j];
                 tileToAdd.gridPositionX = i;
                 tileToAdd.gridPositionY = j;
