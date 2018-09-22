@@ -15,7 +15,6 @@ public class scr_Grid : MonoBehaviour{
     private SpriteRenderer spriteR;
     private Sprite[] tile_sprites;
     private int spriteTracker = 0;
-    public bool flipped;
 
 
     private void Start()
@@ -32,20 +31,20 @@ public class scr_Grid : MonoBehaviour{
         tile_sprites = Resources.LoadAll<Sprite>("tiles_spritesheet");
         grid = new scr_Tile[xSizeMax, ySizeMax];
    
+        //LOAD PLAYER SIDE
         for (int j = 0; j < ySizeMax; j++)
         {
-            for (int i = 0; i < xSizeMax; i++)
+            for (int i = 0; i < xSizeMax/2; i++)
             {
-                //Debug.Log(i + " " + j);
-                scr_Tile tileToAdd = (scr_Tile)Instantiate(tile, new Vector3((float)i / 1f + xOffset, (float)j / 2.25f + yOffset, 0), Quaternion.identity);
+                Debug.Log(i + " " + j);
+                scr_Tile tileToAdd = (scr_Tile)Instantiate(tile, new Vector3((float)i / (1f + .05f *j) + xOffset + .1f*j, (float)j / (2.25f + .15f * j) + yOffset, 0), Quaternion.identity);
                 tileToAdd.territory = scr_SceneManager.globalSceneManager.currentEncounter.territoryColumn[i].territoryRow[j];
                 tileToAdd.gridPositionX = i;
                 tileToAdd.gridPositionY = j;
 
                 spriteR = tileToAdd.GetComponent<SpriteRenderer>();
-                spriteR.sprite = tile_sprites[spriteTracker%3];
+                spriteR.sprite = tile_sprites[spriteTracker];
                 spriteR.color = Color.white;
-                spriteR.flipX = flipped;
                 if (tile_sprites[spriteTracker] == null) Debug.Log("MISSING SPRITE");
 
                 grid[i, j] = tileToAdd;
@@ -53,8 +52,30 @@ public class scr_Grid : MonoBehaviour{
                 spriteTracker++;
             }
         }
-        
-    }
+        spriteTracker = 0;
+        //LOAD ENEMY SIDE
+        for (int j = 0; j < ySizeMax; j++)
+        {
+            for (int i = xSizeMax-1; i >= xSizeMax/2; i--)
+            {
+                scr_Tile tileToAdd = (scr_Tile)Instantiate(tile, new Vector3((float)i / (1f + .05f * j) + xOffset + .1f * j, (float)j / (2.25f + .15f * j) + yOffset, 0), Quaternion.identity);
+                tileToAdd.territory = scr_SceneManager.globalSceneManager.currentEncounter.territoryColumn[i].territoryRow[j];
+                tileToAdd.gridPositionX = i;
+                tileToAdd.gridPositionY = j;
+
+                spriteR = tileToAdd.GetComponent<SpriteRenderer>();
+                spriteR.sprite = tile_sprites[spriteTracker];
+                spriteR.flipX = true; 
+                spriteR.color = Color.white;
+                if (tile_sprites[spriteTracker] == null) Debug.Log("MISSING SPRITE");
+
+                grid[i, j] = tileToAdd;
+
+                spriteTracker++;
+            }
+        }
+
+            }
 
 
     public void SetNewGrid(int new_xSizeMax, int new_ySizeMax)

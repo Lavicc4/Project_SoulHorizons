@@ -2151,4 +2151,3 @@ MonoBehaviour:
   xOffset: -2.5
   yOffset: -1
   tile: {fileID: 114124032091846856, guid: c0f8ab25b0d628140b13fe6f1ec791c8, type: 2}
-  flipped: 0
