@@ -20,12 +20,12 @@ public class Encounter : ScriptableObject {
     public string defaultTerrain;
     public List<Terrain_Entry> tiles = new List<Terrain_Entry>();
     [Header("Assets")]
-    public List<Asset_Entry> enemies = new List<Asset_Entry>();
-    public List<Asset_Entry> props = new List<Asset_Entry>();
+    public EntitySpawnLocation[] entities; 
 
     [Header("Territory")]
     public TerritoryRow[] territoryColumn;
 
+    
 
 
     /*
@@ -76,5 +76,20 @@ public class Encounter : ScriptableObject {
         public scr_Tile.Territory[] territoryRow; 
     }
 
+    [System.Serializable]
+    public class EntitySpawnLocation
+    {
+        public scr_Entity _entity;
+        public int x;
+        public int y;
 
+        public EntitySpawnLocation(scr_Entity ent, int a, int b)
+        {
+            _entity = ent;
+            x = a;
+            y = b;
+        }
+
+    }
 }
+

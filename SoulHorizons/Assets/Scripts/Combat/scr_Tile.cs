@@ -9,8 +9,7 @@ public class scr_Tile : MonoBehaviour{
     public Color activeColor;
     public Color inactiveColor;
 
-    public float telegraphTime;
-    public float activeTime; 
+    
     public bool occupied;
     public bool harmful;
     public bool isPrimed;
@@ -21,25 +20,38 @@ public class scr_Tile : MonoBehaviour{
     scr_Grid grid;
     public int gridPositionX;
     public int gridPositionY;
+    public int queuedAttacks = 0; 
     
 
-    Vector2 spriteSize = new Vector2 (.15f,.15f);
+    Vector2 spriteSize = new Vector2 (1f,.85f);
     SpriteRenderer spriteRenderer;
      
 
     
-    void Awake()
+    void Start()
     {
-        
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.color = inactiveColor;
+        spriteRenderer.drawMode = SpriteDrawMode.Sliced;
+        spriteRenderer.size = spriteSize;
+        isPrimed = false;
+        isActive = false; 
         harmful = false;
         occupied = false;
         gridController = GameObject.FindGameObjectWithTag("GridController");
         grid = gridController.GetComponent<scr_Grid>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.color = inactiveColor;
-        spriteRenderer.drawMode = SpriteDrawMode.Sliced;
-        spriteRenderer.size = spriteSize; 
-        //transform.position = center;
+         
+        
+    }
+    private void Update()
+    {
+        
+    }
+
+    public void InitalizeTile()
+    {
+
+
     }
 
     public void SetTerritory(Territory newTer)
@@ -50,41 +62,38 @@ public class scr_Tile : MonoBehaviour{
 
     public void Prime()
     {
+        isPrimed = true; 
+        if(!isActive)
         spriteRenderer.color = primeColor;
-        StartCoroutine(PrimeTileWait());
+        
     }
     public void Activate()
     {
+        queuedAttacks++; 
+        isPrimed = false; 
+        isActive = true; 
         spriteRenderer.color = activeColor;
-        scr_Tile _tile = grid.grid[gridPositionX -1 , gridPositionY];                        //get reference to tile 
-        //need prime the next tile in the pattern
-        grid.PrimeNextTile(_tile);
-        StartCoroutine(ActiveTileWait());
-        
-
-        
     }
-
-    IEnumerator PrimeTileWait()
+    
+    public void Deactivate()
     {
-        bool _waiting = false;
-        if (!_waiting)
+        queuedAttacks--; 
+        if(queuedAttacks == 0)
         {
-            _waiting = true; 
-            yield return new WaitForSeconds(telegraphTime);
-            Activate(); 
+            if (isPrimed)
+            {
+                Prime(); 
+            }
+            else
+            {
+                isActive = false;
+                spriteRenderer.color = inactiveColor;
+            }
+            
         }
         
+         
     }
-    IEnumerator ActiveTileWait()
-    {
-        bool _waiting = false;
-        if (!_waiting)
-        {
-            _waiting = true;
-            yield return new WaitForSeconds(activeTime);
-            spriteRenderer.color = inactiveColor;
-        }
-
-    }
+    
+   
 }

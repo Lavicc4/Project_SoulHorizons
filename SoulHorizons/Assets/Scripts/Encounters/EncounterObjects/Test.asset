@@ -19,8 +19,15 @@ MonoBehaviour:
   active: 0
   defaultTerrain: 
   tiles: []
-  enemies: []
-  props: []
+  entities:
+  - _entity: {fileID: 114725702907161856, guid: 11d25b81658892242b796d6cf9b2106d,
+      type: 2}
+    x: 5
+    y: 1
+  - _entity: {fileID: 114725702907161856, guid: 11d25b81658892242b796d6cf9b2106d,
+      type: 2}
+    x: 4
+    y: 2
   territoryColumn:
   - territoryRow: 000000000000000000000000
   - territoryRow: 000000000000000000000000
