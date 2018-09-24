@@ -39,10 +39,11 @@ public class scr_AttackController : MonoBehaviour {
                 if (activeAttacks[x].currentIncrement != 0)
                     scr_Grid.GridController.DeactivateTile(activeAttacks[x].lastPos.x, activeAttacks[x].lastPos.y);
                 activeAttacks[x].lastPos = activeAttacks[x].pos;
+                scr_Grid.GridController.AttackPosition(activeAttacks[x].pos.x, activeAttacks[x].pos.y, activeAttacks[x]._attack);
                 activeAttacks[x].pos = activeAttacks[x]._attack.ProgressAttack(activeAttacks[x].pos.x, activeAttacks[x].pos.y);
                 activeAttacks[x].lastAttackTime = Time.time; 
                 activeAttacks[x].currentIncrement++;
-                
+                 
             }
         }    
     }
@@ -72,8 +73,21 @@ public class scr_AttackController : MonoBehaviour {
             }
         }
         
-        return new Attack(); 
+        return null; 
         
+    }
+
+    public Attack MoveIntoAttackCheck(Vector2Int pos)
+    {
+        for (int x = 0; x < numberOfActiveAttacks; x++)
+        {
+            if (activeAttacks[x].lastPos == pos)
+            {
+                return activeAttacks[x]._attack;
+            }
+        }
+
+        return null;
     }
 
 }

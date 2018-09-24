@@ -74,6 +74,11 @@ public class scr_Grid : MonoBehaviour{
 
     }
 
+    public bool CheckIfOccupied(int x, int y)
+    {
+        return grid[x, y].occupied;
+    }
+
 
     public void SetNewGrid(int new_xSizeMax, int new_ySizeMax)
     {
@@ -141,6 +146,21 @@ public class scr_Grid : MonoBehaviour{
             grid[x, y].occupied = isOccupied; 
         }
     }
+
+    public scr_Tile.Territory ReturnTerritory(int x, int y)
+    {
+        return grid[x, y].territory;
+    }
     
+    public void AttackPosition(int x, int y, Attack _attack)
+    {
+        for(int i=0; i < activeEntities.Length; i++)
+        {
+            if(activeEntities[i]._gridPos == new Vector2Int(x, y))
+            {
+                activeEntities[i].HitByAttack(_attack); 
+            }
+        }
+    }
     
 }

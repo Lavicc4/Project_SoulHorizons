@@ -2,114 +2,62 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class scr_PlayerMovement : MonoBehaviour
+public class scr_PlayerMovement : scr_EntityAI
 {
 
-    struct Coords
+    public override void Move()
     {
-        public int x;
-        public int y;
-
-        public Coords(int a, int b)
-        {
-            x = a;
-            y = b;
-        }
 
     }
-    
-    public int startx;
-    public int starty;
-    //public int xsize;
-    //public int ysize;
-    Coords gridpos;
-    scr_Grid myGrid;
-    GameObject gridController;
-    //Vector3 pos;                                // For movement
-    //float speed = 5.0f;                         // Speed of movement
+    public override void Attack()
+    {
+
+    }
+    public override void UpdateAI()
+    {
+        MovementCheck();
+    }
 
 
 
-    // Use this for initialization
     void Start()
     {
 
 
-        gridController = GameObject.FindGameObjectWithTag("GridController");
-        myGrid = gridController.GetComponent<scr_Grid>();
-        gridpos = new Coords(startx, starty);
-
-        PlaceAtStart(startx, starty);
-        
-        
-
-        //Debug.Log("OCC: " + myGrid.grid[startx, starty].GetComponent<scr_Tile>().occupied);
-        //Debug.Log("XSIZE: " + myGrid.xsize);
-        //Debug.Log("CENTERX " + myGrid.grid[0, 0].transform.position.x);
     }
 
-    // Update is called once per frame
-    void Update()
+    void MovementCheck()
     {
-        //TODO: Thought of this at 3:26am so im not going to implement, do a check to see the territory of the tile , if player , then move to it 
-        if (Input.GetKeyDown(KeyCode.W)  &&  gridpos.y != 2)
+        int _x = entity._gridPos.x;
+        int _y = entity._gridPos.y; 
+
+        if (Input.GetKeyDown(KeyCode.W))
         {
             //move up 
-            int _y = gridpos.y + 1;
-            SetTransform(gridpos.x, _y);
-            gridpos.y = _y;
+            _y ++;
+            
         }
-        if(Input.GetKeyDown(KeyCode.A)  &&  gridpos.x != 0)
+        if(Input.GetKeyDown(KeyCode.A))
         {
             //move left
-            int _x = gridpos.x - 1;
-            SetTransform(_x, gridpos.y);
-            gridpos.x = _x;
+            _x --;
         }
-        if (Input.GetKeyDown(KeyCode.S) && gridpos.y != 0)
+        if (Input.GetKeyDown(KeyCode.S))
         {
-            //move down
-            int _y = gridpos.y - 1;
-            SetTransform(gridpos.x, _y);
-            gridpos.y = _y;
+            _y--;
         }
-        if(Input.GetKeyDown(KeyCode.D)  &&  gridpos.x != 2)
+        if(Input.GetKeyDown(KeyCode.D))
         {
-            //move right
-            int _x = gridpos.x + 1;
-            SetTransform(_x, gridpos.y);
-            gridpos.x = _x;
+            _x++; 
+        }
+
+        if (scr_Grid.GridController.LocationOnGrid(_x, _y) &&  scr_Grid.GridController.ReturnTerritory(_x,_y) == entity.entityTerritory)
+        {
+            entity.SetTransform(_x, _y); 
         }
         
-        
-    }
-    void FixedUpdate()
-    {
-     
-        //transform.position = Vector3.MoveTowards(transform.position, pos, Time.deltaTime * speed);    // Move there
-        //Debug.Log(gridpos.x + " " + gridpos.y);
-    }
-    
-
-
-    //This function will set the transform of the player, and occupy/unoccupy appropriate spaces 
-    void SetTransform(int x, int y)
-    {
-        int _x = gridpos.x;
-        int _y = gridpos.y;                                                                                                                 //Store current x and y locations on grid
-        myGrid.grid[x, y].GetComponent<scr_Tile>().occupied = true;                                                                         //set new space to occupied
-        transform.position = new Vector3(myGrid.grid[x, y].transform.position.x, myGrid.grid[x, y].transform.position.y, 0);                //move to the new space 
-        myGrid.grid[_x, _y].GetComponent<scr_Tile>().occupied = false;                                                                      //set old location to unoccupied once we move  
-        
     }
 
-    void PlaceAtStart(int x, int y)
-    {
-        myGrid.grid[x, y].GetComponent<scr_Tile>().occupied = true;                                                                         //set new space to occupied
-        transform.position = new Vector3(myGrid.grid[x, y].transform.position.x, myGrid.grid[x, y].transform.position.y, 0);                //move to the new space 
-
-    }
-    
 }
 
 

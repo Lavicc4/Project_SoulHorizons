@@ -13,3 +13,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   incrementSpeed: 1
   maxIncrements: 6
+  damage: 2
+  territory: 1

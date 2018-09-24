@@ -20,28 +20,36 @@ public class scr_EnemyAI_1 : scr_EntityAI {
     public override void UpdateAI()
     {
         StartCoroutine(MovementClock(movementInterval));
-
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            scr_AttackController.attackController.AddNewAttack(attack1, entity._gridPos.x, entity._gridPos.y);
-        }
+        
     }
 
     void Movement()
     {
         //Decide if we are moving horiz or vert.
         int _temp = Random.Range(0, 2);                                         //Pick a number between 0 and 1
+        int _x = entity._gridPos.x;
+        int _y = entity._gridPos.y; 
         if (_temp == 0)                                                          //if that number == 0, then we're moving vertically 
         {
-            int _y = PickYCoord();
-            entity.SetTransform(entity._gridPos.x, _y);                                        //set the transform for the enemy
-            return;
+            _y = PickYCoord();
+
         }
         else if (_temp == 1)                                                     //if that number == 1, we're moving horizonally 
         {
-            int _x = PickXCoord();
-            entity.SetTransform(_x, entity._gridPos.y);                                        //set the transform for the enemy
-            return;
+            _x = PickXCoord();
+
+        }
+        if (!scr_Grid.GridController.CheckIfOccupied(_x, _y))
+        {
+            entity.SetTransform(_x, _y);
+            if (attack1.CheckCondition(entity))
+            {
+                scr_AttackController.attackController.AddNewAttack(attack1, entity._gridPos.x, entity._gridPos.y);
+            }
+        }
+        else
+        {
+            Movement();
         }
     }
     IEnumerator MovementClock(float _movementInterval)
@@ -104,4 +112,6 @@ public class scr_EnemyAI_1 : scr_EntityAI {
             return 1;
         }
     }
+
+    
 }
