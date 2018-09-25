@@ -6,20 +6,31 @@ using UnityEngine.SceneManagement;
 
 public class scr_StateManager : MonoBehaviour {
 
-    public Text rewardMessage;
+    public Text RewardMessage;
     public Text PlayerHealth;
     bool endCombat = false;
-	// Use this for initialization
-	void Start () {
-        UpdateHealth(10); //CHANGE THIS LATER TO DETECT STARTING PLAYER HEALTH
-	}
+    GameObject player;
+    scr_Entity playerEntity;
+    // Use this for initialization
+    void Start () {
+        player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
+            playerEntity = player.GetComponent<scr_Entity>();
+        }
+        else
+        {
+            Debug.Log("PLAYER NOT FOUND");
+        }
+    }
 	
 	// Update is called once per frame
 	void Update () {
+        UpdateHealth();
 		if(GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
         {
             //Debug.Log("NO ENEMIES");
-            rewardMessage.enabled = true;
+            RewardMessage.enabled = true;
             endCombat = true;
         }
         if (endCombat)
@@ -33,13 +44,14 @@ public class scr_StateManager : MonoBehaviour {
         }
 	}
 
-    public void UpdateHealth(int hp)
+    public void UpdateHealth()
     {
-        PlayerHealth.text = "Health: " + hp;
-        if(hp <= 0)
+       
+        PlayerHealth.text = "Health: " + playerEntity._health.hp;
+        if(playerEntity._health.hp <= 0)
         {
-            rewardMessage.text = "Oh no you died! Press V to return to the World Map";
-            rewardMessage.enabled = true;
+            RewardMessage.text = "Oh no you died! Press V to return to the World Map";
+            RewardMessage.enabled = true;
             endCombat = true;
         }
     }

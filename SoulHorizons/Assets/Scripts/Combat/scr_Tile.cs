@@ -49,7 +49,7 @@ public class scr_Tile : MonoBehaviour{
     {
         if (isActive && entityOnTile != null)
         {
-            Debug.Log("OW!!!!");
+            //Debug.Log("OW!!!!");
             //TEMPORARY HARDCODED VALUE, GET ATTACK ASSOCIATED WITH ACTIVATED TILE AND GET DAMAGE FROM THAT
             //entityOnTile._health.TakeDamage(1);
             isActive = false; //So it only hits once and not every frame, can change if it's multi hit, add that functionality later
@@ -88,15 +88,15 @@ public class scr_Tile : MonoBehaviour{
         queuedAttacks--; 
         if(queuedAttacks == 0)
         {
-            if (isPrimed)
+            /*if (isPrimed)
             {
                 Prime(); 
             }
             else
-            {
+            {*/
                 isActive = false;
                 spriteRenderer.color = inactiveColor;
-            }
+            //}
             
         }
         

@@ -50,6 +50,7 @@ public class scr_AttackController : MonoBehaviour {
     void RemoveFromArray(int index)
     {
         scr_Grid.GridController.DeactivateTile(activeAttacks[index].lastPos.x, activeAttacks[index].lastPos.y);
+        scr_Grid.GridController.DeactivateTile(activeAttacks[index].pos.x, activeAttacks[index].pos.y);
         for (int x = index; x < numberOfActiveAttacks; x++)
         {
             if (x + 1 < activeAttacks.Length && activeAttacks[x + 1]._attack != null)
@@ -63,6 +64,7 @@ public class scr_AttackController : MonoBehaviour {
         }
         numberOfActiveAttacks--; 
     }
+
     public Attack AttackType(Vector2Int pos)
     {
         for (int x = 0; x < numberOfActiveAttacks; x++)
@@ -83,7 +85,10 @@ public class scr_AttackController : MonoBehaviour {
         {
             if (activeAttacks[x].lastPos == pos)
             {
-                return activeAttacks[x]._attack;
+                Attack atk = activeAttacks[x]._attack;
+                Debug.Log("REMOVING");
+                RemoveFromArray(x);
+                return atk;
             }
         }
 
