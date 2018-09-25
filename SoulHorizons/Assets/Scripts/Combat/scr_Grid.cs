@@ -161,6 +161,7 @@ public class scr_Grid : MonoBehaviour{
         {
             if(activeEntities[i]._gridPos == new Vector2Int(x, y))
             {
+                Debug.Log("ACTIVE ENTITY HIT!");
                 activeEntities[i].HitByAttack(_attack); 
             }
         }

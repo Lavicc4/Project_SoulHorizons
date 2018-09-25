@@ -53,6 +53,7 @@ public class scr_Entity : MonoBehaviour
         Attack atk = scr_AttackController.attackController.MoveIntoAttackCheck(_gridPos);
         if(atk != null)
         {
+            Debug.Log("I'M HIT");
             HitByAttack(atk); 
         }
         

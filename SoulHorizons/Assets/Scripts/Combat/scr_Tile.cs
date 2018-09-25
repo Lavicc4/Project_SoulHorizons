@@ -51,7 +51,7 @@ public class scr_Tile : MonoBehaviour{
         {
             Debug.Log("OW!!!!");
             //TEMPORARY HARDCODED VALUE, GET ATTACK ASSOCIATED WITH ACTIVATED TILE AND GET DAMAGE FROM THAT
-            entityOnTile._health.TakeDamage(1);
+            //entityOnTile._health.TakeDamage(1);
             isActive = false; //So it only hits once and not every frame, can change if it's multi hit, add that functionality later
         }
     }
