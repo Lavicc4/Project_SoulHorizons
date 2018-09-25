@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 /// <summary>
 /// Contains references to all parts of the deck system. Anything outside the deck system should use the public functions in this class for deck information.
@@ -11,7 +12,7 @@ using UnityEngine.UI;
 public class scr_DeckManager : MonoBehaviour {
 
 	public GameObject[] cardUI; //references to the cards UI
-    Text[] cardNames; //the card names
+    TextMeshProUGUI[] cardNames; //the card names
     Color textColor; //the default text of the color when not in focus
 	scr_Deck deck_scr;
     int currentCard = 0;
@@ -20,11 +21,15 @@ public class scr_DeckManager : MonoBehaviour {
     {
         //get references
         deck_scr = GetComponent<scr_Deck>();
-        cardNames = new Text[cardUI.Length];
+        cardNames = new TextMeshProUGUI[cardUI.Length];
         int i = 0;
         foreach (GameObject card in cardUI)
         {
-            cardNames[i++] = card.GetComponent<Text>();
+            cardNames[i++] = card.GetComponentInChildren<TextMeshProUGUI>();//card.GetComponent<TextMeshPro>();
+            if (cardNames[i-1] == null)
+            {
+                Debug.Log("Did not find component");
+            }
         }
     }
 
