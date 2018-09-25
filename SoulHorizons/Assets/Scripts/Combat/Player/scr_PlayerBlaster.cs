@@ -37,12 +37,12 @@ public class scr_PlayerBlaster : MonoBehaviour {
 			//TODO:need to calculate charge level here for visual indicators that you have increased the charge level
 		}
 
-		if (Input.GetKeyDown(KeyCode.Space))
+		if (scr_InputManager.Blast_Down())
 		{
 			pressed = true;
 		}
 
-		if(Input.GetKeyUp(KeyCode.Space))
+		if(scr_InputManager.Blast_Up())
 		{
 			scr_PlayerProjectile proj = objectPool_scr.CreateObject(transform.position, transform.rotation).GetComponent<scr_PlayerProjectile>();
 			float damage = baseDamage + damageIncreaseRate * timePressed;

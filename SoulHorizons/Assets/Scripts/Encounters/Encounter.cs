@@ -7,6 +7,50 @@ using UnityEngine.UI;
 [CreateAssetMenu(fileName = "New Encounter", menuName = "Encounter")]
 public class Encounter : ScriptableObject {
 
+    public new string name;
+    public string sceneName = "sn_GridTest";                        //Cameron made this variable.  It is used by the scene manager to go to a specific string.  For now all of our combat happens in GridTest, but that might change?
+
+
+    [Header("Grid Size")]
+    public int xWidth = 3;
+    public int yHeight = 3;
+    public bool completed;
+    public bool active;
+    [Header("Terrain")]
+    public string defaultTerrain;
+    public List<Terrain_Entry> tiles = new List<Terrain_Entry>();
+    [Header("Assets")]
+    public EntitySpawnLocation[] entities; 
+
+    [Header("Territory")]
+    public TerritoryRow[] territoryColumn;
+
+    
+
+
+    /*
+    void OnValidate()
+    {
+        territoryColumn = new TerritoryRow[length];
+        StartCoroutine(WaitALittle());
+        
+        
+
+    }
+
+    IEnumerator WaitALittle()
+    {
+        yield return new WaitForEndOfFrame();
+
+        for (int x = 0; x < territoryColumn.Length; x++)
+        {
+            territoryColumn[x].territoryRow = new scr_Tile.Territory[width];
+        }
+    }
+    */
+
+
+
     [System.Serializable]
     public class Asset_Entry
     {
@@ -23,22 +67,29 @@ public class Encounter : ScriptableObject {
         public int x;
         public int y;
     }
-	public new string name;
-    public string sceneName = "sn_GridTest";                        //Cameron made this variable.  It is used by the scene manager to go to a specific string.  For now all of our combat happens in GridTest, but that might change?
+	
+     
 
-    [Header("Grid Size")]
-    public int width = 3;
-    public int length = 3;
-	public bool completed; 
-	public bool active;
-    [Header("Terrain")]
-    public string defaultTerrain;
-    public List<Terrain_Entry> tiles = new List<Terrain_Entry>();
-    [Header("Assets")]
-    public List<Asset_Entry> enemies = new List<Asset_Entry>();
-    public List<Asset_Entry> props = new List<Asset_Entry>();
+    [System.Serializable]
+    public class TerritoryRow
+    {
+        public scr_Tile.Territory[] territoryRow; 
+    }
 
+    [System.Serializable]
+    public class EntitySpawnLocation
+    {
+        public scr_Entity _entity;
+        public int x;
+        public int y;
 
+        public EntitySpawnLocation(scr_Entity ent, int a, int b)
+        {
+            _entity = ent;
+            x = a;
+            y = b;
+        }
 
-
+    }
 }
+

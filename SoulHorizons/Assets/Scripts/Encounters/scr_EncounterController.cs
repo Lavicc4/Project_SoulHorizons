@@ -7,20 +7,17 @@ using UnityEngine.UI;
 
 public class scr_EncounterController : MonoBehaviour {
 
-    public GameObject sceneManager;
+    public scr_SceneManager sceneManager;
     public Button[] buttons = new Button[10];
 	public int activeScenarios;
     public int totalButtons; 
     public Encounter[] tier1Encounters = new Encounter[10];
     public Encounter[] tier2Encounters = new Encounter[5];
     public Encounter[] tier3Encounters = new Encounter[3];
-    
 
     private Button[] listeners;
 
 	void Start () {
-
-
         
         listeners = new Button[totalButtons];
 
@@ -86,6 +83,7 @@ public class scr_EncounterController : MonoBehaviour {
         //SceneManager.LoadScene or whatever (encounterName.Scene); 
         string nameOfEncounter = encounterName.name;
         Debug.Log(nameOfEncounter);
-        sceneManager.GetComponent<scr_SceneManager>().ChangeScene(encounterName.sceneName);  
+        scr_SceneManager.globalSceneManager.currentEncounter = encounterName;
+        scr_SceneManager.globalSceneManager.ChangeScene(encounterName.sceneName);  
     }
 }

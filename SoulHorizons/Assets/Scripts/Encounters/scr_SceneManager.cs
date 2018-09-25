@@ -5,9 +5,23 @@ using UnityEngine.SceneManagement;
 
 public class scr_SceneManager : MonoBehaviour {
 
-	// Use this for initialization
+    public Encounter currentEncounter;
+    public static scr_SceneManager globalSceneManager; 
+
+	
 	void Start () {
-        DontDestroyOnLoad(this.gameObject); 
+
+        if(globalSceneManager != null && globalSceneManager != this)
+        {
+            Destroy(gameObject); 
+        }
+        else
+        {
+            globalSceneManager = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+       
+
 	}
 	
 	// Update is called once per frame

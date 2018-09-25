@@ -2,49 +2,90 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class scr_PlayerMovement : MonoBehaviour
+public class scr_PlayerMovement : scr_EntityAI
 {
 
-    struct Coords
+    public override void Move()
     {
-        public int x;
-        public int y;
-
-        public Coords(int a, int b)
-        {
-            x = a;
-            y = b;
-        }
 
     }
+    public override void Attack()
+    {
 
-    public int startx;
-    public int starty;
-    //public int xsize;
-    //public int ysize;
-    Coords gridpos;
-    scr_Grid myGrid;
-    //Vector3 pos;                                // For movement
-    //float speed = 5.0f;                         // Speed of movement
+    }
+    public override void UpdateAI()
+    {
+        MovementCheck();
+    }
 
-    
-    // Use this for initialization
+
+
     void Start()
     {
 
-        gridpos = new Coords(startx, starty);
-        myGrid = GameObject.FindGameObjectWithTag("Player_Grid").GetComponent<scr_Grid>();
-        transform.position = new Vector3(myGrid.grid[startx, starty].transform.position.x, myGrid.grid[startx, starty].transform.position.y, 0);
-        myGrid.grid[startx, starty].GetComponent<scr_Tile>().occupied = true;
-        Debug.Log("OCC: " + myGrid.grid[startx, starty].GetComponent<scr_Tile>().occupied);
-        Debug.Log("XSIZE: " + myGrid.xsize);
-        Debug.Log("CENTERX " + myGrid.grid[0, 0].transform.position.x);
+
     }
 
-    // Update is called once per frame
-    void Update()
+    bool axisPressed = false; //used to get "OnJoystickDown"
+    void MovementCheck()
     {
-        if (Input.GetKeyDown(KeyCode.A) && gridpos.x - 1 >= 0)
+        int _x = entity._gridPos.x;
+        int _y = entity._gridPos.y; 
+
+
+        if (!axisPressed)
+        {
+            //just pressed the joystick
+            _x += scr_InputManager.MainHorizontal();
+            if(scr_InputManager.MainHorizontal() == 0)
+            {
+                _y += scr_InputManager.MainVertical();
+            }
+            axisPressed = true;
+        }
+
+        if(scr_InputManager.MainHorizontal() == 0 && scr_InputManager.MainVertical() == 0)
+        {
+            //joystick is not pressed
+            axisPressed = false;
+        }
+
+        /*
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            //move up 
+            _y ++;
+            
+        }
+        if(Input.GetKeyDown(KeyCode.A))
+        {
+            //move left
+            _x --;
+        }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            _y--;
+        }
+        if(Input.GetKeyDown(KeyCode.D))
+        {
+            _x++; 
+        }
+         */
+
+        if (scr_Grid.GridController.LocationOnGrid(_x, _y) &&  scr_Grid.GridController.ReturnTerritory(_x,_y) == entity.entityTerritory)
+        {
+            entity.SetTransform(_x, _y); 
+        }
+        
+    }
+
+}
+
+
+
+
+/*
+ * if (Input.GetKeyDown(KeyCode.A) && gridpos.x - 1 >= 0)
         {        // Left
             myGrid.grid[gridpos.x, gridpos.y].GetComponent<scr_Tile>().occupied = false;
             gridpos.x -= 1;
@@ -79,12 +120,5 @@ public class scr_PlayerMovement : MonoBehaviour
             tile.GetComponent<scr_Tile>().occupied = true;
         }
 
-    }
-    void FixedUpdate()
-    {
-     
-        //transform.position = Vector3.MoveTowards(transform.position, pos, Time.deltaTime * speed);    // Move there
-        //Debug.Log(gridpos.x + " " + gridpos.y);
-    }
-
-}
+    */
+    
