@@ -42,19 +42,34 @@ public class scr_DeckManager : MonoBehaviour {
         }
     }
 
+    bool axisPressed = false;
     /// <summary>
     /// Gets user input.
     /// </summary>
     /// <returns>true if any input was detected, false otherwise.</returns>
     bool UserInput()
     {
-        if (Input.GetKeyDown(KeyCode.DownArrow))
+        int axis = 0;
+        if (!axisPressed)
+        {
+            //just pressed the joystick
+            axis = scr_InputManager.HandScrolling();
+            axisPressed = true;
+        }
+
+        if(scr_InputManager.HandScrolling() == 0)
+        {
+            //joystick is not pressed
+            axisPressed = false;
+        }
+
+        if (scr_InputManager.PlayCard())
         {
             //play the current card
             deck_scr.Activate(currentCard);
             return true;
         }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow))
+        else if (axis < 0)
         {
             currentCard--;
             if(currentCard < 0)
@@ -63,7 +78,7 @@ public class scr_DeckManager : MonoBehaviour {
             }
             return true;
         }
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
+        else if (axis > 0)
         {
             currentCard = (currentCard + 1) % deck_scr.handSize;
             return true;
@@ -81,7 +96,7 @@ public class scr_DeckManager : MonoBehaviour {
         //start an animation on the currently selected card if it was played
         //shift cards if one was played
         //give the UI element the information for a newly drawn card; play animation for loading
-        Debug.Log("Currently selected Card: \"" + deck_scr.hand[currentCard].cardName + "\" at index " + currentCard);
+        //Debug.Log("Currently selected Card: \"" + deck_scr.hand[currentCard].cardName + "\" at index " + currentCard);
 
         //highlight the current card
         for (int i = 0; i < cardNames.Length; i++)

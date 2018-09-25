@@ -26,11 +26,31 @@ public class scr_PlayerMovement : scr_EntityAI
 
     }
 
+    bool axisPressed = false; //used to get "OnJoystickDown"
     void MovementCheck()
     {
         int _x = entity._gridPos.x;
         int _y = entity._gridPos.y; 
 
+
+        if (!axisPressed)
+        {
+            //just pressed the joystick
+            _x += scr_InputManager.MainHorizontal();
+            if(scr_InputManager.MainHorizontal() == 0)
+            {
+                _y += scr_InputManager.MainVertical();
+            }
+            axisPressed = true;
+        }
+
+        if(scr_InputManager.MainHorizontal() == 0 && scr_InputManager.MainVertical() == 0)
+        {
+            //joystick is not pressed
+            axisPressed = false;
+        }
+
+        /*
         if (Input.GetKeyDown(KeyCode.W))
         {
             //move up 
@@ -50,6 +70,7 @@ public class scr_PlayerMovement : scr_EntityAI
         {
             _x++; 
         }
+         */
 
         if (scr_Grid.GridController.LocationOnGrid(_x, _y) &&  scr_Grid.GridController.ReturnTerritory(_x,_y) == entity.entityTerritory)
         {

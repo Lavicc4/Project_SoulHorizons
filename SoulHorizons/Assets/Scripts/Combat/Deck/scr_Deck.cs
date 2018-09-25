@@ -36,7 +36,7 @@ public class scr_Deck : MonoBehaviour {
     /// </summary>
     void LoadDeckList()
     {
-        Debug.Log("Loading deck list");
+        //Debug.Log("Loading deck list");
         /*
         //load the list, use cardMapping to get the card object from the name in the list and put the cards in the deck
         StreamReader file = new StreamReader(Path.Combine("Assets/Scripts/Combat/Deck/Deck Lists", DeckList + ".txt"));
@@ -164,12 +164,12 @@ public class scr_Deck : MonoBehaviour {
             list[n] = value;
         }
 
-            Debug.Log("Shuffled deck");
-            int i = 1;
-            foreach (scr_Card item in deck)
-            {
-                Debug.Log(i++ + ": \"" + item.cardName + "\"");
-            }
+            //Debug.Log("Shuffled deck");
+            //int i = 1;
+            //foreach (scr_Card item in deck)
+            //{
+            //    Debug.Log(i++ + ": \"" + item.cardName + "\"");
+            //}
     }
 
     /// <summary>
@@ -206,8 +206,8 @@ public class scr_Deck : MonoBehaviour {
     {
         if (deck.Count > 0)
         {
-            Debug.Log("Deck size: " + deck.Count);
-            Debug.Log((deck[0] == null) ? ("first deck element is null") : ("Drew " + deck[0].cardName));
+            //Debug.Log("Deck size: " + deck.Count);
+            //Debug.Log((deck[0] == null) ? ("first deck element is null") : ("Drew " + deck[0].cardName));
             //hand.Add(deck[0]);
             hand[index] = deck[0];
             deck.RemoveAt(0);
