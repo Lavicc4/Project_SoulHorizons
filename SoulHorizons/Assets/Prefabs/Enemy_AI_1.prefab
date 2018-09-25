@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 114725702907161856}
   - component: {fileID: 114373111611885714}
   m_Layer: 0
-  m_Name: FoulTrifling
+  m_Name: Enemy_AI_1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -128,6 +128,8 @@ MonoBehaviour:
   _ai: {fileID: 114373111611885714}
   entityTerritory: 1
   spr: {fileID: 212410729078944208}
+  manager_object: {fileID: 0}
+  manager: {fileID: 0}
 --- !u!212 &212410729078944208
 SpriteRenderer:
   m_ObjectHideFlags: 1

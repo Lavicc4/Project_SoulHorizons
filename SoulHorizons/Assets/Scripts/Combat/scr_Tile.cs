@@ -20,7 +20,8 @@ public class scr_Tile : MonoBehaviour{
     scr_Grid grid;
     public int gridPositionX;
     public int gridPositionY;
-    public int queuedAttacks = 0; 
+    public int queuedAttacks = 0;
+    public scr_Entity entityOnTile;
     
 
     Vector2 spriteSize = new Vector2 (1f,.85f);
@@ -40,12 +41,19 @@ public class scr_Tile : MonoBehaviour{
         occupied = false;
         gridController = GameObject.FindGameObjectWithTag("GridController");
         grid = gridController.GetComponent<scr_Grid>();
+        entityOnTile = null;
          
         
     }
     private void Update()
     {
-        
+        if (isActive && entityOnTile != null)
+        {
+            Debug.Log("OW!!!!");
+            //TEMPORARY HARDCODED VALUE, GET ATTACK ASSOCIATED WITH ACTIVATED TILE AND GET DAMAGE FROM THAT
+            entityOnTile._health.TakeDamage(1);
+            isActive = false; //So it only hits once and not every frame, can change if it's multi hit, add that functionality later
+        }
     }
 
     public void InitalizeTile()

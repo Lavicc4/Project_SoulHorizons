@@ -88,6 +88,7 @@ public class scr_Grid : MonoBehaviour{
 
     }
 
+    //BUG - AT START TILES DON'T COUNT AS OCCUPIED, AFTER INIT SET TILES TO OCCUPIED FOR INITIALIZED ENTITIES
     public void InitEncounter()
     {
         xSizeMax = scr_SceneManager.globalSceneManager.currentEncounter.xWidth;
@@ -139,11 +140,13 @@ public class scr_Grid : MonoBehaviour{
 
     }
 
-    public void SetTileOccupied(bool isOccupied, int x, int y)
+    public void SetTileOccupied(bool isOccupied, int x, int y, scr_Entity ent)
     {
         if (LocationOnGrid(x, y))
         {
-            grid[x, y].occupied = isOccupied; 
+            grid[x, y].occupied = isOccupied;
+            if (isOccupied) grid[x, y].entityOnTile = ent;
+            else grid[x, y].entityOnTile = null;
         }
     }
 
