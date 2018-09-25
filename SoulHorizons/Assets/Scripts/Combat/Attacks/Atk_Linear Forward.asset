@@ -11,7 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bfc36621c8b32548a8c23e3b6c7a04b, type: 3}
   m_Name: Atk_Linear Forward
   m_EditorClassIdentifier: 
-  incrementSpeed: 1
+  incrementSpeed: 0.3
   maxIncrements: 6
   damage: 2
   territory: 1
+  chanceToAttack: 30
