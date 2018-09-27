@@ -44,7 +44,7 @@ public class scr_EnemyAI_1 : scr_EntityAI {
             entity.SetTransform(_x, _y);
             if (attack1.CheckCondition(entity))
             {
-                scr_AttackController.attackController.AddNewAttack(attack1, entity._gridPos.x, entity._gridPos.y);
+                scr_AttackController.attackController.AddNewAttack(attack1, entity._gridPos.x, entity._gridPos.y, entity);
             }
         }
         else

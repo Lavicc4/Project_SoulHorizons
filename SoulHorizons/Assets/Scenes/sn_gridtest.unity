@@ -3386,8 +3386,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd8c048ccbcd47046a369aab07676326, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rewardMessage: {fileID: 1182640712}
-  PlayerHealth: {fileID: 1167945961}
 --- !u!1 &1978863197
 GameObject:
   m_ObjectHideFlags: 0
@@ -3614,8 +3612,6 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2045535280}
   m_CullTransparentMesh: 0
-  RewardMessage: {fileID: 1182640712}
-  PlayerHealth: {fileID: 1167945961}
 --- !u!1 &2115534115
 GameObject:
   m_ObjectHideFlags: 0
@@ -3699,51 +3695,81 @@ MonoBehaviour:
     lastPos: {x: 0, y: 0}
     lastAttackTime: 0
     currentIncrement: 0
+    entity: {fileID: 0}
+    hitEntity: 0
+    particle: {fileID: 0}
   - _attack: {fileID: 0}
     pos: {x: 0, y: 0}
     lastPos: {x: 0, y: 0}
     lastAttackTime: 0
     currentIncrement: 0
+    entity: {fileID: 0}
+    hitEntity: 0
+    particle: {fileID: 0}
   - _attack: {fileID: 0}
     pos: {x: 0, y: 0}
     lastPos: {x: 0, y: 0}
     lastAttackTime: 0
     currentIncrement: 0
+    entity: {fileID: 0}
+    hitEntity: 0
+    particle: {fileID: 0}
   - _attack: {fileID: 0}
     pos: {x: 0, y: 0}
     lastPos: {x: 0, y: 0}
     lastAttackTime: 0
     currentIncrement: 0
+    entity: {fileID: 0}
+    hitEntity: 0
+    particle: {fileID: 0}
   - _attack: {fileID: 0}
     pos: {x: 0, y: 0}
     lastPos: {x: 0, y: 0}
     lastAttackTime: 0
     currentIncrement: 0
+    entity: {fileID: 0}
+    hitEntity: 0
+    particle: {fileID: 0}
   - _attack: {fileID: 0}
     pos: {x: 0, y: 0}
     lastPos: {x: 0, y: 0}
     lastAttackTime: 0
     currentIncrement: 0
+    entity: {fileID: 0}
+    hitEntity: 0
+    particle: {fileID: 0}
   - _attack: {fileID: 0}
     pos: {x: 0, y: 0}
     lastPos: {x: 0, y: 0}
     lastAttackTime: 0
     currentIncrement: 0
+    entity: {fileID: 0}
+    hitEntity: 0
+    particle: {fileID: 0}
   - _attack: {fileID: 0}
     pos: {x: 0, y: 0}
     lastPos: {x: 0, y: 0}
     lastAttackTime: 0
     currentIncrement: 0
+    entity: {fileID: 0}
+    hitEntity: 0
+    particle: {fileID: 0}
   - _attack: {fileID: 0}
     pos: {x: 0, y: 0}
     lastPos: {x: 0, y: 0}
     lastAttackTime: 0
     currentIncrement: 0
+    entity: {fileID: 0}
+    hitEntity: 0
+    particle: {fileID: 0}
   - _attack: {fileID: 0}
     pos: {x: 0, y: 0}
     lastPos: {x: 0, y: 0}
     lastAttackTime: 0
     currentIncrement: 0
+    entity: {fileID: 0}
+    hitEntity: 0
+    particle: {fileID: 0}
   numberOfActiveAttacks: 0
 --- !u!1 &2134598706
 GameObject:
