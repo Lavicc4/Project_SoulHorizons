@@ -1,9 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+[RequireComponent(typeof(AudioSource))]
 
 public class scr_PlayerMovement : scr_EntityAI
 {
+    AudioSource SFX_Source;
+    public AudioClip[] movements_SFX;
+    private AudioClip movement_SFX;
+
 
     public override void Move()
     {
