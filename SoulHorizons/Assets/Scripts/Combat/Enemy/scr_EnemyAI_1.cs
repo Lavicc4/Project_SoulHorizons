@@ -1,12 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+[RequireComponent(typeof(AudioSource))]
 
 public class scr_EnemyAI_1 : scr_EntityAI {
 
     public float movementInterval;
     bool waiting = false;
     public Attack attack1;
+
+    AudioSource Attack_SFX;
+    AudioSource Footsteps_SFX;
+    public AudioClip[] movements_SFX;
+    private AudioClip movement_SFX;
+    public AudioClip[] attacks_SFX;
+    private AudioClip attack_SFX;
 
 
     public override void Move()
@@ -25,6 +33,14 @@ public class scr_EnemyAI_1 : scr_EntityAI {
 
     void Movement()
     {
+        AudioSource[] SFX_Sources = GetComponents<AudioSource>();
+        Footsteps_SFX = SFX_Sources[0];
+        Attack_SFX = SFX_Sources[1];
+        int index = Random.Range(0, movements_SFX.Length);
+        movement_SFX = movements_SFX[index];
+        Footsteps_SFX.clip = movement_SFX;
+        Footsteps_SFX.Play();
+
         //Decide if we are moving horiz or vert.
         int _temp = Random.Range(0, 2);                                         //Pick a number between 0 and 1
         int _x = entity._gridPos.x;
@@ -45,6 +61,11 @@ public class scr_EnemyAI_1 : scr_EntityAI {
             if (attack1.CheckCondition(entity))
             {
                 scr_AttackController.attackController.AddNewAttack(attack1, entity._gridPos.x, entity._gridPos.y, entity);
+
+                int index2 = Random.Range(0, attacks_SFX.Length);
+                attack_SFX = attacks_SFX[index2];
+                Attack_SFX.clip = attack_SFX;
+                Attack_SFX.Play();
             }
         }
         else
