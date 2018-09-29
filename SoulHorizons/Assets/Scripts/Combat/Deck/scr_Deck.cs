@@ -225,7 +225,18 @@ public class scr_Deck : MonoBehaviour {
     /// <param name="index"></param>
     public void Activate(int index)
     {
+
+        StartCoroutine(ActivateHelper(index));
+    }
+
+    private IEnumerator ActivateHelper(int index)
+    {
         scr_Card cardToPlay = hand[index];
+        //wait however long is required
+        if (cardToPlay.castingTime != 0)
+        {
+            yield return new WaitForSeconds(cardToPlay.castingTime);
+        }
         hand[index].Activate();
         discard.Add(cardToPlay);
         //hand.Remove(cardToPlay);
