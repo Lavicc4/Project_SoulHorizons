@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class scr_PlayerMovement : scr_EntityAI
 {
+    public Attack basicAttack; 
+
     AudioSource SFX_Source;
     public AudioClip[] movements_SFX;
     private AudioClip movement_SFX;
@@ -21,6 +23,9 @@ public class scr_PlayerMovement : scr_EntityAI
     public override void UpdateAI()
     {
         MovementCheck();
+        if (Input.GetMouseButtonDown(0)){
+            scr_AttackController.attackController.AddNewAttack(basicAttack, entity._gridPos.x, entity._gridPos.y, entity);
+        }
     }
 
 

@@ -40,7 +40,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4138731860164270}
   - component: {fileID: 212424679629100636}
-  - component: {fileID: 114922078662214346}
   - component: {fileID: 114873357353236256}
   m_Layer: 0
   m_Name: Player_Sprite
@@ -290,6 +289,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entity: {fileID: 114787085351951448}
+  basicAttack: {fileID: 0}
   movements_SFX:
   - {fileID: 8300000, guid: 152ebd0dda3d900429ef6ee865f3896e, type: 3}
   - {fileID: 8300000, guid: 95954a04acb80b0409641120525696f3, type: 3}
@@ -312,8 +312,6 @@ MonoBehaviour:
   entityTerritory: 0
   spr: {fileID: 212424679629100636}
   lerpSpeed: 30
-  manager_object: {fileID: 0}
-  manager: {fileID: 0}
 --- !u!114 &114873357353236256
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -328,22 +326,6 @@ MonoBehaviour:
   initialPoolSize: 10
   objectPrefab: {fileID: 1951608291210416, guid: 4c3788daf339ac7419579eae157ae3a8,
     type: 2}
---- !u!114 &114922078662214346
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1609545178073930}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc01f984c67331647ad1c7508e6f29ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseDamage: 5
-  baseSpeed: 5
-  chargeTime1: 1.2
-  damageIncrease1: 8
-  damageIncreaseRate: 3
 --- !u!212 &212424679629100636
 SpriteRenderer:
   m_ObjectHideFlags: 1

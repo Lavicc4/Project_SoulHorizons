@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class scr_EnemyAI_1 : scr_EntityAI {
 
-    public float movementInterval;
+    public float movementIntervalLower;
+    public float movementIntervalUpper; 
     bool waiting = false;
     public Attack attack1;
 
@@ -27,7 +28,8 @@ public class scr_EnemyAI_1 : scr_EntityAI {
     }
     public override void UpdateAI()
     {
-        StartCoroutine(MovementClock(movementInterval));
+        float _movementInterval = Random.Range(movementIntervalLower, movementIntervalUpper);
+        StartCoroutine(MovementClock(_movementInterval));
         
     }
 
