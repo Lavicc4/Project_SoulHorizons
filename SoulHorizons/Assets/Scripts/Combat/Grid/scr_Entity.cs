@@ -10,24 +10,16 @@ public class scr_Entity : MonoBehaviour
     public scr_EntityAI _ai;
     public scr_Tile.Territory entityTerritory;
     public SpriteRenderer spr;
-    public GameObject manager_object;
-    public scr_StateManager manager;
+    public float lerpSpeed; 
 
     public void Start()
     {
-        manager_object = GameObject.Find("StateManager");
-        if(manager_object != null)
-        {
-            manager = manager_object.GetComponent<scr_StateManager>();
-        }
-        else
-        {
-            Debug.Log("MANAGER OBJECT COULD NOT BE FOUND");
-        }
+      
     }
     public void Update()
     {
         _ai.UpdateAI();
+        transform.position = Vector3.Lerp(transform.position, scr_Grid.GridController.GetWorldLocation(_gridPos.x, _gridPos.y), (lerpSpeed*Time.deltaTime));              
     }
 
 
@@ -36,10 +28,11 @@ public class scr_Entity : MonoBehaviour
 
         //scr_Grid.GridController.SetTileOccupied(false, x, y);
         _gridPos = new Vector2Int(x, y);
-        transform.position = new Vector3(scr_Grid.GridController.grid[x, y].transform.position.x, scr_Grid.GridController.grid[x, y].transform.position.y, 0);
+        transform.position = scr_Grid.GridController.GetWorldLocation(_gridPos.x, _gridPos.y); 
         scr_Grid.GridController.SetTileOccupied(true, x, y, this);
     }
 
+    //Tells entity to move to new coordinates
     public void SetTransform(int x, int y)
     {
         if (_gridPos == new Vector2Int(x, y))                                                                                                          //if we set transform, and we havent moved
@@ -47,13 +40,13 @@ public class scr_Entity : MonoBehaviour
 
         scr_Grid.GridController.SetTileOccupied(false, _gridPos.x, _gridPos.y, this);
         _gridPos = new Vector2Int(x, y);
-        transform.position = new Vector3(scr_Grid.GridController.grid[x, y].transform.position.x, scr_Grid.GridController.grid[x, y].transform.position.y, 0);                    //move to the new space 
+        
         scr_Grid.GridController.SetTileOccupied(true, _gridPos.x, _gridPos.y,this);
         spr.sortingOrder = -_gridPos.y;
         Attack atk = scr_AttackController.attackController.MoveIntoAttackCheck(_gridPos);
         if(atk != null)
         {
-            Debug.Log("I'M HIT");
+            //Debug.Log("I'M HIT");
             HitByAttack(atk); 
         }
         
@@ -64,7 +57,7 @@ public class scr_Entity : MonoBehaviour
         if(_attack.territory != entityTerritory)
         {
             _health.TakeDamage(_attack.damage);
-            manager.UpdateHealth(_health.hp);
+          
         }
     }
 }
@@ -76,6 +69,10 @@ public class Health{
     public void TakeDamage(int damage)
     {
         hp -= damage;
+        if(hp <= 0)
+        {
+            hp = 0;
+        }
     }
 }
 

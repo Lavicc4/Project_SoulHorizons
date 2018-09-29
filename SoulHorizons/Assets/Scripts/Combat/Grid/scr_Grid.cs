@@ -139,6 +139,11 @@ public class scr_Grid : MonoBehaviour{
             grid[x, y].Deactivate();
 
     }
+    public void DePrimeTile(int x, int y)
+    {
+        if (LocationOnGrid(x, y))
+            grid[x, y].DePrime();
+    }
 
     public void SetTileOccupied(bool isOccupied, int x, int y, scr_Entity ent)
     {
@@ -155,16 +160,33 @@ public class scr_Grid : MonoBehaviour{
         return grid[x, y].territory;
     }
     
-    public void AttackPosition(int x, int y, Attack _attack)
+    public ActiveAttack AttackPosition(ActiveAttack attack)
     {
         for(int i=0; i < activeEntities.Length; i++)
         {
-            if(activeEntities[i]._gridPos == new Vector2Int(x, y))
+            if(activeEntities[i]._gridPos == new Vector2Int(attack.pos.x, attack.pos.y))
             {
-                Debug.Log("ACTIVE ENTITY HIT!");
-                activeEntities[i].HitByAttack(_attack); 
+                //Debug.Log("ACTIVE ENTITY HIT!");
+                activeEntities[i].HitByAttack(attack._attack);
+                if(activeEntities[i].entityTerritory != attack.entity.entityTerritory)
+                {
+                    attack.hitEntity = true;
+                }
+                return attack; 
             }
+          
         }
+        return attack; 
+    }
+
+    public Vector3 GetWorldLocation(int x, int y)
+    {
+        if (LocationOnGrid(x, y))
+            return new Vector3(grid[x, y].transform.position.x, grid[x, y].transform.position.y, 0);
+
+        else
+            return new Vector3(-100,-100,-100); // will def be off the grid 
+
     }
     
 }

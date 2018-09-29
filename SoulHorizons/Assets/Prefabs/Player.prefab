@@ -311,6 +311,7 @@ MonoBehaviour:
   _ai: {fileID: 114404296688108730}
   entityTerritory: 0
   spr: {fileID: 212424679629100636}
+  lerpSpeed: 30
   manager_object: {fileID: 0}
   manager: {fileID: 0}
 --- !u!114 &114873357353236256

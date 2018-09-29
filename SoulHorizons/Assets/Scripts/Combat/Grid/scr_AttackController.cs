@@ -13,11 +13,13 @@ public class scr_AttackController : MonoBehaviour {
         attackController = this; 
     }
 
-    public void AddNewAttack(Attack _attack,int xPos, int yPos)
+    public void AddNewAttack(Attack _attack,int xPos, int yPos, scr_Entity ent)
     {
-
-        activeAttacks[numberOfActiveAttacks] = new ActiveAttack(_attack, xPos, yPos);
+        activeAttacks[numberOfActiveAttacks] = new ActiveAttack(_attack, xPos, yPos, ent);
+        activeAttacks[numberOfActiveAttacks].particle = Instantiate(_attack.particles, scr_Grid.GridController.GetWorldLocation(xPos,yPos)+_attack.particlesOffset, Quaternion.identity);
+        activeAttacks[numberOfActiveAttacks].particle.sortingOrder = -yPos; 
         numberOfActiveAttacks++; 
+
     }
 
     void Update()
@@ -31,25 +33,37 @@ public class scr_AttackController : MonoBehaviour {
                     RemoveFromArray(x);
                     return;
                 }
+                else if (!activeAttacks[x]._attack.piercing  &&  activeAttacks[x].hitEntity)
+                {
+                    RemoveFromArray(x);
+                    return; 
+                }
                 else if (scr_Grid.GridController.LocationOnGrid(activeAttacks[x].pos.x, activeAttacks[x].pos.y) == false)
                 {
                     RemoveFromArray(x);
                     return;
                 }
+
                 if (activeAttacks[x].currentIncrement != 0)
+                {
                     scr_Grid.GridController.DeactivateTile(activeAttacks[x].lastPos.x, activeAttacks[x].lastPos.y);
+                }
                 activeAttacks[x].lastPos = activeAttacks[x].pos;
-                scr_Grid.GridController.AttackPosition(activeAttacks[x].pos.x, activeAttacks[x].pos.y, activeAttacks[x]._attack);
-                activeAttacks[x].pos = activeAttacks[x]._attack.ProgressAttack(activeAttacks[x].pos.x, activeAttacks[x].pos.y);
+                activeAttacks[x].Clone(scr_Grid.GridController.AttackPosition(activeAttacks[x]));
+                activeAttacks[x].pos = activeAttacks[x]._attack.ProgressAttack(activeAttacks[x].pos.x, activeAttacks[x].pos.y, activeAttacks[x]);
                 activeAttacks[x].lastAttackTime = Time.time; 
                 activeAttacks[x].currentIncrement++;
                  
             }
+            activeAttacks[x].particle.transform.position = Vector3.Lerp(activeAttacks[x].particle.transform.position, scr_Grid.GridController.GetWorldLocation(activeAttacks[x].lastPos.x,activeAttacks[x].lastPos.y) + activeAttacks[x]._attack.particlesOffset, (4.5f) * Time.deltaTime);
         }    
     }
     void RemoveFromArray(int index)
     {
         scr_Grid.GridController.DeactivateTile(activeAttacks[index].lastPos.x, activeAttacks[index].lastPos.y);
+        scr_Grid.GridController.DeactivateTile(activeAttacks[index].pos.x, activeAttacks[index].pos.y);
+        scr_Grid.GridController.DePrimeTile(activeAttacks[index].pos.x, activeAttacks[index].pos.y);
+        Destroy(activeAttacks[index].particle);
         for (int x = index; x < numberOfActiveAttacks; x++)
         {
             if (x + 1 < activeAttacks.Length && activeAttacks[x + 1]._attack != null)
@@ -63,6 +77,7 @@ public class scr_AttackController : MonoBehaviour {
         }
         numberOfActiveAttacks--; 
     }
+
     public Attack AttackType(Vector2Int pos)
     {
         for (int x = 0; x < numberOfActiveAttacks; x++)
@@ -83,7 +98,9 @@ public class scr_AttackController : MonoBehaviour {
         {
             if (activeAttacks[x].lastPos == pos)
             {
-                return activeAttacks[x]._attack;
+                Attack atk = activeAttacks[x]._attack;
+                activeAttacks[x].hitEntity = true;
+                return atk;
             }
         }
 
@@ -101,13 +118,19 @@ public class ActiveAttack
     public Vector2Int lastPos;
     public float lastAttackTime;
     public int currentIncrement = 0;
-     
+    public scr_Entity entity;
+    public bool hitEntity = false;
+    public SpriteRenderer particle;
     
-    public ActiveAttack(Attack atk, int x, int y)
+    public ActiveAttack(Attack atk, int x, int y, scr_Entity ent)
     {
         _attack = atk;
         pos.x = x;
-        pos.y = y; 
+        pos.y = y;
+        entity = ent;
+        lastPos.x = x;
+        lastPos.y = y;
+        
         
         lastAttackTime = Time.time;
     }
@@ -133,7 +156,10 @@ public class ActiveAttack
         pos = atk.pos;
         lastAttackTime = atk.lastAttackTime;
         currentIncrement = atk.currentIncrement;
-        lastPos = atk.lastPos; 
+        lastPos = atk.lastPos;
+        entity = atk.entity;
+        hitEntity = atk.hitEntity;
+        particle = atk.particle; 
         
     }
 

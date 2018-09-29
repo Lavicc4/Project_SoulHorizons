@@ -328,8 +328,7 @@ MonoBehaviour:
   _ai: {fileID: 114373111611885714}
   entityTerritory: 1
   spr: {fileID: 212410729078944208}
-  manager_object: {fileID: 0}
-  manager: {fileID: 0}
+  lerpSpeed: 15
 --- !u!212 &212410729078944208
 SpriteRenderer:
   m_ObjectHideFlags: 1

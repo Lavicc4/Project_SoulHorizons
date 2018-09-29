@@ -8,12 +8,12 @@ public class atk_LinearForward : Attack {
     public float chanceToAttack = 30f;
 
 
-    public override Vector2Int ProgressAttack(int xPos, int yPos)
+    public override Vector2Int ProgressAttack(int xPos, int yPos, ActiveAttack activeAtk)
     {
-        return LinearForward_ProgressAttack(xPos,yPos); 
+        return LinearForward_ProgressAttack(xPos,yPos, activeAtk); 
     }
 
-    Vector2Int LinearForward_ProgressAttack(int xPos, int yPos)
+    Vector2Int LinearForward_ProgressAttack(int xPos, int yPos, ActiveAttack activeAtk)
     {
         scr_Grid.GridController.PrimeNextTile(xPos - 1,yPos);
         scr_Grid.GridController.ActivateTile(xPos, yPos); 
