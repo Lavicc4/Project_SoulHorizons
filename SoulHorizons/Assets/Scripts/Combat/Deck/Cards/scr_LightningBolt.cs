@@ -9,7 +9,19 @@ public class scr_LightningBolt : scr_Card {
 
     public override void Activate()
     {
+        ActivateEffects();
+
         //implement functionality here
         Debug.Log(name + ": Zap!");
+    }
+
+    public override void StartCastingEffects()
+    {
+        
+    }
+
+    protected override void ActivateEffects()
+    {
+        //put start effects here
     }
 }

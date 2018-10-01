@@ -13,6 +13,7 @@ public class scr_DeckManager : MonoBehaviour {
 
 	public GameObject[] cardUI; //references to the cards UI
     TextMeshProUGUI[] cardNames; //the card names
+    public Image[] cardArt; //the images
     Color textColor; //the default text of the color when not in focus
 	scr_Deck deck_scr;
     int currentCard = 0;
@@ -110,15 +111,16 @@ public class scr_DeckManager : MonoBehaviour {
         }
         cardNames[currentCard].color = Color.white;
 
-        SetCardNames();
+        SetCardGraphics();
         //TODO: need to check if the UI matches the current hand. If not, need to start a fade out animation for the out of date cards, followed by a fade in for their replacement
     }
 
-    void SetCardNames()
+    void SetCardGraphics()
     {
         for (int i = 0; i < cardNames.Length; i++)
         {
-            cardNames[i].text = deck_scr.hand[i].cardName;
+            cardNames[i].text = deck_scr.hand[i].cardName; //set the name
+            cardArt[i].sprite = deck_scr.hand[i].art; //set the card art
         }
     }
 }

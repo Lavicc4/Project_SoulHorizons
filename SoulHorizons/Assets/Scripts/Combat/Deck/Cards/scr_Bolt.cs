@@ -9,10 +9,22 @@ public class scr_Bolt : scr_Card {
 
     public override void Activate()
     {
+        ActivateEffects();
+
         scr_Entity player = GameObject.FindGameObjectWithTag("Player").GetComponent<scr_Entity>();
 
         //add attack to attack controller script
         scr_AttackController.attackController.AddNewAttack(boltAttack, player._gridPos.x, player._gridPos.y, player);
+    }
+
+    public override void StartCastingEffects()
+    {
+        
+    }
+
+        protected override void ActivateEffects()
+    {
+        //put start effects here
     }
 
 }

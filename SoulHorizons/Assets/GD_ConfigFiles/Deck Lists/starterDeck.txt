@@ -1,5 +1,1 @@
-Lightning Bolt: 10
-Soul Trace: 10
-Dragon Sneeze: 5
-Portal to Elsewhere: 3
-Ice Spear: 2
+Bolt: 30

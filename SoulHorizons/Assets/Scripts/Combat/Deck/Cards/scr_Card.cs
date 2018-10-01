@@ -20,5 +20,9 @@ public abstract class scr_Card : ScriptableObject {
     [Multiline]
     public string description;
     public Sprite art;
+    public abstract void StartCastingEffects(); //call this before waiting the casting time in deck script. This could be used to trigger certain player animations indicating that
+                                                //the spell is about to be cast
     public abstract void Activate();
+    protected abstract void ActivateEffects(); //call in activate to trigger any visual/audio effects
+    
 }
