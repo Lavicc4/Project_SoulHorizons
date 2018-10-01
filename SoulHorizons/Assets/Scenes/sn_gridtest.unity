@@ -3808,6 +3808,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd8c048ccbcd47046a369aab07676326, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RewardMessage: {fileID: 1182640712}
+  PlayerHealth: {fileID: 1167945961}
 --- !u!1 &1978863197
 GameObject:
   m_ObjectHideFlags: 0

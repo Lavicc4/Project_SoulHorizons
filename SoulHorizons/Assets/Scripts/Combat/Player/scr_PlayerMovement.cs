@@ -10,8 +10,7 @@ public class scr_PlayerMovement : scr_EntityAI
     AudioSource SFX_Source;
     public AudioClip[] movements_SFX;
     private AudioClip movement_SFX;
-
-
+    
     public override void Move()
     {
 
@@ -36,25 +35,43 @@ public class scr_PlayerMovement : scr_EntityAI
 
     }
 
+    int inputX;
+    int inputY;
     bool axisPressed = false; //used to get "OnJoystickDown"
     void MovementCheck()
     {
         int _x = entity._gridPos.x;
-        int _y = entity._gridPos.y; 
+        int _y = entity._gridPos.y;
 
 
-        if (!axisPressed)
+        /*if (!axisPressed)
         {
+            //Debug.Log(scr_InputManager.MainHorizontal() + " " + scr_InputManager.MainVertical());
             //just pressed the joystick
             _x += scr_InputManager.MainHorizontal();
             if(scr_InputManager.MainHorizontal() == 0)
             {
                 _y += scr_InputManager.MainVertical();
             }
+       
+            axisPressed = true;
+        }*/
+
+        if(inputX != scr_InputManager.MainHorizontal())
+        {
+            _x += scr_InputManager.MainHorizontal();
+            inputX = scr_InputManager.MainHorizontal();
             axisPressed = true;
         }
 
-        if(scr_InputManager.MainHorizontal() == 0 && scr_InputManager.MainVertical() == 0)
+        if (inputY != scr_InputManager.MainVertical())
+        {
+            _y += scr_InputManager.MainVertical();
+            inputY = scr_InputManager.MainVertical();
+            axisPressed = true;
+        }
+
+        if (scr_InputManager.MainHorizontal() == 0 && scr_InputManager.MainVertical() == 0)
         {
             //joystick is not pressed
             axisPressed = false;
