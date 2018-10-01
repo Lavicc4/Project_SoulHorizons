@@ -15,8 +15,7 @@ public class atk_LinearForward : Attack {
 
     Vector2Int LinearForward_ProgressAttack(int xPos, int yPos, ActiveAttack activeAtk, SpriteRenderer activeParticle)
     {
-        //move particles
-        //ProgressEffects(xPos, yPos, activeAtk.lastPos.x, activeAtk.lastPos.y, activeParticle);
+
 
         scr_Grid.GridController.PrimeNextTile(xPos - 1,yPos);
         scr_Grid.GridController.ActivateTile(xPos, yPos); 

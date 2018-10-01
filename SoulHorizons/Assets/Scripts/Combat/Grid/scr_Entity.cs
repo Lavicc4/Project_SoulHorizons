@@ -38,6 +38,7 @@ public class scr_Entity : MonoBehaviour
         _gridPos = new Vector2Int(x, y);
         transform.position = scr_Grid.GridController.GetWorldLocation(_gridPos.x, _gridPos.y); 
         scr_Grid.GridController.SetTileOccupied(true, x, y, this);
+        spr.sortingOrder = -_gridPos.y;
     }
 
     //Tells entity to move to new coordinates
