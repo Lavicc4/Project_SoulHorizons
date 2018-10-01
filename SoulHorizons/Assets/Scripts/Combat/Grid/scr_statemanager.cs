@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class scr_StateManager : MonoBehaviour {
+public class scr_statemanager : MonoBehaviour {
 
     public Text RewardMessage;
     public Text PlayerHealth;
