@@ -16,7 +16,7 @@ public class atk_LinearForward : Attack {
     Vector2Int LinearForward_ProgressAttack(int xPos, int yPos, ActiveAttack activeAtk, SpriteRenderer activeParticle)
     {
         //move particles
-        ProgressEffects(xPos, yPos, activeParticle);
+        //ProgressEffects(xPos, yPos, activeAtk.lastPos.x, activeAtk.lastPos.y, activeParticle);
 
         scr_Grid.GridController.PrimeNextTile(xPos - 1,yPos);
         scr_Grid.GridController.ActivateTile(xPos, yPos); 
@@ -28,8 +28,8 @@ public class atk_LinearForward : Attack {
     }
 
 
-    public override void ProgressEffects(int xPos, int yPos, SpriteRenderer activeParticle)
+    public override void ProgressEffects(ActiveAttack activeAttack)
     {
-        activeParticle.transform.position = Vector3.Lerp(activeParticle.transform.position, scr_Grid.GridController.GetWorldLocation(xPos, yPos) + particlesOffset, (4.5f) * Time.deltaTime);
+        activeAttack.particle.transform.position = Vector3.Lerp(activeAttack.particle.transform.position, scr_Grid.GridController.GetWorldLocation(activeAttack.lastPos.x,activeAttack.lastPos.y) + activeAttack._attack.particlesOffset, (4.5f) * Time.deltaTime);
     }
 }

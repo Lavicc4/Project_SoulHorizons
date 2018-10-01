@@ -57,6 +57,7 @@ public class scr_AttackController : MonoBehaviour {
             }
             //activeAttacks[x].particle.transform.position = Vector3.Lerp(activeAttacks[x].particle.transform.position, scr_Grid.GridController.GetWorldLocation(activeAttacks[x].lastPos.x,activeAttacks[x].lastPos.y) + activeAttacks[x]._attack.particlesOffset, (4.5f) * Time.deltaTime);
             //Replaced this lerp by passing the particle to progress attack above and letting the attack object determine particle behavior - Colin
+            activeAttacks[x]._attack.ProgressEffects(activeAttacks[x]);
         }    
     }
     void RemoveFromArray(int index)

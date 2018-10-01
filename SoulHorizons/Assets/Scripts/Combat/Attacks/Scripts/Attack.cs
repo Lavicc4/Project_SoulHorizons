@@ -40,5 +40,5 @@ public abstract class Attack : ScriptableObject {
     /// <summary>
     /// Moves the particles however they are supposed to move. Called in ProgressAttack
     /// </summary>
-    public abstract void ProgressEffects(int xPos, int yPos, SpriteRenderer activeParticle);
+    public abstract void ProgressEffects(ActiveAttack activeAttack);
 }

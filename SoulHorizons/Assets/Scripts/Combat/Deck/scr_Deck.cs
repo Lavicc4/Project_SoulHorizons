@@ -90,12 +90,14 @@ public class scr_Deck : MonoBehaviour {
             Debug.Log("DeckSize is " + deckSize + ", but " + deck.Count + " cards were added to the deck");
         }
 
+        /*
         Debug.Log("Unshuffled Deck List");
         int j = 1;
         foreach (scr_Card item in deck)
         {
             Debug.Log(j++ + ": \"" + item.cardName + "\"");
         }
+         */
 
         ShuffleHelper<scr_Card>(deck);
         CheckHandSize();

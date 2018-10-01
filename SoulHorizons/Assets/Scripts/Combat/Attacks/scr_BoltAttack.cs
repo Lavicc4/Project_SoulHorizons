@@ -6,7 +6,7 @@ public class scr_BoltAttack : Attack {
 	public override Vector2Int ProgressAttack(int xPos, int yPos, ActiveAttack activeAtk, SpriteRenderer activeParticle)
     {
 		//update the effects
-		ProgressEffects(xPos, yPos, activeParticle);
+		//ProgressEffects(xPos, yPos, activeAtk.lastPos.x, activeAtk.lastPos.y, activeParticle);
 
 		//check if the Bolt hit an obstacle
 		if (activeAtk.entityHit.type == EntityType.Obstacle)
@@ -21,8 +21,8 @@ public class scr_BoltAttack : Attack {
         return new Vector2Int(xPos+ 1, yPos); 
     }
 
-	    public override void ProgressEffects(int xPos, int yPos, SpriteRenderer activeParticle)
+    public override void ProgressEffects(ActiveAttack activeAttack)
     {
-        activeParticle.transform.position = Vector3.Lerp(activeParticle.transform.position, scr_Grid.GridController.GetWorldLocation(xPos, yPos) + particlesOffset, (4.5f) * Time.deltaTime);
+        activeAttack.particle.transform.position = Vector3.Lerp(activeAttack.particle.transform.position, scr_Grid.GridController.GetWorldLocation(activeAttack.lastPos.x,activeAttack.lastPos.y) + activeAttack._attack.particlesOffset, (4.5f) * Time.deltaTime);
     }
 }
