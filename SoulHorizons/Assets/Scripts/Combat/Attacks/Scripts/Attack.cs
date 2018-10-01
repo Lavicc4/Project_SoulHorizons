@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 //[System.Serializable]
-public class Attack : ScriptableObject {
+public abstract class Attack : ScriptableObject {
 
     public float incrementSpeed;
     public int maxIncrements = 1;
@@ -19,7 +19,7 @@ public class Attack : ScriptableObject {
     {
         return new Vector2Int(); 
     }
-    public virtual Vector2Int ProgressAttack(int xPos, int yPos, ActiveAttack activeAtk)
+    public virtual Vector2Int ProgressAttack(int xPos, int yPos, ActiveAttack activeAtk, SpriteRenderer particle)
     {
         return new Vector2Int(); 
     }
@@ -27,4 +27,18 @@ public class Attack : ScriptableObject {
     {
         return false; 
     }
+
+    /// <summary>
+    /// This is called whenever the attack hits something.
+    /// Use to launch particles and/or sounds.
+    /// </summary>
+    public virtual void ImpactEffects(int xPos = -1, int yPos = -1)
+    {
+        
+    }
+
+    /// <summary>
+    /// Moves the particles however they are supposed to move. Called in ProgressAttack
+    /// </summary>
+    public abstract void ProgressEffects(int xPos, int yPos, SpriteRenderer activeParticle);
 }

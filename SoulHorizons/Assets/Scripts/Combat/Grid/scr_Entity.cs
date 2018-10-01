@@ -2,8 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum EntityType
+{
+    Enemy,
+    Player,
+    Obstacle
+}
+
 public class scr_Entity : MonoBehaviour
 {
+    public EntityType type;
 
     public Vector2Int _gridPos = new Vector2Int();
     public Health _health = new Health();

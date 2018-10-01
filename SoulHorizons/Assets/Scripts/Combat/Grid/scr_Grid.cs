@@ -160,17 +160,25 @@ public class scr_Grid : MonoBehaviour{
         return grid[x, y].territory;
     }
     
+    /// <summary>
+    /// Check if an active entity is at the attack's position to be hit by the attack. Change the attack based on the results and return it.
+    /// </summary>
+    /// <param name="attack"></param>
+    /// <returns></returns>
     public ActiveAttack AttackPosition(ActiveAttack attack)
     {
         for(int i=0; i < activeEntities.Length; i++)
         {
+            //Why is this not using activeEntities[i]._gridPos.Equals(attack.pos)? Why create a new object? - Colin
             if(activeEntities[i]._gridPos == new Vector2Int(attack.pos.x, attack.pos.y))
             {
                 //Debug.Log("ACTIVE ENTITY HIT!");
-                activeEntities[i].HitByAttack(attack._attack);
                 if(activeEntities[i].entityTerritory != attack.entity.entityTerritory)
                 {
-                    attack.hitEntity = true;
+                    activeEntities[i].HitByAttack(attack._attack);
+                    attack.entityIsHit = true;
+                    attack.entityHit = activeEntities[i];
+                    attack._attack.ImpactEffects();
                 }
                 return attack; 
             }

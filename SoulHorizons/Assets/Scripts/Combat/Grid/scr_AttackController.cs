@@ -33,7 +33,7 @@ public class scr_AttackController : MonoBehaviour {
                     RemoveFromArray(x);
                     return;
                 }
-                else if (!activeAttacks[x]._attack.piercing  &&  activeAttacks[x].hitEntity)
+                else if (!activeAttacks[x]._attack.piercing  &&  activeAttacks[x].entityIsHit)
                 {
                     RemoveFromArray(x);
                     return; 
@@ -50,12 +50,13 @@ public class scr_AttackController : MonoBehaviour {
                 }
                 activeAttacks[x].lastPos = activeAttacks[x].pos;
                 activeAttacks[x].Clone(scr_Grid.GridController.AttackPosition(activeAttacks[x]));
-                activeAttacks[x].pos = activeAttacks[x]._attack.ProgressAttack(activeAttacks[x].pos.x, activeAttacks[x].pos.y, activeAttacks[x]);
+                activeAttacks[x].pos = activeAttacks[x]._attack.ProgressAttack(activeAttacks[x].pos.x, activeAttacks[x].pos.y, activeAttacks[x], activeAttacks[x].particle);
                 activeAttacks[x].lastAttackTime = Time.time; 
                 activeAttacks[x].currentIncrement++;
                  
             }
-            activeAttacks[x].particle.transform.position = Vector3.Lerp(activeAttacks[x].particle.transform.position, scr_Grid.GridController.GetWorldLocation(activeAttacks[x].lastPos.x,activeAttacks[x].lastPos.y) + activeAttacks[x]._attack.particlesOffset, (4.5f) * Time.deltaTime);
+            //activeAttacks[x].particle.transform.position = Vector3.Lerp(activeAttacks[x].particle.transform.position, scr_Grid.GridController.GetWorldLocation(activeAttacks[x].lastPos.x,activeAttacks[x].lastPos.y) + activeAttacks[x]._attack.particlesOffset, (4.5f) * Time.deltaTime);
+            //Replaced this lerp by passing the particle to progress attack above and letting the attack object determine particle behavior - Colin
         }    
     }
     void RemoveFromArray(int index)
@@ -99,7 +100,7 @@ public class scr_AttackController : MonoBehaviour {
             if (activeAttacks[x].lastPos == pos)
             {
                 Attack atk = activeAttacks[x]._attack;
-                activeAttacks[x].hitEntity = true;
+                activeAttacks[x].entityIsHit = true;
                 return atk;
             }
         }
@@ -119,7 +120,8 @@ public class ActiveAttack
     public float lastAttackTime;
     public int currentIncrement = 0;
     public scr_Entity entity;
-    public bool hitEntity = false;
+    public bool entityIsHit = false; //set to true if the attack hits an entity
+    public scr_Entity entityHit = null; //contains a reference to the entity that the attack hit
     public SpriteRenderer particle;
     
     public ActiveAttack(Attack atk, int x, int y, scr_Entity ent)
@@ -158,7 +160,7 @@ public class ActiveAttack
         currentIncrement = atk.currentIncrement;
         lastPos = atk.lastPos;
         entity = atk.entity;
-        hitEntity = atk.hitEntity;
+        entityIsHit = atk.entityIsHit;
         particle = atk.particle; 
         
     }
