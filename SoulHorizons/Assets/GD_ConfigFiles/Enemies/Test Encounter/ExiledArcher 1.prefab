@@ -304,7 +304,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entity: {fileID: 114725702907161856}
   hunterShot: {fileID: 11400000, guid: 96c867f804731764db7981afb6e89a3c, type: 2}
-  hSChargeTime: 2
+  hSChargeTime: 3
   arrowRain: {fileID: 0}
   aRChargeTime: 0
 --- !u!114 &114725702907161856
