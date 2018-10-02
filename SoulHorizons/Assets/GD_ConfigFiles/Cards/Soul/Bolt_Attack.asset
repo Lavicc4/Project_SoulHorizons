@@ -11,11 +11,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5207fb031a91754a84461d852996af0, type: 3}
   m_Name: Bolt_Attack
   m_EditorClassIdentifier: 
-  incrementSpeed: 0.2
-  maxIncrements: 1
+  incrementSpeed: 0.4
+  maxIncrements: 10
   damage: 10
   territory: 0
   piercing: 1
   particles: {fileID: 212919924544438062, guid: 07a4e007d8e532445b9b9db17fa90895,
     type: 2}
-  particlesOffset: {x: 0, y: 5, z: 0}
+  particlesOffset: {x: 0, y: 0.3, z: 0}
