@@ -206,7 +206,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 243883424422922524, guid: 7117f9058e0f8104c8d7218cd2b06d74,
     type: 2}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -310,13 +310,11 @@ MonoBehaviour:
   attack1: {fileID: 11400000, guid: 1949500ade449b24fbfd31dfc7eea5ab, type: 2}
   chargedAttack: {fileID: 0}
   movements_SFX:
-  - {fileID: 8300000, guid: e04c4a13608bcd54996da82fce36d548, type: 3}
-  - {fileID: 8300000, guid: 6bf550340e9f5eb49b1c3c21a6fc39af, type: 3}
+  - {fileID: 8300000, guid: 310458532d447684389cb1f85abbea34, type: 3}
+  - {fileID: 8300000, guid: 310458532d447684389cb1f85abbea34, type: 3}
   - {fileID: 8300000, guid: 310458532d447684389cb1f85abbea34, type: 3}
   attacks_SFX:
   - {fileID: 8300000, guid: 161ae926c57892646ab6c7e1280601c1, type: 3}
-  - {fileID: 8300000, guid: e04c4a13608bcd54996da82fce36d548, type: 3}
-  - {fileID: 8300000, guid: 310458532d447684389cb1f85abbea34, type: 3}
 --- !u!114 &114725702907161856
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -332,10 +330,13 @@ MonoBehaviour:
   _gridPos: {x: 0, y: 0}
   _health:
     hp: 10
+    temp_hp: 0
   _ai: {fileID: 114373111611885714}
   entityTerritory: 1
   spr: {fileID: 212410729078944208}
   lerpSpeed: 15
+  has_iframes: 0
+  invulnTime: 0
 --- !u!212 &212410729078944208
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -7,7 +7,7 @@ public class scr_PlayerMovement : scr_EntityAI
 {
     public Attack basicAttack; 
 
-    AudioSource SFX_Source;
+    AudioSource Footsteps_SFX;
     public AudioClip[] movements_SFX;
     private AudioClip movement_SFX;
     
@@ -62,6 +62,15 @@ public class scr_PlayerMovement : scr_EntityAI
             _x += scr_InputManager.MainHorizontal();
             inputX = scr_InputManager.MainHorizontal();
             axisPressed = true;
+            if (scr_InputManager.MainHorizontal() == 0)
+            {
+                AudioSource[] SFX_Sources = GetComponents<AudioSource>();
+                Footsteps_SFX = SFX_Sources[0];
+                int index = Random.Range(0, movements_SFX.Length);
+                movement_SFX = movements_SFX[index];
+                Footsteps_SFX.clip = movement_SFX;
+                Footsteps_SFX.Play();
+            }
         }
 
         if (inputY != scr_InputManager.MainVertical())
@@ -69,6 +78,15 @@ public class scr_PlayerMovement : scr_EntityAI
             _y += scr_InputManager.MainVertical();
             inputY = scr_InputManager.MainVertical();
             axisPressed = true;
+            if (scr_InputManager.MainVertical() == 0)
+            {
+                AudioSource[] SFX_Sources = GetComponents<AudioSource>();
+                Footsteps_SFX = SFX_Sources[0];
+                int index = Random.Range(0, movements_SFX.Length);
+                movement_SFX = movements_SFX[index];
+                Footsteps_SFX.clip = movement_SFX;
+                Footsteps_SFX.Play();
+            }
         }
 
         if (scr_InputManager.MainHorizontal() == 0 && scr_InputManager.MainVertical() == 0)
@@ -101,9 +119,9 @@ public class scr_PlayerMovement : scr_EntityAI
 
         if (scr_Grid.GridController.LocationOnGrid(_x, _y) &&  scr_Grid.GridController.ReturnTerritory(_x,_y) == entity.entityTerritory)
         {
-            entity.SetTransform(_x, _y); 
+            entity.SetTransform(_x, _y);
         }
-        
+
     }
 
 }

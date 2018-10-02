@@ -121,7 +121,7 @@ AudioSource:
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
-  Pan2D: 0.3
+  Pan2D: 0.2
   rolloffMode: 0
   BypassEffects: 0
   BypassListenerEffects: 0
@@ -217,7 +217,7 @@ AudioSource:
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
-  Pan2D: 0
+  Pan2D: 0.2
   rolloffMode: 0
   BypassEffects: 0
   BypassListenerEffects: 0
@@ -315,8 +315,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 310458532d447684389cb1f85abbea34, type: 3}
   attacks_SFX:
   - {fileID: 8300000, guid: 161ae926c57892646ab6c7e1280601c1, type: 3}
-  - {fileID: 8300000, guid: e04c4a13608bcd54996da82fce36d548, type: 3}
-  - {fileID: 8300000, guid: 310458532d447684389cb1f85abbea34, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &114725702907161856
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -332,10 +332,13 @@ MonoBehaviour:
   _gridPos: {x: 0, y: 0}
   _health:
     hp: 10
+    temp_hp: 0
   _ai: {fileID: 114373111611885714}
   entityTerritory: 1
   spr: {fileID: 212410729078944208}
   lerpSpeed: 15
+  has_iframes: 0
+  invulnTime: 0
 --- !u!212 &212410729078944208
 SpriteRenderer:
   m_ObjectHideFlags: 1
