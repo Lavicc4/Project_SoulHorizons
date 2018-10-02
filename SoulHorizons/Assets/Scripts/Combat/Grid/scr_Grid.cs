@@ -175,7 +175,16 @@ public class scr_Grid : MonoBehaviour{
                 //Debug.Log("ACTIVE ENTITY HIT!");
                 if(activeEntities[i].entityTerritory != attack.entity.entityTerritory)
                 {
-                    activeEntities[i].HitByAttack(attack._attack);
+                    //Check if entity is invincible and assigns iframes accordingly
+                    if (!activeEntities[i].isInvincible()) {
+                        activeEntities[i].HitByAttack(attack._attack);
+                        if (activeEntities[i].has_iframes)
+                        {
+                            //Activate invincibility frames
+                            activeEntities[i].setInvincible(true);
+                            
+                        }
+                    }
                     attack.entityIsHit = true;
                     attack.entityHit = activeEntities[i];
                     attack._attack.ImpactEffects();
