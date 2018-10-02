@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class scr_Card : ScriptableObject {
     public enum Element
     {
         Earth,
@@ -11,6 +10,7 @@ public abstract class scr_Card : ScriptableObject {
         Void,
         Wind
     }
+public abstract class scr_Card : ScriptableObject {
 
 
     public List<string> keywords;

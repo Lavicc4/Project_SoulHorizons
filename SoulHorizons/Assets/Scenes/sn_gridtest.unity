@@ -192,6 +192,7 @@ GameObject:
   - component: {fileID: 155839714}
   - component: {fileID: 155839716}
   - component: {fileID: 155839715}
+  - component: {fileID: 155839717}
   m_Layer: 5
   m_Name: Card_4
   m_TagString: Untagged
@@ -215,6 +216,7 @@ RectTransform:
   - {fileID: 1471478821}
   - {fileID: 941779255}
   - {fileID: 564293478}
+  - {fileID: 1918938031}
   m_Father: {fileID: 1533865065}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -257,6 +259,28 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 155839713}
   m_CullTransparentMesh: 0
+--- !u!114 &155839717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 155839713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c6993c9897613849a8c58f6a03d1fc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardName: {fileID: 579422817}
+  description: {fileID: 0}
+  cardArt: {fileID: 1326301982}
+  cardElement: {fileID: 1918938032}
+  earthColor: {r: 0.5849056, g: 0.45387658, b: 0.3448736, a: 1}
+  soulColor: {r: 0.9528302, g: 0.942403, b: 0.8224902, a: 1}
+  sunColor: {r: 0.9056604, g: 0.49118283, b: 0.23495908, a: 1}
+  voidColor: {r: 0.6320754, g: 0.18187074, b: 0.5460668, a: 1}
+  windColor: {r: 0.54089534, g: 0.6132076, b: 0.6036678, a: 1}
+  selectedColor: {r: 1, g: 0.9882353, b: 0.31764707, a: 1}
+  notSelectedColor: {r: 0.8666667, g: 0.8666667, b: 0.8666667, a: 1}
 --- !u!1001 &159308733
 Prefab:
   m_ObjectHideFlags: 0
@@ -397,15 +421,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardUI:
-  - {fileID: 616674211}
-  - {fileID: 1729363042}
-  - {fileID: 1871253124}
-  - {fileID: 155839713}
-  cardArt:
-  - {fileID: 69030530}
-  - {fileID: 377435839}
-  - {fileID: 1446484259}
-  - {fileID: 1326301982}
+  - {fileID: 616674215}
+  - {fileID: 1729363046}
+  - {fileID: 1871253128}
+  - {fileID: 155839717}
 --- !u!4 &283017071
 Transform:
   m_ObjectHideFlags: 0
@@ -683,6 +702,75 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 464316776}
   m_CullTransparentMesh: 0
+--- !u!1 &555691971
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 555691972}
+  - component: {fileID: 555691974}
+  - component: {fileID: 555691973}
+  m_Layer: 5
+  m_Name: CardElement
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &555691972
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 555691971}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 616674212}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 172.85, y: 287.26996}
+  m_SizeDelta: {x: 79.052, y: 79.052}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &555691973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 555691971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &555691974
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 555691971}
+  m_CullTransparentMesh: 0
 --- !u!1 &564293477
 GameObject:
   m_ObjectHideFlags: 0
@@ -699,7 +787,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &564293478
 RectTransform:
   m_ObjectHideFlags: 0
@@ -815,11 +903,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -1278,7 +1366,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &575848138
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1394,11 +1482,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -1584,6 +1672,7 @@ GameObject:
   - component: {fileID: 616674212}
   - component: {fileID: 616674214}
   - component: {fileID: 616674213}
+  - component: {fileID: 616674215}
   m_Layer: 5
   m_Name: Card_1
   m_TagString: Untagged
@@ -1607,6 +1696,7 @@ RectTransform:
   - {fileID: 1978863198}
   - {fileID: 938787269}
   - {fileID: 575848138}
+  - {fileID: 555691972}
   m_Father: {fileID: 1533865065}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1649,6 +1739,28 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 616674211}
   m_CullTransparentMesh: 0
+--- !u!114 &616674215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 616674211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c6993c9897613849a8c58f6a03d1fc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardName: {fileID: 1176692299}
+  description: {fileID: 0}
+  cardArt: {fileID: 69030530}
+  cardElement: {fileID: 555691973}
+  earthColor: {r: 0.5849056, g: 0.45387658, b: 0.3448736, a: 1}
+  soulColor: {r: 0.9528302, g: 0.942403, b: 0.8224902, a: 1}
+  sunColor: {r: 0.9056604, g: 0.49118283, b: 0.23495908, a: 1}
+  voidColor: {r: 0.6320754, g: 0.18187074, b: 0.5460668, a: 1}
+  windColor: {r: 0.54089534, g: 0.6132076, b: 0.6036678, a: 1}
+  selectedColor: {r: 1, g: 0.98725957, b: 0.3160377, a: 1}
+  notSelectedColor: {r: 0.8679245, g: 0.8679245, b: 0.8679245, a: 1}
 --- !u!1 &624066980
 GameObject:
   m_ObjectHideFlags: 0
@@ -2038,7 +2150,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &944228496
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2154,11 +2266,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -3444,6 +3556,75 @@ RectTransform:
   m_AnchoredPosition: {x: -60, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1663196722
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1663196723}
+  - component: {fileID: 1663196725}
+  - component: {fileID: 1663196724}
+  m_Layer: 5
+  m_Name: CardElement
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1663196723
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1663196722}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0}
+  m_Children: []
+  m_Father: {fileID: 1871253125}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 168.22, y: 287.27}
+  m_SizeDelta: {x: 79.052, y: 79.052}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1663196724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1663196722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &1663196725
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1663196722}
+  m_CullTransparentMesh: 0
 --- !u!1 &1729363042
 GameObject:
   m_ObjectHideFlags: 0
@@ -3454,6 +3635,7 @@ GameObject:
   - component: {fileID: 1729363043}
   - component: {fileID: 1729363045}
   - component: {fileID: 1729363044}
+  - component: {fileID: 1729363046}
   m_Layer: 5
   m_Name: Card_2
   m_TagString: Untagged
@@ -3477,6 +3659,7 @@ RectTransform:
   - {fileID: 464316777}
   - {fileID: 1864778594}
   - {fileID: 944228496}
+  - {fileID: 2029650509}
   m_Father: {fileID: 1533865065}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3519,6 +3702,28 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1729363042}
   m_CullTransparentMesh: 0
+--- !u!114 &1729363046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1729363042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c6993c9897613849a8c58f6a03d1fc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardName: {fileID: 989043992}
+  description: {fileID: 0}
+  cardArt: {fileID: 377435839}
+  cardElement: {fileID: 2029650510}
+  earthColor: {r: 0.5849056, g: 0.45387658, b: 0.3448736, a: 1}
+  soulColor: {r: 0.9528302, g: 0.942403, b: 0.8224902, a: 1}
+  sunColor: {r: 0.9056604, g: 0.49118283, b: 0.23495908, a: 1}
+  voidColor: {r: 0.6320754, g: 0.18187074, b: 0.5460668, a: 1}
+  windColor: {r: 0.54089534, g: 0.6132076, b: 0.6036678, a: 1}
+  selectedColor: {r: 1, g: 0.9882353, b: 0.31764707, a: 1}
+  notSelectedColor: {r: 0.8666667, g: 0.8666667, b: 0.8666667, a: 1}
 --- !u!1 &1795263023
 GameObject:
   m_ObjectHideFlags: 0
@@ -3703,6 +3908,7 @@ GameObject:
   - component: {fileID: 1871253125}
   - component: {fileID: 1871253127}
   - component: {fileID: 1871253126}
+  - component: {fileID: 1871253128}
   m_Layer: 5
   m_Name: Card_3
   m_TagString: Untagged
@@ -3726,6 +3932,7 @@ RectTransform:
   - {fileID: 386400825}
   - {fileID: 2134598707}
   - {fileID: 2045535281}
+  - {fileID: 1663196723}
   m_Father: {fileID: 1533865065}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3768,6 +3975,28 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1871253124}
   m_CullTransparentMesh: 0
+--- !u!114 &1871253128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1871253124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c6993c9897613849a8c58f6a03d1fc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardName: {fileID: 1261955366}
+  description: {fileID: 0}
+  cardArt: {fileID: 1446484259}
+  cardElement: {fileID: 1663196724}
+  earthColor: {r: 0.5849056, g: 0.45387658, b: 0.3448736, a: 1}
+  soulColor: {r: 0.9528302, g: 0.942403, b: 0.8224902, a: 1}
+  sunColor: {r: 0.9056604, g: 0.49118283, b: 0.23495908, a: 1}
+  voidColor: {r: 0.6320754, g: 0.18187074, b: 0.5460668, a: 1}
+  windColor: {r: 0.54089534, g: 0.6132076, b: 0.6036678, a: 1}
+  selectedColor: {r: 1, g: 0.9882353, b: 0.31764707, a: 1}
+  notSelectedColor: {r: 0.8666667, g: 0.8666667, b: 0.8666667, a: 1}
 --- !u!1 &1899554013
 GameObject:
   m_ObjectHideFlags: 0
@@ -3887,6 +4116,75 @@ MonoBehaviour:
   RewardMessage: {fileID: 1182640712}
   PlayerHealth: {fileID: 1167945961}
   TempHealth: {fileID: 672210161}
+--- !u!1 &1918938030
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1918938031}
+  - component: {fileID: 1918938033}
+  - component: {fileID: 1918938032}
+  m_Layer: 5
+  m_Name: CardElement
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1918938031
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1918938030}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0}
+  m_Children: []
+  m_Father: {fileID: 155839714}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 170.99252, y: 283.50623}
+  m_SizeDelta: {x: 79.052, y: 79.052}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1918938032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1918938030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &1918938033
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1918938030}
+  m_CullTransparentMesh: 0
 --- !u!1 &1978863197
 GameObject:
   m_ObjectHideFlags: 0
@@ -3956,6 +4254,75 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1978863197}
   m_CullTransparentMesh: 0
+--- !u!1 &2029650508
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2029650509}
+  - component: {fileID: 2029650511}
+  - component: {fileID: 2029650510}
+  m_Layer: 5
+  m_Name: CardElement
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2029650509
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2029650508}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.99999326, y: 0.99999326, z: 0}
+  m_Children: []
+  m_Father: {fileID: 1729363043}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 166, y: 282.07}
+  m_SizeDelta: {x: 79.052, y: 79.052}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2029650510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2029650508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &2029650511
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2029650508}
+  m_CullTransparentMesh: 0
 --- !u!1 &2045535280
 GameObject:
   m_ObjectHideFlags: 0
@@ -3972,7 +4339,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2045535281
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4088,11 +4455,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:

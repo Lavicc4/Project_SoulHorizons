@@ -11,10 +11,10 @@ using TMPro;
 [RequireComponent(typeof(scr_Deck))]
 public class scr_DeckManager : MonoBehaviour {
 
-	public GameObject[] cardUI; //references to the cards UI
-    TextMeshProUGUI[] cardNames; //the card names
-    public Image[] cardArt; //the images
-    Color textColor; //the default text of the color when not in focus
+	public scr_CardUI[] cardUI; //references to the cards UI
+    //TextMeshProUGUI[] cardNames; //the card names
+    //public Image[] cardArt; //the images
+    //Color textColor; //the default text of the color when not in focus
 	scr_Deck deck_scr;
     int currentCard = 0;
 
@@ -22,6 +22,7 @@ public class scr_DeckManager : MonoBehaviour {
     {
         //get references
         deck_scr = GetComponent<scr_Deck>();
+        /* Removed since the CardUI script was added
         cardNames = new TextMeshProUGUI[cardUI.Length];
         int i = 0;
         foreach (GameObject card in cardUI)
@@ -32,11 +33,12 @@ public class scr_DeckManager : MonoBehaviour {
                 Debug.Log("Did not find component");
             }
         }
+         */
     }
 
 	void Start ()
     {
-        textColor = cardNames[0].color;
+        //textColor = cardNames[0].color;
         UpdateGUI();
 	}
 
@@ -44,8 +46,8 @@ public class scr_DeckManager : MonoBehaviour {
     {
         if (UserInput())
         {
-            UpdateGUI();
         }
+            UpdateGUI();
     }
 
     bool axisPressed = false;
@@ -105,11 +107,12 @@ public class scr_DeckManager : MonoBehaviour {
         //Debug.Log("Currently selected Card: \"" + deck_scr.hand[currentCard].cardName + "\" at index " + currentCard);
 
         //highlight the current card
-        for (int i = 0; i < cardNames.Length; i++)
+        for (int i = 0; i < cardUI.Length; i++)
         {  
-            cardNames[i].color = textColor;
+            //cardNames[i].color = textColor;
+            cardUI[i].SetSelected(false);
         }
-        cardNames[currentCard].color = Color.yellow;
+        cardUI[currentCard].SetSelected(true);
 
         SetCardGraphics();
         //TODO: need to check if the UI matches the current hand. If not, need to start a fade out animation for the out of date cards, followed by a fade in for their replacement
@@ -117,10 +120,11 @@ public class scr_DeckManager : MonoBehaviour {
 
     void SetCardGraphics()
     {
-        for (int i = 0; i < cardNames.Length; i++)
+        for (int i = 0; i < cardUI.Length; i++)
         {
-            cardNames[i].text = deck_scr.hand[i].cardName; //set the name
-            cardArt[i].sprite = deck_scr.hand[i].art; //set the card art
+            cardUI[i].SetName(deck_scr.hand[i].cardName); //set the name
+            cardUI[i].SetArt(deck_scr.hand[i].art); //set the card art
+            cardUI[i].SetElement(deck_scr.hand[i].element); //set the card element
         }
     }
 }
