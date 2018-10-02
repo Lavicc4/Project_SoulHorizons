@@ -37,11 +37,11 @@ GameObject:
   - component: {fileID: 4483777865337536}
   - component: {fileID: 61906949573251334}
   - component: {fileID: 114725702907161856}
-  - component: {fileID: 82240855345996476}
-  - component: {fileID: 82587730288405618}
   - component: {fileID: 114716907422926816}
+  - component: {fileID: 82587730288405618}
+  - component: {fileID: 82240855345996476}
   m_Layer: 0
-  m_Name: Critter 1
+  m_Name: Critter 2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -303,6 +303,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entity: {fileID: 114725702907161856}
+  movementInterval: 0.5
 --- !u!114 &114725702907161856
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -318,10 +319,13 @@ MonoBehaviour:
   _gridPos: {x: 0, y: 0}
   _health:
     hp: 2
+    temp_hp: 0
   _ai: {fileID: 114716907422926816}
   entityTerritory: 1
   spr: {fileID: 212410729078944208}
-  lerpSpeed: 15
+  lerpSpeed: 100
+  has_iframes: 0
+  invulnTime: 0
 --- !u!212 &212410729078944208
 SpriteRenderer:
   m_ObjectHideFlags: 1

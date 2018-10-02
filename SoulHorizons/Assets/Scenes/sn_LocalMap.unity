@@ -219,6 +219,10 @@ Prefab:
       propertyPath: m_Name
       value: LocalMapButton (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 1565306217412240, guid: 08c49fa867e77154c8f4e9b0890d66be, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08c49fa867e77154c8f4e9b0890d66be, type: 2}
   m_IsPrefabAsset: 0
@@ -599,6 +603,10 @@ Prefab:
       propertyPath: m_Name
       value: LocalMapButton (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1565306217412240, guid: 08c49fa867e77154c8f4e9b0890d66be, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08c49fa867e77154c8f4e9b0890d66be, type: 2}
   m_IsPrefabAsset: 0
@@ -718,6 +726,10 @@ Prefab:
     - target: {fileID: 1565306217412240, guid: 08c49fa867e77154c8f4e9b0890d66be, type: 2}
       propertyPath: m_Name
       value: LocalMapButton (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1565306217412240, guid: 08c49fa867e77154c8f4e9b0890d66be, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08c49fa867e77154c8f4e9b0890d66be, type: 2}
@@ -839,6 +851,12 @@ Prefab:
       propertyPath: m_Name
       value: LocalMapButton (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 114222698562062942, guid: 08c49fa867e77154c8f4e9b0890d66be,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 11400000, guid: c58da183e3e04b1448c4f221d424c663,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08c49fa867e77154c8f4e9b0890d66be, type: 2}
   m_IsPrefabAsset: 0
@@ -948,6 +966,10 @@ Prefab:
       propertyPath: m_Name
       value: LocalMapButton (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 1565306217412240, guid: 08c49fa867e77154c8f4e9b0890d66be, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08c49fa867e77154c8f4e9b0890d66be, type: 2}
   m_IsPrefabAsset: 0
@@ -1000,7 +1022,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1288549699}
   m_GameObject: {fileID: 1086960819}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 34ba1b1fb468d9346a8eab355996ff37, type: 3}
   m_Name: 
@@ -1010,13 +1032,6 @@ MonoBehaviour:
   - {fileID: 585557471}
   - {fileID: 473412314}
   - {fileID: 1160269094}
-  - {fileID: 940616081}
-  - {fileID: 2140115816}
-  - {fileID: 715308587}
-  - {fileID: 615034720}
-  - {fileID: 1195386578}
-  - {fileID: 2128949828}
-  - {fileID: 2106161928}
   activeScenarios: 3
   totalButtons: 10
   tier1Encounters:
@@ -1069,6 +1084,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114810751634326560, guid: 4cb6565adf6e7254984dabe15f7b5f66,
+        type: 2}
+      propertyPath: buttons.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4393976918298636, guid: 4cb6565adf6e7254984dabe15f7b5f66, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1151,6 +1171,11 @@ Prefab:
       propertyPath: buttons.Array.data[9]
       value: 
       objectReference: {fileID: 2106161928}
+    - target: {fileID: 114810751634326560, guid: 4cb6565adf6e7254984dabe15f7b5f66,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4cb6565adf6e7254984dabe15f7b5f66, type: 2}
   m_IsPrefabAsset: 0
@@ -1260,6 +1285,12 @@ Prefab:
       propertyPath: m_Name
       value: LocalMapButton (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 114222698562062942, guid: 08c49fa867e77154c8f4e9b0890d66be,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 11400000, guid: c2eea985e5ee5cc4bae814e182776a19,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08c49fa867e77154c8f4e9b0890d66be, type: 2}
   m_IsPrefabAsset: 0
@@ -1474,6 +1505,10 @@ Prefab:
       propertyPath: m_Name
       value: LocalMapButton (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 1565306217412240, guid: 08c49fa867e77154c8f4e9b0890d66be, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08c49fa867e77154c8f4e9b0890d66be, type: 2}
   m_IsPrefabAsset: 0
@@ -1582,6 +1617,10 @@ Prefab:
     - target: {fileID: 1565306217412240, guid: 08c49fa867e77154c8f4e9b0890d66be, type: 2}
       propertyPath: m_Name
       value: LocalMapButton (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1565306217412240, guid: 08c49fa867e77154c8f4e9b0890d66be, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08c49fa867e77154c8f4e9b0890d66be, type: 2}
@@ -1828,6 +1867,10 @@ Prefab:
     - target: {fileID: 1565306217412240, guid: 08c49fa867e77154c8f4e9b0890d66be, type: 2}
       propertyPath: m_Name
       value: LocalMapButton (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1565306217412240, guid: 08c49fa867e77154c8f4e9b0890d66be, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08c49fa867e77154c8f4e9b0890d66be, type: 2}

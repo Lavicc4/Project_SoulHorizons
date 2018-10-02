@@ -25,10 +25,6 @@ public class atk_PlayerBlaster : Attack {
     }
     public override bool CheckCondition(scr_Entity _ent)
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-
-        }
         return true; // to make it happy 
     }
 

@@ -11,4 +11,6 @@ public abstract class scr_EntityAI : MonoBehaviour {
     public abstract void Attack();
 
     public abstract void UpdateAI();
+
+
 }

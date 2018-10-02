@@ -24,14 +24,18 @@ MonoBehaviour:
       type: 2}
     x: 1
     y: 1
-  - _entity: {fileID: 114725702907161856, guid: 974c207dd73715e47b75e772ec393f45,
-      type: 2}
-    x: 5
-    y: 0
   - _entity: {fileID: 114725702907161856, guid: 2e48af5c2d92a1043acb3c262a5cc78b,
       type: 2}
     x: 5
+    y: 0
+  - _entity: {fileID: 114725702907161856, guid: 65259edbaf4751d4080a9de1c4ee0b78,
+      type: 2}
+    x: 5
     y: 2
+  - _entity: {fileID: 114725702907161856, guid: 81c69c091cca8b249a86dc4ad3c27ec8,
+      type: 2}
+    x: 4
+    y: 1
   territoryColumn:
   - territoryRow: 000000000000000000000000
   - territoryRow: 000000000000000000000000

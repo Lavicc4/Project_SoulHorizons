@@ -122,6 +122,9 @@ public class Health{
     public int hp = 10;
     public int temp_hp = 0;
 
+
+    
+
     public void TakeDamage(int damage)
     {
         if (temp_hp > 0)
@@ -141,8 +144,10 @@ public class Health{
         if (hp <= 0)
         {
             hp = 0;
+            
         }
     }
+
 }
 
 

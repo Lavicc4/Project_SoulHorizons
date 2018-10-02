@@ -37,11 +37,11 @@ GameObject:
   - component: {fileID: 4483777865337536}
   - component: {fileID: 61906949573251334}
   - component: {fileID: 114725702907161856}
-  - component: {fileID: 82240855345996476}
-  - component: {fileID: 82587730288405618}
   - component: {fileID: 114716907422926816}
+  - component: {fileID: 82587730288405618}
+  - component: {fileID: 82240855345996476}
   m_Layer: 0
-  m_Name: Critter
+  m_Name: Critter 2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -54,7 +54,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1116592492456940}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.5200002, y: -0.539, z: 0}
+  m_LocalPosition: {x: 1.8114228, y: -0.42673066, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0}
   m_Children:
   - {fileID: 4710732812831620}
@@ -68,8 +68,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1099033517750084}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.76, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.44, y: 0.64, z: 0}
+  m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
   m_Children: []
   m_Father: {fileID: 4483777865337536}
   m_RootOrder: 0
@@ -303,6 +303,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entity: {fileID: 114725702907161856}
+  movementInterval: 1
 --- !u!114 &114725702907161856
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -318,10 +319,13 @@ MonoBehaviour:
   _gridPos: {x: 0, y: 0}
   _health:
     hp: 2
+    temp_hp: 0
   _ai: {fileID: 114716907422926816}
   entityTerritory: 1
   spr: {fileID: 212410729078944208}
-  lerpSpeed: 15
+  lerpSpeed: 100
+  has_iframes: 0
+  invulnTime: 0
 --- !u!212 &212410729078944208
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -357,7 +361,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: f2e3332a491836b40b737ff179902ef8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fb425d5d7a061c04380871d56bb02ca7, type: 3}
   m_Color: {r: 0.9215687, g: 0.9215687, b: 0.9215687, a: 1}
   m_FlipX: 1
   m_FlipY: 0
