@@ -37,6 +37,11 @@ public class scr_EnemyAI_1 : scr_EntityAI {
         StartCoroutine(MovementClock(_movementInterval));
         
     }
+    public override void Die()
+    {
+        Debug.Log("ARGHH");
+        entity.Death();
+    }
 
     void Movement()
     {

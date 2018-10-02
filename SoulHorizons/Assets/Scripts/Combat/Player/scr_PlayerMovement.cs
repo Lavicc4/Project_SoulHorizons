@@ -26,7 +26,10 @@ public class scr_PlayerMovement : scr_EntityAI
             scr_AttackController.attackController.AddNewAttack(basicAttack, entity._gridPos.x, entity._gridPos.y, entity);
         }
     }
-
+    public override void Die()
+    {
+        throw new System.NotImplementedException();
+    }
 
 
     void Start()

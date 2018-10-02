@@ -338,7 +338,7 @@ MonoBehaviour:
   spr: {fileID: 212424679629100636}
   lerpSpeed: 30
   has_iframes: 1
-  invulnTime: 1.5
+  invulnTime: 1
 --- !u!114 &114873357353236256
 MonoBehaviour:
   m_ObjectHideFlags: 1

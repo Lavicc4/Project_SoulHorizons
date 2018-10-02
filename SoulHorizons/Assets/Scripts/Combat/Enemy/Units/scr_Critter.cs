@@ -34,6 +34,12 @@ public class scr_Critter : scr_EntityAI {
          
     }
 
+    public override void Die()
+    {
+        Debug.Log("ARGHH");
+        entity.Death();
+    }
+
 
 
 

@@ -34,6 +34,12 @@ public class scr_ExiledArcher : scr_EntityAI {
         }
     }
 
+    public override void Die()
+    {
+        Debug.Log("ARGHH");
+        entity.Death();
+    }
+
     bool HunterShotCheck()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");

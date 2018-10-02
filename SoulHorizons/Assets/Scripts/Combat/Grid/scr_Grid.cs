@@ -91,6 +91,8 @@ public class scr_Grid : MonoBehaviour{
     //BUG - AT START TILES DON'T COUNT AS OCCUPIED, AFTER INIT SET TILES TO OCCUPIED FOR INITIALIZED ENTITIES
     public void InitEncounter()
     {
+        //Set movement to true
+        scr_InputManager.disableInput = false;
         xSizeMax = scr_SceneManager.globalSceneManager.currentEncounter.xWidth;
         ySizeMax = scr_SceneManager.globalSceneManager.currentEncounter.yHeight;
         //calling in awake as a debug, should be called in Encounter

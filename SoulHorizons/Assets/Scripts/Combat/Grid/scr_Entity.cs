@@ -32,6 +32,11 @@ public class scr_Entity : MonoBehaviour
     public void Update()
     {
         _ai.UpdateAI();
+        if (_health.hp <= 0)
+        {
+            _ai.Die();
+        }
+        
         transform.position = Vector3.Lerp(transform.position, scr_Grid.GridController.GetWorldLocation(_gridPos.x, _gridPos.y), (lerpSpeed*Time.deltaTime));       
         //Counts down iframes
         if(invulnCounter > 0)
@@ -114,6 +119,12 @@ public class scr_Entity : MonoBehaviour
             spr.color = baseColor;
         }
     }
+
+    public void Death()
+    {
+        Debug.Log("I AM DEAD");
+        gameObject.SetActive(false);
+    }
    
 }
 [System.Serializable]
@@ -146,6 +157,8 @@ public class Health{
             hp = 0;
             
         }
+        Debug.Log("MY HP: " + hp);
+
     }
 
 }

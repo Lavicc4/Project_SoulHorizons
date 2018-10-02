@@ -31,6 +31,7 @@ public class scr_statemanager : MonoBehaviour {
 		if(GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
         {
             //Debug.Log("NO ENEMIES");
+            scr_InputManager.disableInput = true;
             RewardMessage.enabled = true;
             endCombat = true;
         }
@@ -57,6 +58,7 @@ public class scr_statemanager : MonoBehaviour {
         PlayerHealth.text = "Health: " + playerEntity._health.hp;
         if(playerEntity._health.hp <= 0)
         {
+            scr_InputManager.disableInput = true;
             RewardMessage.text = "Oh no you died! Press V to return to the World Map";
             RewardMessage.enabled = true;
             endCombat = true;
