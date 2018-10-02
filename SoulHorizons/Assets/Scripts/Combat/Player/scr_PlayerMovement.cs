@@ -28,7 +28,7 @@ public class scr_PlayerMovement : scr_EntityAI
     }
     public override void Die()
     {
-        throw new System.NotImplementedException();
+        //throw new System.NotImplementedException();
     }
 
 

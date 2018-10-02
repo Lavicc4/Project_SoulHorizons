@@ -42,11 +42,12 @@ public class scr_Entity : MonoBehaviour
         if(invulnCounter > 0)
         {
             invulnCounter -= Time.deltaTime;
+            if(invulnCounter <= 0)
+            {
+                setInvincible(false);
+            }
         }
-        else
-        {
-            setInvincible(false);
-        }
+       
     }
 
 
@@ -90,10 +91,11 @@ public class scr_Entity : MonoBehaviour
 
     public void HitByAttack(Attack _attack)
     {
-        if(_attack.territory != entityTerritory)
+      
+        if (_attack.territory != entityTerritory)
         {
             _health.TakeDamage(_attack.damage);
-          
+            StartCoroutine(HitClock(.5f));
         }
     }
 
@@ -126,6 +128,14 @@ public class scr_Entity : MonoBehaviour
         gameObject.SetActive(false);
     }
    
+    IEnumerator HitClock(float hitTime)
+    {
+        spr.color = Color.red;
+        Debug.Log("I'M RED");
+        yield return new WaitForSecondsRealtime(hitTime);
+        spr.color = baseColor;
+        Debug.Log("NOT RED");
+    }
 }
 [System.Serializable]
 public class Health{
