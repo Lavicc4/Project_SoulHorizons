@@ -305,6 +305,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7490e84f7093e649a8e70f277eab5c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 0
   _gridPos: {x: 0, y: 0}
   _health:
     hp: 10
@@ -312,6 +313,8 @@ MonoBehaviour:
   entityTerritory: 0
   spr: {fileID: 212424679629100636}
   lerpSpeed: 30
+  has_iframes: 1
+  invulnTime: 10
 --- !u!114 &114873357353236256
 MonoBehaviour:
   m_ObjectHideFlags: 1
