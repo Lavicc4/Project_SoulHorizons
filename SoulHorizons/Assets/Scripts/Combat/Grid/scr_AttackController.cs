@@ -16,9 +16,22 @@ public class scr_AttackController : MonoBehaviour {
     public void AddNewAttack(Attack _attack,int xPos, int yPos, scr_Entity ent)
     {
         activeAttacks[numberOfActiveAttacks] = new ActiveAttack(_attack, xPos, yPos, ent);
+        numberOfActiveAttacks++;
+        /*
         activeAttacks[numberOfActiveAttacks].particle = Instantiate(_attack.particles, scr_Grid.GridController.GetWorldLocation(xPos,yPos)+_attack.particlesOffset, Quaternion.identity);
         activeAttacks[numberOfActiveAttacks].particle.sortingOrder = -yPos; 
-        numberOfActiveAttacks++; 
+         */
+
+        //Start effects for when the attack is created
+        if (_attack == null)
+        {
+            Debug.Log("AttackController: attack is null");
+        }
+        if (activeAttacks[numberOfActiveAttacks-1] == null)
+        {
+            Debug.Log("AttackController: attack is null");
+        }
+        _attack.LaunchEffects(activeAttacks[numberOfActiveAttacks-1]);
 
     }
 
@@ -62,6 +75,9 @@ public class scr_AttackController : MonoBehaviour {
     }
     void RemoveFromArray(int index)
     {
+        //Attack end effects
+        activeAttacks[index]._attack.EndEffects(activeAttacks[index]);
+
         scr_Grid.GridController.DeactivateTile(activeAttacks[index].lastPos.x, activeAttacks[index].lastPos.y);
         scr_Grid.GridController.DeactivateTile(activeAttacks[index].pos.x, activeAttacks[index].pos.y);
         scr_Grid.GridController.DePrimeTile(activeAttacks[index].pos.x, activeAttacks[index].pos.y);

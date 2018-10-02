@@ -41,7 +41,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4138731860164270}
   - component: {fileID: 212424679629100636}
-  - component: {fileID: 114873357353236256}
   m_Layer: 0
   m_Name: Player_Sprite
   m_TagString: Untagged
@@ -339,20 +338,6 @@ MonoBehaviour:
   lerpSpeed: 30
   has_iframes: 1
   invulnTime: 1
---- !u!114 &114873357353236256
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1609545178073930}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27cb38977e70738419545552da9cfd05, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  initialPoolSize: 10
-  objectPrefab: {fileID: 1951608291210416, guid: 4c3788daf339ac7419579eae157ae3a8,
-    type: 2}
 --- !u!212 &212424679629100636
 SpriteRenderer:
   m_ObjectHideFlags: 1
