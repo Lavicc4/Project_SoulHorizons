@@ -14,5 +14,8 @@ MonoBehaviour:
   keywords:
   - Wind
   cardName: Lightning Bolt
-  castingTime: 1
-  damage: 6
+  element: 0
+  castingTime: 0.4
+  description: 
+  art: {fileID: 0}
+  damage: 10
