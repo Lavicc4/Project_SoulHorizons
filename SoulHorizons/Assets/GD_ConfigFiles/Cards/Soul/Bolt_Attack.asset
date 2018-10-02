@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5207fb031a91754a84461d852996af0, type: 3}
   m_Name: Bolt_Attack
   m_EditorClassIdentifier: 
-  incrementSpeed: 0.4
+  incrementSpeed: 0.1
   maxIncrements: 10
   damage: 10
   territory: 0

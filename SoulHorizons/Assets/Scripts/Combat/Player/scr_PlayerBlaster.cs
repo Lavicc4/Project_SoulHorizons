@@ -16,12 +16,19 @@ public class scr_PlayerBlaster : MonoBehaviour {
 
 	private float timePressed = 0f; //the time the fire button has been held
 	private bool pressed;
-	private scr_ObjectPool objectPool_scr;
+	//private scr_ObjectPool objectPool_scr;
+
+	public Attack attack; //the attack that will be launched
+	private scr_Entity playerEntity;
+
+	public SpriteRenderer baseProjectile;
+	public SpriteRenderer projectile1;
 	
 
 	void Awake()
 	{
-		objectPool_scr = GetComponent<scr_ObjectPool>();
+		//objectPool_scr = GetComponent<scr_ObjectPool>();
+		playerEntity = GetComponent<scr_Entity>();
 	}
 	
 	void Start () {
@@ -44,23 +51,33 @@ public class scr_PlayerBlaster : MonoBehaviour {
 
 		if(scr_InputManager.Blast_Up())
 		{
-			scr_PlayerProjectile proj = objectPool_scr.CreateObject(transform.position, transform.rotation).GetComponent<scr_PlayerProjectile>();
+			//scr_PlayerProjectile proj = objectPool_scr.CreateObject(transform.position, transform.rotation).GetComponent<scr_PlayerProjectile>();
 			float damage = baseDamage + damageIncreaseRate * timePressed;
 			//check if charged
 			if (timePressed < chargeTime1)
 			{
 				//fire a normal shot
-				proj.Fire(damage, 0, baseSpeed);
+				//proj.Fire(damage, 0, baseSpeed);
+				//set the damage for the attack
+				attack.damage = (int) Mathf.Round(damage);
+				//set the projectile sprite
+				attack.particles = baseProjectile;
+				scr_AttackController.attackController.AddNewAttack(attack, playerEntity._gridPos.x, playerEntity._gridPos.y, playerEntity);
 			}
 			else
 			{
 				//fire a shot at charge level 1
 				damage += damageIncrease1;
-				proj.Fire(damage, 1, baseSpeed);
+				attack.damage = (int) Mathf.Round(damage);
+				//set the projectile sprite
+				attack.particles = projectile1;
+				//proj.Fire(damage, 1, baseSpeed);
+				scr_AttackController.attackController.AddNewAttack(attack, playerEntity._gridPos.x, playerEntity._gridPos.y, playerEntity);
+
 			}
 
 			timePressed = 0f;
-
+			pressed = false;
 		}
 	}//end Update
 }

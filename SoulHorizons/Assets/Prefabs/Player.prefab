@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 114787085351951448}
   - component: {fileID: 82461514573680058}
   - component: {fileID: 82719118176694418}
+  - component: {fileID: 114627260013859230}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -294,6 +295,27 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 152ebd0dda3d900429ef6ee865f3896e, type: 3}
   - {fileID: 8300000, guid: 95954a04acb80b0409641120525696f3, type: 3}
   - {fileID: 8300000, guid: 1fa52cec2fe9f4d42b82f3fa167989bb, type: 3}
+--- !u!114 &114627260013859230
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1546032312897718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc01f984c67331647ad1c7508e6f29ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseDamage: 5
+  baseSpeed: 10
+  chargeTime1: 1.2
+  damageIncrease1: 8
+  damageIncreaseRate: 0
+  attack: {fileID: 11400000, guid: 7a5088d06498dc24e87770cb519a490a, type: 2}
+  baseProjectile: {fileID: 212160339734999984, guid: adcd5b01c4cd3da49bb80cfb90445fdc,
+    type: 2}
+  projectile1: {fileID: 212160339734999984, guid: 00c7399346a413b4b8e62d5140ca5a9c,
+    type: 2}
 --- !u!114 &114787085351951448
 MonoBehaviour:
   m_ObjectHideFlags: 1

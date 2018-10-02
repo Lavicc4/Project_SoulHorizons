@@ -4,6 +4,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//OLD, DOES NOT USE GRID
+
 /// <summary>
 /// Attached to the projectile the player fires.
 /// </summary>
