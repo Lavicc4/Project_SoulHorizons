@@ -19,7 +19,7 @@ public abstract class Attack : ScriptableObject {
     {
         return new Vector2Int(); 
     }
-    public virtual Vector2Int ProgressAttack(int xPos, int yPos, ActiveAttack activeAtk, SpriteRenderer particle)
+    public virtual Vector2Int ProgressAttack(int xPos, int yPos, ActiveAttack activeAtk)
     {
         return new Vector2Int(); 
     }

@@ -8,12 +8,12 @@ public class atk_LinearForward : Attack {
     public float chanceToAttack = 30f;
 
 
-    public override Vector2Int ProgressAttack(int xPos, int yPos, ActiveAttack activeAtk, SpriteRenderer activeParticle)
+    public override Vector2Int ProgressAttack(int xPos, int yPos, ActiveAttack activeAtk)
     {
-        return LinearForward_ProgressAttack(xPos,yPos, activeAtk, activeParticle); 
+        return LinearForward_ProgressAttack(xPos,yPos, activeAtk); 
     }
 
-    Vector2Int LinearForward_ProgressAttack(int xPos, int yPos, ActiveAttack activeAtk, SpriteRenderer activeParticle)
+    Vector2Int LinearForward_ProgressAttack(int xPos, int yPos, ActiveAttack activeAtk)
     {
 
 

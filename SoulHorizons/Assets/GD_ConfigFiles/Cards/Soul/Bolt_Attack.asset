@@ -16,5 +16,6 @@ MonoBehaviour:
   damage: 10
   territory: 0
   piercing: 1
-  particles: {fileID: 0}
-  particlesOffset: {x: 0, y: 0, z: 0}
+  particles: {fileID: 212919924544438062, guid: 07a4e007d8e532445b9b9db17fa90895,
+    type: 2}
+  particlesOffset: {x: 0, y: 5, z: 0}

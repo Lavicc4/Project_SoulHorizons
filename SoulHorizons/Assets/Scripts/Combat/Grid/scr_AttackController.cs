@@ -50,7 +50,7 @@ public class scr_AttackController : MonoBehaviour {
                 }
                 activeAttacks[x].lastPos = activeAttacks[x].pos;
                 activeAttacks[x].Clone(scr_Grid.GridController.AttackPosition(activeAttacks[x]));
-                activeAttacks[x].pos = activeAttacks[x]._attack.ProgressAttack(activeAttacks[x].pos.x, activeAttacks[x].pos.y, activeAttacks[x], activeAttacks[x].particle);
+                activeAttacks[x].pos = activeAttacks[x]._attack.ProgressAttack(activeAttacks[x].pos.x, activeAttacks[x].pos.y, activeAttacks[x]);
                 activeAttacks[x].lastAttackTime = Time.time; 
                 activeAttacks[x].currentIncrement++;
                  

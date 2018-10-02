@@ -102,13 +102,13 @@ public class scr_Entity : MonoBehaviour
         invincible = inv;
         if (inv)
         {
-            Debug.Log("I'M INVINCIBLE");
+            //Debug.Log("I'M INVINCIBLE");
             invulnCounter = invulnTime;
             spr.color = Color.gray;
         }
         else
         {
-            Debug.Log("NOT INVINCIBLE");
+            //Debug.Log("NOT INVINCIBLE");
             invulnCounter = 0f;
             invincible = false;
             spr.color = baseColor;

@@ -9,6 +9,7 @@ public class scr_Bolt : scr_Card {
 
     public override void Activate()
     {
+        Debug.Log("Activating Bolt");
         ActivateEffects();
 
         scr_Entity player = GameObject.FindGameObjectWithTag("Player").GetComponent<scr_Entity>();
