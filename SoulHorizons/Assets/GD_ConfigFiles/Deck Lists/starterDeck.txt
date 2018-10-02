@@ -1,1 +1,2 @@
-Bolt: 30
+Harden Soul: 15
+Bolt: 15

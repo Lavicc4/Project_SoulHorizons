@@ -119,12 +119,26 @@ public class scr_Entity : MonoBehaviour
 [System.Serializable]
 public class Health{
 
-    public int hp = 10; 
+    public int hp = 10;
+    public int temp_hp = 0;
 
     public void TakeDamage(int damage)
     {
-        hp -= damage;
-        if(hp <= 0)
+        if (temp_hp > 0)
+        {
+            temp_hp -= damage;
+            if(temp_hp < 0)
+            {
+                //Carry over extra damage to normal hp
+                hp += temp_hp;
+                temp_hp = 0;
+            }
+        }
+        else
+        {
+            hp -= damage;
+        }
+        if (hp <= 0)
         {
             hp = 0;
         }

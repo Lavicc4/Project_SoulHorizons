@@ -109,7 +109,7 @@ public class scr_DeckManager : MonoBehaviour {
         {  
             cardNames[i].color = textColor;
         }
-        cardNames[currentCard].color = Color.white;
+        cardNames[currentCard].color = Color.yellow;
 
         SetCardGraphics();
         //TODO: need to check if the UI matches the current hand. If not, need to start a fade out animation for the out of date cards, followed by a fade in for their replacement

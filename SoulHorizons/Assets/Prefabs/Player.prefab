@@ -309,12 +309,13 @@ MonoBehaviour:
   _gridPos: {x: 0, y: 0}
   _health:
     hp: 10
+    temp_hp: 0
   _ai: {fileID: 114404296688108730}
   entityTerritory: 0
   spr: {fileID: 212424679629100636}
   lerpSpeed: 30
   has_iframes: 1
-  invulnTime: 10
+  invulnTime: 1.5
 --- !u!114 &114873357353236256
 MonoBehaviour:
   m_ObjectHideFlags: 1
