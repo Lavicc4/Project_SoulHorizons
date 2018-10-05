@@ -16,8 +16,9 @@ public class scr_PlayerBlaster : MonoBehaviour {
 
 	private float timePressed = 0f; //the time the fire button has been held
 	private bool pressed;
-	//private scr_ObjectPool objectPool_scr;
-
+	public float fireRate = 0.2f; //how often the player can fire the blaster
+	public float chargeCooldown = 0.4f; //we can use this instead of fire rate after a charged shot if we want a longer cooldown for charged shots
+	private bool readyToFire = true; //used to indicate if the blaster is ready to fire again
 	public Attack attack; //the attack that will be launched
 	private scr_Entity playerEntity;
 
@@ -44,12 +45,12 @@ public class scr_PlayerBlaster : MonoBehaviour {
 			//TODO:need to calculate charge level here for visual indicators that you have increased the charge level
 		}
 
-		if (scr_InputManager.Blast_Down())
+		if (scr_InputManager.Blast_Down() && readyToFire)
 		{
 			pressed = true;
 		}
 
-		if(scr_InputManager.Blast_Up())
+		if(scr_InputManager.Blast_Up() && readyToFire)
 		{
 			//scr_PlayerProjectile proj = objectPool_scr.CreateObject(transform.position, transform.rotation).GetComponent<scr_PlayerProjectile>();
 			float damage = baseDamage + damageIncreaseRate * timePressed;
@@ -57,12 +58,13 @@ public class scr_PlayerBlaster : MonoBehaviour {
 			if (timePressed < chargeTime1)
 			{
 				//fire a normal shot
-				//proj.Fire(damage, 0, baseSpeed);
+
 				//set the damage for the attack
 				attack.damage = (int) Mathf.Round(damage);
 				//set the projectile sprite
 				attack.particles = baseProjectile;
 				scr_AttackController.attackController.AddNewAttack(attack, playerEntity._gridPos.x, playerEntity._gridPos.y, playerEntity);
+				StartCoroutine(AttackCooldown(fireRate));
 			}
 			else
 			{
@@ -73,11 +75,23 @@ public class scr_PlayerBlaster : MonoBehaviour {
 				attack.particles = projectile1;
 				//proj.Fire(damage, 1, baseSpeed);
 				scr_AttackController.attackController.AddNewAttack(attack, playerEntity._gridPos.x, playerEntity._gridPos.y, playerEntity);
-
+				StartCoroutine(AttackCooldown(chargeCooldown));
 			}
 
+			//reset variables
 			timePressed = 0f;
 			pressed = false;
 		}
 	}//end Update
+
+	/// <summary>
+	/// Called after an attack to disable the blaster for the cooldown time
+	/// </summary>
+	/// <returns></returns>
+	private IEnumerator AttackCooldown(float cooldown)
+	{
+		readyToFire = false;
+		yield return new WaitForSeconds(cooldown);
+		readyToFire = true;
+	}
 }

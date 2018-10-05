@@ -18,6 +18,9 @@ public class scr_DeckManager : MonoBehaviour {
 	scr_Deck deck_scr;
     int currentCard = 0;
 
+    private bool readyToCast = true;
+    public float cooldown = 0.6f; //the rate at which the player can play cards; could make this a variable in the card instead
+
     void Awake()
     {
         //get references
@@ -38,16 +41,13 @@ public class scr_DeckManager : MonoBehaviour {
 
 	void Start ()
     {
-        //textColor = cardNames[0].color;
         UpdateGUI();
 	}
 
     void Update()
     {
-        if (UserInput())
-        {
-        }
-            UpdateGUI();
+        UserInput();
+        UpdateGUI();
     }
 
     bool axisPressed = false;
@@ -71,8 +71,10 @@ public class scr_DeckManager : MonoBehaviour {
             axisPressed = false;
         }
 
-        if (scr_InputManager.PlayCard())
+        if (scr_InputManager.PlayCard() && readyToCast)
         {
+            //start cooldown to be able to cast another card; could use an argument from the card to get variable cooldowns
+            CastCooldown(cooldown);
             //play the current card
             deck_scr.Activate(currentCard);
             return true;
@@ -104,7 +106,6 @@ public class scr_DeckManager : MonoBehaviour {
         //start an animation on the currently selected card if it was played
         //shift cards if one was played
         //give the UI element the information for a newly drawn card; play animation for loading
-        //Debug.Log("Currently selected Card: \"" + deck_scr.hand[currentCard].cardName + "\" at index " + currentCard);
 
         //highlight the current card
         for (int i = 0; i < cardUI.Length; i++)
@@ -118,6 +119,9 @@ public class scr_DeckManager : MonoBehaviour {
         //TODO: need to check if the UI matches the current hand. If not, need to start a fade out animation for the out of date cards, followed by a fade in for their replacement
     }
 
+    /// <summary>
+    /// Gets all graphical info from the card object and sets the UI accordingly
+    /// </summary>
     void SetCardGraphics()
     {
         for (int i = 0; i < cardUI.Length; i++)
@@ -127,4 +131,15 @@ public class scr_DeckManager : MonoBehaviour {
             cardUI[i].SetElement(deck_scr.hand[i].element); //set the card element
         }
     }
+
+    /// <summary>
+	/// Called when casting a card to give a cooldown until another card can be cast
+	/// </summary>
+	/// <returns></returns>
+	private IEnumerator CastCooldown(float cooldown)
+	{
+		readyToCast = false;
+		yield return new WaitForSeconds(cooldown);
+		readyToCast = true;
+	}
 }
