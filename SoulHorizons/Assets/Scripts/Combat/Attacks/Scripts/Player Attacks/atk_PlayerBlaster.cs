@@ -7,7 +7,11 @@ using UnityEngine;
 public class atk_PlayerBlaster : Attack {
 
     
-
+    public override ActiveAttack BeginAttack(ActiveAttack activeAtk)
+    {
+        activeAtk.lastAttackTime -= activeAtk._attack.incrementSpeed;
+        return activeAtk; 
+    } 
 
     public override Vector2Int ProgressAttack(int xPos, int yPos, ActiveAttack activeAtk)
     {

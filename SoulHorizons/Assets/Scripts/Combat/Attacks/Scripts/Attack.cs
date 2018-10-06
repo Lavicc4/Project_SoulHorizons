@@ -13,11 +13,15 @@ public abstract class Attack : ScriptableObject {
     public scr_Tile.Territory territory;
     public bool piercing;
     public SpriteRenderer particles;
-    public Vector3 particlesOffset; 
+    public Vector3 particlesOffset;
 
-	public virtual Vector2Int BeginAttack()
+    public virtual Vector2Int BeginAttack(int xPos, int yPos, ActiveAttack activeAtk)
     {
         return new Vector2Int(); 
+    }
+    public virtual ActiveAttack BeginAttack(ActiveAttack activeAtk)
+    {
+        return activeAtk; 
     }
     public virtual Vector2Int ProgressAttack(int xPos, int yPos, ActiveAttack activeAtk)
     {

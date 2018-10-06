@@ -6,18 +6,25 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Attacks/ArrowRain")]
 public class atk_ArrowRain : Attack {
 
+
+    public override Vector2Int BeginAttack(int xPos, int yPos, ActiveAttack activeAtk)
+    {
+        scr_Grid.GridController.PrimeNextTile(xPos, yPos);
+        scr_Grid.GridController.PrimeNextTile(xPos, yPos - 1);
+        scr_Grid.GridController.PrimeNextTile(xPos, yPos - 2);
+        return new Vector2Int(xPos, yPos); 
+    }
     public override Vector2Int ProgressAttack(int xPos, int yPos, ActiveAttack activeAtk)
     {
-        return LinearForward_ProgressAttack(xPos, yPos, activeAtk);
+        return ArrowRain_ProgressAttack(xPos, yPos, activeAtk);
     }
 
-    Vector2Int LinearForward_ProgressAttack(int xPos, int yPos, ActiveAttack activeAtk)
+    Vector2Int ArrowRain_ProgressAttack(int xPos, int yPos, ActiveAttack activeAtk)
     {
 
 
-        scr_Grid.GridController.PrimeNextTile(xPos - 1, yPos);
         scr_Grid.GridController.ActivateTile(xPos, yPos);
-        return new Vector2Int(xPos - 1, yPos);
+        return new Vector2Int(xPos, yPos - 1);
     }
     public override bool CheckCondition(scr_Entity _ent)
     {

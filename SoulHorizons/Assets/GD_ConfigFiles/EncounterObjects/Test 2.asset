@@ -28,10 +28,6 @@ MonoBehaviour:
       type: 2}
     x: 5
     y: 0
-  - _entity: {fileID: 114725702907161856, guid: da6e4d25beaae874da66705cc25743e2,
-      type: 2}
-    x: 5
-    y: 2
   territoryColumn:
   - territoryRow: 000000000000000000000000
   - territoryRow: 000000000000000000000000

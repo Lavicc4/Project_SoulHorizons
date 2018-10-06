@@ -30,12 +30,10 @@ public class scr_ExiledArcher : scr_EntityAI {
     {
         if(!hSOnCD  && HunterShotCheck())
         {
-            hSOnCD = true;
             StartCoroutine(HunterShot());
         }
         if (canArrowRain)
         {
-            canArrowRain = false;
             StartCoroutine(ArrowRain(aRInterval)); 
         }
     }
@@ -59,6 +57,7 @@ public class scr_ExiledArcher : scr_EntityAI {
 
     private IEnumerator HunterShot()
     {
+        hSOnCD = true;
         yield return new WaitForSecondsRealtime(hSChargeTime);
         scr_AttackController.attackController.AddNewAttack(hunterShot, entity._gridPos.x, entity._gridPos.y, entity);
         yield return new WaitForSecondsRealtime(hSCooldownTime);
@@ -68,6 +67,7 @@ public class scr_ExiledArcher : scr_EntityAI {
     private IEnumerator ArrowRain(float _aRInterval)
     {
         //TELEGRAPH 
+        canArrowRain = false; 
         yield return new WaitForSecondsRealtime(1f);
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         int playerXPos = player.GetComponent<scr_Entity>()._gridPos.x;

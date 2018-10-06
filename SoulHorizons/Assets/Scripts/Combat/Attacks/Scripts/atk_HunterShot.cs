@@ -6,6 +6,16 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Attacks/HunterShot")]
 public class atk_HunterShot : Attack {
 
+    public override Vector2Int BeginAttack(int xPos, int yPos, ActiveAttack activeAtk)
+    {
+       
+        for(int i = yPos; i >= 0; i--)
+        {
+            scr_Grid.GridController.PrimeNextTile(xPos - i, yPos);
+        }
+        return new Vector2Int(xPos, yPos); 
+    }
+
     public override Vector2Int ProgressAttack(int xPos, int yPos, ActiveAttack activeAtk)
     {
         return LinearForward_ProgressAttack(xPos, yPos, activeAtk);
