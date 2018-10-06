@@ -12,4 +12,12 @@ public class GameLaunch : MonoBehaviour {
         SaveLoad.Load();		
 	}
 
+    /// <summary>
+    /// Called by the play button
+    /// </summary>
+    public void Play()
+    {
+        SaveLoad.NewGame();
+    }
+
 }

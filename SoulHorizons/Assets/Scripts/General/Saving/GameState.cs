@@ -22,6 +22,7 @@ public class GameState {
         //initialize player object
         player = new PlayerState();
         player.playerLevel = 1;
+        player.currentHealth = -1; //use -1 as an indicator to not take this number on encounter load
 
         //TODO: initialize inventory
         inventory = new InventoryState();
@@ -39,6 +40,16 @@ public class GameState {
     public string GetPlayerName()
     {
         return player.name;
+    }
+
+    public int GetPlayerHealth()
+    {
+        return player.currentHealth;
+    }
+
+    public void SetPlayerHealth(int health)
+    {
+        player.currentHealth = health;
     }
 
 
@@ -103,6 +114,7 @@ public class PlayerState
 {
     public int playerLevel;
     internal string name;
+    public int currentHealth;
 }
 
 [System.Serializable]

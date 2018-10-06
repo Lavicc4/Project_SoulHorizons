@@ -8,7 +8,7 @@ using System.IO;
 public static class SaveLoad {
 
     public static List<GameState> savedGames = new List<GameState>(3);
-    static GameState currentGame;
+    public static GameState currentGame;
 
     /// <summary>
     /// Create a new save file. Limit how many they can have?

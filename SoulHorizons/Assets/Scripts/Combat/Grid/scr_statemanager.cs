@@ -18,6 +18,12 @@ public class scr_statemanager : MonoBehaviour {
         if (player != null)
         {
             playerEntity = player.GetComponent<scr_Entity>();
+            //load the health from the GameState
+            int hp = SaveLoad.currentGame.GetPlayerHealth();
+            if (hp > 0) //make sure the health has been set previously
+            {
+                playerEntity._health.hp = hp;
+            }
         }
         else
         {
@@ -34,6 +40,9 @@ public class scr_statemanager : MonoBehaviour {
             scr_InputManager.disableInput = true;
             RewardMessage.enabled = true;
             endCombat = true;
+
+            //save health
+            SaveLoad.currentGame.SetPlayerHealth(playerEntity._health.hp);
         }
         if (endCombat)
         {
