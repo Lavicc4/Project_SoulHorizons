@@ -120,7 +120,7 @@ public class scr_PlayerMovement : scr_EntityAI
         }
          */
 
-        if (scr_Grid.GridController.LocationOnGrid(_x, _y) &&  scr_Grid.GridController.ReturnTerritory(_x,_y) == entity.entityTerritory)
+        if (scr_Grid.GridController.LocationOnGrid(_x, _y) &&  scr_Grid.GridController.ReturnTerritory(_x,_y).name == entity.entityTerritory.name)
         {
             entity.SetTransform(_x, _y);
         }

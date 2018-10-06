@@ -328,13 +328,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7490e84f7093e649a8e70f277eab5c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
+  type: 1
   _gridPos: {x: 0, y: 0}
   _health:
     hp: 10
     temp_hp: 0
   _ai: {fileID: 114404296688108730}
-  entityTerritory: 0
+  entityTerritory:
+    name: 0
+    TerrColor: {r: 1, g: 1, b: 1, a: 1}
   spr: {fileID: 212424679629100636}
   lerpSpeed: 30
   has_iframes: 1

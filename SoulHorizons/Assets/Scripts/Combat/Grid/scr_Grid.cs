@@ -33,13 +33,12 @@ public class scr_Grid : MonoBehaviour{
         InitEncounter(); 
     }
 
-
+    //Build Grid Tiles
     private void BuildGrid()
     {
         //tile_sprites = Resources.LoadAll<Sprite>("tiles_spritesheet");
         grid = new scr_Tile[xSizeMax, ySizeMax];
-   
-        //LOAD PLAYER SIDE
+
         for (int j = 0; j < ySizeMax; j++)
         {
             for (int i = 0; i < xSizeMax; i++)
@@ -157,7 +156,7 @@ public class scr_Grid : MonoBehaviour{
         }
     }
 
-    public scr_Tile.Territory ReturnTerritory(int x, int y)
+    public Territory ReturnTerritory(int x, int y)
     {
         return grid[x, y].territory;
     }
@@ -174,9 +173,10 @@ public class scr_Grid : MonoBehaviour{
             //Why is this not using activeEntities[i]._gridPos.Equals(attack.pos)? Why create a new object? - Colin
             if(activeEntities[i]._gridPos == new Vector2Int(attack.pos.x, attack.pos.y))
             {
-                //Debug.Log("ACTIVE ENTITY HIT!");
-                if(activeEntities[i].entityTerritory != attack.entity.entityTerritory)
+                //Debug.Log(activeEntities[i].entityTerritory.name + " " + attack.entity.entityTerritory.name);
+                if(activeEntities[i].type != attack.entity.type)
                 {
+                    Debug.Log("ACTIVE ENTITY HIT!");
                     //Check if entity is invincible and assigns iframes accordingly
                     if (!activeEntities[i].isInvincible()) {
                         activeEntities[i].HitByAttack(attack._attack);
