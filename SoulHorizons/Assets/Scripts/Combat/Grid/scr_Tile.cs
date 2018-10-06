@@ -39,7 +39,7 @@ public class scr_Tile : MonoBehaviour{
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        territory.TerrColor.a = 255;
+        territory.TerrColor.a = 1f;
         spriteRenderer.color = territory.TerrColor;
         spriteRenderer.drawMode = SpriteDrawMode.Sliced;
         spriteRenderer.size = spriteSize;
@@ -78,9 +78,11 @@ public class scr_Tile : MonoBehaviour{
 
     public void Prime()
     {
-        isPrimed = true; 
-        //if(!isActive)
-        //    spriteRenderer.color = primeColor;
+        isPrimed = true;
+        if (!isActive)
+        {
+            spriteRenderer.color = primeColor;
+        }
         
     }
     public void DePrime()
@@ -94,7 +96,7 @@ public class scr_Tile : MonoBehaviour{
         queuedAttacks++; 
         isPrimed = false; 
         isActive = true; 
-        //spriteRenderer.color = activeColor;
+        spriteRenderer.color = activeColor;
     }
     
     public void Deactivate()

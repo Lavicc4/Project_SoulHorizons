@@ -83,11 +83,11 @@ public static class scr_InputManager {
 		r += Input.GetAxis("Mouse ScrollWheel");
 		if (r < 0f)
 		{
-			return -1;
+			return 1;
 		}
 		else if (r > 0f)
 		{
-			return 1;
+			return -1;
 		}
 		return 0;
 	}
