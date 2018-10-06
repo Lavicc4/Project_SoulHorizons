@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using EZCameraShake;
 
 public enum EntityType
 {
@@ -103,7 +104,13 @@ public class scr_Entity : MonoBehaviour
         {
             _health.TakeDamage(_attack.damage);
             StartCoroutine(HitClock(.5f));
+            if (type == EntityType.Player)
+            {
+                //camera shake
+                CameraShaker.Instance.ShakeOnce(2f, 2f, 0.2f, 0.2f);
+            }
         }
+
     }
 
     public bool isInvincible()

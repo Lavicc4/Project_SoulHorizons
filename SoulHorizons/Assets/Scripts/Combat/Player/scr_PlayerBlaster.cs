@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using EZCameraShake;
 
 /// <summary>
 /// Manages the player blaster functionality. Receives user input and passes information to the projectile when firing.
@@ -68,7 +69,8 @@ public class scr_PlayerBlaster : MonoBehaviour {
 			}
 			else
 			{
-				//fire a shot at charge level 1
+                //fire a shot at charge level 1
+                CameraShaker.Instance.ShakeOnce(2f, 2f, 0.2f, 0.2f);
 				damage += damageIncrease1;
 				attack.damage = (int) Mathf.Round(damage);
 				//set the projectile sprite
@@ -76,6 +78,7 @@ public class scr_PlayerBlaster : MonoBehaviour {
 				//proj.Fire(damage, 1, baseSpeed);
 				scr_AttackController.attackController.AddNewAttack(attack, playerEntity._gridPos.x, playerEntity._gridPos.y, playerEntity);
 				StartCoroutine(AttackCooldown(chargeCooldown));
+                
 			}
 
 			//reset variables
