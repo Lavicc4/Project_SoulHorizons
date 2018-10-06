@@ -26,3 +26,5 @@ MonoBehaviour:
     cardObject: {fileID: 11400000, guid: b5b4bbac060b24e47b78711e8b929c98, type: 2}
   - name: Harden Soul
     cardObject: {fileID: 11400000, guid: bdde628268dc5e844bc4742398f37cb1, type: 2}
+  - name: Seize Domain
+    cardObject: {fileID: 11400000, guid: 518e826e5c97bb3489f344bc30558a75, type: 2}

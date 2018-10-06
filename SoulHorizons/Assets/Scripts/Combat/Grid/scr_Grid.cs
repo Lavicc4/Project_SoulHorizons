@@ -156,6 +156,12 @@ public class scr_Grid : MonoBehaviour{
         }
     }
 
+    public void SetTileTerritory(int x, int y, TerrName newName, Color newColor)
+    {
+        grid[x, y].SetTerritory(newName, newColor);
+   
+    }
+
     public Territory ReturnTerritory(int x, int y)
     {
         return grid[x, y].territory;
@@ -170,28 +176,32 @@ public class scr_Grid : MonoBehaviour{
     {
         for(int i=0; i < activeEntities.Length; i++)
         {
-            //Why is this not using activeEntities[i]._gridPos.Equals(attack.pos)? Why create a new object? - Colin
-            if(activeEntities[i]._gridPos == new Vector2Int(attack.pos.x, attack.pos.y))
+            if (activeEntities[i].gameObject.activeSelf)
             {
-                //Debug.Log(activeEntities[i].entityTerritory.name + " " + attack.entity.entityTerritory.name);
-                if(activeEntities[i].type != attack.entity.type)
+                //Why is this not using activeEntities[i]._gridPos.Equals(attack.pos)? Why create a new object? - Colin
+                if (activeEntities[i]._gridPos == new Vector2Int(attack.pos.x, attack.pos.y))
                 {
-                    Debug.Log("ACTIVE ENTITY HIT!");
-                    //Check if entity is invincible and assigns iframes accordingly
-                    if (!activeEntities[i].isInvincible()) {
-                        activeEntities[i].HitByAttack(attack._attack);
-                        if (activeEntities[i].has_iframes)
+                    //Debug.Log(activeEntities[i].entityTerritory.name + " " + attack.entity.entityTerritory.name);
+                    if (activeEntities[i].type != attack.entity.type)
+                    {
+                        Debug.Log("ACTIVE ENTITY HIT!");
+                        //Check if entity is invincible and assigns iframes accordingly
+                        if (!activeEntities[i].isInvincible())
                         {
-                            //Activate invincibility frames
-                            activeEntities[i].setInvincible(true);
-                            
+                            activeEntities[i].HitByAttack(attack._attack);
+                            if (activeEntities[i].has_iframes)
+                            {
+                                //Activate invincibility frames
+                                activeEntities[i].setInvincible(true);
+
+                            }
                         }
+                        attack.entityIsHit = true;
+                        attack.entityHit = activeEntities[i];
+                        attack._attack.ImpactEffects();
                     }
-                    attack.entityIsHit = true;
-                    attack.entityHit = activeEntities[i];
-                    attack._attack.ImpactEffects();
+                    return attack;
                 }
-                return attack; 
             }
           
         }

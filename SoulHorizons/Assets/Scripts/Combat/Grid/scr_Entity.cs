@@ -132,6 +132,7 @@ public class scr_Entity : MonoBehaviour
     public void Death()
     {
         Debug.Log("I AM DEAD");
+        scr_Grid.GridController.SetTileOccupied(false, _gridPos.x, _gridPos.y, this);
         gameObject.SetActive(false);
     }
    

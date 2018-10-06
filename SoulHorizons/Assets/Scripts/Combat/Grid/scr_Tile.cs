@@ -62,6 +62,7 @@ public class scr_Tile : MonoBehaviour{
             //entityOnTile._health.TakeDamage(1);
             isActive = false; //So it only hits once and not every frame, can change if it's multi hit, add that functionality later
         }
+
     }
 
     public void InitalizeTile()
@@ -70,10 +71,11 @@ public class scr_Tile : MonoBehaviour{
 
     }
 
-    public void SetTerritory(Territory newTer)
+    public void SetTerritory(TerrName newName, Color newColor)
     {
-        territory = newTer;
-       
+        territory.name = newName;
+        territory.TerrColor = newColor;
+        spriteRenderer.color = territory.TerrColor;
     }
 
     public void Prime()
