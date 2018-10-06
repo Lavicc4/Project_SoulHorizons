@@ -306,7 +306,7 @@ MonoBehaviour:
   hunterShot: {fileID: 11400000, guid: 96c867f804731764db7981afb6e89a3c, type: 2}
   hSChargeTime: 3
   arrowRain: {fileID: 11400000, guid: 320a8358f456ced43b8ea33ecfec776c, type: 2}
-  aRInterval: 2
+  aRInterval: 5
 --- !u!114 &114725702907161856
 MonoBehaviour:
   m_ObjectHideFlags: 1
