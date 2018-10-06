@@ -35,11 +35,11 @@ public class scr_Tile : MonoBehaviour{
         spriteRenderer.color = inactiveColor;
         spriteRenderer.drawMode = SpriteDrawMode.Sliced;
         spriteRenderer.size = spriteSize;
-        isPrimed = false;
-        isActive = false; 
-        harmful = false;
-        occupied = false;
-        gridController = GameObject.FindGameObjectWithTag("GridController");
+        isPrimed = false;                                                       //Sets a tile to about to be hit (yellow)
+        isActive = false;                                                       //Sets a tile to do hit          (red)
+        harmful = false;                                                        //Sets tile to do persistent harm. May not be needed
+        occupied = false;                                                       //Sets a tile to be occupied by an entity
+        gridController = GameObject.FindGameObjectWithTag("GridController");    //Grid Controller
         grid = gridController.GetComponent<scr_Grid>();
         entityOnTile = null;
          
@@ -71,8 +71,8 @@ public class scr_Tile : MonoBehaviour{
     public void Prime()
     {
         isPrimed = true; 
-        if(!isActive)
-            spriteRenderer.color = primeColor;
+        //if(!isActive)
+        //    spriteRenderer.color = primeColor;
         
     }
     public void DePrime()
@@ -86,7 +86,7 @@ public class scr_Tile : MonoBehaviour{
         queuedAttacks++; 
         isPrimed = false; 
         isActive = true; 
-        spriteRenderer.color = activeColor;
+        //spriteRenderer.color = activeColor;
     }
     
     public void Deactivate()
