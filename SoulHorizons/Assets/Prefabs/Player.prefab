@@ -334,7 +334,9 @@ MonoBehaviour:
     hp: 10
     temp_hp: 0
   _ai: {fileID: 114404296688108730}
-  entityTerritory: 0
+  entityTerritory:
+    name: 0
+    TerrColor: {r: 1, g: 1, b: 1, a: 1}
   spr: {fileID: 212424679629100636}
   lerpSpeed: 30
   has_iframes: 1

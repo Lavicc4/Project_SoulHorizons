@@ -10,7 +10,8 @@ public abstract class Attack : ScriptableObject {
     public int maxIncrements = 1;
     public int damage;
     [Header("Where the attack is coming from")]
-    public scr_Tile.Territory territory;
+    //public Territory territory;
+    public EntityType type;
     public bool piercing;
     public SpriteRenderer particles;
     public Vector3 particlesOffset;

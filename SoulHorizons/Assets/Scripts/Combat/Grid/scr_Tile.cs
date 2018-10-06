@@ -2,12 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum TerrName { Player, Enemy, Neutral, Blocked }
+
+[System.Serializable]
+public struct Territory
+{
+    public TerrName name;
+    public Color TerrColor;
+}
 public class scr_Tile : MonoBehaviour{
 
     [Header("Combat Colors")]
     public Color primeColor;
     public Color activeColor;
-    public Color inactiveColor;
+    //public Color inactiveColor;
 
     
     public bool occupied;
@@ -15,7 +23,6 @@ public class scr_Tile : MonoBehaviour{
     public bool isPrimed;
     public bool isActive; 
     public Territory territory;
-    public enum Territory {Player,Enemy,Neutral,Blocked}
     GameObject gridController;
     scr_Grid grid;
     public int gridPositionX;
@@ -32,7 +39,8 @@ public class scr_Tile : MonoBehaviour{
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.color = inactiveColor;
+        territory.TerrColor.a = 255;
+        spriteRenderer.color = territory.TerrColor;
         spriteRenderer.drawMode = SpriteDrawMode.Sliced;
         spriteRenderer.size = spriteSize;
         isPrimed = false;                                                       //Sets a tile to about to be hit (yellow)
@@ -79,7 +87,7 @@ public class scr_Tile : MonoBehaviour{
     {
         isPrimed = false;
         if (!isPrimed)
-            spriteRenderer.color = inactiveColor; 
+            spriteRenderer.color = territory.TerrColor; 
     }
     public void Activate()
     {
@@ -102,7 +110,7 @@ public class scr_Tile : MonoBehaviour{
             else
             {
                 isActive = false;
-                spriteRenderer.color = inactiveColor;
+                spriteRenderer.color = territory.TerrColor;
             }
             
         }

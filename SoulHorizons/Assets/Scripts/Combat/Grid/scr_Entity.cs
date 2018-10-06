@@ -16,7 +16,7 @@ public class scr_Entity : MonoBehaviour
     public Vector2Int _gridPos = new Vector2Int();
     public Health _health = new Health();
     public scr_EntityAI _ai;
-    public scr_Tile.Territory entityTerritory;
+    public Territory entityTerritory;
     public SpriteRenderer spr;
     Color baseColor;
     public float lerpSpeed;
@@ -91,8 +91,15 @@ public class scr_Entity : MonoBehaviour
 
     public void HitByAttack(Attack _attack)
     {
-      
-        if (_attack.territory != entityTerritory)
+
+        /*
+        if (_attack.territory.name != entityTerritory.name)
+        {
+            _health.TakeDamage(_attack.damage);
+            StartCoroutine(HitClock(.5f));
+        }
+         */
+        if (_attack.type != type)
         {
             _health.TakeDamage(_attack.damage);
             StartCoroutine(HitClock(.5f));

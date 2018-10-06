@@ -73,7 +73,7 @@ public class Encounter : ScriptableObject {
     [System.Serializable]
     public class TerritoryRow
     {
-        public scr_Tile.Territory[] territoryRow; 
+        public Territory[] territoryRow; 
     }
 
     [System.Serializable]

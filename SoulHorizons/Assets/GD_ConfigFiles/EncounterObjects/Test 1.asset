@@ -33,9 +33,45 @@ MonoBehaviour:
     x: 5
     y: 2
   territoryColumn:
-  - territoryRow: 000000000000000000000000
-  - territoryRow: 000000000000000000000000
-  - territoryRow: 000000000000000000000000
-  - territoryRow: 010000000100000001000000
-  - territoryRow: 010000000100000001000000
-  - territoryRow: 010000000100000001000000
+  - territoryRow:
+    - name: 0
+      TerrColor: {r: 1, g: 1, b: 1, a: 0}
+    - name: 0
+      TerrColor: {r: 1, g: 1, b: 1, a: 0}
+    - name: 0
+      TerrColor: {r: 1, g: 1, b: 1, a: 0}
+  - territoryRow:
+    - name: 0
+      TerrColor: {r: 1, g: 1, b: 1, a: 0}
+    - name: 0
+      TerrColor: {r: 1, g: 1, b: 1, a: 0}
+    - name: 0
+      TerrColor: {r: 1, g: 1, b: 1, a: 0}
+  - territoryRow:
+    - name: 0
+      TerrColor: {r: 1, g: 1, b: 1, a: 0}
+    - name: 0
+      TerrColor: {r: 1, g: 1, b: 1, a: 0}
+    - name: 0
+      TerrColor: {r: 1, g: 1, b: 1, a: 0}
+  - territoryRow:
+    - name: 1
+      TerrColor: {r: 0, g: 0, b: 0, a: 0}
+    - name: 1
+      TerrColor: {r: 0, g: 0, b: 0, a: 0}
+    - name: 1
+      TerrColor: {r: 0, g: 0, b: 0, a: 0}
+  - territoryRow:
+    - name: 1
+      TerrColor: {r: 0, g: 0, b: 0, a: 0}
+    - name: 1
+      TerrColor: {r: 0, g: 0, b: 0, a: 0}
+    - name: 1
+      TerrColor: {r: 0, g: 0, b: 0, a: 0}
+  - territoryRow:
+    - name: 1
+      TerrColor: {r: 0, g: 0, b: 0, a: 0}
+    - name: 1
+      TerrColor: {r: 0, g: 0, b: 0, a: 0}
+    - name: 1
+      TerrColor: {r: 0, g: 0, b: 0, a: 0}
