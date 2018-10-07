@@ -141,10 +141,12 @@ public class ActiveAttack
     public scr_Entity entity;
     public bool entityIsHit = false; //set to true if the attack hits an entity
     public scr_Entity entityHit = null; //contains a reference to the entity that the attack hit
-    public SpriteRenderer particle;
+    public SpriteRenderer particle; // use if only one particle 
+    public SpriteRenderer[] particles; //use for multiple particles 
     
     public ActiveAttack(Attack atk, int x, int y, scr_Entity ent)
     {
+        particles = new SpriteRenderer[5];
         _attack = atk;
         pos.x = x;
         pos.y = y;
@@ -180,7 +182,8 @@ public class ActiveAttack
         lastPos = atk.lastPos;
         entity = atk.entity;
         entityIsHit = atk.entityIsHit;
-        particle = atk.particle; 
+        particle = atk.particle;
+        particles = atk.particles;
         
     }
 
