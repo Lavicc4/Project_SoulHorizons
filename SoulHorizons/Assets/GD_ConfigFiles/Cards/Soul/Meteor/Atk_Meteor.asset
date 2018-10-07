@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1255188bf28c8354c8ec89464331309e, type: 3}
+  m_Name: Atk_Meteor
+  m_EditorClassIdentifier: 
+  incrementSpeed: 0.5
+  maxIncrements: 3
+  damage: 5
+  type: 1
+  piercing: 1
+  particles: {fileID: 212160339734999984, guid: adcd5b01c4cd3da49bb80cfb90445fdc,
+    type: 2}
+  particlesOffset: {x: 0, y: 0, z: 0}

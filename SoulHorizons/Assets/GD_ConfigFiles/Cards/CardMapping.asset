@@ -30,3 +30,5 @@ MonoBehaviour:
     cardObject: {fileID: 11400000, guid: 518e826e5c97bb3489f344bc30558a75, type: 2}
   - name: Cleave
     cardObject: {fileID: 11400000, guid: 797e587004e8f2249aeb41b75157828a, type: 2}
+  - name: Meteor
+    cardObject: {fileID: 11400000, guid: e8c6f7a1bd0d7b1498c3aef680b1ddec, type: 2}

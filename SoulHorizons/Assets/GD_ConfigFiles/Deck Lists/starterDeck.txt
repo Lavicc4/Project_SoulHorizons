@@ -1,4 +1,1 @@
-Harden Soul: 10
-Bolt: 10
-Cleave: 6
-Seize Domain: 4
+Meteor: 30
