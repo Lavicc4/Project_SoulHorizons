@@ -1,3 +1,4 @@
 Harden Soul: 10
 Bolt: 10
-Seize Domain: 10
+Cleave: 6
+Seize Domain: 4
