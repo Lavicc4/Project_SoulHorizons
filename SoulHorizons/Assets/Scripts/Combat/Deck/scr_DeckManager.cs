@@ -9,6 +9,8 @@ using TMPro;
 /// Contains references to all parts of the deck system. Anything outside the deck system should use the public functions in this class for deck information.
 /// </summary>
 [RequireComponent(typeof(scr_Deck))]
+[RequireComponent(typeof(AudioSource))]
+
 public class scr_DeckManager : MonoBehaviour {
 
 	public scr_CardUI[] cardUI; //references to the cards UI
@@ -20,6 +22,9 @@ public class scr_DeckManager : MonoBehaviour {
 
     private bool readyToCast = true;
     public float cooldown = 0.6f; //the rate at which the player can play cards; could make this a variable in the card instead
+
+    AudioSource CardChange_SFX;
+    public AudioClip cardChange_SFX;
 
     void Awake()
     {
@@ -41,6 +46,8 @@ public class scr_DeckManager : MonoBehaviour {
 
 	void Start ()
     {
+        AudioSource SFX_Source = GetComponent<AudioSource>();
+        CardChange_SFX = SFX_Source;
         UpdateGUI();
 	}
 
@@ -90,6 +97,8 @@ public class scr_DeckManager : MonoBehaviour {
         }
         else if (axis > 0)
         {
+            CardChange_SFX.clip = cardChange_SFX;
+            CardChange_SFX.Play();
             currentCard = (currentCard + 1) % deck_scr.handSize;
             return true;
         }
