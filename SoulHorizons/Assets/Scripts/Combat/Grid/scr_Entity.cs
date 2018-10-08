@@ -10,6 +10,8 @@ public enum EntityType
     Obstacle
 }
 
+[RequireComponent(typeof(AudioSource))]
+
 public class scr_Entity : MonoBehaviour
 {
     public EntityType type;
@@ -26,9 +28,19 @@ public class scr_Entity : MonoBehaviour
     public float invulnTime;
     float invulnCounter = 0f;
 
+    AudioSource Hurt_SFX;
+    AudioSource Die_SFX;
+    public AudioClip[] hurts_SFX;
+    private AudioClip hurt_SFX;
+    public AudioClip[] dies_SFX;
+    private AudioClip die_SFX;
+
     public void Start()
     {
         baseColor = spr.color;
+        AudioSource[] SFX_Sources = GetComponents<AudioSource>();
+        Hurt_SFX = SFX_Sources[2];
+        Die_SFX = SFX_Sources[3];
     }
     public void Update()
     {
@@ -102,6 +114,11 @@ public class scr_Entity : MonoBehaviour
          */
         if (_attack.type != type)
         {
+            int index = Random.Range(0, hurts_SFX.Length);
+            hurt_SFX = hurts_SFX[index];
+            Hurt_SFX.clip = hurt_SFX;
+            Hurt_SFX.Play();
+
             _health.TakeDamage(_attack.damage);
             StartCoroutine(HitClock(.5f));
             if (type == EntityType.Player)
@@ -138,6 +155,11 @@ public class scr_Entity : MonoBehaviour
 
     public void Death()
     {
+        int index = Random.Range(0, dies_SFX.Length);
+        die_SFX = dies_SFX[index];
+        Die_SFX.clip = die_SFX;
+        Die_SFX.Play();
+
         Debug.Log("I AM DEAD");
         scr_Grid.GridController.SetTileOccupied(false, _gridPos.x, _gridPos.y, this);
         gameObject.SetActive(false);

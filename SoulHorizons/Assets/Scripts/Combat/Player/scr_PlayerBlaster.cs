@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using EZCameraShake;
+[RequireComponent(typeof(AudioSource))]
 
 /// <summary>
 /// Manages the player blaster functionality. Receives user input and passes information to the projectile when firing.
@@ -25,9 +26,16 @@ public class scr_PlayerBlaster : MonoBehaviour {
 
 	public SpriteRenderer baseProjectile;
 	public SpriteRenderer projectile1;
-	
 
-	void Awake()
+    AudioSource Blaster_SFX;
+    //AudioSource Die_SFX;
+    public AudioClip[] blasters_SFX;
+    private AudioClip blaster_SFX;
+    //public AudioClip[] dies_SFX;
+    //private AudioClip die_SFX;
+
+
+    void Awake()
 	{
 		//objectPool_scr = GetComponent<scr_ObjectPool>();
 		playerEntity = GetComponent<scr_Entity>();
@@ -35,7 +43,10 @@ public class scr_PlayerBlaster : MonoBehaviour {
 	
 	void Start () {
 		pressed = false;
-	}
+        AudioSource[] SFX_Sources = GetComponents<AudioSource>();
+        Blaster_SFX = SFX_Sources[4];
+        //Die_SFX = SFX_Sources[3];
+    }
 	
 	
 	void Update () {
@@ -48,7 +59,12 @@ public class scr_PlayerBlaster : MonoBehaviour {
 
 		if (scr_InputManager.Blast_Down() && readyToFire)
 		{
-			pressed = true;
+            int index = Random.Range(0, blasters_SFX.Length);
+            blaster_SFX = blasters_SFX[index];
+            Blaster_SFX.clip = blaster_SFX;
+            Blaster_SFX.Play();
+
+            pressed = true;
 		}
 
 		if(scr_InputManager.Blast_Up() && readyToFire)
