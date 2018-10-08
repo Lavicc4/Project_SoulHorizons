@@ -1,1 +1,5 @@
-Meteor: 30
+Meteor: 4
+Bolt: 8
+Cleave: 6
+Seize Domain: 4
+Harden Soul: 8

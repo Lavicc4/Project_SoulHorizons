@@ -13,8 +13,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   incrementSpeed: 0.08
   maxIncrements: 6
-  damage: 1
-  territory: 1
+  damage: 10
+  type: 0
   piercing: 1
   particles: {fileID: 212160339734999984, guid: 7103f55527c3a4745b845ab6db5777e7,
     type: 2}

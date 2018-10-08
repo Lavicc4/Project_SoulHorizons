@@ -324,7 +324,7 @@ Prefab:
         type: 2}
       propertyPath: currentEncounter
       value: 
-      objectReference: {fileID: 11400000, guid: c2eea985e5ee5cc4bae814e182776a19,
+      objectReference: {fileID: 11400000, guid: 1ea3f71c4d41ba7459e1cf49e49d96d9,
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50a29c5521521bb46a851340eca76195, type: 2}
@@ -460,7 +460,7 @@ MonoBehaviour:
   - {fileID: 1729363046}
   - {fileID: 1871253128}
   - {fileID: 155839717}
-  cooldown: 0.6
+  cooldown: 1.5
 --- !u!4 &283017071
 Transform:
   m_ObjectHideFlags: 0
