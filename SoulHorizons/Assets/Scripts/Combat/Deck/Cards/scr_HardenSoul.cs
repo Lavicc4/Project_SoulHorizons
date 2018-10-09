@@ -4,7 +4,7 @@ using UnityEngine;
 
 [CreateAssetMenu(menuName = "Cards/HardenSoul")]
 public class scr_HardenSoul : scr_Card {
-
+   
     public int Shield_hp;
     public override void Activate()
     {
