@@ -6,6 +6,8 @@ using UnityEngine;
 public class scr_SeizeDomain : scr_Card
 {
     bool colFound;
+    public float duration;
+    public Color newColor;
     public override void Activate()
     {
         colFound = false;
@@ -24,7 +26,7 @@ public class scr_SeizeDomain : scr_Card
                     if (!scr_Grid.GridController.grid[i, j].occupied)
                     {
                         //Debug.Log("SEIZING!");
-                        scr_Grid.GridController.SetTileTerritory(i, j, TerrName.Player, Color.white);
+                        scr_Grid.GridController.SetTileTerritory(i, j, TerrName.Player, newColor);
                     }
                 }
             }

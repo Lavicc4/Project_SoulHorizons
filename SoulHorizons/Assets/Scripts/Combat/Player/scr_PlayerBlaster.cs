@@ -15,6 +15,7 @@ public class scr_PlayerBlaster : MonoBehaviour {
 	public float chargeTime1 = 1.2f; //time in seconds for the blast to reach charge level 1
 	public float damageIncrease1 = 8f; //the amount that damage dealt increases when charge level 1 is increased
 	public float damageIncreaseRate = 3f; //how much damage increases per second. This increase is independent of the charge level damage increase. Set this to 0 to have only the charge level increase.
+    public float damageMultiplier = 0f; //How much to multiply the damage, for cards like inner strength
 
 	private float timePressed = 0f; //the time the fire button has been held
 	private bool pressed;
@@ -77,7 +78,7 @@ public class scr_PlayerBlaster : MonoBehaviour {
 				//fire a normal shot
 
 				//set the damage for the attack
-				attack.damage = (int) Mathf.Round(damage);
+				attack.damage = (int) Mathf.Round(damage*damageMultiplier);
 				//set the projectile sprite
 				attack.particles = baseProjectile;
 				scr_AttackController.attackController.AddNewAttack(attack, playerEntity._gridPos.x, playerEntity._gridPos.y, playerEntity);
@@ -86,9 +87,9 @@ public class scr_PlayerBlaster : MonoBehaviour {
 			else
 			{
                 //fire a shot at charge level 1
-                CameraShaker.Instance.ShakeOnce(2f, 2f, 0.2f, 0.2f);
+                CameraShaker.Instance.ShakeOnce(4f, 4f, 0.2f, 0.2f);
 				damage += damageIncrease1;
-				attack.damage = (int) Mathf.Round(damage);
+				attack.damage = (int) Mathf.Round(damage*damageMultiplier);
 				//set the projectile sprite
 				attack.particles = projectile1;
 				//proj.Fire(damage, 1, baseSpeed);
@@ -113,4 +114,16 @@ public class scr_PlayerBlaster : MonoBehaviour {
 		yield return new WaitForSeconds(cooldown);
 		readyToFire = true;
 	}
+
+    private IEnumerator MultiplierReset(float resetTime)
+    {
+        yield return new WaitForSecondsRealtime(resetTime);
+    }
+
+    //Set the damage multiplier to a certain number for an amount of time
+    public void setMultiplier(float num, float time)
+    {
+        damageMultiplier = num;
+        StartCoroutine(MultiplierReset(time));
+    }
 }

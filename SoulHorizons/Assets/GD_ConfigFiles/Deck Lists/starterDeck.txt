@@ -1,5 +1,8 @@
+Bolt: 4
+Mend: 4
+Blur: 4
 Meteor: 4
-Cleave: 6
-Seize Domain: 4
-Harden Soul: 8
-Bolt: 8
+Cleave: 4
+Harden Soul: 4
+Inner Strength: 4
+Seize Domain: 2

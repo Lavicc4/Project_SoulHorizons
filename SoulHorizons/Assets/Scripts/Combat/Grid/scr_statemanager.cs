@@ -9,12 +9,16 @@ public class scr_statemanager : MonoBehaviour {
     public Text RewardMessage;
     public Text PlayerHealth;
     public Text TempHealth;
+    public Text EffectText;
     bool endCombat = false;
+    bool showEffect = false;
+    string EffectString;
     GameObject player;
     scr_Entity playerEntity;
     // Use this for initialization
     void Start () {
         player = GameObject.FindGameObjectWithTag("Player");
+        EffectText.enabled = false;
         if (player != null)
         {
             playerEntity = player.GetComponent<scr_Entity>();
@@ -34,6 +38,7 @@ public class scr_statemanager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         UpdateHealth();
+        UpdateEffects();
 		if(GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
         {
             //Debug.Log("NO ENEMIES");
@@ -72,5 +77,29 @@ public class scr_statemanager : MonoBehaviour {
             RewardMessage.enabled = true;
             endCombat = true;
         }
+    }
+
+    public void UpdateEffects()
+    {
+        if (showEffect)
+        {
+            EffectText.text = EffectString;
+            EffectText.enabled = true;
+        }
+        else EffectText.enabled = false;
+    }
+
+    public void ChangeEffects(string text, float duration)
+    {
+        Debug.Log("NEW EFFECT");
+        showEffect = true;
+        EffectString = text;
+        StartCoroutine(EffectTime(duration));
+    }
+
+    private IEnumerator EffectTime(float time)
+    {
+        yield return new WaitForSecondsRealtime(time);
+        showEffect = false;
     }
 }

@@ -32,3 +32,9 @@ MonoBehaviour:
     cardObject: {fileID: 11400000, guid: 797e587004e8f2249aeb41b75157828a, type: 2}
   - name: Meteor
     cardObject: {fileID: 11400000, guid: e8c6f7a1bd0d7b1498c3aef680b1ddec, type: 2}
+  - name: Inner Strength
+    cardObject: {fileID: 11400000, guid: a3eac10b56a474348b8873fd51572411, type: 2}
+  - name: Blur
+    cardObject: {fileID: 11400000, guid: 99d15dc373a432b4ca18fd34a8de2e17, type: 2}
+  - name: Mend
+    cardObject: {fileID: 11400000, guid: cea6482a38d782849bc2d076fd4397c6, type: 2}

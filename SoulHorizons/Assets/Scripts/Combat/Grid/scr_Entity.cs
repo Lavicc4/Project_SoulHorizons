@@ -41,10 +41,11 @@ public class scr_Entity : MonoBehaviour
         AudioSource[] SFX_Sources = GetComponents<AudioSource>();
         Hurt_SFX = SFX_Sources[2];
         Die_SFX = SFX_Sources[3];
+        _health.max_hp = _health.hp;
     }
     public void Update()
     {
-        _ai.UpdateAI();
+        if(gameObject.activeSelf)_ai.UpdateAI();
         if (_health.hp <= 0)
         {
             _ai.Die();
@@ -57,7 +58,7 @@ public class scr_Entity : MonoBehaviour
             invulnCounter -= Time.deltaTime;
             if(invulnCounter <= 0)
             {
-                setInvincible(false);
+                setInvincible(false, 0f);
             }
         }
        
@@ -95,7 +96,7 @@ public class scr_Entity : MonoBehaviour
                 if (has_iframes)
                 {
                     //Activate invincibility frames
-                    setInvincible(true);
+                    setInvincible(true, invulnTime);
                 }
             }
         }
@@ -120,7 +121,7 @@ public class scr_Entity : MonoBehaviour
             Hurt_SFX.Play();
 
             _health.TakeDamage(_attack.damage);
-            StartCoroutine(HitClock(.5f));
+            StartCoroutine(HitClock(.3f));
             if (type == EntityType.Player)
             {
                 //camera shake
@@ -135,13 +136,14 @@ public class scr_Entity : MonoBehaviour
         return invincible;
     }
 
-    public void setInvincible(bool inv)
+    //makes the entity invincible for a time
+    public void setInvincible(bool inv, float time)
     {
         invincible = inv;
         if (inv)
         {
             //Debug.Log("I'M INVINCIBLE");
-            invulnCounter = invulnTime;
+            invulnCounter = time;
             spr.color = Color.gray;
         }
         else
@@ -175,15 +177,14 @@ public class scr_Entity : MonoBehaviour
         spr.color = baseColor;
         Debug.Log("NOT RED");
     }
+
 }
 [System.Serializable]
 public class Health{
 
     public int hp = 10;
     public int temp_hp = 0;
-
-
-    
+    public int max_hp;
 
     public void TakeDamage(int damage)
     {

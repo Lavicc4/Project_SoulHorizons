@@ -4,8 +4,8 @@ using UnityEngine;
 
 [CreateAssetMenu(menuName = "Cards/HardenSoul")]
 public class scr_HardenSoul : scr_Card {
-   
-    public int Shield_hp;
+
+    public int Shield_hp; //How much shield hp
     public override void Activate()
     {
         ActivateEffects();

@@ -205,7 +205,7 @@ public class scr_Grid : MonoBehaviour{
                             if (activeEntities[i].has_iframes)
                             {
                                 //Activate invincibility frames
-                                activeEntities[i].setInvincible(true);
+                                activeEntities[i].setInvincible(true, activeEntities[i].invulnTime);
 
                             }
                         }
