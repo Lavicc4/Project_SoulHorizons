@@ -116,12 +116,25 @@ public class scr_Grid : MonoBehaviour{
         if(LocationOnGrid(x , y ))
             grid[x, y].Prime(); 
     }
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="x"></param>
+    /// <param name="y"></param>
     public void ActivateTile(int x, int y)
     {
         if (LocationOnGrid(x, y))
         {
             grid[x, y].Activate();
             
+        }
+    }
+    public void ActivateTile(int x, int y, ActiveAttack activeAttack)
+    {
+        if (LocationOnGrid(x, y))
+        {
+            grid[x, y].Activate(activeAttack);
+
         }
     }
 
@@ -207,7 +220,12 @@ public class scr_Grid : MonoBehaviour{
         }
         return attack; 
     }
-
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="x"></param>
+    /// <param name="y"></param>
+    /// <returns></returns>
     public Vector3 GetWorldLocation(int x, int y)
     {
         if (LocationOnGrid(x, y))
@@ -217,5 +235,19 @@ public class scr_Grid : MonoBehaviour{
             return new Vector3(-100,-100,-100); // will def be off the grid 
 
     }
-    
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="pos"></param>
+    /// <returns></returns>
+    public Vector3 GetWorldLocation(Vector2Int pos)
+    {
+        if (LocationOnGrid(pos.x,pos.y))
+            return new Vector3(grid[pos.x, pos.y].transform.position.x, grid[pos.x, pos.y].transform.position.y, 0);
+
+        else
+            return new Vector3(-100, -100, -100); // will def be off the grid 
+
+    }
+
 }

@@ -81,7 +81,7 @@ public class scr_DeckManager : MonoBehaviour {
         if (scr_InputManager.PlayCard() && readyToCast)
         {
             //start cooldown to be able to cast another card; could use an argument from the card to get variable cooldowns
-            CastCooldown(cooldown);
+            StartCoroutine(CastCooldown(cooldown));
             //play the current card
             deck_scr.Activate(currentCard);
             return true;
@@ -147,8 +147,10 @@ public class scr_DeckManager : MonoBehaviour {
 	/// <returns></returns>
 	private IEnumerator CastCooldown(float cooldown)
 	{
+        Debug.Log("Hello, I am on cooldown");
 		readyToCast = false;
 		yield return new WaitForSeconds(cooldown);
-		readyToCast = true;
+        Debug.Log("Hello, I am off of cooldown");
+        readyToCast = true;
 	}
 }

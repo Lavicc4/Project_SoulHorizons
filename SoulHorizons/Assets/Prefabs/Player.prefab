@@ -596,12 +596,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc01f984c67331647ad1c7508e6f29ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseDamage: 5
+  baseDamage: 2
   baseSpeed: 10
   chargeTime1: 1.2
-  damageIncrease1: 8
+  damageIncrease1: 10
   damageIncreaseRate: 0
-  fireRate: 0.2
+  fireRate: 0.3
   chargeCooldown: 0.4
   attack: {fileID: 11400000, guid: 7a5088d06498dc24e87770cb519a490a, type: 2}
   baseProjectile: {fileID: 212160339734999984, guid: adcd5b01c4cd3da49bb80cfb90445fdc,
@@ -626,7 +626,7 @@ MonoBehaviour:
   type: 1
   _gridPos: {x: 0, y: 0}
   _health:
-    hp: 10
+    hp: 100
     temp_hp: 0
   _ai: {fileID: 114404296688108730}
   entityTerritory:

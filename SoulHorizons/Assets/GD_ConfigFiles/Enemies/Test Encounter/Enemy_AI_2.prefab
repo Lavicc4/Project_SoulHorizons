@@ -525,7 +525,7 @@ MonoBehaviour:
   type: 0
   _gridPos: {x: 0, y: 0}
   _health:
-    hp: 30
+    hp: 50
     temp_hp: 0
   _ai: {fileID: 114373111611885714}
   entityTerritory:

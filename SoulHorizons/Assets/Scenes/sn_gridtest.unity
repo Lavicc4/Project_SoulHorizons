@@ -324,7 +324,7 @@ Prefab:
         type: 2}
       propertyPath: currentEncounter
       value: 
-      objectReference: {fileID: 11400000, guid: c58da183e3e04b1448c4f221d424c663,
+      objectReference: {fileID: 11400000, guid: 1ea3f71c4d41ba7459e1cf49e49d96d9,
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50a29c5521521bb46a851340eca76195, type: 2}
@@ -461,8 +461,7 @@ MonoBehaviour:
   - {fileID: 1729363046}
   - {fileID: 1871253128}
   - {fileID: 155839717}
-  cooldown: 0.6
-  cardChange_SFX: {fileID: 8300000, guid: cb559e01fe43736478dd0c9c831bea0a, type: 3}
+  cooldown: 1.5
 --- !u!4 &283017071
 Transform:
   m_ObjectHideFlags: 0
@@ -4660,6 +4659,7 @@ MonoBehaviour:
     entityIsHit: 0
     entityHit: {fileID: 0}
     particle: {fileID: 0}
+    particles: []
   - _attack: {fileID: 0}
     pos: {x: 0, y: 0}
     lastPos: {x: 0, y: 0}
@@ -4669,6 +4669,7 @@ MonoBehaviour:
     entityIsHit: 0
     entityHit: {fileID: 0}
     particle: {fileID: 0}
+    particles: []
   - _attack: {fileID: 0}
     pos: {x: 0, y: 0}
     lastPos: {x: 0, y: 0}
@@ -4678,6 +4679,7 @@ MonoBehaviour:
     entityIsHit: 0
     entityHit: {fileID: 0}
     particle: {fileID: 0}
+    particles: []
   - _attack: {fileID: 0}
     pos: {x: 0, y: 0}
     lastPos: {x: 0, y: 0}
@@ -4687,6 +4689,7 @@ MonoBehaviour:
     entityIsHit: 0
     entityHit: {fileID: 0}
     particle: {fileID: 0}
+    particles: []
   - _attack: {fileID: 0}
     pos: {x: 0, y: 0}
     lastPos: {x: 0, y: 0}
@@ -4696,6 +4699,7 @@ MonoBehaviour:
     entityIsHit: 0
     entityHit: {fileID: 0}
     particle: {fileID: 0}
+    particles: []
   - _attack: {fileID: 0}
     pos: {x: 0, y: 0}
     lastPos: {x: 0, y: 0}
@@ -4705,6 +4709,7 @@ MonoBehaviour:
     entityIsHit: 0
     entityHit: {fileID: 0}
     particle: {fileID: 0}
+    particles: []
   - _attack: {fileID: 0}
     pos: {x: 0, y: 0}
     lastPos: {x: 0, y: 0}
@@ -4714,6 +4719,7 @@ MonoBehaviour:
     entityIsHit: 0
     entityHit: {fileID: 0}
     particle: {fileID: 0}
+    particles: []
   - _attack: {fileID: 0}
     pos: {x: 0, y: 0}
     lastPos: {x: 0, y: 0}
@@ -4723,6 +4729,7 @@ MonoBehaviour:
     entityIsHit: 0
     entityHit: {fileID: 0}
     particle: {fileID: 0}
+    particles: []
   - _attack: {fileID: 0}
     pos: {x: 0, y: 0}
     lastPos: {x: 0, y: 0}
@@ -4732,6 +4739,7 @@ MonoBehaviour:
     entityIsHit: 0
     entityHit: {fileID: 0}
     particle: {fileID: 0}
+    particles: []
   - _attack: {fileID: 0}
     pos: {x: 0, y: 0}
     lastPos: {x: 0, y: 0}
@@ -4741,6 +4749,7 @@ MonoBehaviour:
     entityIsHit: 0
     entityHit: {fileID: 0}
     particle: {fileID: 0}
+    particles: []
   numberOfActiveAttacks: 0
 --- !u!1 &2134598706
 GameObject:

@@ -15,6 +15,8 @@ public class scr_Tile : MonoBehaviour{
     [Header("Combat Colors")]
     public Color primeColor;
     public Color activeColor;
+    public Color playerActiveColor;
+    public Color playerPrimeColor; 
     //public Color inactiveColor;
 
     
@@ -82,7 +84,7 @@ public class scr_Tile : MonoBehaviour{
     {
         isPrimed = true;
         if (!isActive)
-        {
+        {   
             spriteRenderer.color = primeColor;
         }
         
@@ -100,7 +102,22 @@ public class scr_Tile : MonoBehaviour{
         isActive = true; 
         spriteRenderer.color = activeColor;
     }
-    
+    public void Activate(ActiveAttack activeAttack)
+    {
+        queuedAttacks++;
+        isPrimed = false;
+        isActive = true;
+        if(activeAttack.entity.type == EntityType.Player)
+        {
+            spriteRenderer.color = playerActiveColor;
+        }
+        else if (activeAttack.entity.type == EntityType.Enemy)
+        {
+            spriteRenderer.color = activeColor;
+        }
+        
+    }
+
     public void Deactivate()
     {
         queuedAttacks--; 

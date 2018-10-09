@@ -515,11 +515,11 @@ MonoBehaviour:
   type: 0
   _gridPos: {x: 0, y: 0}
   _health:
-    hp: 50
+    hp: 75
     temp_hp: 0
   _ai: {fileID: 114160683766995486}
   entityTerritory:
-    name: 0
+    name: 1
     TerrColor: {r: 0, g: 0, b: 0, a: 0}
   spr: {fileID: 212410729078944208}
   lerpSpeed: 15

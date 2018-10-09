@@ -14,7 +14,7 @@ MonoBehaviour:
   incrementSpeed: 0.2
   maxIncrements: 6
   damage: 2
-  territory: 1
+  type: 0
   piercing: 0
   particles: {fileID: 212160339734999984, guid: adcd5b01c4cd3da49bb80cfb90445fdc,
     type: 2}

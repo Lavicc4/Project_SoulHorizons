@@ -14,7 +14,7 @@ MonoBehaviour:
   keywords: []
   cardName: Bolt
   element: 1
-  castingTime: 0.3
+  castingTime: 0
   description: 'Fires in a straight line, going through enemies
 
     and stopping if it hits an obstacle.'
