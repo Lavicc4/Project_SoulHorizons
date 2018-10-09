@@ -12,12 +12,48 @@ MonoBehaviour:
   m_Name: Encounter 0
   m_EditorClassIdentifier: 
   name: Encounter0
-  thisButton: {fileID: 0}
+  sceneName: sn_GridTest
+  xWidth: 3
+  yHeight: 3
   completed: 0
   active: 0
-  enemies:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  defaultTerrain: 
+  tiles: []
+  entities:
+  - _entity: {fileID: 0}
+    x: 0
+    y: 0
+  - _entity: {fileID: 0}
+    x: 0
+    y: 0
+  territoryColumn:
+  - territoryRow:
+    - name: 0
+      TerrColor: {r: 0, g: 0, b: 0, a: 0}
+    - name: 0
+      TerrColor: {r: 0, g: 0, b: 0, a: 0}
+    - name: 0
+      TerrColor: {r: 0, g: 0, b: 0, a: 0}
+  - territoryRow:
+    - name: 0
+      TerrColor: {r: 0, g: 0, b: 0, a: 0}
+    - name: 0
+      TerrColor: {r: 0, g: 0, b: 0, a: 0}
+    - name: 0
+      TerrColor: {r: 0, g: 0, b: 0, a: 0}
+  - territoryRow:
+    - name: 0
+      TerrColor: {r: 0, g: 0, b: 0, a: 0}
+    - name: 0
+      TerrColor: {r: 0, g: 0, b: 0, a: 0}
+    - name: 0
+      TerrColor: {r: 0, g: 0, b: 0, a: 0}
+  - territoryRow:
+    - name: 0
+      TerrColor: {r: 0, g: 0, b: 0, a: 0}
+    - name: 0
+      TerrColor: {r: 0, g: 0, b: 0, a: 0}
+    - name: 0
+      TerrColor: {r: 0, g: 0, b: 0, a: 0}
+  - territoryRow: []
+  - territoryRow: []

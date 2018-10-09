@@ -4,10 +4,19 @@ using UnityEngine;
 
 public class scr_Critter : scr_EntityAI {
 
-    public float movementInterval;
-    bool waiting = false;
-    bool moving = false; 
-    
+
+
+
+    public float decisionTime;
+    public float burrowedTime; 
+    public Color burrowedColor;
+    public Color normalColor; 
+    bool taskComplete = true; 
+    int state = 1;
+    float t = 0;
+    float t2 = 0;
+    float lerpDuration = .5f;
+    Color tempColor; 
 
     public override void Move()
     {
@@ -21,16 +30,11 @@ public class scr_Critter : scr_EntityAI {
     }
     public override void UpdateAI()
     {
-        /*
-        int _x = entity._gridPos.x;
-        int _y = entity._gridPos.y;
-        scr_Grid.GridController.SetTileOccupied(true, _x, _y, entity);
-        */
-        if (!moving)
+        if (taskComplete)
         {
-            moving = true;
-            StartCoroutine(Movement(movementInterval));
+            StartCoroutine(Brain()); 
         }
+
          
     }
 
@@ -53,31 +57,34 @@ public class scr_Critter : scr_EntityAI {
 
 
 
-    private IEnumerator Movement(float _movementInterval)
+    private void Movement()
     {
         int _x = GenerateCoord(3, 6);
         int _y = GenerateCoord(0, 3);
+
         if(_x == entity._gridPos.x  &&  _y == entity._gridPos.y)
         {
-            StartCoroutine(Movement(movementInterval));
-            yield break; 
+            //We picked the spot we are on, do the check again 
+            Movement();
+            return; 
+ 
         }
         else
         {
             
-            yield return new WaitForSecondsRealtime(_movementInterval);
-            if (!scr_Grid.GridController.CheckIfOccupied(_x, _y))
+            if (!scr_Grid.GridController.CheckIfOccupied(_x, _y))                       //if the tile is not occupied 
             {
-                scr_Grid.GridController.SetTileOccupied(true, _x, _y, entity);
-                entity.SetTransform(_x, _y);
-                waiting = false;
-                moving = false;
+                scr_Grid.GridController.SetTileOccupied(true, _x, _y, entity);          //set it to be occupied 
+                entity.SetTransform(_x, _y);                                            //move here 
+                return;
+
             }
             else
             {
-                StartCoroutine(Movement(movementInterval));
-                Debug.Log("hit"); 
-                yield break; 
+                //it is occupied, perform the check again
+                Movement();
+                return;
+             
             }
 
                  
@@ -87,7 +94,56 @@ public class scr_Critter : scr_EntityAI {
     }
 
 
-
+    IEnumerator Brain()
+    {
+        switch (state)
+        {
+            case 0:                                                             //Move the entity,
+                entity.spr.color = burrowedColor;
+                taskComplete = false; 
+                Movement();                                                     //Set new position
+                yield return new WaitForSecondsRealtime(burrowedTime);          //in case we want him to be hidden/burrowed for an amount of time
+                state = 3;                                                      //go to un-burrowing
+                entity.spr.color = burrowedColor;
+                taskComplete = true; 
+                break;
+            case 1:                                                             //On a tile, waiting to do a thing 
+                taskComplete = false;
+                yield return new WaitForSecondsRealtime(decisionTime);      
+                state = 2;                                                      //go to burrowing                                            
+                taskComplete = true; 
+                break;
+            case 2:                                                             //burrows and is hidden
+                t = 0;
+                taskComplete = false; 
+                while (t < 1)
+                { // while t below the end limit...
+                  // increment it at the desired rate every update:
+                    entity.spr.color = Color.Lerp(normalColor, burrowedColor, t);   //fades the color of the sprite to black, this is a placeholder for a burrowing animation
+                    t += Time.deltaTime / lerpDuration;
+                    yield return new WaitForSecondsRealtime(.001f);
+                }
+                entity.has_iframes = true;                                      //give the entity i frames
+                state = 0;                                                      //go to movement 
+                taskComplete = true;
+                break;
+            case 3:                                                             //pops out of burrow in new tile
+                t2 = 0; 
+                taskComplete = false;
+                while (t2 < 1)
+                { // while t below the end limit...
+                  // increment it at the desired rate every update:
+                    entity.spr.color = Color.Lerp(burrowedColor,normalColor, t2);   //fades the color of the sprite to black, this is a placeholder for a burrowing animation
+                    t2 += Time.deltaTime / lerpDuration;
+                    yield return new WaitForSecondsRealtime(.001f);
+                }
+                entity.has_iframes = false;                                     //make the entity mortal again
+                state = 1;                                                      //go to waiting 
+                taskComplete = true; 
+                break;
+        }
+        
+    }
 
 
 

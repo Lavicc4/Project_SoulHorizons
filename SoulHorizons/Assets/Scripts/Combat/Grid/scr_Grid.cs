@@ -250,4 +250,16 @@ public class scr_Grid : MonoBehaviour{
 
     }
 
+    public void RemoveEntity(scr_Entity entity)
+    {
+        float tempID = entity.gameObject.GetInstanceID();
+        for (int i = 0; i <= activeEntities.Length; i++){
+            if(activeEntities[i].GetInstanceID() == tempID)
+            {
+                
+            }
+        }
+        Destroy(entity.gameObject);
+    }
+
 }

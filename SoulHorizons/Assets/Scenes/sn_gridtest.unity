@@ -324,7 +324,7 @@ Prefab:
         type: 2}
       propertyPath: currentEncounter
       value: 
-      objectReference: {fileID: 11400000, guid: 1ea3f71c4d41ba7459e1cf49e49d96d9,
+      objectReference: {fileID: 11400000, guid: dddd8035f736cf845aaa96b2593c7b97,
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50a29c5521521bb46a851340eca76195, type: 2}
@@ -462,6 +462,7 @@ MonoBehaviour:
   - {fileID: 1871253128}
   - {fileID: 155839717}
   cooldown: 1.5
+  cardChange_SFX: {fileID: 0}
 --- !u!4 &283017071
 Transform:
   m_ObjectHideFlags: 0
@@ -2040,7 +2041,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 300, y: 0}
+  m_AnchoredPosition: {x: 339, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &865452678

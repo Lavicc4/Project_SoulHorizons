@@ -13,7 +13,7 @@ public class atk_Meteor : Attack {
         for(int i = 0; i < scr_Grid.GridController.ySizeMax; i++)
         {
             scr_Grid.GridController.PrimeNextTile(xPos, i);
-            activeAtk.particles[i] = Instantiate(particles, scr_Grid.GridController.GetWorldLocation(activeAtk.entity._gridPos.x, activeAtk.entity._gridPos.y) + new Vector3(0,2.5f,0), Quaternion.identity);
+            activeAtk.particles[i] = Instantiate(particles, scr_Grid.GridController.GetWorldLocation(activeAtk.entity._gridPos.x, activeAtk.entity._gridPos.y) + new Vector3(0,2.5f,0), Quaternion.Euler(new Vector3(0,0,33)));
         }
         return new Vector2Int(xPos, yPos); 
     }
@@ -64,6 +64,11 @@ public class atk_Meteor : Attack {
         switch (activeAttack.currentIncrement)
         {
             case 0:
+                /*
+                activeAttack.particles[0].sortingOrder = -1;
+                activeAttack.particles[1].sortingOrder = -2;
+                activeAttack.particles[2].sortingOrder = 0;
+                */
                 activeAttack.particles[0].transform.position = Vector3.MoveTowards(activeAttack.particles[0].transform.position, scr_Grid.GridController.GetWorldLocation(activeAttack.pos) + activeAttack._attack.particlesOffset, (18f) * Time.deltaTime);
                 break; 
 

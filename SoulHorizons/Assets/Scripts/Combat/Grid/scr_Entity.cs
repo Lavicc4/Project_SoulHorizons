@@ -155,14 +155,16 @@ public class scr_Entity : MonoBehaviour
 
     public void Death()
     {
+        /*
         int index = Random.Range(0, dies_SFX.Length);
         die_SFX = dies_SFX[index];
         Die_SFX.clip = die_SFX;
         Die_SFX.Play();
-
+        */
         Debug.Log("I AM DEAD");
         scr_Grid.GridController.SetTileOccupied(false, _gridPos.x, _gridPos.y, this);
-        gameObject.SetActive(false);
+        gameObject.SetActive(false); 
+        //scr_Grid.GridController.RemoveEntity(this);  
     }
    
     IEnumerator HitClock(float hitTime)

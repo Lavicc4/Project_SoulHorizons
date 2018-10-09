@@ -19,4 +19,4 @@ MonoBehaviour:
   particles: {fileID: 212160339734999984, guid: adcd5b01c4cd3da49bb80cfb90445fdc,
     type: 2}
   particlesOffset: {x: -0.3, y: 0.3, z: 0}
-  chanceToAttack: 70
+  chanceToAttack: 100

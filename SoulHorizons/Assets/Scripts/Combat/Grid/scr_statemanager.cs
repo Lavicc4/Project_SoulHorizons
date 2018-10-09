@@ -42,7 +42,7 @@ public class scr_statemanager : MonoBehaviour {
             endCombat = true;
 
             //save health
-            SaveLoad.currentGame.SetPlayerHealth(playerEntity._health.hp);
+            //SaveLoad.currentGame.SetPlayerHealth(playerEntity._health.hp);
         }
         if (endCombat)
         {
@@ -50,7 +50,7 @@ public class scr_statemanager : MonoBehaviour {
             if (Input.GetKey(KeyCode.V))
             {
                 Debug.Log("Switching Scenes");
-                SceneManager.LoadScene("sn_WorldMap");
+                SceneManager.LoadScene("sn_LocalMap");
             }
         }
 	}
@@ -68,7 +68,7 @@ public class scr_statemanager : MonoBehaviour {
         if(playerEntity._health.hp <= 0)
         {
             scr_InputManager.disableInput = true;
-            RewardMessage.text = "Oh no you died! Press V to return to the World Map";
+            RewardMessage.text = "Oh no you died! Press V to return to the Local Map";
             RewardMessage.enabled = true;
             endCombat = true;
         }

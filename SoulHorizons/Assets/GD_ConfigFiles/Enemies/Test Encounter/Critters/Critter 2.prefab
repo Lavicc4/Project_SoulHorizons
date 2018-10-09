@@ -497,7 +497,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entity: {fileID: 114725702907161856}
-  movementInterval: 1
+  decisionTime: 1.7
+  burrowedTime: 1.5
+  burrowedColor: {r: 0, g: 0, b: 0, a: 0}
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &114725702907161856
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -497,10 +497,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entity: {fileID: 114725702907161856}
+  basicAttackChance: 55
+  chargeAttackChance: 10
   chargeTime: 5
   movementIntervalLower: 3
   movementIntervalUpper: 4
-  chargeAttackChance: 20
   attack1: {fileID: 11400000, guid: 1949500ade449b24fbfd31dfc7eea5ab, type: 2}
   chargedAttack: {fileID: 11400000, guid: 6a88ee06edd0e12498c83eced9f3270b, type: 2}
   movements_SFX:
@@ -529,7 +530,7 @@ MonoBehaviour:
     temp_hp: 0
   _ai: {fileID: 114373111611885714}
   entityTerritory:
-    name: 0
+    name: 1
     TerrColor: {r: 0, g: 0, b: 0, a: 0}
   spr: {fileID: 212410729078944208}
   lerpSpeed: 15
