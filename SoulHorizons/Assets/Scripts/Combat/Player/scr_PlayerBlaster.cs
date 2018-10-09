@@ -27,6 +27,7 @@ public class scr_PlayerBlaster : MonoBehaviour {
 
 	public SpriteRenderer baseProjectile;
 	public SpriteRenderer projectile1;
+    public SpriteRenderer playerSprite;
 
     AudioSource Blaster_SFX;
     //AudioSource Die_SFX;
@@ -68,6 +69,14 @@ public class scr_PlayerBlaster : MonoBehaviour {
             pressed = true;
 		}
 
+        if(scr_InputManager.Blast_Holding() && readyToFire)
+        {
+            if(timePressed > chargeTime1)
+            {
+                playerSprite.color = new Color(0.2f, 0.6f, .86f);
+            }
+        }
+
 		if(scr_InputManager.Blast_Up() && readyToFire)
 		{
 			//scr_PlayerProjectile proj = objectPool_scr.CreateObject(transform.position, transform.rotation).GetComponent<scr_PlayerProjectile>();
@@ -101,6 +110,7 @@ public class scr_PlayerBlaster : MonoBehaviour {
 			//reset variables
 			timePressed = 0f;
 			pressed = false;
+            playerSprite.color = Color.white;
 		}
 	}//end Update
 

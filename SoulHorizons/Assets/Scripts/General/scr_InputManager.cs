@@ -153,7 +153,18 @@ public static class scr_InputManager {
 		return Input.GetButtonDown("Blast_Button");
 	}
 
-	public static bool Blast_Up()
+    public static bool Blast_Holding()
+    {
+        if (disableInput)
+        {
+            return false;
+        }
+
+        return Input.GetButton("Blast_Button");
+    }
+
+
+    public static bool Blast_Up()
 	{
 		if(disableInput)
 		{
