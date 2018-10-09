@@ -286,8 +286,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -325, y: 49.942}
-  m_SizeDelta: {x: 155, y: 27.8}
+  m_AnchoredPosition: {x: -382, y: 54}
+  m_SizeDelta: {x: 146.5, y: 37.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &948265946
 MonoBehaviour:
@@ -498,10 +498,10 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -516,8 +516,8 @@ Canvas:
   m_GameObject: {fileID: 1284797382}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 628290233}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -620,10 +620,10 @@ RectTransform:
   m_Father: {fileID: 1284797386}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.076660156, y: -0.005859375}
-  m_SizeDelta: {x: -1816.8, y: -976.5}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0.0091333}
+  m_SizeDelta: {x: 103.2, y: 103.73}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1667650403
 MonoBehaviour:
@@ -701,7 +701,17 @@ Prefab:
         type: 2}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 71669c827d3f3494b9fd65d60e3d5d21, type: 3}
+      objectReference: {fileID: 8300000, guid: 4aaee05a1ab6348429e1237736319b92, type: 3}
+    - target: {fileID: 82602084663091530, guid: 4d8938461b55cee448d03f5ffbed4b5c,
+        type: 2}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 82602084663091530, guid: 4d8938461b55cee448d03f5ffbed4b5c,
+        type: 2}
+      propertyPath: m_Volume
+      value: 0.7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d8938461b55cee448d03f5ffbed4b5c, type: 2}
   m_IsPrefabAsset: 0

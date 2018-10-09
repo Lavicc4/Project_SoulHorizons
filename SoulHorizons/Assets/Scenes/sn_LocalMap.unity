@@ -857,6 +857,12 @@ Prefab:
       value: 
       objectReference: {fileID: 11400000, guid: c58da183e3e04b1448c4f221d424c663,
         type: 2}
+    - target: {fileID: 114379803604841592, guid: 08c49fa867e77154c8f4e9b0890d66be,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300012, guid: 531d2fbf1280ebb40acf90ef669bd310,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08c49fa867e77154c8f4e9b0890d66be, type: 2}
   m_IsPrefabAsset: 0
@@ -1120,7 +1126,17 @@ Prefab:
         type: 2}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 71669c827d3f3494b9fd65d60e3d5d21, type: 3}
+      objectReference: {fileID: 8300000, guid: bcb0076aa14357d488a306db0939f500, type: 3}
+    - target: {fileID: 82602084663091530, guid: 4d8938461b55cee448d03f5ffbed4b5c,
+        type: 2}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 82602084663091530, guid: 4d8938461b55cee448d03f5ffbed4b5c,
+        type: 2}
+      propertyPath: m_Volume
+      value: 0.75
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d8938461b55cee448d03f5ffbed4b5c, type: 2}
   m_IsPrefabAsset: 0
@@ -1338,6 +1354,12 @@ Prefab:
       value: 
       objectReference: {fileID: 11400000, guid: c2eea985e5ee5cc4bae814e182776a19,
         type: 2}
+    - target: {fileID: 114379803604841592, guid: 08c49fa867e77154c8f4e9b0890d66be,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300012, guid: 531d2fbf1280ebb40acf90ef669bd310,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08c49fa867e77154c8f4e9b0890d66be, type: 2}
   m_IsPrefabAsset: 0
@@ -1443,6 +1465,12 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1086960821}
+    - target: {fileID: 114379803604841592, guid: 08c49fa867e77154c8f4e9b0890d66be,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300012, guid: 531d2fbf1280ebb40acf90ef669bd310,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08c49fa867e77154c8f4e9b0890d66be, type: 2}
   m_IsPrefabAsset: 0
