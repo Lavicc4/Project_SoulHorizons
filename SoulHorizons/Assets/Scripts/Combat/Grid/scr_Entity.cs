@@ -186,6 +186,7 @@ public class Health{
     public int temp_hp = 0;
     public int max_hp;
 
+
     public void TakeDamage(int damage)
     {
         if (temp_hp > 0)

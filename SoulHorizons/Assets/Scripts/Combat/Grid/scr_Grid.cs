@@ -253,13 +253,35 @@ public class scr_Grid : MonoBehaviour{
     public void RemoveEntity(scr_Entity entity)
     {
         float tempID = entity.gameObject.GetInstanceID();
-        for (int i = 0; i <= activeEntities.Length; i++){
-            if(activeEntities[i].GetInstanceID() == tempID)
+        for (int i = 0; i < activeEntities.Length; i++){
+            if (activeEntities[i].gameObject.GetInstanceID() == tempID)
             {
-                
+                Debug.Log("help me");
+                scr_Entity[] temporaryEntities = new scr_Entity[activeEntities.Length - 1];
+                for(int j = 0; j < activeEntities.Length; j++)
+                {
+                    if (j >= i)
+                    {
+                        temporaryEntities[j] = activeEntities[j + 1];
+                        
+                    }
+                    else if(j < i)
+                    {
+                        temporaryEntities[j] = activeEntities[j];
+                    }
+                }
+                Debug.Log(temporaryEntities);
+                activeEntities = temporaryEntities;
+                Destroy(entity.gameObject); 
+
+            }
+            else
+            {
+                Debug.Log("else"); 
+                return;
             }
         }
-        Destroy(entity.gameObject);
+        
     }
 
 }

@@ -9,11 +9,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 22755112bae8ca2469151b7d25662c03, type: 3}
-  m_Name: Atk_PlayerBlaster
+  m_Name: Atk_PlayerBlaster 1
   m_EditorClassIdentifier: 
   incrementSpeed: 0.2
   maxIncrements: 10
-  damage: 5
+  damage: 0
   type: 1
   piercing: 0
   particles: {fileID: 212160339734999984, guid: adcd5b01c4cd3da49bb80cfb90445fdc,
