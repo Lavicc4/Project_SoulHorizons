@@ -113,6 +113,47 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &82018896 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1565306217412240, guid: 08c49fa867e77154c8f4e9b0890d66be,
+    type: 2}
+  m_PrefabInternal: {fileID: 1349793361}
+--- !u!114 &82018897 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114222698562062942, guid: 08c49fa867e77154c8f4e9b0890d66be,
+    type: 2}
+  m_PrefabInternal: {fileID: 1349793361}
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+--- !u!114 &82018898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 82018896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2116205532}
+          m_MethodName: DeselectOnPointerEnter
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!1001 &142143997
 Prefab:
   m_ObjectHideFlags: 0
@@ -350,6 +391,21 @@ Prefab:
       value: 
       objectReference: {fileID: 11400000, guid: 276926aded5e6fa47a8481d4d7142e06,
         type: 2}
+    - target: {fileID: 114222698562062942, guid: 08c49fa867e77154c8f4e9b0890d66be,
+        type: 2}
+      propertyPath: m_Colors.m_HighlightedColor.r
+      value: 0.5647059
+      objectReference: {fileID: 0}
+    - target: {fileID: 114222698562062942, guid: 08c49fa867e77154c8f4e9b0890d66be,
+        type: 2}
+      propertyPath: m_Colors.m_HighlightedColor.g
+      value: 0.5647059
+      objectReference: {fileID: 0}
+    - target: {fileID: 114222698562062942, guid: 08c49fa867e77154c8f4e9b0890d66be,
+        type: 2}
+      propertyPath: m_Colors.m_HighlightedColor.b
+      value: 0.5647059
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08c49fa867e77154c8f4e9b0890d66be, type: 2}
   m_IsPrefabAsset: 0
@@ -568,6 +624,21 @@ Prefab:
       value: 
       objectReference: {fileID: 11400000, guid: 1ea3f71c4d41ba7459e1cf49e49d96d9,
         type: 2}
+    - target: {fileID: 114222698562062942, guid: 08c49fa867e77154c8f4e9b0890d66be,
+        type: 2}
+      propertyPath: m_Colors.m_HighlightedColor.r
+      value: 0.5647059
+      objectReference: {fileID: 0}
+    - target: {fileID: 114222698562062942, guid: 08c49fa867e77154c8f4e9b0890d66be,
+        type: 2}
+      propertyPath: m_Colors.m_HighlightedColor.g
+      value: 0.5647059
+      objectReference: {fileID: 0}
+    - target: {fileID: 114222698562062942, guid: 08c49fa867e77154c8f4e9b0890d66be,
+        type: 2}
+      propertyPath: m_Colors.m_HighlightedColor.b
+      value: 0.5647059
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08c49fa867e77154c8f4e9b0890d66be, type: 2}
   m_IsPrefabAsset: 0
@@ -779,6 +850,123 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08c49fa867e77154c8f4e9b0890d66be, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &1018261150 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1565306217412240, guid: 08c49fa867e77154c8f4e9b0890d66be,
+    type: 2}
+  m_PrefabInternal: {fileID: 1615556335}
+--- !u!114 &1018261151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1018261150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2116205532}
+          m_MethodName: DeselectOnPointerEnter
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
+--- !u!1 &1024398232 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1565306217412240, guid: 08c49fa867e77154c8f4e9b0890d66be,
+    type: 2}
+  m_PrefabInternal: {fileID: 189809504}
+--- !u!114 &1024398233 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114222698562062942, guid: 08c49fa867e77154c8f4e9b0890d66be,
+    type: 2}
+  m_PrefabInternal: {fileID: 189809504}
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+--- !u!114 &1024398234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1024398232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2116205532}
+          m_MethodName: DeselectOnPointerEnter
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
+--- !u!1 &1053273944 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1565306217412240, guid: 08c49fa867e77154c8f4e9b0890d66be,
+    type: 2}
+  m_PrefabInternal: {fileID: 1768346001}
+--- !u!114 &1053273945 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114222698562062942, guid: 08c49fa867e77154c8f4e9b0890d66be,
+    type: 2}
+  m_PrefabInternal: {fileID: 1768346001}
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+--- !u!114 &1053273946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1053273944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2116205532}
+          m_MethodName: DeselectOnPointerEnter
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!1 &1086960819
 GameObject:
   m_ObjectHideFlags: 0
@@ -1161,6 +1349,21 @@ Prefab:
       value: 
       objectReference: {fileID: 11400000, guid: e92a3fe3e41ecf44e9d99028f74bc0b8,
         type: 2}
+    - target: {fileID: 114222698562062942, guid: 08c49fa867e77154c8f4e9b0890d66be,
+        type: 2}
+      propertyPath: m_Colors.m_HighlightedColor.r
+      value: 0.5647059
+      objectReference: {fileID: 0}
+    - target: {fileID: 114222698562062942, guid: 08c49fa867e77154c8f4e9b0890d66be,
+        type: 2}
+      propertyPath: m_Colors.m_HighlightedColor.g
+      value: 0.5647059
+      objectReference: {fileID: 0}
+    - target: {fileID: 114222698562062942, guid: 08c49fa867e77154c8f4e9b0890d66be,
+        type: 2}
+      propertyPath: m_Colors.m_HighlightedColor.b
+      value: 0.5647059
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08c49fa867e77154c8f4e9b0890d66be, type: 2}
   m_IsPrefabAsset: 0
@@ -1302,6 +1505,21 @@ Prefab:
       value: 
       objectReference: {fileID: 11400000, guid: c2eea985e5ee5cc4bae814e182776a19,
         type: 2}
+    - target: {fileID: 114222698562062942, guid: 08c49fa867e77154c8f4e9b0890d66be,
+        type: 2}
+      propertyPath: m_Colors.m_HighlightedColor.r
+      value: 0.5647059
+      objectReference: {fileID: 0}
+    - target: {fileID: 114222698562062942, guid: 08c49fa867e77154c8f4e9b0890d66be,
+        type: 2}
+      propertyPath: m_Colors.m_HighlightedColor.g
+      value: 0.5647059
+      objectReference: {fileID: 0}
+    - target: {fileID: 114222698562062942, guid: 08c49fa867e77154c8f4e9b0890d66be,
+        type: 2}
+      propertyPath: m_Colors.m_HighlightedColor.b
+      value: 0.5647059
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08c49fa867e77154c8f4e9b0890d66be, type: 2}
   m_IsPrefabAsset: 0
@@ -1433,9 +1651,65 @@ Prefab:
       propertyPath: m_Color.b
       value: 0.4269758
       objectReference: {fileID: 0}
+    - target: {fileID: 114222698562062942, guid: 08c49fa867e77154c8f4e9b0890d66be,
+        type: 2}
+      propertyPath: m_Colors.m_HighlightedColor.r
+      value: 0.5647059
+      objectReference: {fileID: 0}
+    - target: {fileID: 114222698562062942, guid: 08c49fa867e77154c8f4e9b0890d66be,
+        type: 2}
+      propertyPath: m_Colors.m_HighlightedColor.g
+      value: 0.5647059
+      objectReference: {fileID: 0}
+    - target: {fileID: 114222698562062942, guid: 08c49fa867e77154c8f4e9b0890d66be,
+        type: 2}
+      propertyPath: m_Colors.m_HighlightedColor.b
+      value: 0.5647059
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08c49fa867e77154c8f4e9b0890d66be, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &1621112566 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1565306217412240, guid: 08c49fa867e77154c8f4e9b0890d66be,
+    type: 2}
+  m_PrefabInternal: {fileID: 256301149}
+--- !u!114 &1621112567 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114222698562062942, guid: 08c49fa867e77154c8f4e9b0890d66be,
+    type: 2}
+  m_PrefabInternal: {fileID: 256301149}
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+--- !u!114 &1621112568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1621112566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2116205532}
+          m_MethodName: DeselectOnPointerEnter
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!1001 &1768346001
 Prefab:
   m_ObjectHideFlags: 0
@@ -1569,6 +1843,21 @@ Prefab:
       value: 
       objectReference: {fileID: 11400000, guid: c58da183e3e04b1448c4f221d424c663,
         type: 2}
+    - target: {fileID: 114222698562062942, guid: 08c49fa867e77154c8f4e9b0890d66be,
+        type: 2}
+      propertyPath: m_Colors.m_HighlightedColor.r
+      value: 0.5660378
+      objectReference: {fileID: 0}
+    - target: {fileID: 114222698562062942, guid: 08c49fa867e77154c8f4e9b0890d66be,
+        type: 2}
+      propertyPath: m_Colors.m_HighlightedColor.g
+      value: 0.5660378
+      objectReference: {fileID: 0}
+    - target: {fileID: 114222698562062942, guid: 08c49fa867e77154c8f4e9b0890d66be,
+        type: 2}
+      propertyPath: m_Colors.m_HighlightedColor.b
+      value: 0.5660378
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08c49fa867e77154c8f4e9b0890d66be, type: 2}
   m_IsPrefabAsset: 0
@@ -1577,6 +1866,47 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 224844912404784048, guid: 08c49fa867e77154c8f4e9b0890d66be,
     type: 2}
   m_PrefabInternal: {fileID: 1768346001}
+--- !u!1 &1798569537 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1565306217412240, guid: 08c49fa867e77154c8f4e9b0890d66be,
+    type: 2}
+  m_PrefabInternal: {fileID: 1356560592}
+--- !u!114 &1798569538 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114222698562062942, guid: 08c49fa867e77154c8f4e9b0890d66be,
+    type: 2}
+  m_PrefabInternal: {fileID: 1356560592}
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+--- !u!114 &1798569539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1798569537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2116205532}
+          m_MethodName: DeselectOnPointerEnter
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!1001 &1854875571
 Prefab:
   m_ObjectHideFlags: 0
@@ -1825,6 +2155,7 @@ GameObject:
   - component: {fileID: 2116205530}
   - component: {fileID: 2116205529}
   - component: {fileID: 2116205528}
+  - component: {fileID: 2116205532}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1918,6 +2249,24 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &2116205532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2116205527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c653f77e110ace4298ae420aa88f01e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttons:
+  - {fileID: 585557471}
+  - {fileID: 1798569538}
+  - {fileID: 1053273945}
+  - {fileID: 1024398233}
+  - {fileID: 82018897}
+  - {fileID: 1621112567}
 --- !u!224 &2128949825 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 224844912404784048, guid: 08c49fa867e77154c8f4e9b0890d66be,

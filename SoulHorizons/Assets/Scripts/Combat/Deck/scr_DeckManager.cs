@@ -68,7 +68,7 @@ public class scr_DeckManager : MonoBehaviour {
         if (!axisPressed)
         {
             //just pressed the joystick
-            axis = scr_InputManager.HandScrolling();
+            axis = scr_InputManager.HandScrolling() * -1;
             axisPressed = true;
         }
 
