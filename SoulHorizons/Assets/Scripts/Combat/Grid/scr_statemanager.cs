@@ -42,7 +42,7 @@ public class scr_statemanager : MonoBehaviour {
 		if(GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
         {
             //Debug.Log("NO ENEMIES");
-            scr_InputManager.disableInput = true;
+            //scr_InputManager.disableInput = true;
             RewardMessage.enabled = true;
             endCombat = true;
 

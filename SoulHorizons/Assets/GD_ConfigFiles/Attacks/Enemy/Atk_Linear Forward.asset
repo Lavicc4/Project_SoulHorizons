@@ -16,7 +16,7 @@ MonoBehaviour:
   damage: 2
   type: 0
   piercing: 0
-  particles: {fileID: 212160339734999984, guid: adcd5b01c4cd3da49bb80cfb90445fdc,
+  particles: {fileID: 212286977064683536, guid: 657edad4b3569b845a6d196bb9d171ab,
     type: 2}
   particlesOffset: {x: -0.3, y: 0.3, z: 0}
   chanceToAttack: 100

@@ -23,7 +23,7 @@ public class atk_PlayerBlaster : Attack {
         //move particles
         //ProgressEffects(xPos, yPos, activeAtk.lastPos.x, activeAtk.lastPos.y, activeParticle);
 
-        scr_Grid.GridController.PrimeNextTile(xPos + 1, yPos);
+        //scr_Grid.GridController.PrimeNextTile(xPos + 1, yPos);
         scr_Grid.GridController.ActivateTile(xPos, yPos);
         return new Vector2Int(xPos + 1, yPos);
     }

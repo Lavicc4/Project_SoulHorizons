@@ -13,9 +13,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   incrementSpeed: 0.2
   maxIncrements: 10
-  damage: 0
+  damage: 2
   type: 1
   piercing: 0
-  particles: {fileID: 212160339734999984, guid: adcd5b01c4cd3da49bb80cfb90445fdc,
+  particles: {fileID: 212171659610033936, guid: ac0b2ce6a60bcb0479224cfa16b4f448,
     type: 2}
   particlesOffset: {x: 0.4, y: 0.3, z: 0}

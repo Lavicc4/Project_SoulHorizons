@@ -732,13 +732,13 @@ MonoBehaviour:
   chargeTime1: 1.2
   damageIncrease1: 10
   damageIncreaseRate: 0
-  damageMultiplier: 0
+  damageMultiplier: 1
   fireRate: 0.3
   chargeCooldown: 0.4
   attack: {fileID: 11400000, guid: 6d7de3ac0fe4dd949b28f4641570351f, type: 2}
-  baseProjectile: {fileID: 212160339734999984, guid: adcd5b01c4cd3da49bb80cfb90445fdc,
+  baseProjectile: {fileID: 212171659610033936, guid: ac0b2ce6a60bcb0479224cfa16b4f448,
     type: 2}
-  projectile1: {fileID: 212160339734999984, guid: 00c7399346a413b4b8e62d5140ca5a9c,
+  projectile1: {fileID: 212489909936821062, guid: 93dcc66df25d71d408deac69aa2070c0,
     type: 2}
   playerSprite: {fileID: 212424679629100636}
   blasters_SFX:
