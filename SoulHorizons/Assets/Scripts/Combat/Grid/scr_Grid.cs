@@ -191,8 +191,7 @@ public class scr_Grid : MonoBehaviour{
         {
             if (activeEntities[i].gameObject.activeSelf)
             {
-                //Why is this not using activeEntities[i]._gridPos.Equals(attack.pos)? Why create a new object? - Colin
-                if (activeEntities[i]._gridPos == new Vector2Int(attack.pos.x, attack.pos.y))
+                if (activeEntities[i]._gridPos == attack.pos) 
                 {
                     //Debug.Log(activeEntities[i].entityTerritory.name + " " + attack.entity.entityTerritory.name);
                     if (activeEntities[i].type != attack.entity.type)
@@ -213,7 +212,7 @@ public class scr_Grid : MonoBehaviour{
                         attack.entityHit = activeEntities[i];
                         attack._attack.ImpactEffects();
                     }
-                    return attack;
+                    
                 }
             }
           

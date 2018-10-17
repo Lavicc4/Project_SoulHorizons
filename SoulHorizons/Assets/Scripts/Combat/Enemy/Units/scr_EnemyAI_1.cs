@@ -63,35 +63,34 @@ public class scr_EnemyAI_1 : scr_EntityAI
         int _x = entity._gridPos.x;
         int _y = entity._gridPos.y;
         int _tries = 0; 
-        if (_temp == 0)                                                          //if that number == 0, then we're moving vertically 
-        {
-            _y = PickYCoord();
+        
 
-        }
-        else if (_temp == 1)                                                     //if that number == 1, we're moving horizonally 
+        while(_tries < 10)
         {
-            _x = PickXCoord();
+            _temp = Random.Range(0, 2);
+            if (_temp == 0)                                                          //if that number == 0, then we're moving vertically 
+            {
+                _y = PickYCoord();
 
-        }
+            }
+            else if (_temp == 1)                                                     //if that number == 1, we're moving horizonally 
+            {
+                _x = PickXCoord();
 
+            }
 
-        if (!scr_Grid.GridController.CheckIfOccupied(_x, _y)  /*&&  (scr_Grid.GridController.ReturnTerritory(_x, _y).name == entity.entityTerritory.name) */&& (_tries <= 10))           //check if tile is occupied & the territory is correct for me 
-        {
-            _tries = 0; 
-            entity.SetTransform(_x, _y);                               //move to new position
-            completedTask = true; 
+            if (!scr_Grid.GridController.CheckIfOccupied(_x, _y) && (scr_Grid.GridController.ReturnTerritory(_x, _y).name == entity.entityTerritory.name))
+            {
+                entity.SetTransform(_x, _y);                               //move to new position
+                completedTask = true;
+                return;
+            }
+            else
+            {
+                _tries++;
+            }
         }
-        else if(_tries <= 10)
-        {
-            Movement();
-            _tries++;
-            Debug.Log(_tries); 
-        }
-        else
-        {
-            completedTask = true;
-            Debug.Log(_tries);
-        }
+        completedTask = true;
     }
 
 

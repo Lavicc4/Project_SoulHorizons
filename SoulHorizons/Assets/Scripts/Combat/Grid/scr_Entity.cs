@@ -24,7 +24,7 @@ public class scr_Entity : MonoBehaviour
     Color baseColor;
     public float lerpSpeed;
     public bool has_iframes;
-    bool invincible = false;
+    public bool invincible = false;
     public float invulnTime;
     float invulnCounter = 0f;
 
@@ -86,7 +86,7 @@ public class scr_Entity : MonoBehaviour
         
         scr_Grid.GridController.SetTileOccupied(true, _gridPos.x, _gridPos.y,this);
         spr.sortingOrder = -_gridPos.y;
-        Attack atk = scr_AttackController.attackController.MoveIntoAttackCheck(_gridPos);
+        Attack atk = scr_AttackController.attackController.MoveIntoAttackCheck(_gridPos, this);
         if(atk != null)
         {
             if (!invincible)

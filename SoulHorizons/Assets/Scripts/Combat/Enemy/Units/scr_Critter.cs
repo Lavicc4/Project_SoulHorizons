@@ -72,7 +72,7 @@ public class scr_Critter : scr_EntityAI {
         else
         {
             
-            if (!scr_Grid.GridController.CheckIfOccupied(_x, _y))                       //if the tile is not occupied 
+            if (!scr_Grid.GridController.CheckIfOccupied(_x, _y) && (scr_Grid.GridController.ReturnTerritory(_x, _y).name == entity.entityTerritory.name))                       //if the tile is not occupied 
             {
                 scr_Grid.GridController.SetTileOccupied(true, _x, _y, entity);          //set it to be occupied 
                 entity.SetTransform(_x, _y);                                            //move here 
@@ -107,7 +107,8 @@ public class scr_Critter : scr_EntityAI {
                 entity.spr.color = burrowedColor;
                 taskComplete = true; 
                 break;
-            case 1:                                                             //On a tile, waiting to do a thing 
+            case 1:                                                             //On a tile, waiting to do a thing
+                entity.invincible = false;
                 taskComplete = false;
                 yield return new WaitForSecondsRealtime(decisionTime);      
                 state = 2;                                                      //go to burrowing                                            
@@ -119,11 +120,11 @@ public class scr_Critter : scr_EntityAI {
                 while (t < 1)
                 { // while t below the end limit...
                   // increment it at the desired rate every update:
-                    entity.spr.color = Color.Lerp(normalColor, burrowedColor, t);   //fades the color of the sprite to black, this is a placeholder for a burrowing animation
+                    entity.spr.color = Color.Lerp(normalColor, burrowedColor,t);   //fades the color of the sprite to black, this is a placeholder for a burrowing animation
                     t += Time.deltaTime / lerpDuration;
                     yield return new WaitForSecondsRealtime(.001f);
                 }
-                entity.has_iframes = true;                                      //give the entity i frames
+                entity.invincible = true;                                      //give the entity i frames
                 state = 0;                                                      //go to movement 
                 taskComplete = true;
                 break;
@@ -137,7 +138,7 @@ public class scr_Critter : scr_EntityAI {
                     t2 += Time.deltaTime / lerpDuration;
                     yield return new WaitForSecondsRealtime(.001f);
                 }
-                entity.has_iframes = false;                                     //make the entity mortal again
+                entity.invincible = false;                                     //make the entity mortal again
                 state = 1;                                                      //go to waiting 
                 taskComplete = true; 
                 break;

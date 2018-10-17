@@ -112,15 +112,18 @@ public class scr_AttackController : MonoBehaviour {
         
     }
 
-    public Attack MoveIntoAttackCheck(Vector2Int pos)
+    public Attack MoveIntoAttackCheck(Vector2Int pos, scr_Entity entity)
     {
         for (int x = 0; x < numberOfActiveAttacks; x++)
         {
             if (activeAttacks[x].lastPos == pos)
             {
-                Attack atk = activeAttacks[x]._attack;
-                activeAttacks[x].entityIsHit = true;
-                return atk;
+                if (activeAttacks[x].entity.type != entity.type)
+                {
+                    Attack atk = activeAttacks[x]._attack;
+                    activeAttacks[x].entityIsHit = true;
+                    return atk;
+                }
             }
         }
 
