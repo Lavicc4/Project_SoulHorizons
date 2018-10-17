@@ -18,4 +18,5 @@ MonoBehaviour:
   piercing: 1
   particles: {fileID: 212919924544438062, guid: 07a4e007d8e532445b9b9db17fa90895,
     type: 2}
-  particlesOffset: {x: 0, y: 0.3, z: 0}
+  particlesOffset: {x: 0.4, y: 0.3, z: 0}
+  particleSpeed: 11

@@ -19,3 +19,4 @@ MonoBehaviour:
   particles: {fileID: 212171659610033936, guid: ac0b2ce6a60bcb0479224cfa16b4f448,
     type: 2}
   particlesOffset: {x: 0.4, y: 0.3, z: 0}
+  particleSpeed: 4.8

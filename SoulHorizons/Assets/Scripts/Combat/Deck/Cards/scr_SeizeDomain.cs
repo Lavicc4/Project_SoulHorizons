@@ -18,19 +18,19 @@ public class scr_SeizeDomain : scr_Card
            
             for(int j = 0; j < scr_Grid.GridController.ySizeMax; j++)
             {
-                Debug.Log(scr_Grid.GridController.grid[i, j].territory.name);
+                //Debug.Log(scr_Grid.GridController.grid[i, j].territory.name);
                 if (scr_Grid.GridController.grid[i, j].territory.name != TerrName.Player)
                 {
-                    Debug.Log("Column: " + i);
+                    //Debug.Log("Column: " + i);
                     colFound = true;
                     if (!scr_Grid.GridController.grid[i, j].occupied)
                     {
-                        Debug.Log("SEIZING!");
+                        //Debug.Log("SEIZING!");
                         scr_Grid.GridController.SetTileTerritory(i, j, TerrName.Player, newColor);
                     }
                 }
             }
-            Debug.Log(colFound);
+            //Debug.Log(colFound);
             if (colFound)
             {
                 break;

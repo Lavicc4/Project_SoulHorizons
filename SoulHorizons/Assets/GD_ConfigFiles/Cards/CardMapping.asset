@@ -38,3 +38,5 @@ MonoBehaviour:
     cardObject: {fileID: 11400000, guid: 99d15dc373a432b4ca18fd34a8de2e17, type: 2}
   - name: Mend
     cardObject: {fileID: 11400000, guid: cea6482a38d782849bc2d076fd4397c6, type: 2}
+  - name: Boomerang
+    cardObject: {fileID: 11400000, guid: 9a2394a7abbf0414b83bc12cf15df52e, type: 2}

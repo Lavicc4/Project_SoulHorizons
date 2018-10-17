@@ -15,6 +15,7 @@ public abstract class Attack : ScriptableObject {
     public bool piercing;
     public SpriteRenderer particles;
     public Vector3 particlesOffset;
+    public float particleSpeed = 1; 
 
     public virtual Vector2Int BeginAttack(int xPos, int yPos, ActiveAttack activeAtk)
     {

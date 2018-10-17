@@ -17,7 +17,8 @@ public class scr_AttackController : MonoBehaviour {
     {
         activeAttacks[numberOfActiveAttacks] = new ActiveAttack(_attack, xPos, yPos, ent);
         activeAttacks[numberOfActiveAttacks]._attack.BeginAttack(xPos, yPos, activeAttacks[numberOfActiveAttacks]);
-        activeAttacks[numberOfActiveAttacks].Clone(activeAttacks[numberOfActiveAttacks]._attack.BeginAttack(activeAttacks[numberOfActiveAttacks])); 
+        activeAttacks[numberOfActiveAttacks].Clone(activeAttacks[numberOfActiveAttacks]._attack.BeginAttack(activeAttacks[numberOfActiveAttacks]));
+        
         /*
         activeAttacks[numberOfActiveAttacks].particle = Instantiate(_attack.particles, scr_Grid.GridController.GetWorldLocation(xPos,yPos)+_attack.particlesOffset, Quaternion.identity);
         activeAttacks[numberOfActiveAttacks].particle.sortingOrder = -yPos; 
@@ -55,6 +56,7 @@ public class scr_AttackController : MonoBehaviour {
                 }
                 else if (scr_Grid.GridController.LocationOnGrid(activeAttacks[x].pos.x, activeAttacks[x].pos.y) == false)
                 {
+                    Debug.Log("location off grid " + activeAttacks[x]._attack.name); 
                     RemoveFromArray(x);
                     return;
                 }
@@ -158,7 +160,7 @@ public class ActiveAttack
         lastPos.y = y;
         
         
-        lastAttackTime = Time.time;
+        lastAttackTime = Time.time - _attack.incrementSpeed;
     }
     public ActiveAttack()
     {

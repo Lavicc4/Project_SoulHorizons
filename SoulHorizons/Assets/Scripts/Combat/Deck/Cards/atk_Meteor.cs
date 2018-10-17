@@ -17,6 +17,11 @@ public class atk_Meteor : Attack {
         }
         return new Vector2Int(xPos, yPos); 
     }
+    public override ActiveAttack BeginAttack(ActiveAttack activeAtk)
+    {
+        activeAtk.lastAttackTime += incrementSpeed;
+        return activeAtk; 
+    }
 
     public override Vector2Int ProgressAttack(int xPos, int yPos, ActiveAttack activeAtk)
     {
