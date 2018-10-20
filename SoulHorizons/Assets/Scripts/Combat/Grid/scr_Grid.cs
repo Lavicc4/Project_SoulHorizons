@@ -280,4 +280,36 @@ public class scr_Grid : MonoBehaviour{
         
     }
 
+    //Seizes next column in the grid for a specified territory, used in the Seize Domain Card
+    public void seizeColumn(TerrName name)
+    {
+        bool colFound = false;
+        //Debug.Log("SEIZE!");
+        for (int i = 0; i < xSizeMax; i++)
+        {
+
+            for (int j = 0; j < ySizeMax; j++)
+            {
+                //Debug.Log(scr_Grid.GridController.grid[i, j].territory.name);
+                if (grid[i, j].territory.name != name)
+                {
+                    //Debug.Log("Column: " + i);
+                    colFound = true;
+                    if (!grid[i, j].occupied)
+                    {
+                        //Debug.Log("SEIZING!");
+                        SetTileTerritory(i, j, name, scr_TileDict.colorDict[name]);
+                    }
+                }
+            }
+            //Debug.Log(colFound);
+            if (colFound)
+            {
+                break;
+            }
+
+
+        }
+    }
+
 }

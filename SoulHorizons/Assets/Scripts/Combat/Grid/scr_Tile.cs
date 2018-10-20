@@ -9,6 +9,14 @@ public struct Territory
 {
     public TerrName name;
     public Color TerrColor;
+    public Sprite TerrSprite;
+
+    public Territory(TerrName nam, Color col, Sprite spr)
+    {
+        name = nam;
+        TerrColor = col;
+        TerrSprite = spr;
+    }
 }
 public class scr_Tile : MonoBehaviour{
 
