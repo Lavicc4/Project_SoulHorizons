@@ -8,14 +8,16 @@ public class scr_Grid : MonoBehaviour{
 
     public int xSizeMax; 
     public int ySizeMax;
-    public float xOffset;
-    public float yOffset; 
+    public float xOffset = 0;
+    public float yOffset = 0;
+    public Vector2 tileSpacing;
     public scr_Tile[,] grid;
     public scr_Tile tile;
     private SpriteRenderer spriteR;
-    public Sprite[] tile_sprites;
+    public Sprite tile_sprites;
     private int spriteTracker = 0;
-    public scr_Entity[] activeEntities; 
+    public scr_Entity[] activeEntities;
+    public Transform camera; 
 
 
 
@@ -36,33 +38,28 @@ public class scr_Grid : MonoBehaviour{
     //Build Grid Tiles
     private void BuildGrid()
     {
+
         //tile_sprites = Resources.LoadAll<Sprite>("tiles_spritesheet");
         grid = new scr_Tile[xSizeMax, ySizeMax];
-
+        Vector2 gridCenter = new Vector2((tileSpacing.x * (xSizeMax-1) / 2), (tileSpacing.y * ySizeMax / 2));
+        print(gridCenter); 
+        camera.transform.position = new Vector3(gridCenter.x,gridCenter.y,camera.transform.position.z); 
         for (int j = 0; j < ySizeMax; j++)
         {
             for (int i = 0; i < xSizeMax; i++)
             {
                 scr_Tile tileToAdd = null; 
-                if(i < xSizeMax / 2)
-                {
-                    tileToAdd = (scr_Tile)Instantiate(tile, new Vector3((float)i / (.95f + .05f * j) + xOffset + .1f * j, (float)j / (2.25f + .15f * j) + yOffset, 0), Quaternion.identity);
-                
-                }
-                else
-                {
-                    tileToAdd = (scr_Tile)Instantiate(tile, new Vector3((float)i / (.95f + .05f * j) + xOffset + .155f * j, (float)j / (2.25f + .15f * j) + yOffset, 0), Quaternion.identity);
-                    tileToAdd.GetComponent<SpriteRenderer>().flipX = true;
 
-                }
+                tileToAdd = (scr_Tile)Instantiate(tile, new Vector3((i * tileSpacing.x) + xOffset, (j * tileSpacing.y) + yOffset, 0), Quaternion.identity);
+
                 tileToAdd.territory = scr_SceneManager.globalSceneManager.currentEncounter.territoryColumn[i].territoryRow[j];
                 tileToAdd.gridPositionX = i;
                 tileToAdd.gridPositionY = j;
 
                 spriteR = tileToAdd.GetComponent<SpriteRenderer>();
-                spriteR.sprite = tile_sprites[spriteTracker];
+                spriteR.sprite = tile_sprites;
                 
-                if (tile_sprites[spriteTracker] == null) Debug.Log("MISSING SPRITE");
+                if (tile_sprites == null) Debug.Log("MISSING SPRITE");
 
                 grid[i, j] = tileToAdd;
 

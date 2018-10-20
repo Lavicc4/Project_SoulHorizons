@@ -56,7 +56,7 @@ public class scr_AttackController : MonoBehaviour {
                 }
                 else if (scr_Grid.GridController.LocationOnGrid(activeAttacks[x].pos.x, activeAttacks[x].pos.y) == false)
                 {
-                    Debug.Log("location off grid " + activeAttacks[x]._attack.name); 
+                    //Debug.Log("location off grid " + activeAttacks[x]._attack.name); 
                     RemoveFromArray(x);
                     return;
                 }

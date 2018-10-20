@@ -37,7 +37,7 @@ public class atk_Boomerang : Attack
 
     public override Vector2Int ProgressAttack(int xPos, int yPos, ActiveAttack activeAtk)
     {
-        Debug.Log(activeAtk.currentIncrement); 
+        
         if(activeAtk.currentIncrement < scr_Grid.GridController.xSizeMax - 1)
         {
             xPos++;

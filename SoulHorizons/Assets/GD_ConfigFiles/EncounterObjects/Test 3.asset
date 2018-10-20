@@ -28,7 +28,7 @@ MonoBehaviour:
       type: 2}
     x: 5
     y: 0
-  - _entity: {fileID: 114725702907161856, guid: da6e4d25beaae874da66705cc25743e2,
+  - _entity: {fileID: 114725702907161856, guid: 5fb6dc58c891f6d49b0e692bc05d19dd,
       type: 2}
     x: 5
     y: 2

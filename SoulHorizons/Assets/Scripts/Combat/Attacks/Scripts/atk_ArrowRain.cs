@@ -6,6 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Attacks/ArrowRain")]
 public class atk_ArrowRain : Attack {
 
+    public int incrementWaitTime = 2; 
 
     public override Vector2Int BeginAttack(int xPos, int yPos, ActiveAttack activeAtk)
     {
@@ -21,7 +22,10 @@ public class atk_ArrowRain : Attack {
 
     Vector2Int ArrowRain_ProgressAttack(int xPos, int yPos, ActiveAttack activeAtk)
     {
-
+        if(activeAtk.currentIncrement < incrementWaitTime)
+        {
+            return new Vector2Int(xPos, yPos); 
+        }
 
         scr_Grid.GridController.ActivateTile(xPos, yPos);
         return new Vector2Int(xPos, yPos - 1);
@@ -34,13 +38,21 @@ public class atk_ArrowRain : Attack {
      //--Effects Methods--
     public override void LaunchEffects(ActiveAttack activeAttack)
     {
-        activeAttack.particle = Instantiate(particles, scr_Grid.GridController.GetWorldLocation(activeAttack.pos.x, activeAttack.pos.y) + particlesOffset, Quaternion.identity);
+        activeAttack.particle = Instantiate(particles, scr_Grid.GridController.GetWorldLocation(activeAttack.pos.x, activeAttack.pos.y) + (new Vector3(0, 2.5f, 0)) + particlesOffset, Quaternion.identity);
         activeAttack.particle.sortingOrder = -activeAttack.pos.y;
     }
 
 
     public override void ProgressEffects(ActiveAttack activeAttack)
     {
+        if(activeAttack.currentIncrement < incrementWaitTime)
+        {
+            return; 
+        }
+        if (activeAttack.currentIncrement == incrementWaitTime)
+        {
+            activeAttack.particle.transform.position = scr_Grid.GridController.GetWorldLocation(activeAttack.pos.x, activeAttack.pos.y) + particlesOffset; 
+        }
         activeAttack.particle.transform.position = Vector3.Lerp(activeAttack.particle.transform.position, scr_Grid.GridController.GetWorldLocation(activeAttack.lastPos.x, activeAttack.lastPos.y) + activeAttack._attack.particlesOffset, (4.5f) * Time.deltaTime);
     }
 

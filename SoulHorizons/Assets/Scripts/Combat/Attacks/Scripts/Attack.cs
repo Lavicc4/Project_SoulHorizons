@@ -33,6 +33,7 @@ public abstract class Attack : ScriptableObject {
     {
         return false; 
     }
+    
 
     /// <summary>
     /// Call when attack is launched.
