@@ -14,7 +14,7 @@ public class scr_EncounterController : MonoBehaviour {
     public Encounter[] tier1Encounters = new Encounter[10];
     public Encounter[] tier2Encounters = new Encounter[5];
     public Encounter[] tier3Encounters = new Encounter[3];
-
+   
     private Button[] listeners;
 
 	void Start () {

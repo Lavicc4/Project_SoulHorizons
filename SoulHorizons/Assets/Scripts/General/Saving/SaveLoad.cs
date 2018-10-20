@@ -8,7 +8,7 @@ using System.IO;
 public static class SaveLoad {
 
     public static List<GameState> savedGames = new List<GameState>(3);
-    static GameState currentGame;
+    public static GameState currentGame;
 
     /// <summary>
     /// Create a new save file. Limit how many they can have?
@@ -18,14 +18,18 @@ public static class SaveLoad {
         GameState newGame = new GameState();
         currentGame = newGame;
         newGame.lastGamePlayed = true;
+        bool gameStateInserted = false;
 
+        //insert the  GameState into an empty spot into the array and make sure none of the others are marked last game played.
+        //TODO: What if they click new game and three save files already exist?
         for (int i = 0; i < 3; i++)
         {
-            if (savedGames[i] == null)
+            if (savedGames[i] == null && !gameStateInserted)
             {
                 savedGames[i] = newGame;
+                gameStateInserted = true;
             }
-            else
+            else if (savedGames[i] != null)
             {
                 savedGames[i].lastGamePlayed = false;
             }

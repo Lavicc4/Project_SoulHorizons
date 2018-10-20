@@ -16,10 +16,26 @@ public class scr_AttackController : MonoBehaviour {
     public void AddNewAttack(Attack _attack,int xPos, int yPos, scr_Entity ent)
     {
         activeAttacks[numberOfActiveAttacks] = new ActiveAttack(_attack, xPos, yPos, ent);
+        activeAttacks[numberOfActiveAttacks]._attack.BeginAttack(xPos, yPos, activeAttacks[numberOfActiveAttacks]);
+        activeAttacks[numberOfActiveAttacks].Clone(activeAttacks[numberOfActiveAttacks]._attack.BeginAttack(activeAttacks[numberOfActiveAttacks]));
+        
+        /*
         activeAttacks[numberOfActiveAttacks].particle = Instantiate(_attack.particles, scr_Grid.GridController.GetWorldLocation(xPos,yPos)+_attack.particlesOffset, Quaternion.identity);
         activeAttacks[numberOfActiveAttacks].particle.sortingOrder = -yPos; 
-        numberOfActiveAttacks++; 
+         */
 
+        //Start effects for when the attack is created
+        if (_attack == null)
+        {
+            Debug.Log("AttackController: attack is null");
+        }
+        if (activeAttacks[numberOfActiveAttacks] == null)
+        {
+            Debug.Log("AttackController: attack is null");
+        }
+        _attack.LaunchEffects(activeAttacks[numberOfActiveAttacks]);
+        numberOfActiveAttacks++;
+        
     }
 
     void Update()
@@ -40,6 +56,7 @@ public class scr_AttackController : MonoBehaviour {
                 }
                 else if (scr_Grid.GridController.LocationOnGrid(activeAttacks[x].pos.x, activeAttacks[x].pos.y) == false)
                 {
+                    //Debug.Log("location off grid " + activeAttacks[x]._attack.name); 
                     RemoveFromArray(x);
                     return;
                 }
@@ -62,6 +79,9 @@ public class scr_AttackController : MonoBehaviour {
     }
     void RemoveFromArray(int index)
     {
+        //Attack end effects
+        activeAttacks[index]._attack.EndEffects(activeAttacks[index]);
+
         scr_Grid.GridController.DeactivateTile(activeAttacks[index].lastPos.x, activeAttacks[index].lastPos.y);
         scr_Grid.GridController.DeactivateTile(activeAttacks[index].pos.x, activeAttacks[index].pos.y);
         scr_Grid.GridController.DePrimeTile(activeAttacks[index].pos.x, activeAttacks[index].pos.y);
@@ -94,15 +114,18 @@ public class scr_AttackController : MonoBehaviour {
         
     }
 
-    public Attack MoveIntoAttackCheck(Vector2Int pos)
+    public Attack MoveIntoAttackCheck(Vector2Int pos, scr_Entity entity)
     {
         for (int x = 0; x < numberOfActiveAttacks; x++)
         {
             if (activeAttacks[x].lastPos == pos)
             {
-                Attack atk = activeAttacks[x]._attack;
-                activeAttacks[x].entityIsHit = true;
-                return atk;
+                if (activeAttacks[x].entity.type != entity.type)
+                {
+                    Attack atk = activeAttacks[x]._attack;
+                    activeAttacks[x].entityIsHit = true;
+                    return atk;
+                }
             }
         }
 
@@ -123,10 +146,12 @@ public class ActiveAttack
     public scr_Entity entity;
     public bool entityIsHit = false; //set to true if the attack hits an entity
     public scr_Entity entityHit = null; //contains a reference to the entity that the attack hit
-    public SpriteRenderer particle;
+    public SpriteRenderer particle; // use if only one particle 
+    public SpriteRenderer[] particles; //use for multiple particles 
     
     public ActiveAttack(Attack atk, int x, int y, scr_Entity ent)
     {
+        particles = new SpriteRenderer[5];
         _attack = atk;
         pos.x = x;
         pos.y = y;
@@ -135,7 +160,7 @@ public class ActiveAttack
         lastPos.y = y;
         
         
-        lastAttackTime = Time.time;
+        lastAttackTime = Time.time - _attack.incrementSpeed;
     }
     public ActiveAttack()
     {
@@ -162,7 +187,8 @@ public class ActiveAttack
         lastPos = atk.lastPos;
         entity = atk.entity;
         entityIsHit = atk.entityIsHit;
-        particle = atk.particle; 
+        particle = atk.particle;
+        particles = atk.particles;
         
     }
 

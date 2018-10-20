@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using EZCameraShake;
 
 public enum EntityType
 {
@@ -8,6 +9,8 @@ public enum EntityType
     Player,
     Obstacle
 }
+
+[RequireComponent(typeof(AudioSource))]
 
 public class scr_Entity : MonoBehaviour
 {
@@ -21,17 +24,28 @@ public class scr_Entity : MonoBehaviour
     Color baseColor;
     public float lerpSpeed;
     public bool has_iframes;
-    bool invincible = false;
+    public bool invincible = false;
     public float invulnTime;
     float invulnCounter = 0f;
+
+    AudioSource Hurt_SFX;
+    AudioSource Die_SFX;
+    public AudioClip[] hurts_SFX;
+    private AudioClip hurt_SFX;
+    public AudioClip[] dies_SFX;
+    private AudioClip die_SFX;
 
     public void Start()
     {
         baseColor = spr.color;
+        AudioSource[] SFX_Sources = GetComponents<AudioSource>();
+        Hurt_SFX = SFX_Sources[2];
+        Die_SFX = SFX_Sources[3];
+        _health.max_hp = _health.hp;
     }
     public void Update()
     {
-        _ai.UpdateAI();
+        if(gameObject.activeSelf)_ai.UpdateAI();
         if (_health.hp <= 0)
         {
             _ai.Die();
@@ -44,7 +58,7 @@ public class scr_Entity : MonoBehaviour
             invulnCounter -= Time.deltaTime;
             if(invulnCounter <= 0)
             {
-                setInvincible(false);
+                setInvincible(false, 0f);
             }
         }
        
@@ -72,7 +86,7 @@ public class scr_Entity : MonoBehaviour
         
         scr_Grid.GridController.SetTileOccupied(true, _gridPos.x, _gridPos.y,this);
         spr.sortingOrder = -_gridPos.y;
-        Attack atk = scr_AttackController.attackController.MoveIntoAttackCheck(_gridPos);
+        Attack atk = scr_AttackController.attackController.MoveIntoAttackCheck(_gridPos, this);
         if(atk != null)
         {
             if (!invincible)
@@ -82,7 +96,7 @@ public class scr_Entity : MonoBehaviour
                 if (has_iframes)
                 {
                     //Activate invincibility frames
-                    setInvincible(true);
+                    setInvincible(true, invulnTime);
                 }
             }
         }
@@ -101,9 +115,20 @@ public class scr_Entity : MonoBehaviour
          */
         if (_attack.type != type)
         {
+            int index = Random.Range(0, hurts_SFX.Length);
+            hurt_SFX = hurts_SFX[index];
+            Hurt_SFX.clip = hurt_SFX;
+            Hurt_SFX.Play();
+
             _health.TakeDamage(_attack.damage);
-            StartCoroutine(HitClock(.5f));
+            StartCoroutine(HitClock(.3f));
+            if (type == EntityType.Player)
+            {
+                //camera shake
+                CameraShaker.Instance.ShakeOnce(2f, 2f, 0.2f, 0.2f);
+            }
         }
+
     }
 
     public bool isInvincible()
@@ -111,13 +136,14 @@ public class scr_Entity : MonoBehaviour
         return invincible;
     }
 
-    public void setInvincible(bool inv)
+    //makes the entity invincible for a time
+    public void setInvincible(bool inv, float time)
     {
         invincible = inv;
         if (inv)
         {
             //Debug.Log("I'M INVINCIBLE");
-            invulnCounter = invulnTime;
+            invulnCounter = time;
             spr.color = Color.gray;
         }
         else
@@ -131,8 +157,16 @@ public class scr_Entity : MonoBehaviour
 
     public void Death()
     {
+        /*
+        int index = Random.Range(0, dies_SFX.Length);
+        die_SFX = dies_SFX[index];
+        Die_SFX.clip = die_SFX;
+        Die_SFX.Play();
+        */
         Debug.Log("I AM DEAD");
-        gameObject.SetActive(false);
+        scr_Grid.GridController.SetTileOccupied(false, _gridPos.x, _gridPos.y, this);
+        gameObject.SetActive(false); 
+        //scr_Grid.GridController.RemoveEntity(this);  
     }
    
     IEnumerator HitClock(float hitTime)
@@ -143,15 +177,15 @@ public class scr_Entity : MonoBehaviour
         spr.color = baseColor;
         Debug.Log("NOT RED");
     }
+
 }
 [System.Serializable]
 public class Health{
 
     public int hp = 10;
     public int temp_hp = 0;
+    public int max_hp;
 
-
-    
 
     public void TakeDamage(int damage)
     {

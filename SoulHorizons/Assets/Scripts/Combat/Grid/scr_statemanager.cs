@@ -9,15 +9,25 @@ public class scr_statemanager : MonoBehaviour {
     public Text RewardMessage;
     public Text PlayerHealth;
     public Text TempHealth;
+    public Text EffectText;
     bool endCombat = false;
+    bool showEffect = false;
+    string EffectString;
     GameObject player;
     scr_Entity playerEntity;
     // Use this for initialization
     void Start () {
         player = GameObject.FindGameObjectWithTag("Player");
+        EffectText.enabled = false;
         if (player != null)
         {
             playerEntity = player.GetComponent<scr_Entity>();
+            //load the health from the GameState
+            int hp = SaveLoad.currentGame.GetPlayerHealth();
+            if (hp > 0) //make sure the health has been set previously
+            {
+                playerEntity._health.hp = hp;
+            }
         }
         else
         {
@@ -28,20 +38,24 @@ public class scr_statemanager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         UpdateHealth();
+        UpdateEffects();
 		if(GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
         {
             //Debug.Log("NO ENEMIES");
-            scr_InputManager.disableInput = true;
+            //scr_InputManager.disableInput = true;
             RewardMessage.enabled = true;
             endCombat = true;
+
+            //save health
+            //SaveLoad.currentGame.SetPlayerHealth(playerEntity._health.hp);
         }
         if (endCombat)
         {
             //INSERT CODE TO STOP ENEMY AND PLAYER MOVEMENT HERE
-            if (Input.GetKey(KeyCode.V))
+            if (Input.GetKey(KeyCode.V) || scr_InputManager.PlayCard() || scr_InputManager.Blast_Down())
             {
                 Debug.Log("Switching Scenes");
-                SceneManager.LoadScene("sn_WorldMap");
+                SceneManager.LoadScene("sn_LocalMap");
             }
         }
 	}
@@ -59,9 +73,33 @@ public class scr_statemanager : MonoBehaviour {
         if(playerEntity._health.hp <= 0)
         {
             scr_InputManager.disableInput = true;
-            RewardMessage.text = "Oh no you died! Press V to return to the World Map";
+            RewardMessage.text = "Oh no you died! Press V to return to the Local Map";
             RewardMessage.enabled = true;
             endCombat = true;
         }
+    }
+
+    public void UpdateEffects()
+    {
+        if (showEffect)
+        {
+            EffectText.text = EffectString;
+            EffectText.enabled = true;
+        }
+        else EffectText.enabled = false;
+    }
+
+    public void ChangeEffects(string text, float duration)
+    {
+        Debug.Log("NEW EFFECT");
+        showEffect = true;
+        EffectString = text;
+        StartCoroutine(EffectTime(duration));
+    }
+
+    private IEnumerator EffectTime(float time)
+    {
+        yield return new WaitForSecondsRealtime(time);
+        showEffect = false;
     }
 }

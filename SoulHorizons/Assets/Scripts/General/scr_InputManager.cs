@@ -83,11 +83,11 @@ public static class scr_InputManager {
 		r += Input.GetAxis("Mouse ScrollWheel");
 		if (r < 0f)
 		{
-			return -1;
+			return 1;
 		}
 		else if (r > 0f)
 		{
-			return 1;
+			return -1;
 		}
 		return 0;
 	}
@@ -153,7 +153,18 @@ public static class scr_InputManager {
 		return Input.GetButtonDown("Blast_Button");
 	}
 
-	public static bool Blast_Up()
+    public static bool Blast_Holding()
+    {
+        if (disableInput)
+        {
+            return false;
+        }
+
+        return Input.GetButton("Blast_Button");
+    }
+
+
+    public static bool Blast_Up()
 	{
 		if(disableInput)
 		{

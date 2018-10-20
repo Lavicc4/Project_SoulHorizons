@@ -5,12 +5,13 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Cards/HardenSoul")]
 public class scr_HardenSoul : scr_Card {
 
+    public int Shield_hp; //How much shield hp
     public override void Activate()
     {
         ActivateEffects();
 
         scr_Entity player = GameObject.FindGameObjectWithTag("Player").GetComponent<scr_Entity>();
-        player._health.temp_hp += 20;
+        player._health.temp_hp += Shield_hp;
         
     }
 

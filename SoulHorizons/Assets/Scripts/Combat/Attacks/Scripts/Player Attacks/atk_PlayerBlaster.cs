@@ -7,7 +7,11 @@ using UnityEngine;
 public class atk_PlayerBlaster : Attack {
 
     
-
+    public override ActiveAttack BeginAttack(ActiveAttack activeAtk)
+    {
+        activeAtk.lastAttackTime -= activeAtk._attack.incrementSpeed;
+        return activeAtk; 
+    } 
 
     public override Vector2Int ProgressAttack(int xPos, int yPos, ActiveAttack activeAtk)
     {
@@ -19,7 +23,7 @@ public class atk_PlayerBlaster : Attack {
         //move particles
         //ProgressEffects(xPos, yPos, activeAtk.lastPos.x, activeAtk.lastPos.y, activeParticle);
 
-        scr_Grid.GridController.PrimeNextTile(xPos + 1, yPos);
+        //scr_Grid.GridController.PrimeNextTile(xPos + 1, yPos);
         scr_Grid.GridController.ActivateTile(xPos, yPos);
         return new Vector2Int(xPos + 1, yPos);
     }
@@ -28,8 +32,40 @@ public class atk_PlayerBlaster : Attack {
         return true; // to make it happy 
     }
 
+    //--Effects Methods--
+    public override void LaunchEffects(ActiveAttack activeAttack)
+    {
+        if (activeAttack == null)
+        {
+            Debug.Log("PlayerBlaster: Active Attack is null");
+        }
+
+        if (particles == null)
+        {
+            Debug.Log("PlayerBlaster: Active Attack is null");
+        }
+
+        if (activeAttack.pos == null)
+        {
+            Debug.Log("PlayerBlaster: Active Attack is null");
+        }
+
+            activeAttack.particle = Instantiate(particles, scr_Grid.GridController.GetWorldLocation(activeAttack.pos.x, activeAttack.pos.y) + particlesOffset, Quaternion.identity);
+            activeAttack.particle.sortingOrder = -activeAttack.pos.y;
+    }
+
     public override void ProgressEffects(ActiveAttack activeAttack)
     {
-        activeAttack.particle.transform.position = Vector3.Lerp(activeAttack.particle.transform.position, scr_Grid.GridController.GetWorldLocation(activeAttack.lastPos.x,activeAttack.lastPos.y) + activeAttack._attack.particlesOffset, (4.5f) * Time.deltaTime);
+        activeAttack.particle.transform.position = Vector3.Lerp(activeAttack.particle.transform.position, scr_Grid.GridController.GetWorldLocation(activeAttack.lastPos.x,activeAttack.lastPos.y) + activeAttack._attack.particlesOffset, (particleSpeed) * Time.deltaTime);
+    }
+
+    public override void ImpactEffects(int xPos = -1, int yPos = -1)
+    {
+
+    }
+
+    public override void EndEffects(ActiveAttack activeAttack)
+    {
+
     }
 }

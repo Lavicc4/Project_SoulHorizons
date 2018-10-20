@@ -9,12 +9,22 @@ public struct Territory
 {
     public TerrName name;
     public Color TerrColor;
+    public Sprite TerrSprite;
+
+    public Territory(TerrName nam, Color col, Sprite spr)
+    {
+        name = nam;
+        TerrColor = col;
+        TerrSprite = spr;
+    }
 }
 public class scr_Tile : MonoBehaviour{
 
     [Header("Combat Colors")]
     public Color primeColor;
     public Color activeColor;
+    public Color playerActiveColor;
+    public Color playerPrimeColor; 
     //public Color inactiveColor;
 
     
@@ -39,15 +49,15 @@ public class scr_Tile : MonoBehaviour{
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        territory.TerrColor.a = 255;
+        territory.TerrColor.a = 1f;
         spriteRenderer.color = territory.TerrColor;
         spriteRenderer.drawMode = SpriteDrawMode.Sliced;
         spriteRenderer.size = spriteSize;
-        isPrimed = false;
-        isActive = false; 
-        harmful = false;
-        occupied = false;
-        gridController = GameObject.FindGameObjectWithTag("GridController");
+        isPrimed = false;                                                       //Sets a tile to about to be hit (yellow)
+        isActive = false;                                                       //Sets a tile to do hit          (red)
+        harmful = false;                                                        //Sets tile to do persistent harm. May not be needed
+        occupied = false;                                                       //Sets a tile to be occupied by an entity
+        gridController = GameObject.FindGameObjectWithTag("GridController");    //Grid Controller
         grid = gridController.GetComponent<scr_Grid>();
         entityOnTile = null;
          
@@ -62,6 +72,7 @@ public class scr_Tile : MonoBehaviour{
             //entityOnTile._health.TakeDamage(1);
             isActive = false; //So it only hits once and not every frame, can change if it's multi hit, add that functionality later
         }
+
     }
 
     public void InitalizeTile()
@@ -70,17 +81,20 @@ public class scr_Tile : MonoBehaviour{
 
     }
 
-    public void SetTerritory(Territory newTer)
+    public void SetTerritory(TerrName newName, Color newColor)
     {
-        territory = newTer;
-       
+        territory.name = newName;
+        territory.TerrColor = newColor;
+        spriteRenderer.color = territory.TerrColor;
     }
 
     public void Prime()
     {
-        isPrimed = true; 
-        if(!isActive)
+        isPrimed = true;
+        if (!isActive)
+        {   
             spriteRenderer.color = primeColor;
+        }
         
     }
     public void DePrime()
@@ -96,7 +110,22 @@ public class scr_Tile : MonoBehaviour{
         isActive = true; 
         spriteRenderer.color = activeColor;
     }
-    
+    public void Activate(ActiveAttack activeAttack)
+    {
+        queuedAttacks++;
+        isPrimed = false;
+        isActive = true;
+        if(activeAttack.entity.type == EntityType.Player)
+        {
+            spriteRenderer.color = playerActiveColor;
+        }
+        else if (activeAttack.entity.type == EntityType.Enemy)
+        {
+            spriteRenderer.color = activeColor;
+        }
+        
+    }
+
     public void Deactivate()
     {
         queuedAttacks--; 

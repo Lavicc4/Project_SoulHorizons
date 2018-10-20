@@ -237,8 +237,12 @@ public class scr_Deck : MonoBehaviour {
         //wait however long is required
         if (cardToPlay.castingTime != 0)
         {
+            //start initial effects and stop player input
+            cardToPlay.StartCastingEffects();
+            scr_InputManager.disableInput = true;
             yield return new WaitForSeconds(cardToPlay.castingTime);
         }
+        scr_InputManager.disableInput = false;
         hand[index].Activate();
         discard.Add(cardToPlay);
         //hand.Remove(cardToPlay);

@@ -14,11 +14,16 @@ public abstract class Attack : ScriptableObject {
     public EntityType type;
     public bool piercing;
     public SpriteRenderer particles;
-    public Vector3 particlesOffset; 
+    public Vector3 particlesOffset;
+    public float particleSpeed = 1; 
 
-	public virtual Vector2Int BeginAttack()
+    public virtual Vector2Int BeginAttack(int xPos, int yPos, ActiveAttack activeAtk)
     {
         return new Vector2Int(); 
+    }
+    public virtual ActiveAttack BeginAttack(ActiveAttack activeAtk)
+    {
+        return activeAtk; 
     }
     public virtual Vector2Int ProgressAttack(int xPos, int yPos, ActiveAttack activeAtk)
     {
@@ -28,18 +33,29 @@ public abstract class Attack : ScriptableObject {
     {
         return false; 
     }
+    
+
+    /// <summary>
+    /// Call when attack is launched.
+    /// </summary>
+    /// <param name="activeAttack"></param>
+    public abstract void LaunchEffects(ActiveAttack activeAttack);
+
+    /// <summary>
+    /// Moves the particles however they are supposed to move. Called in ProgressAttack.
+    /// </summary>
+    public abstract void ProgressEffects(ActiveAttack activeAttack);
 
     /// <summary>
     /// This is called whenever the attack hits something.
     /// Use to launch particles and/or sounds.
     /// </summary>
-    public virtual void ImpactEffects(int xPos = -1, int yPos = -1)
-    {
-        
-    }
+    public abstract void ImpactEffects(int xPos = -1, int yPos = -1);
+
 
     /// <summary>
-    /// Moves the particles however they are supposed to move. Called in ProgressAttack
+    /// This is called when the attack is removed from the attack controller array of active attacks.
     /// </summary>
-    public abstract void ProgressEffects(ActiveAttack activeAttack);
+    /// <param name="activeAttack"></param>
+    public abstract void EndEffects(ActiveAttack activeAttack);
 }

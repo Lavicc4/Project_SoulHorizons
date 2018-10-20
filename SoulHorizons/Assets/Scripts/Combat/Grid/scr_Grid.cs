@@ -8,14 +8,16 @@ public class scr_Grid : MonoBehaviour{
 
     public int xSizeMax; 
     public int ySizeMax;
-    public float xOffset;
-    public float yOffset; 
+    public float xOffset = 0;
+    public float yOffset = 0;
+    public Vector2 tileSpacing;
     public scr_Tile[,] grid;
     public scr_Tile tile;
     private SpriteRenderer spriteR;
-    public Sprite[] tile_sprites;
+    public Sprite tile_sprites;
     private int spriteTracker = 0;
-    public scr_Entity[] activeEntities; 
+    public scr_Entity[] activeEntities;
+    public Transform camera; 
 
 
 
@@ -36,33 +38,28 @@ public class scr_Grid : MonoBehaviour{
     //Build Grid Tiles
     private void BuildGrid()
     {
+
         //tile_sprites = Resources.LoadAll<Sprite>("tiles_spritesheet");
         grid = new scr_Tile[xSizeMax, ySizeMax];
-
+        Vector2 gridCenter = new Vector2((tileSpacing.x * (xSizeMax-1) / 2), (tileSpacing.y * ySizeMax / 2));
+        print(gridCenter); 
+        camera.transform.position = new Vector3(gridCenter.x,gridCenter.y,camera.transform.position.z); 
         for (int j = 0; j < ySizeMax; j++)
         {
             for (int i = 0; i < xSizeMax; i++)
             {
                 scr_Tile tileToAdd = null; 
-                if(i < xSizeMax / 2)
-                {
-                    tileToAdd = (scr_Tile)Instantiate(tile, new Vector3((float)i / (.95f + .05f * j) + xOffset + .1f * j, (float)j / (2.25f + .15f * j) + yOffset, 0), Quaternion.identity);
-                
-                }
-                else
-                {
-                    tileToAdd = (scr_Tile)Instantiate(tile, new Vector3((float)i / (.95f + .05f * j) + xOffset + .155f * j, (float)j / (2.25f + .15f * j) + yOffset, 0), Quaternion.identity);
-                    tileToAdd.GetComponent<SpriteRenderer>().flipX = true;
 
-                }
+                tileToAdd = (scr_Tile)Instantiate(tile, new Vector3((i * tileSpacing.x) + xOffset, (j * tileSpacing.y) + yOffset, 0), Quaternion.identity);
+
                 tileToAdd.territory = scr_SceneManager.globalSceneManager.currentEncounter.territoryColumn[i].territoryRow[j];
                 tileToAdd.gridPositionX = i;
                 tileToAdd.gridPositionY = j;
 
                 spriteR = tileToAdd.GetComponent<SpriteRenderer>();
-                spriteR.sprite = tile_sprites[spriteTracker];
+                spriteR.sprite = tile_sprites;
                 
-                if (tile_sprites[spriteTracker] == null) Debug.Log("MISSING SPRITE");
+                if (tile_sprites == null) Debug.Log("MISSING SPRITE");
 
                 grid[i, j] = tileToAdd;
 
@@ -116,12 +113,25 @@ public class scr_Grid : MonoBehaviour{
         if(LocationOnGrid(x , y ))
             grid[x, y].Prime(); 
     }
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="x"></param>
+    /// <param name="y"></param>
     public void ActivateTile(int x, int y)
     {
         if (LocationOnGrid(x, y))
         {
             grid[x, y].Activate();
             
+        }
+    }
+    public void ActivateTile(int x, int y, ActiveAttack activeAttack)
+    {
+        if (LocationOnGrid(x, y))
+        {
+            grid[x, y].Activate(activeAttack);
+
         }
     }
 
@@ -156,6 +166,12 @@ public class scr_Grid : MonoBehaviour{
         }
     }
 
+    public void SetTileTerritory(int x, int y, TerrName newName, Color newColor)
+    {
+        grid[x, y].SetTerritory(newName, newColor);
+   
+    }
+
     public Territory ReturnTerritory(int x, int y)
     {
         return grid[x, y].territory;
@@ -170,34 +186,42 @@ public class scr_Grid : MonoBehaviour{
     {
         for(int i=0; i < activeEntities.Length; i++)
         {
-            //Why is this not using activeEntities[i]._gridPos.Equals(attack.pos)? Why create a new object? - Colin
-            if(activeEntities[i]._gridPos == new Vector2Int(attack.pos.x, attack.pos.y))
+            if (activeEntities[i].gameObject.activeSelf)
             {
-                //Debug.Log(activeEntities[i].entityTerritory.name + " " + attack.entity.entityTerritory.name);
-                if(activeEntities[i].type != attack.entity.type)
+                if (activeEntities[i]._gridPos == attack.pos) 
                 {
-                    Debug.Log("ACTIVE ENTITY HIT!");
-                    //Check if entity is invincible and assigns iframes accordingly
-                    if (!activeEntities[i].isInvincible()) {
-                        activeEntities[i].HitByAttack(attack._attack);
-                        if (activeEntities[i].has_iframes)
+                    //Debug.Log(activeEntities[i].entityTerritory.name + " " + attack.entity.entityTerritory.name);
+                    if (activeEntities[i].type != attack.entity.type)
+                    {
+                        Debug.Log("ACTIVE ENTITY HIT!");
+                        //Check if entity is invincible and assigns iframes accordingly
+                        if (!activeEntities[i].isInvincible())
                         {
-                            //Activate invincibility frames
-                            activeEntities[i].setInvincible(true);
-                            
+                            activeEntities[i].HitByAttack(attack._attack);
+                            if (activeEntities[i].has_iframes)
+                            {
+                                //Activate invincibility frames
+                                activeEntities[i].setInvincible(true, activeEntities[i].invulnTime);
+
+                            }
                         }
+                        attack.entityIsHit = true;
+                        attack.entityHit = activeEntities[i];
+                        attack._attack.ImpactEffects();
                     }
-                    attack.entityIsHit = true;
-                    attack.entityHit = activeEntities[i];
-                    attack._attack.ImpactEffects();
+                    
                 }
-                return attack; 
             }
           
         }
         return attack; 
     }
-
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="x"></param>
+    /// <param name="y"></param>
+    /// <returns></returns>
     public Vector3 GetWorldLocation(int x, int y)
     {
         if (LocationOnGrid(x, y))
@@ -207,5 +231,85 @@ public class scr_Grid : MonoBehaviour{
             return new Vector3(-100,-100,-100); // will def be off the grid 
 
     }
-    
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="pos"></param>
+    /// <returns></returns>
+    public Vector3 GetWorldLocation(Vector2Int pos)
+    {
+        if (LocationOnGrid(pos.x,pos.y))
+            return new Vector3(grid[pos.x, pos.y].transform.position.x, grid[pos.x, pos.y].transform.position.y, 0);
+
+        else
+            return new Vector3(-100, -100, -100); // will def be off the grid 
+
+    }
+
+    public void RemoveEntity(scr_Entity entity)
+    {
+        float tempID = entity.gameObject.GetInstanceID();
+        for (int i = 0; i < activeEntities.Length; i++){
+            if (activeEntities[i].gameObject.GetInstanceID() == tempID)
+            {
+                Debug.Log("help me");
+                scr_Entity[] temporaryEntities = new scr_Entity[activeEntities.Length - 1];
+                for(int j = 0; j < activeEntities.Length; j++)
+                {
+                    if (j >= i)
+                    {
+                        temporaryEntities[j] = activeEntities[j + 1];
+                        
+                    }
+                    else if(j < i)
+                    {
+                        temporaryEntities[j] = activeEntities[j];
+                    }
+                }
+                Debug.Log(temporaryEntities);
+                activeEntities = temporaryEntities;
+                Destroy(entity.gameObject); 
+
+            }
+            else
+            {
+                Debug.Log("else"); 
+                return;
+            }
+        }
+        
+    }
+
+    //Seizes next column in the grid for a specified territory, used in the Seize Domain Card
+    public void seizeColumn(TerrName name)
+    {
+        bool colFound = false;
+        //Debug.Log("SEIZE!");
+        for (int i = 0; i < xSizeMax; i++)
+        {
+
+            for (int j = 0; j < ySizeMax; j++)
+            {
+                //Debug.Log(scr_Grid.GridController.grid[i, j].territory.name);
+                if (grid[i, j].territory.name != name)
+                {
+                    //Debug.Log("Column: " + i);
+                    colFound = true;
+                    if (!grid[i, j].occupied)
+                    {
+                        //Debug.Log("SEIZING!");
+                        SetTileTerritory(i, j, name, scr_TileDict.colorDict[name]);
+                    }
+                }
+            }
+            //Debug.Log(colFound);
+            if (colFound)
+            {
+                break;
+            }
+
+
+        }
+    }
+
 }
