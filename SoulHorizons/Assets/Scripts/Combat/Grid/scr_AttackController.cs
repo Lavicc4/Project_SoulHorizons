@@ -7,6 +7,7 @@ public class scr_AttackController : MonoBehaviour {
     public ActiveAttack[] activeAttacks = new ActiveAttack[10];
     public int numberOfActiveAttacks = 0; 
     public static scr_AttackController attackController;
+    public scr_Pause pauseReference;
 
     private void Awake()
     {
@@ -40,7 +41,7 @@ public class scr_AttackController : MonoBehaviour {
 
     void Update()
     {
-        for(int x = 0; x < numberOfActiveAttacks; x++)
+        for (int x = 0; x < numberOfActiveAttacks; x++)
         {
             if (activeAttacks[x].CanAttackContinue())
             {
@@ -49,10 +50,10 @@ public class scr_AttackController : MonoBehaviour {
                     RemoveFromArray(x);
                     return;
                 }
-                else if (!activeAttacks[x]._attack.piercing  &&  activeAttacks[x].entityIsHit)
+                else if (!activeAttacks[x]._attack.piercing && activeAttacks[x].entityIsHit)
                 {
                     RemoveFromArray(x);
-                    return; 
+                    return;
                 }
                 else if (scr_Grid.GridController.LocationOnGrid(activeAttacks[x].pos.x, activeAttacks[x].pos.y) == false)
                 {
@@ -68,14 +69,14 @@ public class scr_AttackController : MonoBehaviour {
                 activeAttacks[x].lastPos = activeAttacks[x].pos;
                 activeAttacks[x].Clone(scr_Grid.GridController.AttackPosition(activeAttacks[x]));
                 activeAttacks[x].pos = activeAttacks[x]._attack.ProgressAttack(activeAttacks[x].pos.x, activeAttacks[x].pos.y, activeAttacks[x]);
-                activeAttacks[x].lastAttackTime = Time.time; 
+                activeAttacks[x].lastAttackTime = Time.time;
                 activeAttacks[x].currentIncrement++;
-                 
+
             }
             //activeAttacks[x].particle.transform.position = Vector3.Lerp(activeAttacks[x].particle.transform.position, scr_Grid.GridController.GetWorldLocation(activeAttacks[x].lastPos.x,activeAttacks[x].lastPos.y) + activeAttacks[x]._attack.particlesOffset, (4.5f) * Time.deltaTime);
             //Replaced this lerp by passing the particle to progress attack above and letting the attack object determine particle behavior - Colin
             activeAttacks[x]._attack.ProgressEffects(activeAttacks[x]);
-        }    
+        }
     }
     void RemoveFromArray(int index)
     {
