@@ -50,8 +50,10 @@ public class scr_PlayerBlaster : MonoBehaviour {
         //Die_SFX = SFX_Sources[3];
     }
 	
-	
+	private bool blastLastFrame = false; //this is used to get detect "buttonUp" since we can only determine if the button is down or not
 	void Update () {
+		bool blastUp = blastLastFrame && !scr_InputManager.Blast(); //blastUp is true if the button was down(true) last frame and is not pressed this frame
+		blastLastFrame = scr_InputManager.Blast(); //update the blast last frame
 
 		if (pressed)
 		{
@@ -59,7 +61,7 @@ public class scr_PlayerBlaster : MonoBehaviour {
 			//TODO:need to calculate charge level here for visual indicators that you have increased the charge level
 		}
 
-		if (scr_InputManager.Blast_Down() && readyToFire)
+		if (scr_InputManager.Blast() && readyToFire)
 		{
             int index = Random.Range(0, blasters_SFX.Length);
             blaster_SFX = blasters_SFX[index];
@@ -69,7 +71,7 @@ public class scr_PlayerBlaster : MonoBehaviour {
             pressed = true;
 		}
 
-        if(scr_InputManager.Blast_Holding() && readyToFire)
+        if(scr_InputManager.Blast() && readyToFire)
         {
             if(timePressed > chargeTime1)
             {
@@ -77,7 +79,7 @@ public class scr_PlayerBlaster : MonoBehaviour {
             }
         }
 
-		if(scr_InputManager.Blast_Up() && readyToFire)
+		if(blastUp && readyToFire)
 		{
 			//scr_PlayerProjectile proj = objectPool_scr.CreateObject(transform.position, transform.rotation).GetComponent<scr_PlayerProjectile>();
 			float damage = baseDamage + damageIncreaseRate * timePressed;

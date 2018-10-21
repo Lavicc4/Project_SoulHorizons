@@ -138,21 +138,25 @@ public static class scr_InputManager {
 		return 0;
 	}
 
+	static float falseRadius = 0.2f; //values within falseRadius of 0 will give a false reading for the button being pressed. Used with the axis to account for uncertainty with float equality
+
 	/// <summary>
 	/// XBox one - B button
 	/// Keyboard - LMB
 	/// </summary>
 	/// <returns>returns true if the blast button is down.</returns>
-	public static bool Blast_Down()
+	public static bool Blast()
 	{
 		if(disableInput)
 		{
 			return false;
 		}
 
-		return Input.GetButtonDown("Blast_Button");
+		return Input.GetButtonDown("Blast_Button") || (Input.GetAxis("Blast_Axis") > falseRadius) || (Input.GetAxis("Blast_Axis") < -falseRadius);
 	}
 
+	//Note: button up and button down can no longer be determined in this script since we are using an axis on the controller
+	/*
     public static bool Blast_Holding()
     {
         if (disableInput)
@@ -173,6 +177,7 @@ public static class scr_InputManager {
 
 		return Input.GetButtonUp("Blast_Button");
 	}
+	 */
 
 	/// <summary>
 	/// Xbox one - A button
