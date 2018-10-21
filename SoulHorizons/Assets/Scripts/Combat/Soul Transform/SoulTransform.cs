@@ -5,10 +5,20 @@ using UnityEngine;
 public class SoulTransform : ScriptableObject {
 
     //script references
-    MonoBehaviour movement;
-    MonoBehaviour basicAttack;
+    public MonoBehaviour movement;
+    public MonoBehaviour basicAttack;
 
     //common attributes
-    int shield; //the amount of shield to add when performing this transform
-    int shieldDrainRate; //the shield loss per second that this transform inflicts
+    [SerializeField] int shield; //the amount of shield to add when performing this transform
+    [SerializeField] int shieldDrainRate; //the shield loss per second that this transform inflicts
+
+    public int getShield()
+    {
+        return shield;
+    }
+
+    public int getShieldDrainRate()
+    {
+        return shieldDrainRate;
+    }
 }

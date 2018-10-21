@@ -182,7 +182,7 @@ public class scr_Entity : MonoBehaviour
 [System.Serializable]
 public class Health{
 
-    public int hp = 10;
+    public int hp = 10; //NOTE: These would be better as private variables to make mistakes less likely and to enforce the max_hp - Colin
     public int temp_hp = 0;
     public int max_hp;
 
