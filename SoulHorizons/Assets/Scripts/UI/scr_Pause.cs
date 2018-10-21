@@ -27,7 +27,7 @@ public class scr_Pause : MonoBehaviour {
     //Controls pause flow
     void pauseControl()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetButtonDown("Menu_Pause"))
         {
             paused = !paused;
             togglePause();
@@ -42,6 +42,7 @@ public class scr_Pause : MonoBehaviour {
         {
             //Show pause panel
             Time.timeScale = 0f;
+            scr_InputManager.disableInput = true;
         }
 
         //If you hit escape again, it unpauses
@@ -49,6 +50,7 @@ public class scr_Pause : MonoBehaviour {
         {
             //Remove pause panel
             Time.timeScale = 1f;
+            scr_InputManager.disableInput = false;
         }
     }
 

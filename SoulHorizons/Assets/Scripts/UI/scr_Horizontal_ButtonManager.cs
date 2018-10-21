@@ -57,7 +57,7 @@ public class scr_Horizontal_ButtonManager : MonoBehaviour {
         }
 
 		//check for press
-		if (scr_InputManager.PlayCard() != -1)
+		if (Input.GetButtonDown("Menu_Select"))
 		{
 			Debug.Log("Pressing button");
 			buttons[currentButton].onClick.Invoke();

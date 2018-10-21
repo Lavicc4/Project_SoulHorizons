@@ -52,7 +52,7 @@ public class scr_statemanager : MonoBehaviour {
         if (endCombat)
         {
             //INSERT CODE TO STOP ENEMY AND PLAYER MOVEMENT HERE
-            if (Input.GetKey(KeyCode.V) || scr_InputManager.PlayCard() != -1 || scr_InputManager.Blast())
+            if (Input.GetButton("Menu_Select") || Input.GetButton("Menu_Back"))
             {
                 Debug.Log("Switching Scenes");
                 SceneManager.LoadScene("sn_LocalMap");
