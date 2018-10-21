@@ -19,6 +19,7 @@ public class scr_DeckManager : MonoBehaviour {
     //Color textColor; //the default text of the color when not in focus
 	scr_Deck deck_scr;
     int currentCard = 0;
+    public float doublePressWindow = 0.3f; //the window of time the user has to press the same card again and have it register as a double press
 
     private bool readyToCast = true;
     public float cooldown = 0.6f; //the rate at which the player can play cards; could make this a variable in the card instead
@@ -64,6 +65,7 @@ public class scr_DeckManager : MonoBehaviour {
     /// <returns>true if any input was detected, false otherwise.</returns>
     bool UserInput()
     {
+        /* NOTE: We are not currently scrolling through the hand
         int axis = 0;
         if (!axisPressed)
         {
@@ -77,15 +79,15 @@ public class scr_DeckManager : MonoBehaviour {
             //joystick is not pressed
             axisPressed = false;
         }
+         */
 
-        if (scr_InputManager.PlayCard() && readyToCast)
+        if (scr_InputManager.PlayCard() != -1 && readyToCast)
         {
-            //start cooldown to be able to cast another card; could use an argument from the card to get variable cooldowns
-            StartCoroutine(CastCooldown(cooldown));
-            //play the current card
-            deck_scr.Activate(currentCard);
+            CardInput();
             return true;
         }
+
+        /* NOTE: We are not currently scrolling through the hand
         else if (axis < 0)
         {
             currentCard--;
@@ -102,7 +104,71 @@ public class scr_DeckManager : MonoBehaviour {
             currentCard = (currentCard + 1) % deck_scr.handSize;
             return true;
         }
+         */
         return false;
+    }
+
+    //On single press, toggle or switch the area of effect highlight.
+    //On double press, play the card and remove any highlighting
+    int lastCardPressed = -1; //the last value returned from play card
+    float timeSincePressed = 0; //the time since the last card was pressed
+    /// <summary>
+    /// Handles input for the cards. Determines if a card has been pressed once or double pressed.
+    /// </summary>
+    void CardInput()
+    {
+        bool doublePress = timeSincePressed < doublePressWindow;
+
+        //determine what card has been pressed, then decide what to do about it
+        switch (scr_InputManager.PlayCard())
+        {
+            case 0:
+                /* NOTE: This section is for double press to play and single press to highlight
+                //check for double press
+                if (doublePress)
+                {
+                    //start cooldown to be able to cast another card; could use an argument from the card to get variable cooldowns
+                    StartCoroutine(CastCooldown(cooldown));
+                    //play this card
+                    deck_scr.Activate(0);
+
+                    //reset the time
+                    timeSincePressed = 0f;
+                }
+                else
+                {
+                    if (lastCardPressed == 0)
+                    {
+                        //turn off the highlighting
+                    }
+                    else
+                    {
+                        //turn on area of effect highlighting
+                    }
+                }
+                 */
+                //start cooldown to be able to cast another card; could use an argument from the card to get variable cooldowns
+                StartCoroutine(CastCooldown(cooldown));
+                deck_scr.Activate(0);
+                break;
+            case 1:
+                //start cooldown to be able to cast another card; could use an argument from the card to get variable cooldowns
+                StartCoroutine(CastCooldown(cooldown));
+                deck_scr.Activate(1);
+                break;
+            case 2:
+                //start cooldown to be able to cast another card; could use an argument from the card to get variable cooldowns
+                StartCoroutine(CastCooldown(cooldown));
+                deck_scr.Activate(2);
+                break;
+            case 3:
+                //start cooldown to be able to cast another card; could use an argument from the card to get variable cooldowns
+                StartCoroutine(CastCooldown(cooldown));
+                deck_scr.Activate(3);
+                break;
+            default:
+                break;
+        }
     }
 
     /// <summary>
@@ -117,12 +183,14 @@ public class scr_DeckManager : MonoBehaviour {
         //give the UI element the information for a newly drawn card; play animation for loading
 
         //highlight the current card
+        /* NOTE: We currently do not have a current card, so no selection is performed
         for (int i = 0; i < cardUI.Length; i++)
         {  
             //cardNames[i].color = textColor;
             cardUI[i].SetSelected(false);
         }
         cardUI[currentCard].SetSelected(true);
+         */
 
         SetCardGraphics();
         //TODO: need to check if the UI matches the current hand. If not, need to start a fade out animation for the out of date cards, followed by a fade in for their replacement

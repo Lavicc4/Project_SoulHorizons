@@ -180,17 +180,35 @@ public static class scr_InputManager {
 	 */
 
 	/// <summary>
-	/// Xbox one - A button
-	/// Keyboard - RMB
+	/// Xbox one - X, Y, A, B buttons
+	/// Keyboard - q, w, e, r buttons
 	/// </summary>
-	/// <returns>returns true the frame the play card button is pressed</returns>
-	public static bool PlayCard()
+	/// <returns>returns 0-3 the frame a play card button is pressed or -1 if none is pressed</returns>
+	public static int PlayCard()
 	{
 		if(disableInput)
 		{
-			return false;
+			return -1;
 		}
-		return Input.GetButtonDown("PlayCard_Button");
+		else if (Input.GetButtonDown("PlayCard1_Button"))
+		{
+			return 0;
+		}
+		else if (Input.GetButtonDown("PlayCard2_Button"))
+		{
+			return 1;
+		}
+		else if (Input.GetButtonDown("PlayCard3_Button"))
+		{
+			return 2;
+		}
+		else if (Input.GetButtonDown("PlayCard4_Button"))
+		{
+			return 3;
+		}
+
+		return -1;
+
 	}
 
 /* 

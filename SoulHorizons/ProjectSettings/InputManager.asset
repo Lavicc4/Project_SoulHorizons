@@ -329,8 +329,8 @@ InputManager:
     m_Name: K_MainHorizontal
     descriptiveName: 
     descriptiveNegativeName: 
-    negativeButton: a
-    positiveButton: d
+    negativeButton: left
+    positiveButton: right
     altNegativeButton: 
     altPositiveButton: 
     gravity: 1000
@@ -345,8 +345,8 @@ InputManager:
     m_Name: K_MainVertical
     descriptiveName: 
     descriptiveNegativeName: 
-    negativeButton: w
-    positiveButton: s
+    negativeButton: up
+    positiveButton: down
     altNegativeButton: 
     altPositiveButton: 
     gravity: 1000
@@ -426,9 +426,9 @@ InputManager:
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: joystick button 1
+    positiveButton: space
     altNegativeButton: 
-    altPositiveButton: mouse 0
+    altPositiveButton: left shift
     gravity: 1
     dead: 0.2
     sensitivity: 1
@@ -438,13 +438,13 @@ InputManager:
     axis: 3
     joyNum: 0
   - serializedVersion: 3
-    m_Name: PlayCard_Button
+    m_Name: PlayCard1_Button
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: joystick button 0
+    positiveButton: joystick button 2
     altNegativeButton: 
-    altPositiveButton: mouse 1
+    altPositiveButton: q
     gravity: 1
     dead: 0.2
     sensitivity: 1
@@ -452,15 +452,63 @@ InputManager:
     invert: 0
     type: 0
     axis: 3
+    joyNum: 0
+  - serializedVersion: 3
+    m_Name: PlayCard2_Button
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick button 3
+    altNegativeButton: 
+    altPositiveButton: w
+    gravity: 1
+    dead: 0.2
+    sensitivity: 1
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 2
+    joyNum: 0
+  - serializedVersion: 3
+    m_Name: PlayCard3_Button
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick button 0
+    altNegativeButton: 
+    altPositiveButton: e
+    gravity: 1
+    dead: 0.2
+    sensitivity: 1
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 2
+    joyNum: 0
+  - serializedVersion: 3
+    m_Name: PlayCard4_Button
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick button 1
+    altNegativeButton: 
+    altPositiveButton: r
+    gravity: 1
+    dead: 0.2
+    sensitivity: 1
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 2
     joyNum: 0
   - serializedVersion: 3
     m_Name: Blast_Axis
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: joystick button 0
+    positiveButton: 
     altNegativeButton: 
-    altPositiveButton: mouse 1
+    altPositiveButton: 
     gravity: 1
     dead: 0.2
     sensitivity: 1

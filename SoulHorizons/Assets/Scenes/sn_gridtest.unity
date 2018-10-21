@@ -462,6 +462,7 @@ MonoBehaviour:
   - {fileID: 1729363046}
   - {fileID: 1871253128}
   - {fileID: 155839717}
+  doublePressWindow: 0.3
   cooldown: 1.5
   cardChange_SFX: {fileID: 0}
 --- !u!4 &283017071
@@ -491,7 +492,7 @@ MonoBehaviour:
   deckSize: 30
   handSize: 4
   cardMapping: {fileID: 11400000, guid: 7fd815c874a2e11489c9eedb255bd7dd, type: 2}
-  deckList: {fileID: 4900000, guid: 58fc1091a13e87d4ab2300bdcecd3b0c, type: 3}
+  deckList: {fileID: 4900000, guid: e4d0755a0b712244fb08fb3303a823c6, type: 3}
   hand: []
 --- !u!82 &283017073
 AudioSource:
