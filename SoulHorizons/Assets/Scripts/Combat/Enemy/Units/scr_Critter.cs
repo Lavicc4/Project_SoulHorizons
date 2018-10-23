@@ -59,8 +59,8 @@ public class scr_Critter : scr_EntityAI {
 
     private void Movement()
     {
-        int _x = GenerateCoord(3, 6);
-        int _y = GenerateCoord(0, 3);
+        int _x = GenerateCoord(scr_Grid.GridController.xSizeMax/2, scr_Grid.GridController.xSizeMax);
+        int _y = GenerateCoord(0, scr_Grid.GridController.ySizeMax);
 
         if(_x == entity._gridPos.x  &&  _y == entity._gridPos.y)
         {

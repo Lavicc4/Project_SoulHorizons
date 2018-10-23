@@ -28,6 +28,7 @@ public class scr_ExiledArcher : scr_EntityAI {
     }
     public override void UpdateAI()
     {
+        scr_Grid.GridController.SetTileOccupied(true, entity._gridPos.x, entity._gridPos.y, this.entity); 
         if(!hSOnCD  && HunterShotCheck())
         {
             StartCoroutine(HunterShot());
@@ -71,7 +72,7 @@ public class scr_ExiledArcher : scr_EntityAI {
         yield return new WaitForSecondsRealtime(1f);
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         int playerXPos = player.GetComponent<scr_Entity>()._gridPos.x;
-        scr_AttackController.attackController.AddNewAttack(arrowRain, playerXPos, 2 /*top of grid */, entity);
+        scr_AttackController.attackController.AddNewAttack(arrowRain, playerXPos, scr_Grid.GridController.ySizeMax - 1, entity);
         yield return new WaitForSecondsRealtime(_aRInterval);
         canArrowRain = true; 
     }

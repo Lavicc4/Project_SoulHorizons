@@ -13,6 +13,7 @@ public class atk_ArrowRain : Attack {
         scr_Grid.GridController.PrimeNextTile(xPos, yPos);
         scr_Grid.GridController.PrimeNextTile(xPos, yPos - 1);
         scr_Grid.GridController.PrimeNextTile(xPos, yPos - 2);
+        scr_Grid.GridController.PrimeNextTile(xPos, yPos - 3);
         return new Vector2Int(xPos, yPos); 
     }
     public override Vector2Int ProgressAttack(int xPos, int yPos, ActiveAttack activeAtk)

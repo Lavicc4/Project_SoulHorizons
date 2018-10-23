@@ -324,7 +324,7 @@ Prefab:
         type: 2}
       propertyPath: currentEncounter
       value: 
-      objectReference: {fileID: 11400000, guid: 1ea3f71c4d41ba7459e1cf49e49d96d9,
+      objectReference: {fileID: 11400000, guid: af460fe552103074288c5407c99ce765,
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50a29c5521521bb46a851340eca76195, type: 2}
@@ -3719,6 +3719,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soulTransforms: []
+  buttons: []
 --- !u!4 &1431935931
 Transform:
   m_ObjectHideFlags: 0
@@ -5173,7 +5174,7 @@ MonoBehaviour:
   yOffset: 0.5
   tileSpacing: {x: 0.79, y: 0.6}
   tile: {fileID: 114124032091846856, guid: c0f8ab25b0d628140b13fe6f1ec791c8, type: 2}
-  tile_sprites: {fileID: 21300000, guid: 82047bcead1b83d40a92003df179396e, type: 3}
+  tile_sprites: {fileID: 21300000, guid: e5310ef6a587fda46a085dea86a78947, type: 3}
   activeEntities: []
   camera: {fileID: 222816441}
 --- !u!114 &2115534118
