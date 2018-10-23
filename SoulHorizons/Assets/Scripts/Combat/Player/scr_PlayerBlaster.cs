@@ -30,11 +30,11 @@ public class scr_PlayerBlaster : MonoBehaviour {
     public SpriteRenderer playerSprite;
 
     AudioSource Blaster_SFX;
-    //AudioSource Die_SFX;
+    AudioSource BlasterCharge_SFX;
     public AudioClip[] blasters_SFX;
     private AudioClip blaster_SFX;
-    //public AudioClip[] dies_SFX;
-    //private AudioClip die_SFX;
+    public AudioClip charging_SFX;
+    public AudioClip chargingLoop_SFX;
 
 
     void Awake()
@@ -47,10 +47,10 @@ public class scr_PlayerBlaster : MonoBehaviour {
 		pressed = false;
         AudioSource[] SFX_Sources = GetComponents<AudioSource>();
         Blaster_SFX = SFX_Sources[4];
-        //Die_SFX = SFX_Sources[3];
+        BlasterCharge_SFX = SFX_Sources[5];
     }
-	
-	private bool blastLastFrame = false; //this is used to get detect "buttonUp" since we can only determine if the button is down or not
+
+    private bool blastLastFrame = false; //this is used to get detect "buttonUp" since we can only determine if the button is down or not
 	void Update () {
 		bool blastUp = blastLastFrame && !scr_InputManager.Blast(); //blastUp is true if the button was down(true) last frame and is not pressed this frame
 		blastLastFrame = scr_InputManager.Blast(); //update the blast last frame
@@ -63,26 +63,36 @@ public class scr_PlayerBlaster : MonoBehaviour {
 
 		if (scr_InputManager.Blast() && readyToFire)
 		{
-            int index = Random.Range(0, blasters_SFX.Length);
-            blaster_SFX = blasters_SFX[index];
-            Blaster_SFX.clip = blaster_SFX;
-            Blaster_SFX.Play();
-
+            if (BlasterCharge_SFX.isPlaying != true && timePressed < chargeTime1)
+            {
+                BlasterCharge_SFX.clip = charging_SFX;
+                BlasterCharge_SFX.Play();
+            }
             pressed = true;
-		}
+        }
 
-        if(scr_InputManager.Blast() && readyToFire)
+        if (scr_InputManager.Blast() && readyToFire)
         {
-            if(timePressed > chargeTime1)
+            if (timePressed > chargeTime1)
             {
                 playerSprite.color = new Color(0.2f, 0.6f, .86f);
+                if (BlasterCharge_SFX.isPlaying != true)
+                {
+                    BlasterCharge_SFX.clip = chargingLoop_SFX;
+                    BlasterCharge_SFX.Play();
+                }
             }
         }
 
 		if(blastUp && readyToFire)
 		{
-			//scr_PlayerProjectile proj = objectPool_scr.CreateObject(transform.position, transform.rotation).GetComponent<scr_PlayerProjectile>();
-			float damage = baseDamage + damageIncreaseRate * timePressed;
+            int index = Random.Range(0, blasters_SFX.Length);
+            BlasterCharge_SFX.Stop();
+            blaster_SFX = blasters_SFX[index];
+            Blaster_SFX.clip = blaster_SFX;
+            Blaster_SFX.Play();
+            //scr_PlayerProjectile proj = objectPool_scr.CreateObject(transform.position, transform.rotation).GetComponent<scr_PlayerProjectile>();
+            float damage = baseDamage + damageIncreaseRate * timePressed;
 			//check if charged
 			if (timePressed < chargeTime1)
 			{
