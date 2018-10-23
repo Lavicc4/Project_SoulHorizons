@@ -152,7 +152,7 @@ public static class scr_InputManager {
 			return false;
 		}
 
-		return Input.GetButtonDown("Blast_Button") || (Input.GetAxis("Blast_Axis") > falseRadius) || (Input.GetAxis("Blast_Axis") < -falseRadius);
+		return Input.GetButton("Blast_Button") || (Input.GetAxis("Blast_Axis") > falseRadius) || (Input.GetAxis("Blast_Axis") < -falseRadius);
 	}
 
 	//Note: button up and button down can no longer be determined in this script since we are using an axis on the controller
