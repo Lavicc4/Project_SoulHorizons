@@ -35,6 +35,8 @@ public class scr_Entity : MonoBehaviour
     public AudioClip[] dies_SFX;
     private AudioClip die_SFX;
 
+    public Animator anim;
+
     public void Start()
     {
         baseColor = spr.color;
@@ -51,9 +53,9 @@ public class scr_Entity : MonoBehaviour
             _ai.Die();
         }
         
-        transform.position = Vector3.Lerp(transform.position, scr_Grid.GridController.GetWorldLocation(_gridPos.x, _gridPos.y), (lerpSpeed*Time.deltaTime));       
+        transform.position = Vector3.Lerp(transform.position, scr_Grid.GridController.GetWorldLocation(_gridPos.x, _gridPos.y), (lerpSpeed*Time.deltaTime));
         //Counts down iframes
-        if(invulnCounter > 0)
+        if (invulnCounter > 0)
         {
             invulnCounter -= Time.deltaTime;
             if(invulnCounter <= 0)
@@ -78,9 +80,17 @@ public class scr_Entity : MonoBehaviour
     //Tells entity to move to new coordinates
     public void SetTransform(int x, int y)
     {
-        if (_gridPos == new Vector2Int(x, y))                                                                                                          //if we set transform, and we havent moved
-            return;                                                                                                                                    //return
 
+        if (_gridPos == new Vector2Int(x, y))
+        {                                                                                                         //if we set transform, and we havent moved
+            return;                                                                                                                                    //return
+        }
+        //Animate movement
+        if (anim != null)
+        {
+            Debug.Log("MOVING");
+            anim.SetInteger("Movement", 1);
+        }
         scr_Grid.GridController.SetTileOccupied(false, _gridPos.x, _gridPos.y, this);
         _gridPos = new Vector2Int(x, y);
         
@@ -91,7 +101,7 @@ public class scr_Entity : MonoBehaviour
         {
             if (!invincible)
             {
-                Debug.Log("I'M HIT");
+                //Debug.Log("I'M HIT");
                 HitByAttack(atk);
                 if (has_iframes)
                 {
@@ -163,7 +173,7 @@ public class scr_Entity : MonoBehaviour
         Die_SFX.clip = die_SFX;
         Die_SFX.Play();
         */
-        Debug.Log("I AM DEAD");
+        //Debug.Log("I AM DEAD");
         scr_Grid.GridController.SetTileOccupied(false, _gridPos.x, _gridPos.y, this);
         gameObject.SetActive(false); 
         //scr_Grid.GridController.RemoveEntity(this);  
@@ -172,10 +182,10 @@ public class scr_Entity : MonoBehaviour
     IEnumerator HitClock(float hitTime)
     {
         spr.color = Color.red;
-        Debug.Log("I'M RED");
+        //Debug.Log("I'M RED");
         yield return new WaitForSecondsRealtime(hitTime);
         spr.color = baseColor;
-        Debug.Log("NOT RED");
+        //Debug.Log("NOT RED");
     }
 
 }

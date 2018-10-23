@@ -6,13 +6,13 @@ using UnityEngine;
 public class scr_SeizeDomain : scr_Card
 {
     public float duration;
-    public Color newColor;
+    //public Color newColor;
     public override void Activate()
     {
       
         ActivateEffects();
         Debug.Log("SEIZE!");
-        scr_Grid.GridController.seizeColumn(TerrName.Player);
+        scr_Grid.GridController.seizeDomain(duration);
         
        
 

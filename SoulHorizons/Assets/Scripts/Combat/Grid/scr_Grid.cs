@@ -280,8 +280,8 @@ public class scr_Grid : MonoBehaviour{
         
     }
 
-    //Seizes next column in the grid for a specified territory, used in the Seize Domain Card
-    public void seizeColumn(TerrName name)
+    //Seize Domain Card
+    public void seizeDomain(float duration)
     {
         bool colFound = false;
         //Debug.Log("SEIZE!");
@@ -291,14 +291,49 @@ public class scr_Grid : MonoBehaviour{
             for (int j = 0; j < ySizeMax; j++)
             {
                 //Debug.Log(scr_Grid.GridController.grid[i, j].territory.name);
-                if (grid[i, j].territory.name != name)
+                if (grid[i, j].territory.name != TerrName.Player)
                 {
                     //Debug.Log("Column: " + i);
                     colFound = true;
+                 
                     if (!grid[i, j].occupied)
                     {
                         //Debug.Log("SEIZING!");
-                        SetTileTerritory(i, j, name, scr_TileDict.colorDict[name]);
+                        SetTileTerritory(i, j, TerrName.Player, scr_TileDict.colorDict[TerrName.Player]);
+                    }
+                }
+            }
+            //Debug.Log(colFound);
+            if (colFound)
+            {
+                StartCoroutine(reSeize(duration));
+                break;
+            }
+
+
+        }
+    }
+
+    private IEnumerator reSeize(float waitTime)
+    {
+        Debug.Log("RESEIZE");
+        yield return new WaitForSeconds(waitTime);
+        bool colFound = false;
+        for (int i = xSizeMax - 1; i >= 0; i--)
+        {
+
+            for (int j = 0; j < ySizeMax; j++)
+            {
+                //Debug.Log(scr_Grid.GridController.grid[i, j].territory.name);
+                if (grid[i, j].territory.name != TerrName.Enemy)
+                {
+                    //Debug.Log("Column: " + i);
+                    colFound = true;
+
+                    if (!grid[i, j].occupied)
+                    {
+                        //Debug.Log("SEIZING!");
+                        SetTileTerritory(i, j, TerrName.Enemy, scr_TileDict.colorDict[TerrName.Enemy]);
                     }
                 }
             }
@@ -310,6 +345,7 @@ public class scr_Grid : MonoBehaviour{
 
 
         }
+
     }
 
 }
