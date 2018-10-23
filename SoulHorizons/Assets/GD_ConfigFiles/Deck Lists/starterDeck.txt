@@ -1,8 +1,8 @@
 Bolt: 4
-Mend: 4
 Blur: 4
-Meteor: 4
+Meteor: 6
 Cleave: 4
-Harden Soul: 4
-Inner Strength: 4
+Harden Soul: 2
+Inner Strength: 2
 Seize Domain: 2
+Boomerang: 6

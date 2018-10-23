@@ -154,6 +154,197 @@ MonoBehaviour:
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   delegates: []
+--- !u!1001 &116108171
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2116205531}
+    m_Modifications:
+    - target: {fileID: 224844912404784048, guid: 08c49fa867e77154c8f4e9b0890d66be,
+        type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224844912404784048, guid: 08c49fa867e77154c8f4e9b0890d66be,
+        type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224844912404784048, guid: 08c49fa867e77154c8f4e9b0890d66be,
+        type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224844912404784048, guid: 08c49fa867e77154c8f4e9b0890d66be,
+        type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224844912404784048, guid: 08c49fa867e77154c8f4e9b0890d66be,
+        type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224844912404784048, guid: 08c49fa867e77154c8f4e9b0890d66be,
+        type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224844912404784048, guid: 08c49fa867e77154c8f4e9b0890d66be,
+        type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224844912404784048, guid: 08c49fa867e77154c8f4e9b0890d66be,
+        type: 2}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 224844912404784048, guid: 08c49fa867e77154c8f4e9b0890d66be,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224844912404784048, guid: 08c49fa867e77154c8f4e9b0890d66be,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -144
+      objectReference: {fileID: 0}
+    - target: {fileID: 224844912404784048, guid: 08c49fa867e77154c8f4e9b0890d66be,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 104.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 224844912404784048, guid: 08c49fa867e77154c8f4e9b0890d66be,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 106.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 224844912404784048, guid: 08c49fa867e77154c8f4e9b0890d66be,
+        type: 2}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224844912404784048, guid: 08c49fa867e77154c8f4e9b0890d66be,
+        type: 2}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224844912404784048, guid: 08c49fa867e77154c8f4e9b0890d66be,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224844912404784048, guid: 08c49fa867e77154c8f4e9b0890d66be,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224844912404784048, guid: 08c49fa867e77154c8f4e9b0890d66be,
+        type: 2}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224844912404784048, guid: 08c49fa867e77154c8f4e9b0890d66be,
+        type: 2}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114222698562062942, guid: 08c49fa867e77154c8f4e9b0890d66be,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1086960821}
+    - target: {fileID: 114379803604841592, guid: 08c49fa867e77154c8f4e9b0890d66be,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300012, guid: 531d2fbf1280ebb40acf90ef669bd310,
+        type: 3}
+    - target: {fileID: 114379803604841592, guid: 08c49fa867e77154c8f4e9b0890d66be,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 0.13207549
+      objectReference: {fileID: 0}
+    - target: {fileID: 114379803604841592, guid: 08c49fa867e77154c8f4e9b0890d66be,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 0.11525455
+      objectReference: {fileID: 0}
+    - target: {fileID: 114379803604841592, guid: 08c49fa867e77154c8f4e9b0890d66be,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 0.11525455
+      objectReference: {fileID: 0}
+    - target: {fileID: 1565306217412240, guid: 08c49fa867e77154c8f4e9b0890d66be, type: 2}
+      propertyPath: m_Name
+      value: LocalMapButton (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114222698562062942, guid: 08c49fa867e77154c8f4e9b0890d66be,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 11400000, guid: af460fe552103074288c5407c99ce765,
+        type: 2}
+    - target: {fileID: 114222698562062942, guid: 08c49fa867e77154c8f4e9b0890d66be,
+        type: 2}
+      propertyPath: m_Colors.m_HighlightedColor.r
+      value: 0.5647059
+      objectReference: {fileID: 0}
+    - target: {fileID: 114222698562062942, guid: 08c49fa867e77154c8f4e9b0890d66be,
+        type: 2}
+      propertyPath: m_Colors.m_HighlightedColor.g
+      value: 0.5647059
+      objectReference: {fileID: 0}
+    - target: {fileID: 114222698562062942, guid: 08c49fa867e77154c8f4e9b0890d66be,
+        type: 2}
+      propertyPath: m_Colors.m_HighlightedColor.b
+      value: 0.5647059
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 08c49fa867e77154c8f4e9b0890d66be, type: 2}
+  m_IsPrefabAsset: 0
+--- !u!224 &116108172 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 224844912404784048, guid: 08c49fa867e77154c8f4e9b0890d66be,
+    type: 2}
+  m_PrefabInternal: {fileID: 116108171}
+--- !u!1 &116108173 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1565306217412240, guid: 08c49fa867e77154c8f4e9b0890d66be,
+    type: 2}
+  m_PrefabInternal: {fileID: 116108171}
+--- !u!114 &116108174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 116108173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2116205532}
+          m_MethodName: DeselectOnPointerEnter
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!1001 &142143997
 Prefab:
   m_ObjectHideFlags: 0
@@ -2264,6 +2455,7 @@ RectTransform:
   - {fileID: 1195386575}
   - {fileID: 2128949825}
   - {fileID: 2106161931}
+  - {fileID: 116108172}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
