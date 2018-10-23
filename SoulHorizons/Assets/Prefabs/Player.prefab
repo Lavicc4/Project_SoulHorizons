@@ -77,6 +77,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4138731860164270}
   - component: {fileID: 212424679629100636}
+  - component: {fileID: 114818652747337174}
+  - component: {fileID: 95721540959835254}
   m_Layer: 0
   m_Name: Player_Sprite
   m_TagString: Untagged
@@ -162,7 +164,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1546032312897718}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.8216654, y: -0.5046106, z: 0}
+  m_LocalPosition: {x: -0.3043418, y: -0.74716306, z: 0}
   m_LocalScale: {x: 1.1254174, y: 1.1254174, z: 0}
   m_Children:
   - {fileID: 4138731860164270}
@@ -772,6 +774,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &95721540959835254
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1609545178073930}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 54af4ffc7f6ecfa48866867f041cd8ce, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114068276971708330
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -864,14 +884,28 @@ MonoBehaviour:
   entityTerritory:
     name: 0
     TerrColor: {r: 1, g: 1, b: 1, a: 1}
+    TerrSprite: {fileID: 0}
   spr: {fileID: 212424679629100636}
-  lerpSpeed: 30
+  lerpSpeed: 250
   has_iframes: 1
   invincible: 0
   invulnTime: 1
   hurts_SFX:
   - {fileID: 8300000, guid: f2e02f53e10e0c744b5214587d8e9897, type: 3}
   dies_SFX: []
+  anim: {fileID: 95721540959835254}
+--- !u!114 &114818652747337174
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1609545178073930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b30cb5074d4cadc40b8b84e8568d4dcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 95721540959835254}
 --- !u!212 &212424679629100636
 SpriteRenderer:
   m_ObjectHideFlags: 1

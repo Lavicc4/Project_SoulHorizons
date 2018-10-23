@@ -10,7 +10,7 @@ public class scr_PlayerMovement : scr_EntityAI
     AudioSource Footsteps_SFX;
     public AudioClip[] movements_SFX;
     private AudioClip movement_SFX;
-    
+  
     public override void Move()
     {
 
@@ -120,6 +120,7 @@ public class scr_PlayerMovement : scr_EntityAI
 
         if (scr_Grid.GridController.LocationOnGrid(_x, _y) &&  scr_Grid.GridController.ReturnTerritory(_x,_y).name == entity.entityTerritory.name)
         {
+           
             entity.SetTransform(_x, _y);
         }
 
