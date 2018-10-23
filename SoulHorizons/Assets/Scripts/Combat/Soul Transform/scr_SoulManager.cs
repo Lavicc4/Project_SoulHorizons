@@ -28,6 +28,7 @@ public class scr_SoulManager : MonoBehaviour {
         foreach (SoulTransform item in soulTransforms)
         {
             buttons[i].onClick.AddListener(delegate {Transformation(item); });
+            i++;
         }
 
         //when this is done, each button should have an on click event which triggers one of the transforms
