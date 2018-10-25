@@ -9,6 +9,7 @@ TagManager:
   - GridController
   - StateManager
   - PausePanel
+  - CooldownOverlay
   layers:
   - Default
   - TransparentFX
