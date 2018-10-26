@@ -16,7 +16,9 @@ public abstract class scr_Card : ScriptableObject {
     public List<string> keywords;
     public string cardName;
     public Element element;
-    public float castingTime = 1f;
+    public int chargeAmount = 5; //the amount that the soul transform for this element is charged when the card is played
+    public float castingTime = 1f; //the delay before the card is cast
+    public float cooldown = 0.6f; //the cooldown after casting this card in seconds, after which another card may be cast
     [Multiline]
     public string description;
     public Sprite art;

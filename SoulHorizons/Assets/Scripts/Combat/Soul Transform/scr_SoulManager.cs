@@ -14,24 +14,42 @@ public class scr_SoulManager : MonoBehaviour {
     private bool transformed = false;
     private scr_Entity player; // a referenct to the player
 
-    void Awake()
-    {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<scr_Entity>();
-    }
+    private IDictionary<Element, int> soulCharges = new Dictionary<Element, int>(); //the charges
+    private IDictionary<Element, Button> elementButtons = new Dictionary<Element, Button>(); //a list of the buttons in terms of their element; this is so we can update them with the charge
+    //TODO: need to get references to the UI buttons so they can be updated with sprites and animations can occur when they get chaged
 
 	void Start () {
-		//Set all the button sprites according to the soul transforms given
+        //find the player
+        GameObject p = GameObject.FindGameObjectWithTag("Player");
+        player = p.GetComponent<scr_Entity>();
+
+		//TODO: Set all the button sprites according to the soul transforms given
 
         //add an on click to the button that triggers the transform
-        //Example: btn2.onClick.AddListener(delegate {TaskWithParameters("Hello"); });
         int i = 0;
         foreach (SoulTransform item in soulTransforms)
         {
+            //add the transformation code to the button onclick event
             buttons[i].onClick.AddListener(delegate {Transformation(item); });
+
+            //add the components in the soulTransform to the player
+            MonoBehaviour attack = (MonoBehaviour) player.gameObject.AddComponent(item.basicAttack.GetClass());
+            MonoBehaviour movement = (MonoBehaviour) player.gameObject.AddComponent(item.movement.GetClass());
+            attack.enabled = false;
+            movement.enabled = false;
+
+            //add the button to the dictionary with the transform's element as the key
+            elementButtons[item.element] = buttons[i];
+
             i++;
         }
-
         //when this is done, each button should have an on click event which triggers one of the transforms
+        
+        //initialize all of the charges to 0; this loop goes through all of the elements in the Element enum
+        foreach (Element e in (Element[])System.Enum.GetValues(typeof(Element)))
+        {
+            soulCharges[e] = 0;
+        }
 	}
 	
 	// Update is called once per frame
@@ -74,18 +92,55 @@ public class scr_SoulManager : MonoBehaviour {
     }
 
     /// <summary>
+    /// This will be called by the deck manager when a card is cast to charge the corresponding element
+    /// </summary>
+    /// <param name="e"></param>
+    /// <param name="amount"></param>
+    public void ChargeSoulTransform(Element e, int amount)
+    {
+        if (amount > 0)
+        {
+            soulCharges[e] += amount;
+            //TODO: trigger any UI effects that come with charging a soul transform
+            Debug.Log("Element " + e + " charged by " + amount + " to " + soulCharges[e]);
+            if (soulCharges[e] >= 100)
+            {
+                soulCharges[e] = 100;
+                //TODO: change the corresponding soul button to indicate that it is full
+            }
+        }
+    }
+
+    /// <summary>
     /// This should be added to the corresponding button to listen for the onClick event.
     /// This method performs the transformation process with the given argument
     /// </summary>
     /// <param name="soul"></param>
     private void Transformation(SoulTransform soul)
     {
-        //TODO: do we need to take into account the possibility that the player is already in a different transform?
+        //TODO: Should enable/disable the buttons based on this validation, so this method is only called under valid circumstances
+        if (transformed || soulCharges[soul.element] < 100)
+        {
+            Debug.Log("Did not meet transform conditions");
+            return; //don't transform if the player is already transformed or the element is not charged
+        }
+
+        //reduce the charge
+
 
         //disable the player attack and movement
+        //player.gameObject.GetComponent<scr_PlayerBlaster>().enabled = false;
+        player.gameObject.GetComponent<scr_PlayerMovement>().enabled = false;
 
-        //add the transform's attack and movement
-        //QUESTION: Add and remove components or enable and disable components as needed? In that case, we would need to add the components for all of the transforms to the player on Start
+        //enable the transform's attack and movement
+        MonoBehaviour attack = (MonoBehaviour) player.gameObject.GetComponent(soul.basicAttack.GetClass());
+        attack.enabled = true;
+
+        MonoBehaviour movement = (MonoBehaviour)player.gameObject.GetComponent(soul.movement.GetClass());
+        movement.enabled = true;
+
+        //add the shield to the player
+        player._health.temp_hp += soul.GetShieldGain();
 
         currentTransform = soul;
         transformed = true;
@@ -97,11 +152,20 @@ public class scr_SoulManager : MonoBehaviour {
     /// </summary>
     private void EndTransformation()
     {
-        //remove or disable the current transform's components on the player
+        Debug.Log("End Transformation Start");
+        //disable the current transform's components on the player
+        MonoBehaviour attack = (MonoBehaviour)player.gameObject.GetComponent(currentTransform.basicAttack.GetClass());
+        attack.enabled = false;
+
+        MonoBehaviour movement = (MonoBehaviour)player.gameObject.GetComponent(currentTransform.movement.GetClass());
+        movement.enabled = false;
 
         //enable the player default attack and movement
+        //player.gameObject.GetComponent<scr_PlayerBlaster>().enabled = true;
+        player.gameObject.GetComponent<scr_PlayerMovement>().enabled = true;
 
         transformed = false;
+        Debug.Log("End Transformation End");
     }
 
     /// <summary>
@@ -114,7 +178,7 @@ public class scr_SoulManager : MonoBehaviour {
         {
             yield return new WaitForSeconds(1f);
             //decrement the shield using currentTransform
-            player._health.temp_hp -= currentTransform.getShieldDrainRate();
+            player._health.temp_hp -= currentTransform.GetShieldDrainRate();
 
             //end the transformation if the shield hits 0
             if (player._health.temp_hp <= 0)

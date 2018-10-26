@@ -18,11 +18,12 @@ public class scr_DeckManager : MonoBehaviour {
     //public Image[] cardArt; //the images
     //Color textColor; //the default text of the color when not in focus
 	scr_Deck deck_scr;
+    scr_SoulManager soulManager;
     int currentCard = 0;
     public float doublePressWindow = 0.3f; //the window of time the user has to press the same card again and have it register as a double press
 
     private bool readyToCast = true;
-    public float cooldown = 0.6f; //the rate at which the player can play cards; could make this a variable in the card instead
+    //public float cooldown = 0.6f; //the rate at which the player can play cards; could make this a variable in the card instead
 
     AudioSource CardChange_SFX;
     public AudioClip cardChange_SFX;
@@ -147,23 +148,31 @@ public class scr_DeckManager : MonoBehaviour {
                     }
                 }
                  */
-                //start cooldown to be able to cast another card; could use an argument from the card to get variable cooldowns
-                StartCoroutine(CastCooldown(cooldown));
+                //start cooldown to be able to cast another card
+                StartCoroutine(CastCooldown(deck_scr.hand[0].cooldown));
+                //charge the soul transform
+                soulManager.ChargeSoulTransform(deck_scr.hand[0].element, deck_scr.hand[0].chargeAmount);
                 deck_scr.Activate(0);
                 break;
             case 1:
-                //start cooldown to be able to cast another card; could use an argument from the card to get variable cooldowns
-                StartCoroutine(CastCooldown(cooldown));
+                //start cooldown to be able to cast another card
+                StartCoroutine(CastCooldown(deck_scr.hand[1].cooldown));
+                //charge the soul transform
+                soulManager.ChargeSoulTransform(deck_scr.hand[1].element, deck_scr.hand[1].chargeAmount);
                 deck_scr.Activate(1);
                 break;
             case 2:
-                //start cooldown to be able to cast another card; could use an argument from the card to get variable cooldowns
-                StartCoroutine(CastCooldown(cooldown));
+                //start cooldown to be able to cast another card
+                StartCoroutine(CastCooldown(deck_scr.hand[2].cooldown));
+                //charge the soul transform
+                soulManager.ChargeSoulTransform(deck_scr.hand[2].element, deck_scr.hand[2].chargeAmount);
                 deck_scr.Activate(2);
                 break;
             case 3:
-                //start cooldown to be able to cast another card; could use an argument from the card to get variable cooldowns
-                StartCoroutine(CastCooldown(cooldown));
+                //start cooldown to be able to cast another card
+                StartCoroutine(CastCooldown(deck_scr.hand[3].cooldown));
+                //charge the soul transform
+                soulManager.ChargeSoulTransform(deck_scr.hand[3].element, deck_scr.hand[3].chargeAmount);
                 deck_scr.Activate(3);
                 break;
             default:
