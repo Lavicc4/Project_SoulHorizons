@@ -28,6 +28,8 @@ public class scr_DeckManager : MonoBehaviour {
     AudioSource CardChange_SFX;
     public AudioClip cardChange_SFX;
 
+    private bool disabled = false;
+
     void Awake()
     {
         //get references
@@ -55,8 +57,11 @@ public class scr_DeckManager : MonoBehaviour {
 
     void Update()
     {
-        UserInput();
-        UpdateGUI();
+        if (!disabled)
+        {
+            UserInput();
+            UpdateGUI();
+        }
     }
 
     bool axisPressed = false;
@@ -241,4 +246,9 @@ public class scr_DeckManager : MonoBehaviour {
         Debug.Log("Hello, I am off of cooldown");
         readyToCast = true;
 	}
+
+    public void OnDisable()
+    {
+        
+    }
 }

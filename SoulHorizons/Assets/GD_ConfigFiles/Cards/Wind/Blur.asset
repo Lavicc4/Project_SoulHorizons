@@ -14,7 +14,9 @@ MonoBehaviour:
   keywords: []
   cardName: Blur
   element: 4
+  chargeAmount: 5
   castingTime: 0
+  cooldown: 1.5
   description: 
   art: {fileID: 21300000, guid: 607a9f77bd29d694882163ec29b010d3, type: 3}
   duration: 3

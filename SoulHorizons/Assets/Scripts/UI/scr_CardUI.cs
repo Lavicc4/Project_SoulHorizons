@@ -112,8 +112,9 @@ public class scr_CardUI : MonoBehaviour {
 	/// <param name="seconds"></param>
 	public void StartCooldown(float seconds)
 	{
-		//cooldownOverlay.rate = seconds;
-		//How to set the rate?
+        //cooldownOverlay.rate = seconds;
+        //How to set the rate?
+        cooldownOverlay.SetTime(seconds);
 		cooldownOverlay.StartCooldown();
 	}
 }

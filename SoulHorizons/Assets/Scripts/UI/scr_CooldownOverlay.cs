@@ -8,7 +8,7 @@ public class scr_CooldownOverlay : MonoBehaviour {
     private Image overlay;
     private GameObject overlayGameObject;
     private bool onCooldown = false;
-    public float rate = 0.01f; 
+    private float rate = 0.01f; 
 
 	// Use this for initialization
 	void Start () {
@@ -40,6 +40,16 @@ public class scr_CooldownOverlay : MonoBehaviour {
         return null;
     }
 
+    /// <summary>
+    /// sets the time that the cooldown takes.
+    /// </summary>
+    /// <param name="time"></param>
+    public void SetTime(float time)
+    {
+        //1 - decrement/cooldown - alternate rate formula
+        rate = .02f / time;
+    }
+
     public void StartCooldown()
     {
         StartCoroutine(CR_StartCooldown());
@@ -57,7 +67,7 @@ public class scr_CooldownOverlay : MonoBehaviour {
         while (overlay.fillAmount > 0)
         {
             overlay.fillAmount -= rate;
-            yield return new WaitForFixedUpdate();
+            yield return new WaitForSeconds(0.01f);
         }
         if(overlay.fillAmount <= 0)
         {

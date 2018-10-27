@@ -14,7 +14,9 @@ MonoBehaviour:
   keywords: []
   cardName: Inner Strength
   element: 1
+  chargeAmount: 5
   castingTime: 0
+  cooldown: 1.5
   description: 
   art: {fileID: 21300000, guid: 397c39ac34982f040a965114e93319d3, type: 3}
   multiplier: 1.5
