@@ -42,15 +42,28 @@ public class scr_CooldownOverlay : MonoBehaviour {
 
     public void StartCooldown()
     {
+        StartCoroutine(CR_StartCooldown());
+    }
+
+    public IEnumerator CR_StartCooldown()
+    {
+        if(onCooldown == true)
+        {
+            yield return 0; 
+        }
+
         overlay.fillAmount = 1;
         onCooldown = true;
-        while (onCooldown && overlay.fillAmount > 0)
+        while (overlay.fillAmount > 0)
         {
-            overlay.fillAmount -= rate; 
+            overlay.fillAmount -= rate;
+            yield return new WaitForFixedUpdate();
         }
         if(overlay.fillAmount <= 0)
         {
-            onCooldown = false; 
+            overlay.fillAmount = 0; 
+            onCooldown = false;
+            
         }
     }
 }
