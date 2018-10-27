@@ -18,7 +18,7 @@ public class scr_DeckManager : MonoBehaviour {
     //public Image[] cardArt; //the images
     //Color textColor; //the default text of the color when not in focus
 	scr_Deck deck_scr;
-    scr_SoulManager soulManager;
+    [SerializeField] scr_SoulManager soulManager;
     int currentCard = 0;
     public float doublePressWindow = 0.3f; //the window of time the user has to press the same card again and have it register as a double press
 
@@ -119,9 +119,17 @@ public class scr_DeckManager : MonoBehaviour {
     void CardInput()
     {
         bool doublePress = timeSincePressed < doublePressWindow;
+        int input = scr_InputManager.PlayCard();
 
+        if (input != 0)
+        {
+            foreach (scr_CardUI card in cardUI)
+            {
+                card.StartCooldown(deck_scr.hand[input].cooldown);
+            }
+        }
         //determine what card has been pressed, then decide what to do about it
-        switch (scr_InputManager.PlayCard())
+        switch (input)
         {
             case 0:
                 /* NOTE: This section is for double press to play and single press to highlight
@@ -212,9 +220,12 @@ public class scr_DeckManager : MonoBehaviour {
     {
         for (int i = 0; i < cardUI.Length; i++)
         {
-            cardUI[i].SetName(deck_scr.hand[i].cardName); //set the name
-            cardUI[i].SetArt(deck_scr.hand[i].art); //set the card art
-            cardUI[i].SetElement(deck_scr.hand[i].element); //set the card element
+            if (deck_scr.hand[i] != null) //the slot in the hand may not have been refilled if the cooldown is not finished
+            {
+                cardUI[i].SetName(deck_scr.hand[i].cardName); //set the name
+                cardUI[i].SetArt(deck_scr.hand[i].art); //set the card art
+                cardUI[i].SetElement(deck_scr.hand[i].element); //set the card element
+            }
         }
     }
 

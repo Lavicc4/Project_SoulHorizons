@@ -230,6 +230,7 @@ MonoBehaviour:
   - {fileID: 535620529}
   - {fileID: 452376908}
   - {fileID: 1802866426}
+  soulManager: {fileID: 1431935930}
   doublePressWindow: 0.3
   cardChange_SFX: {fileID: 0}
 --- !u!4 &283017071

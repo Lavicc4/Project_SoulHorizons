@@ -7,6 +7,7 @@ using TMPro;
 /// <summary>
 /// This script is attached to each card in the UI. The deck manager script has a reference to this and uses it to update the UI
 /// </summary>
+[RequireComponent(typeof(scr_CooldownOverlay))]
 public class scr_CardUI : MonoBehaviour {
 	//--UI Components--
 	[SerializeField] private TextMeshProUGUI cardName;
@@ -24,13 +25,14 @@ public class scr_CardUI : MonoBehaviour {
 
 	[SerializeField] private Color selectedColor;
 	[SerializeField] private Color notSelectedColor;
+	private scr_CooldownOverlay cooldownOverlay;
 
 	private bool selected = false; //whether this card is currently selected or not
 	
 
 	// Use this for initialization
 	void Awake () {
-		
+		cooldownOverlay = GetComponent<scr_CooldownOverlay>();
 	}
 	
 	// Update is called once per frame
@@ -102,5 +104,16 @@ public class scr_CardUI : MonoBehaviour {
 		}
 		
 		this.selected = selected;
+	}
+
+	/// <summary>
+	/// Start the cooldown animation and have it run the given number of seconds
+	/// </summary>
+	/// <param name="seconds"></param>
+	public void StartCooldown(float seconds)
+	{
+		//cooldownOverlay.rate = seconds;
+		//How to set the rate?
+		cooldownOverlay.StartCooldown();
 	}
 }
