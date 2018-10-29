@@ -13,6 +13,7 @@ public class scr_SoulManager : MonoBehaviour {
     private SoulTransform currentTransform = null; //a reference to whatever transformation the player is currently in
     private bool transformed = false;
     private scr_Entity player; // a referenct to the player
+    public scr_DeckManager deckManager; //a reference to the deck manager. This is needed to disable the deck when a transform is active
 
     private IDictionary<Element, int> soulCharges = new Dictionary<Element, int>(); //the charges
     private IDictionary<Element, Button> elementButtons = new Dictionary<Element, Button>(); //a list of the buttons in terms of their element; this is so we can update them with the charge
@@ -53,6 +54,9 @@ public class scr_SoulManager : MonoBehaviour {
         {
             soulCharges[e] = 0;
         }
+
+        //Line for debugging. REMOVE THIS LINE ONCE DONE TESTING
+        soulCharges[Element.Earth] = 100;
 	}
 	
 	// Update is called once per frame
@@ -128,6 +132,9 @@ public class scr_SoulManager : MonoBehaviour {
             return; //don't transform if the player is already transformed or the element is not charged
         }
 
+        //disable the deck system
+        deckManager.Disable(true);
+
         //reduce the charge
         soulCharges[soul.element] -= 50; //reduce to 50%
 
@@ -160,6 +167,10 @@ public class scr_SoulManager : MonoBehaviour {
     private void EndTransformation()
     {
         Debug.Log("End Transformation Start");
+
+        //enable the deck system
+        deckManager.Disable(false);
+        
         //disable the current transform's components on the player
         MonoBehaviour attack = (MonoBehaviour)player.gameObject.GetComponent(currentTransform.basicAttack.GetClass());
         attack.enabled = false;

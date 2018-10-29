@@ -77,7 +77,11 @@ public class scr_Entity : MonoBehaviour
         spr.sortingOrder = -_gridPos.y;
     }
 
-    //Tells entity to move to new coordinates
+    /// <summary>
+    /// Tells entity to move to new coordinates. This only checks if an attack is in the space. It does not check the validity of the arguments otherwise.
+    /// </summary>
+    /// <param name="x"></param>
+    /// <param name="y"></param>
     public void SetTransform(int x, int y)
     {
 

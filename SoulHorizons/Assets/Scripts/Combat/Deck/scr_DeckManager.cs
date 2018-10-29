@@ -17,6 +17,7 @@ public class scr_DeckManager : MonoBehaviour {
     //TextMeshProUGUI[] cardNames; //the card names
     //public Image[] cardArt; //the images
     //Color textColor; //the default text of the color when not in focus
+    public GameObject handPanel; //a reference to the parent hand object
 	scr_Deck deck_scr;
     [SerializeField] scr_SoulManager soulManager;
     int currentCard = 0;
@@ -28,7 +29,7 @@ public class scr_DeckManager : MonoBehaviour {
     AudioSource CardChange_SFX;
     public AudioClip cardChange_SFX;
 
-    private bool disabled = false;
+    private bool disabled = false; //primary use is with transforms. The deck system is not usable when this is true
 
     void Awake()
     {
@@ -247,8 +248,22 @@ public class scr_DeckManager : MonoBehaviour {
         readyToCast = true;
 	}
 
-    public void OnDisable()
+    /// <summary>
+    /// The soul manager calls this to disable spells while a transform is active.
+    /// </summary>
+    public void Disable(bool disable)
     {
-        
+        if (disable)
+        {
+            //deactivate everything
+            disabled = true;
+            handPanel.SetActive(false);
+        }
+        else
+        {
+            //activate everything
+            disabled = false;
+            handPanel.SetActive(true);
+        }
     }
 }

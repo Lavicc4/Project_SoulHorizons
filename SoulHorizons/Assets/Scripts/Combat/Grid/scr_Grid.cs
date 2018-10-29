@@ -233,6 +233,17 @@ public class scr_Grid : MonoBehaviour{
     }
 
     /// <summary>
+    /// Returns true if the coordinates are on the grid and unoccupied, false otherwise.
+    /// </summary>
+    /// <param name="x"></param>
+    /// <param name="y"></param>
+    /// <returns></returns>
+    public bool IsTileUnoccupied(int x, int y)
+    {
+        return LocationOnGrid(x, y) && !grid[x,y].occupied;
+    }
+
+    /// <summary>
     /// 
     /// </summary>
     /// <param name="x"></param>
