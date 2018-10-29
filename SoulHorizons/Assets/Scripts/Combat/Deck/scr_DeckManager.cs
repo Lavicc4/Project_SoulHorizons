@@ -126,7 +126,7 @@ public class scr_DeckManager : MonoBehaviour {
         bool doublePress = timeSincePressed < doublePressWindow;
         int input = scr_InputManager.PlayCard();
 
-        if (input != 0)
+        if (input != -1)
         {
             foreach (scr_CardUI card in cardUI)
             {
