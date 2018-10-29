@@ -126,11 +126,11 @@ public class scr_DeckManager : MonoBehaviour {
         bool doublePress = timeSincePressed < doublePressWindow;
         int input = scr_InputManager.PlayCard();
 
-        if (input != 0)
+        if (input != -1)
         {
-            foreach (scr_CardUI card in cardUI)
+            for (int i = 0; i < cardUI.Length; i++)
             {
-                card.StartCooldown(deck_scr.hand[input].cooldown);
+                cardUI[i].StartCooldown(deck_scr.hand[input].cooldown);
             }
         }
         //determine what card has been pressed, then decide what to do about it

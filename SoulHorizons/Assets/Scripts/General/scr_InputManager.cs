@@ -5,6 +5,7 @@ using UnityEngine;
 public static class scr_InputManager {
 
 	public static bool disableInput = false; //set to true to prevent the player from getting input
+	public static bool disableMovement = false; //set to true to prevent the player from inputting movement
 
 	// -- Axis
 	/// <summary>
@@ -14,7 +15,7 @@ public static class scr_InputManager {
 	/// <returns>returns -1 for left, 1 for right, 0 for neither, only on the frame the axis is pressed</returns>
 	public static int MainHorizontal()
 	{
-		if(disableInput)
+		if(disableInput || disableMovement)
 		{
 			return 0;
 		}
@@ -47,7 +48,7 @@ public static class scr_InputManager {
 	/// <returns>returns -1 for down, 1 for up, 0 for neither</returns>
 	public static int MainVertical()
 	{
-		if(disableInput)
+		if(disableInput || disableMovement)
 		{
 			return 0;
 		}

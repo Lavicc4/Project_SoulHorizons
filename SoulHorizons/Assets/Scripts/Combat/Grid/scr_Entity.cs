@@ -113,6 +113,10 @@ public class scr_Entity : MonoBehaviour
         
     }
 
+    /// <summary>
+    /// Takes an attack object and damages the entity if the attack's type is different from the entity's type.
+    /// </summary>
+    /// <param name="_attack"></param>
     public void HitByAttack(Attack _attack)
     {
 
@@ -139,6 +143,30 @@ public class scr_Entity : MonoBehaviour
             }
         }
 
+    }
+
+    /// <summary>
+    /// Used when an attack does not go through the attack controller system.
+    /// </summary>
+    /// <param name="damage">Damage dealt</param>
+    /// <param name="attackType">The type of the attacking entity</param>
+    public void HitByAttack(int damage, EntityType attackType)
+    {
+        if (attackType != type)
+        {
+            int index = Random.Range(0, hurts_SFX.Length);
+            hurt_SFX = hurts_SFX[index];
+            Hurt_SFX.clip = hurt_SFX;
+            Hurt_SFX.Play();
+
+            _health.TakeDamage(damage);
+            StartCoroutine(HitClock(.3f));
+            if (type == EntityType.Player)
+            {
+                //camera shake
+                CameraShaker.Instance.ShakeOnce(2f, 2f, 0.2f, 0.2f);
+            }
+        }
     }
 
     public bool isInvincible()
@@ -193,20 +221,20 @@ public class scr_Entity : MonoBehaviour
 public class Health{
 
     public int hp = 10; //NOTE: These would be better as private variables to make mistakes less likely and to enforce the max_hp - Colin
-    public int temp_hp = 0;
+    public int shield = 0;
     public int max_hp;
 
 
     public void TakeDamage(int damage)
     {
-        if (temp_hp > 0)
+        if (shield > 0)
         {
-            temp_hp -= damage;
-            if(temp_hp < 0)
+            shield -= damage;
+            if(shield < 0)
             {
                 //Carry over extra damage to normal hp
-                hp += temp_hp;
-                temp_hp = 0;
+                hp += shield;
+                shield = 0;
             }
         }
         else

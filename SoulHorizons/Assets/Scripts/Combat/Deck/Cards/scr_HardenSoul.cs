@@ -11,7 +11,7 @@ public class scr_HardenSoul : scr_Card {
         ActivateEffects();
 
         scr_Entity player = GameObject.FindGameObjectWithTag("Player").GetComponent<scr_Entity>();
-        player._health.temp_hp += Shield_hp;
+        player._health.shield += Shield_hp;
         
     }
 
