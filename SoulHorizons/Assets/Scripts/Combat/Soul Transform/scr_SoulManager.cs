@@ -13,6 +13,7 @@ public class scr_SoulManager : MonoBehaviour {
     private SoulTransform currentTransform = null; //a reference to whatever transformation the player is currently in
     private bool transformed = false;
     private scr_Entity player; // a referenct to the player
+    public scr_DeckManager deckManager; //a reference to the deck manager. This is needed to disable the deck when a transform is active
 
     private IDictionary<Element, int> soulCharges = new Dictionary<Element, int>(); //the charges
     private IDictionary<Element, Button> elementButtons = new Dictionary<Element, Button>(); //a list of the buttons in terms of their element; this is so we can update them with the charge
@@ -34,9 +35,12 @@ public class scr_SoulManager : MonoBehaviour {
 
             //add the components in the soulTransform to the player
             MonoBehaviour attack = (MonoBehaviour) player.gameObject.AddComponent(item.basicAttack.GetClass());
-            MonoBehaviour movement = (MonoBehaviour) player.gameObject.AddComponent(item.movement.GetClass());
             attack.enabled = false;
-            movement.enabled = false;
+            if (item.hasMovement) //don't try to add the component unless there is new movement with this transform
+            {   
+                MonoBehaviour movement = (MonoBehaviour) player.gameObject.AddComponent(item.movement.GetClass());
+                movement.enabled = false;
+            }
 
             //add the button to the dictionary with the transform's element as the key
             elementButtons[item.element] = buttons[i];
@@ -50,6 +54,9 @@ public class scr_SoulManager : MonoBehaviour {
         {
             soulCharges[e] = 0;
         }
+
+        //Line for debugging. REMOVE THIS LINE ONCE DONE TESTING
+        soulCharges[Element.Earth] = 100;
 	}
 	
 	// Update is called once per frame
@@ -125,7 +132,11 @@ public class scr_SoulManager : MonoBehaviour {
             return; //don't transform if the player is already transformed or the element is not charged
         }
 
+        //disable the deck system
+        deckManager.Disable(true);
+
         //reduce the charge
+        soulCharges[soul.element] -= 50; //reduce to 50%
 
 
         //disable the player attack and movement
@@ -135,12 +146,15 @@ public class scr_SoulManager : MonoBehaviour {
         //enable the transform's attack and movement
         MonoBehaviour attack = (MonoBehaviour) player.gameObject.GetComponent(soul.basicAttack.GetClass());
         attack.enabled = true;
-
-        MonoBehaviour movement = (MonoBehaviour)player.gameObject.GetComponent(soul.movement.GetClass());
-        movement.enabled = true;
+        
+        if (soul.hasMovement) //don't try to enable the component unless there is new movement with this transform
+        {   
+            MonoBehaviour movement = (MonoBehaviour)player.gameObject.GetComponent(soul.movement.GetClass());
+            movement.enabled = true;
+        }
 
         //add the shield to the player
-        player._health.temp_hp += soul.GetShieldGain();
+        player._health.shield += (player._health.max_hp * soul.GetShieldGain()) / 100; //increase shield by <shieldGain> % of max health
 
         currentTransform = soul;
         transformed = true;
@@ -153,12 +167,19 @@ public class scr_SoulManager : MonoBehaviour {
     private void EndTransformation()
     {
         Debug.Log("End Transformation Start");
+
+        //enable the deck system
+        deckManager.Disable(false);
+        
         //disable the current transform's components on the player
         MonoBehaviour attack = (MonoBehaviour)player.gameObject.GetComponent(currentTransform.basicAttack.GetClass());
         attack.enabled = false;
 
-        MonoBehaviour movement = (MonoBehaviour)player.gameObject.GetComponent(currentTransform.movement.GetClass());
-        movement.enabled = false;
+        if (currentTransform.hasMovement) //don't try to disable the component unless there is new movement with this transform
+        {   
+            MonoBehaviour movement = (MonoBehaviour)player.gameObject.GetComponent(currentTransform.movement.GetClass());
+            movement.enabled = false;
+        }
 
         //enable the player default attack and movement
         //player.gameObject.GetComponent<scr_PlayerBlaster>().enabled = true;
@@ -178,12 +199,12 @@ public class scr_SoulManager : MonoBehaviour {
         {
             yield return new WaitForSeconds(1f);
             //decrement the shield using currentTransform
-            player._health.temp_hp -= currentTransform.GetShieldDrainRate();
+            player._health.shield -= currentTransform.GetShieldDrainRate();
 
             //end the transformation if the shield hits 0
-            if (player._health.temp_hp <= 0)
+            if (player._health.shield <= 0)
             {
-                player._health.temp_hp = 0;
+                player._health.shield = 0;
                 EndTransformation();
             }
         }

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   element: 1
   basicAttack: {fileID: 11500000, guid: 9a25fa0095be56b449338613628ec717, type: 3}
-  movement: {fileID: 11500000, guid: d5c8cd04da03c71448070ad44f0e3de3, type: 3}
+  hasMovement: 0
+  movement: {fileID: 0}
   shieldGain: 40
   shieldDrainRate: 1

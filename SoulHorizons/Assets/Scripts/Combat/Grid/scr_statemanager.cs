@@ -8,7 +8,7 @@ public class scr_statemanager : MonoBehaviour {
 
     public Text RewardMessage;
     public Text PlayerHealth;
-    public Text TempHealth;
+    public Text Shield;
     public Text EffectText;
     bool endCombat = false;
     bool showEffect = false;
@@ -62,13 +62,13 @@ public class scr_statemanager : MonoBehaviour {
 
     public void UpdateHealth()
     {
-        if (playerEntity._health.temp_hp > 0)
+        if (playerEntity._health.shield > 0)
         {
-            TempHealth.enabled = true;
-            TempHealth.color = Color.yellow;
+            Shield.enabled = true;
+            Shield.color = Color.yellow;
         }
-        else TempHealth.enabled = false;
-        TempHealth.text = "(+" + playerEntity._health.temp_hp + ")";
+        else Shield.enabled = false;
+        Shield.text = "(+" + playerEntity._health.shield + ")";
         PlayerHealth.text = "Health: " + playerEntity._health.hp;
         if(playerEntity._health.hp <= 0)
         {

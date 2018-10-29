@@ -230,6 +230,7 @@ MonoBehaviour:
   - {fileID: 535620529}
   - {fileID: 452376908}
   - {fileID: 1802866426}
+  handPanel: {fileID: 1533865064}
   soulManager: {fileID: 1431935930}
   doublePressWindow: 0.3
   cardChange_SFX: {fileID: 0}
@@ -1296,7 +1297,7 @@ GameObject:
   - component: {fileID: 672210162}
   - component: {fileID: 672210161}
   m_Layer: 5
-  m_Name: PlayerTempHealth
+  m_Name: PlayerShield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1863,9 +1864,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soulTransforms:
-  - {fileID: 11400000, guid: 7cc678bc235e6134898103fd57c9690b, type: 2}
+  - {fileID: 11400000, guid: 792940a719385914faae7766fc86f342, type: 2}
   buttons:
   - {fileID: 1605766516}
+  deckManager: {fileID: 283017070}
 --- !u!4 &1431935931
 Transform:
   m_ObjectHideFlags: 0
@@ -2631,7 +2633,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RewardMessage: {fileID: 1182640712}
   PlayerHealth: {fileID: 1167945961}
-  TempHealth: {fileID: 672210161}
+  Shield: {fileID: 672210161}
   EffectText: {fileID: 1719854543}
 --- !u!1001 &2110138080
 Prefab:
