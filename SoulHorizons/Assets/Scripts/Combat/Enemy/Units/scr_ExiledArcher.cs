@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+[RequireComponent(typeof(AudioSource))]
 
 public class scr_ExiledArcher : scr_EntityAI {
 
@@ -16,7 +17,15 @@ public class scr_ExiledArcher : scr_EntityAI {
     public float aRInterval;
     private bool canArrowRain = true;
 
+    AudioSource Attack_SFX;
+    public AudioClip[] attacks_SFX;
+    private AudioClip attack_SFX;
 
+    private void Start()
+    {
+        AudioSource[] SFX_Sources = GetComponents<AudioSource>();
+        Attack_SFX = SFX_Sources[1];
+    }
 
     public override void Move()
     {
@@ -60,6 +69,10 @@ public class scr_ExiledArcher : scr_EntityAI {
     {
         hSOnCD = true;
         yield return new WaitForSecondsRealtime(hSChargeTime);
+        int index = Random.Range(0, attacks_SFX.Length);
+        attack_SFX = attacks_SFX[index];
+        Attack_SFX.clip = attack_SFX;
+        Attack_SFX.Play();
         scr_AttackController.attackController.AddNewAttack(hunterShot, entity._gridPos.x, entity._gridPos.y, entity);
         yield return new WaitForSecondsRealtime(hSCooldownTime);
         hSOnCD = false; 

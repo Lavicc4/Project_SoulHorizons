@@ -29,20 +29,20 @@ public class scr_Entity : MonoBehaviour
     float invulnCounter = 0f;
 
     AudioSource Hurt_SFX;
-    AudioSource Die_SFX;
     public AudioClip[] hurts_SFX;
     private AudioClip hurt_SFX;
-    public AudioClip[] dies_SFX;
-    private AudioClip die_SFX;
+    public AudioClip die_SFX;
 
     public Animator anim;
 
+    public GameObject deathManager;
+
     public void Start()
     {
+        deathManager = GameObject.Find("DeathSFXManager");
         baseColor = spr.color;
         AudioSource[] SFX_Sources = GetComponents<AudioSource>();
         Hurt_SFX = SFX_Sources[2];
-        Die_SFX = SFX_Sources[3];
         _health.max_hp = _health.hp;
     }
     public void Update()
@@ -198,12 +198,8 @@ public class scr_Entity : MonoBehaviour
 
     public void Death()
     {
-        /*
-        int index = Random.Range(0, dies_SFX.Length);
-        die_SFX = dies_SFX[index];
-        Die_SFX.clip = die_SFX;
-        Die_SFX.Play();
-        */
+        deathManager.GetComponent<AudioSource>().clip = die_SFX;
+        deathManager.GetComponent<AudioSource>().Play();
         //Debug.Log("I AM DEAD");
         scr_Grid.GridController.SetTileOccupied(false, _gridPos.x, _gridPos.y, this);
         gameObject.SetActive(false); 

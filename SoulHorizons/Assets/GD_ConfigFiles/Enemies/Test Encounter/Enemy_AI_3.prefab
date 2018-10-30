@@ -646,22 +646,26 @@ MonoBehaviour:
   _gridPos: {x: 0, y: 0}
   _health:
     hp: 50
-    temp_hp: 0
+    shield: 0
     max_hp: 50
   _ai: {fileID: 114373111611885714}
   entityTerritory:
     name: 1
     TerrColor: {r: 0, g: 0, b: 0, a: 0}
+    TerrSprite: {fileID: 0}
   spr: {fileID: 212410729078944208}
   lerpSpeed: 15
   has_iframes: 0
+  invincible: 0
   invulnTime: 0
   hurts_SFX:
   - {fileID: 8300000, guid: 8cc96daad9e40b34e89438f259c636ce, type: 3}
   - {fileID: 8300000, guid: 47b6ba2ecd0b41046b04e996d8152611, type: 3}
   - {fileID: 8300000, guid: 0b146d0b97f1b1c4cbf907bbf9e83713, type: 3}
-  dies_SFX:
-  - {fileID: 8300000, guid: 21e03962765dcc5418b13bbacb2dea5a, type: 3}
+  die_SFX: {fileID: 8300000, guid: 21e03962765dcc5418b13bbacb2dea5a, type: 3}
+  anim: {fileID: 0}
+  deathManager: {fileID: 1576292096190378, guid: 2e7f05e13f7325a4f9885b66700d913a,
+    type: 2}
 --- !u!114 &114993519621175086
 MonoBehaviour:
   m_ObjectHideFlags: 1
