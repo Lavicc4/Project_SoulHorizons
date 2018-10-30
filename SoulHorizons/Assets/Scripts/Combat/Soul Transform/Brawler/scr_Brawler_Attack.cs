@@ -28,7 +28,7 @@ public class scr_Brawler_Attack : MonoBehaviour {
 	private int slamDamage = 20; //the starting amount of damage dealt
 	private float slamCooldown = 16f;
 	private bool slamReady = true;
-	private float slamMoveCooldown  = 0.4f;
+	private float slamMoveCooldown  = 0.004f;
 
 	//references
 	scr_Entity playerEntity; //use to get position
