@@ -7,7 +7,7 @@ using System.IO;
 
 public static class SaveLoad {
 
-    public static List<GameState> savedGames = new List<GameState>(3);
+    public static GameState[] savedGames = new GameState[3];
     public static GameState currentGame;
 
     /// <summary>
@@ -34,6 +34,7 @@ public static class SaveLoad {
                 savedGames[i].lastGamePlayed = false;
             }
         }
+        Save();
 
     }
 
@@ -56,7 +57,7 @@ public static class SaveLoad {
         {
             BinaryFormatter bf = new BinaryFormatter();
             FileStream file = File.Open(Application.persistentDataPath + "/savedGames.gd", FileMode.Open);
-            savedGames = (List<GameState>)bf.Deserialize(file);
+            savedGames = (GameState[])bf.Deserialize(file);
             file.Close();
 
             //set lastPlayed game to currentGame for the continue option in the menu
@@ -66,6 +67,7 @@ public static class SaveLoad {
                 {
                     currentGame = item;
                     Debug.Log("Loaded game " + currentGame.GetPlayerName());
+                    Debug.Log("DUST AMOUNT: " + currentGame.GetDustAmount());
                     return;
                 }
             }
@@ -74,4 +76,11 @@ public static class SaveLoad {
         Debug.Log("No save file exists");
     }
 
+    public static void Clear()
+    {
+        if (File.Exists(Application.persistentDataPath + "/savedGames.gd"))
+        {
+            File.Delete(Application.persistentDataPath + "/savedGames.gd");
+        }
+    }
 }

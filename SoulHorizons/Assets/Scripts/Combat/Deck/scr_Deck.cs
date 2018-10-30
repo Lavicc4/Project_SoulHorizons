@@ -11,7 +11,7 @@ using UnityEngine;
 public class scr_Deck : MonoBehaviour {
 
 	public int deckSize = 30;
-    public int handSize = 5;
+    public int handSize = 4;
     public scr_NameToCard cardMapping; //maps card name to the scriptable object for that card
     //public string DeckList; //the name of the file that contains the deck list
     public TextAsset deckList;
@@ -26,8 +26,15 @@ public class scr_Deck : MonoBehaviour {
         {
             hand.Add(null);
         }
-        
-        LoadDeckList();
+
+        if (scr_Inventory.deckList == null)
+        {
+            LoadDeckList();
+        }
+        else
+        {
+            LoadDeckList(scr_Inventory.deckList[scr_Inventory.deckIndex]);
+        }
 
     }
 
@@ -82,6 +89,9 @@ public class scr_Deck : MonoBehaviour {
             {
                 deck.Add(nextCard);
             }
+
+            //add the card and quantity to an inventory card list
+            scr_Inventory.addCard(nextCard, quantity);
         }
 
 
@@ -98,6 +108,25 @@ public class scr_Deck : MonoBehaviour {
             Debug.Log(j++ + ": \"" + item.cardName + "\"");
         }
          */
+
+        ShuffleHelper<scr_Card>(deck);
+        CheckHandSize();
+
+        scr_Inventory.addDeck(this);
+    }
+
+    /// <summary>
+    /// Load the deck list from the existing inventory 
+    /// </summary>
+    void LoadDeckList(scr_Deck loadDeck)
+    {
+        Debug.Log("LOADING DECK...");
+        deckSize = loadDeck.deckSize;
+        handSize = loadDeck.handSize;
+        cardMapping = loadDeck.cardMapping;
+        hand = loadDeck.hand;
+        deck = loadDeck.deck;
+        discard = loadDeck.discard;
 
         ShuffleHelper<scr_Card>(deck);
         CheckHandSize();

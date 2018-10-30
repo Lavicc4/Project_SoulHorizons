@@ -21,6 +21,7 @@ public class GameState {
         //creating a new save file; initialize things as needed
         //initialize player object
         player = new PlayerState();
+        player.name = "Kana";
         player.playerLevel = 1;
         player.currentHealth = -1; //use -1 as an indicator to not take this number on encounter load
 
@@ -52,6 +53,11 @@ public class GameState {
         player.currentHealth = health;
     }
 
+    /*Inventory related methods */
+    public int GetDustAmount()
+    {
+        return scr_Inventory.dustNum;
+    }
 
     /*Region specific methods. All of these take the region name as an argument*/
     /// <summary>
@@ -120,5 +126,5 @@ public class PlayerState
 [System.Serializable]
 public class InventoryState
 {
-
+    public scr_Inventory inv = new scr_Inventory();
 }

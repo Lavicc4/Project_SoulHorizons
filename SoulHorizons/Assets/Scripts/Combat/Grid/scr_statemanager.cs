@@ -39,6 +39,7 @@ public class scr_statemanager : MonoBehaviour {
 	void Update () {
         UpdateHealth();
         UpdateEffects();
+        //END OF ENCOUNTER - NO MORE ENEMIES
 		if(GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
         {
             //Debug.Log("NO ENEMIES");
@@ -46,8 +47,12 @@ public class scr_statemanager : MonoBehaviour {
             RewardMessage.enabled = true;
             endCombat = true;
 
+            //GIVE REWARDS
+            scr_Inventory.dustNum += 50;
+
             //save health
-            //SaveLoad.currentGame.SetPlayerHealth(playerEntity._health.hp);
+            SaveLoad.currentGame.SetPlayerHealth(playerEntity._health.hp);
+            SaveLoad.Save();
         }
         if (endCombat)
         {

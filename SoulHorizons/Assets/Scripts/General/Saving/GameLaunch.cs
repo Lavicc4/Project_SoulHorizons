@@ -8,16 +8,20 @@ using UnityEngine;
 /// </summary>
 public class GameLaunch : MonoBehaviour {
 
-	void Start () {
-        SaveLoad.Load();		
+	void Start () {	
 	}
+
+    public void NewGame()
+    {
+        SaveLoad.NewGame();
+    }
 
     /// <summary>
     /// Called by the play button
     /// </summary>
     public void Play()
     {
-        SaveLoad.NewGame();
+        SaveLoad.Load();
     }
 
 }
