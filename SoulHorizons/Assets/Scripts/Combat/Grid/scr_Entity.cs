@@ -92,7 +92,6 @@ public class scr_Entity : MonoBehaviour
         //Animate movement
         if (anim != null)
         {
-            Debug.Log("MOVING");
             anim.SetInteger("Movement", 1);
         }
         scr_Grid.GridController.SetTileOccupied(false, _gridPos.x, _gridPos.y, this);

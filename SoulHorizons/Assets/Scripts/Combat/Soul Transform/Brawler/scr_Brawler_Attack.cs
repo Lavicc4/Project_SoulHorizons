@@ -11,24 +11,31 @@ public class scr_Brawler_Attack : MonoBehaviour {
 	private int meleeDamage = 5;
 	private float meleeCooldown = 0.8f; //have these on separate cooldowns, so you can melee attack with the projectile in motion
 	private bool meleeReady = true;
+
 	/*Shoulder Dash */
 	private int shoulderDamage = 8;
 	private bool dashing = false; //set to true if dashing
-	private float moveFrequency = 0.9f; //the pause between movements in the dash attack; used with a corroutine
+	private float moveFrequency = 0.7f; //the pause between movements in the dash attack; used with a corroutine
 	Vector2Int startPos = new Vector2Int(); //the point the dash starts at
+
 	/*Tank Up */
 	//private float tankDefenseBoost = 0.2f; //need to subtract this from health damage modifier; CANCELED for now
 	private int tankShieldGain = 10;
 	private float tankCooldown = 8f;
 	private bool tankReady = true; //whether the tank move can be used currently
+
 	/*Heavy Slam */
+	private int slamDamage = 20; //the starting amount of damage dealt
+	private float slamCooldown = 16f;
+	private bool slamReady = true;
+	private float slamMoveCooldown  = 0.4f;
 
 	//references
-	scr_Entity entity; //use to get position
+	scr_Entity playerEntity; //use to get position
 
 	void Awake()
 	{
-		entity = GetComponent<scr_Entity>();
+		playerEntity = GetComponent<scr_Entity>();
 	}
 
 	void Start () {
@@ -41,16 +48,16 @@ public class scr_Brawler_Attack : MonoBehaviour {
 		switch (input)
 		{
 		    case 0:
-		    	HeavySlam();
+				ShoulderDash();
 			break;
 		    case 1:
 		    	TankUp();
 		    	break;
 		    case 2:
-		    	ShoulderDash();
+		    	FurySwipe();
 		    	break;
 		    case 3:
-		    	FurySwipe();
+				HeavySlam();
 		    	break;
 		}
 	}
@@ -69,12 +76,12 @@ public class scr_Brawler_Attack : MonoBehaviour {
 		Debug.Log("Furry Swipe!!");
 
 		//check the grid position one over; if it contains an attackable entity, deal damage; note this will return null if the player is at the far right of the grid
-		scr_Entity target = scr_Grid.GridController.GetEntityAtPosition(entity._gridPos.x + 1, entity._gridPos.y);
+		scr_Entity target = scr_Grid.GridController.GetEntityAtPosition(playerEntity._gridPos.x + 1, playerEntity._gridPos.y);
 
 		if (target != null && target.type != EntityType.Player)
 		{
 			//deal damage
-			target.HitByAttack(meleeDamage, entity.type);
+			target.HitByAttack(meleeDamage, playerEntity.type);
 		}
 
 		//start the cooldown
@@ -94,29 +101,36 @@ public class scr_Brawler_Attack : MonoBehaviour {
 	/// </summary>
 	private void ShoulderDash()
 	{
+		if (dashing)
+		{
+			return;
+		}
+
 		dashing = true;
+		meleeCooldown -= 0.3f; //speed up the attack rate while dashing
 		scr_InputManager.disableMovement = true;
-		startPos.x = entity._gridPos.x; 
-		startPos.y = entity._gridPos.y;
+		startPos.x = playerEntity._gridPos.x; 
+		startPos.y = playerEntity._gridPos.y;
 		StartCoroutine(Dash());
 	}
 
 	private IEnumerator Dash()
 	{
-		while (dashing && scr_Grid.GridController.LocationOnGrid(entity._gridPos.x + 1, entity._gridPos.y))
+		while (dashing && scr_Grid.GridController.LocationOnGrid(playerEntity._gridPos.x + 1, playerEntity._gridPos.y))
 		{
 			//move any enemies out of the way
 			Push();
 
 			//move
-			entity.SetTransform(entity._gridPos.x + 1, entity._gridPos.y);
+			playerEntity.SetTransform(playerEntity._gridPos.x + 1, playerEntity._gridPos.y);
 			//yield
 			yield return new WaitForSeconds(moveFrequency);
 		}
 
 		dashing = false;
+		meleeCooldown += 0.3f; //slow the attack rate back to normal
 		scr_InputManager.disableMovement = false;
-		entity.SetTransform(startPos.x, startPos.y);
+		playerEntity.SetTransform(startPos.x, startPos.y);
 	}
 
 	/// <summary>
@@ -124,9 +138,9 @@ public class scr_Brawler_Attack : MonoBehaviour {
 	/// </summary>
 	private void Push()
 	{
-		scr_Entity target = scr_Grid.GridController.GetEntityAtPosition(entity._gridPos.x + 1, entity._gridPos.y);
-		int enemyX = entity._gridPos.x + 1;
-		int enemyY = entity._gridPos.y;
+		scr_Entity target = scr_Grid.GridController.GetEntityAtPosition(playerEntity._gridPos.x + 1, playerEntity._gridPos.y);
+		int enemyX = playerEntity._gridPos.x + 1;
+		int enemyY = playerEntity._gridPos.y;
 		if (target != null && target.type == EntityType.Enemy)
 		{
 			Debug.Log("Found an enemy to push");
@@ -182,7 +196,7 @@ public class scr_Brawler_Attack : MonoBehaviour {
 		{
 			return;
 		}
-		entity._health.shield += tankShieldGain;
+		playerEntity._health.shield += tankShieldGain;
 		
 		//start the cooldown
 		StartCoroutine(TankCooldown());
@@ -200,6 +214,60 @@ public class scr_Brawler_Attack : MonoBehaviour {
 	/// </summary>
 	private void HeavySlam()
 	{
+		if (!slamReady)
+		{
+			return;
+		}
+		//start a coroutine which hits a column every __ seconds
+		StartCoroutine(HeavySlamRoutine());
+	}
 
+	private IEnumerator HeavySlamRoutine()
+	{
+		int column = 0;
+		while (slamDamage > 0 && scr_Grid.GridController.LocationOnGrid(column, 0)) //while the damage has not reduced to zero and we haven't gone off the edge of the grid
+		{
+			//check each column and see if it has enemies
+			bool enemySpaceFound = false; //only yield if we actually attacked an enemy space
+			//iterate through the tiles in this column
+			for (int i = 0; i < scr_Grid.GridController.ySizeMax; i++)
+			{
+				if (scr_Grid.GridController.grid[column,i].territory.name == TerrName.Enemy)
+				{
+					enemySpaceFound = true;
+					//play some effect on this tile to indicate it was attacked
+
+					//attack an enemy if there is one here
+					scr_Entity target = scr_Grid.GridController.GetEntityAtPosition(column, i);
+					if (target != null)
+					{
+						//deal damage
+						target.HitByAttack(slamDamage, EntityType.Player);
+						Debug.Log("Heavy Slam hit something!");
+					}
+				}
+			}
+
+			//yield if we attacked an enemy space
+			if (enemySpaceFound)
+			{
+				slamDamage -= 8; //heavy slam does less damage as it moves right
+				yield return new WaitForSeconds(slamMoveCooldown);
+			}
+			//move to the next column
+			column++;
+		}
+
+		//end of  heavy slam
+		slamDamage = 20;
+		//start main cooldown
+		StartCoroutine(SlamCooldown());
+	}
+
+	private IEnumerator SlamCooldown()
+	{
+		slamReady = false;
+		yield return new WaitForSeconds(slamCooldown);
+		slamReady = true;
 	}
 }
