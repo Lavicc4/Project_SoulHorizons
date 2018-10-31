@@ -22,7 +22,7 @@ public static class scr_InputManager {
 
 		float r = 0.0f;
 		r += Input.GetAxis("J_MainHorizontal");
-		//r += Input.GetAxis("J_SecondHorizontal");
+		r += Input.GetAxis("J_DHorizontal");
 		r += Input.GetAxis("K_MainHorizontal");
 		/*
 		if (!Input.GetButtonDown("J_MainHorizontal")){
@@ -55,7 +55,7 @@ public static class scr_InputManager {
 
 		float r = 0.0f;
 		r += Input.GetAxis("J_MainVertical");
-		//r += Input.GetAxis("J_SecondVertical");
+		r += Input.GetAxis("J_DVertical");
 		r += Input.GetAxis("K_MainVertical");
 		if (r < 0f)
 		{
