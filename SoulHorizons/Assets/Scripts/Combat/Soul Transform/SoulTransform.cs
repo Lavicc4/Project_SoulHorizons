@@ -8,9 +8,10 @@ public class SoulTransform : ScriptableObject {
 
     public Element element;
     //script references
-    public MonoScript basicAttack;
+    //public MonoScript basicAttack;
     public bool hasMovement = false; //indicates whether this transform has movement that differs from normal player movement, and thus whether the movement variable will be null or not.
-    public MonoScript movement;
+    //public MonoScript movement;
+    public GameObject scriptHolder; //this will be a prefab that holds the scripts
 
     //List<Monobehavior> misc = new List<MonoBehavior<()
 
