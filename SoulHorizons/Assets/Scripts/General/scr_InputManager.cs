@@ -212,6 +212,26 @@ public static class scr_InputManager {
 
 	}
 
+	/// <summary>
+	/// Xbox one - Left trigger
+	/// Keyboard - Tab button
+	/// </summary>
+	/// <returns>returns true if currently pressed</returns>
+	public static bool Dash()
+	{
+		return (Input.GetAxis("Dash_Axis") > 0.02f) || Input.GetButton("Dash_Button");
+	}
+
+	/// <summary>
+	/// Xbox one - Right trigger
+	/// Keyboard - Space button
+	/// </summary>
+	/// <returns>returns true if currently pressed</returns>
+	public static bool CardSwap()
+	{
+		return (Input.GetAxis("CardSwap_Axis") > 0.02f) || Input.GetButton("CardSwap_Button");
+	}
+
 /* 
 	/// <summary>
 	/// Xbox one - ?
