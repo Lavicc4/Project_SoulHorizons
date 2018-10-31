@@ -21,3 +21,4 @@ MonoBehaviour:
   art: {fileID: 21300000, guid: 397c39ac34982f040a965114e93319d3, type: 3}
   multiplier: 1.5
   duration: 5
+  InnerStrengthSFX: {fileID: 8300000, guid: 0fa904e78be69f14bbaa9a25e09b3cb2, type: 3}

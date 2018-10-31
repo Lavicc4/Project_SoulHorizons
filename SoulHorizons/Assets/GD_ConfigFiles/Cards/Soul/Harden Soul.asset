@@ -19,4 +19,5 @@ MonoBehaviour:
   cooldown: 1.5
   description: Adds temporary health to the player.
   art: {fileID: 21300000, guid: dd0c95c9b9921e443827935000b834e1, type: 3}
+  HardenSoulSFX: {fileID: 8300000, guid: 9ddf86a70b6677e49a20f66961bd57aa, type: 3}
   Shield_hp: 20
