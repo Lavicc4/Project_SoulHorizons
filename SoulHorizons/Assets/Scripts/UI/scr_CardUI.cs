@@ -14,6 +14,7 @@ public class scr_CardUI : MonoBehaviour {
 	[SerializeField] private TextMeshProUGUI description;
 	[SerializeField] private Image cardArt;
 	[SerializeField] private Image cardElement;
+	[SerializeField] private TextMeshProUGUI backupName;
 	private Element element;
 
 	//--Color Settings--
@@ -29,15 +30,17 @@ public class scr_CardUI : MonoBehaviour {
 
 	private bool selected = false; //whether this card is currently selected or not
 	
-
-	// Use this for initialization
 	void Awake () {
 		cooldownOverlay = GetComponent<scr_CooldownOverlay>();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+
+	/// <summary>
+	/// Sets the name for the 
+	/// </summary>
+	/// <param name="name"></param>
+	public void SetBackupName(string name)
+	{
+		backupName.text = name;
 	}
 
 	public void SetName(string name)

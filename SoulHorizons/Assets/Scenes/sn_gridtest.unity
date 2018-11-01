@@ -263,6 +263,7 @@ MonoBehaviour:
   cardMapping: {fileID: 11400000, guid: 7fd815c874a2e11489c9eedb255bd7dd, type: 2}
   deckList: {fileID: 4900000, guid: e4d0755a0b712244fb08fb3303a823c6, type: 3}
   hand: []
+  backupHand: []
 --- !u!82 &283017073
 AudioSource:
   m_ObjectHideFlags: 0
@@ -507,6 +508,16 @@ Prefab:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114845088341556330, guid: 3857e857903f6324899fd94903c78bca,
+        type: 2}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114163332788533310, guid: 3857e857903f6324899fd94903c78bca,
+        type: 2}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114163332788533310, guid: 3857e857903f6324899fd94903c78bca,
         type: 2}
       propertyPath: m_isInputParsingRequired
       value: 1
@@ -764,6 +775,16 @@ Prefab:
     - target: {fileID: 1455328464168522, guid: 3857e857903f6324899fd94903c78bca, type: 2}
       propertyPath: m_Name
       value: Card_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114163332788533310, guid: 3857e857903f6324899fd94903c78bca,
+        type: 2}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114163332788533310, guid: 3857e857903f6324899fd94903c78bca,
+        type: 2}
+      propertyPath: m_isInputParsingRequired
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3857e857903f6324899fd94903c78bca, type: 2}
@@ -2106,6 +2127,16 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114163332788533310, guid: 3857e857903f6324899fd94903c78bca,
+        type: 2}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114163332788533310, guid: 3857e857903f6324899fd94903c78bca,
+        type: 2}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 114845088341556330, guid: 3857e857903f6324899fd94903c78bca,
         type: 2}
       propertyPath: m_havePropertiesChanged
@@ -2115,11 +2146,6 @@ Prefab:
         type: 2}
       propertyPath: m_isInputParsingRequired
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114748738851102368, guid: 3857e857903f6324899fd94903c78bca,
-        type: 2}
-      propertyPath: m_FillAmount
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3857e857903f6324899fd94903c78bca, type: 2}
@@ -2575,6 +2601,16 @@ Prefab:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114845088341556330, guid: 3857e857903f6324899fd94903c78bca,
+        type: 2}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114163332788533310, guid: 3857e857903f6324899fd94903c78bca,
+        type: 2}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114163332788533310, guid: 3857e857903f6324899fd94903c78bca,
         type: 2}
       propertyPath: m_isInputParsingRequired
       value: 1
