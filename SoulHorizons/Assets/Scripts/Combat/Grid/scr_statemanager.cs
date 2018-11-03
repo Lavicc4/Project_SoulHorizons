@@ -10,11 +10,13 @@ public class scr_statemanager : MonoBehaviour {
     public Text PlayerHealth;
     public Text Shield;
     public Text EffectText;
+    public Text StaminaText;
     bool endCombat = false;
     bool showEffect = false;
     string EffectString;
     GameObject player;
     scr_Entity playerEntity;
+    scr_PlayerMovement playerMovement;
     // Use this for initialization
     void Start () {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -22,12 +24,16 @@ public class scr_statemanager : MonoBehaviour {
         if (player != null)
         {
             playerEntity = player.GetComponent<scr_Entity>();
+            playerMovement = player.GetComponent<scr_PlayerMovement>();
             //load the health from the GameState
             int hp = SaveLoad.currentGame.GetPlayerHealth();
             if (hp > 0) //make sure the health has been set previously
             {
                 playerEntity._health.hp = hp;
             }
+
+            //load the stamina from the player
+            StaminaText.text = "Stamina: " + playerMovement.GetStaminaCharges();
         }
         else
         {
@@ -48,6 +54,8 @@ public class scr_statemanager : MonoBehaviour {
 
             //save health
             //SaveLoad.currentGame.SetPlayerHealth(playerEntity._health.hp);
+
+
         }
         if (endCombat)
         {
@@ -70,6 +78,7 @@ public class scr_statemanager : MonoBehaviour {
         else Shield.enabled = false;
         Shield.text = "(+" + playerEntity._health.shield + ")";
         PlayerHealth.text = "Health: " + playerEntity._health.hp;
+        StaminaText.text = "Stamina: " + playerMovement.GetStaminaCharges();
         if(playerEntity._health.hp <= 0)
         {
             scr_InputManager.disableInput = true;

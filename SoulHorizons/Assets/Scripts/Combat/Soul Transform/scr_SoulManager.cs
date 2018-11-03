@@ -34,6 +34,7 @@ public class scr_SoulManager : MonoBehaviour {
             buttons[i].onClick.AddListener(delegate {Transformation(item); });
 
             //add the components in the soulTransform to the player
+            /*
             MonoBehaviour attack = (MonoBehaviour) player.gameObject.AddComponent(item.basicAttack.GetClass());
             attack.enabled = false;
             if (item.hasMovement) //don't try to add the component unless there is new movement with this transform
@@ -41,6 +42,14 @@ public class scr_SoulManager : MonoBehaviour {
                 MonoBehaviour movement = (MonoBehaviour) player.gameObject.AddComponent(item.movement.GetClass());
                 movement.enabled = false;
             }
+             */
+
+             MonoBehaviour[] scripts = item.scriptHolder.GetComponents<MonoBehaviour>();
+             foreach (MonoBehaviour script in scripts)
+             {
+                 MonoBehaviour s = (MonoBehaviour) player.gameObject.AddComponent(script.GetType());
+                 s.enabled = false;
+             }
 
             //add the button to the dictionary with the transform's element as the key
             elementButtons[item.element] = buttons[i];
@@ -143,6 +152,7 @@ public class scr_SoulManager : MonoBehaviour {
         //player.gameObject.GetComponent<scr_PlayerBlaster>().enabled = false;
         player.gameObject.GetComponent<scr_PlayerMovement>().enabled = false;
 
+        /*
         //enable the transform's attack and movement
         MonoBehaviour attack = (MonoBehaviour) player.gameObject.GetComponent(soul.basicAttack.GetClass());
         attack.enabled = true;
@@ -151,6 +161,14 @@ public class scr_SoulManager : MonoBehaviour {
         {   
             MonoBehaviour movement = (MonoBehaviour)player.gameObject.GetComponent(soul.movement.GetClass());
             movement.enabled = true;
+        }
+         */
+
+        MonoBehaviour[] scripts = soul.scriptHolder.GetComponents<MonoBehaviour>();
+        foreach (MonoBehaviour script in scripts)
+        {
+            MonoBehaviour s = (MonoBehaviour) player.gameObject.GetComponent(script.GetType());
+            s.enabled = true;
         }
 
         //add the shield to the player
@@ -172,6 +190,7 @@ public class scr_SoulManager : MonoBehaviour {
         deckManager.Disable(false);
         
         //disable the current transform's components on the player
+        /*
         MonoBehaviour attack = (MonoBehaviour)player.gameObject.GetComponent(currentTransform.basicAttack.GetClass());
         attack.enabled = false;
 
@@ -179,6 +198,14 @@ public class scr_SoulManager : MonoBehaviour {
         {   
             MonoBehaviour movement = (MonoBehaviour)player.gameObject.GetComponent(currentTransform.movement.GetClass());
             movement.enabled = false;
+        }
+         */
+
+        MonoBehaviour[] scripts = currentTransform.scriptHolder.GetComponents<MonoBehaviour>();
+        foreach (MonoBehaviour script in scripts)
+        {
+            MonoBehaviour s = (MonoBehaviour) player.gameObject.GetComponent(script.GetType());
+            s.enabled = true;
         }
 
         //enable the player default attack and movement

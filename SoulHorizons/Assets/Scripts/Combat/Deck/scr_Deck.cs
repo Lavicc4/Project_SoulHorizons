@@ -16,6 +16,7 @@ public class scr_Deck : MonoBehaviour {
     //public string DeckList; //the name of the file that contains the deck list
     public TextAsset deckList;
     [HideInInspector] public List<scr_Card> hand = new List<scr_Card>();
+    [HideInInspector] public List<scr_Card> backupHand = new List<scr_Card>();
     List<scr_Card> deck = new List<scr_Card>();
     List<scr_Card> discard = new List<scr_Card>();
 
@@ -25,6 +26,7 @@ public class scr_Deck : MonoBehaviour {
         for (int i = 0; i < handSize; i++)
         {
             hand.Add(null);
+            backupHand.Add(null);
         }
         
         LoadDeckList();
@@ -249,5 +251,27 @@ public class scr_Deck : MonoBehaviour {
         hand[index] = null;
         //make sure hand size is correct
         CheckHandSize();
+    }
+
+    /// <summary>
+    /// Swaps the card at the given index in the hand with the backup slot for that card. If the backup slot is empty,
+    /// the card is moved to the backup slot, then a new card is drawn to replace it.
+    /// </summary>
+    /// <param name="index"></param>
+    public void Swap(int index)
+    {
+        //swap the card at this index with the card in its backup slot
+        scr_Card temp = backupHand[index];
+        backupHand[index] = hand[index];
+        
+        if (temp  == null)
+        {
+            //there was no card in the backup slot; need to draw a new card at this index in the hand
+            Draw(index);
+        }
+        else
+        {
+            hand[index] = temp;
+        }
     }
 }

@@ -22,7 +22,7 @@ public static class scr_InputManager {
 
 		float r = 0.0f;
 		r += Input.GetAxis("J_MainHorizontal");
-		//r += Input.GetAxis("J_SecondHorizontal");
+		r += Input.GetAxis("J_DHorizontal");
 		r += Input.GetAxis("K_MainHorizontal");
 		/*
 		if (!Input.GetButtonDown("J_MainHorizontal")){
@@ -55,7 +55,7 @@ public static class scr_InputManager {
 
 		float r = 0.0f;
 		r += Input.GetAxis("J_MainVertical");
-		//r += Input.GetAxis("J_SecondVertical");
+		r += Input.GetAxis("J_DVertical");
 		r += Input.GetAxis("K_MainVertical");
 		if (r < 0f)
 		{
@@ -210,6 +210,26 @@ public static class scr_InputManager {
 
 		return -1;
 
+	}
+
+	/// <summary>
+	/// Xbox one - Left trigger
+	/// Keyboard - Tab button
+	/// </summary>
+	/// <returns>returns true if currently pressed</returns>
+	public static bool Dash()
+	{
+		return (Input.GetAxis("Dash_Axis") > 0.02f) || Input.GetButton("Dash_Button");
+	}
+
+	/// <summary>
+	/// Xbox one - Right trigger
+	/// Keyboard - Space button
+	/// </summary>
+	/// <returns>returns true if currently pressed</returns>
+	public static bool CardSwap()
+	{
+		return (Input.GetAxis("CardSwap_Axis") > 0.02f) || Input.GetButton("CardSwap_Button");
 	}
 
 /* 
