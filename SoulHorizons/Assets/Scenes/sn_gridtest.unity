@@ -1729,7 +1729,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'You''ve received [Insert reward here]! Press V to return to world map. '
+  m_Text: 'You''ve received [Insert reward here]! Press R to return to world map. '
 --- !u!222 &1182640713
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1833,6 +1833,37 @@ Prefab:
         type: 2}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114493093441995880, guid: 0911cfe7a9baa6c49a9fc8818e50afaa,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114493093441995880, guid: 0911cfe7a9baa6c49a9fc8818e50afaa,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114493093441995880, guid: 0911cfe7a9baa6c49a9fc8818e50afaa,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114493093441995880, guid: 0911cfe7a9baa6c49a9fc8818e50afaa,
+        type: 2}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114493093441995880, guid: 0911cfe7a9baa6c49a9fc8818e50afaa,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 238c7f7ea647f9045934b973a40471aa,
+        type: 3}
+    - target: {fileID: 114493093441995880, guid: 0911cfe7a9baa6c49a9fc8818e50afaa,
+        type: 2}
+      propertyPath: m_Type
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0911cfe7a9baa6c49a9fc8818e50afaa, type: 2}

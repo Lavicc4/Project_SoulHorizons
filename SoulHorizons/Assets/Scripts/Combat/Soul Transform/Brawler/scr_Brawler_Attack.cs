@@ -7,15 +7,15 @@ public class scr_Brawler_Attack : MonoBehaviour {
 	//Have a general cooldown to check in Update, then specific attack cooldowns depending on what the attack does?
 	//Want to encourage the player to vary their attacks
 	private bool busy = false; //use this to indicate that the script is mid-attack, so don't do another attack (Is this necessary?)
-	/*Fury Swipe */
-	private int meleeDamage = 5;
-	private float meleeCooldown = 0.8f; //have these on separate cooldowns, so you can melee attack with the projectile in motion
+                               /*Fury Swipe */
+    private int meleeDamage = 8;
+	private float meleeCooldown = 0.4f; //have these on separate cooldowns, so you can melee attack with the projectile in motion
 	private bool meleeReady = true;
 
 	/*Shoulder Dash */
-	private int shoulderDamage = 8;
+	private int shoulderDamage = 15;
 	private bool dashing = false; //set to true if dashing
-	private float moveFrequency = 0.7f; //the pause between movements in the dash attack; used with a corroutine
+	private float moveFrequency = 0.35f; //the pause between movements in the dash attack; used with a corroutine
 	Vector2Int startPos = new Vector2Int(); //the point the dash starts at
 
 	/*Tank Up */
@@ -25,8 +25,10 @@ public class scr_Brawler_Attack : MonoBehaviour {
 	private bool tankReady = true; //whether the tank move can be used currently
 
 	/*Heavy Slam */
-	private int slamDamage = 20; //the starting amount of damage dealt
-	private float slamCooldown = 16f;
+	private int slamDamage = 30; //the starting amount of damage dealt
+    private int slamDamageMax; //Max Slam Damage Reference
+    private int slamDamageDeprecation = 10; //Slam deprecation per column movement
+	private float slamCooldown = 8f;    //Player Slam CD
 	private bool slamReady = true;
 	private float slamMoveCooldown  = 0.004f;
 
@@ -40,7 +42,8 @@ public class scr_Brawler_Attack : MonoBehaviour {
 
 	void Start () {
         Debug.Log("Brawler attack added");
-	}
+        slamDamageMax = slamDamage;
+    }
 	
 	void Update () {
 		int input = scr_InputManager.PlayCard();
@@ -144,8 +147,10 @@ public class scr_Brawler_Attack : MonoBehaviour {
 		if (target != null && target.type == EntityType.Enemy)
 		{
 			Debug.Log("Found an enemy to push");
-			//push the enemy out of the way if possible
-			if (MoveIfOpen(target, enemyX+1, enemyY+1)) //check below and to the right the enemy
+            //deal damage
+            target.HitByAttack(shoulderDamage, playerEntity.type);
+            //push the enemy out of the way if possible
+            if (MoveIfOpen(target, enemyX+1, enemyY+1)) //check below and to the right the enemy
 			{
 				return;
 			}
@@ -224,7 +229,7 @@ public class scr_Brawler_Attack : MonoBehaviour {
 
 	private IEnumerator HeavySlamRoutine()
 	{
-		int column = 0;
+		int column = playerEntity._gridPos.x + 1;
 		while (slamDamage > 0 && scr_Grid.GridController.LocationOnGrid(column, 0)) //while the damage has not reduced to zero and we haven't gone off the edge of the grid
 		{
 			//check each column and see if it has enemies
@@ -243,23 +248,24 @@ public class scr_Brawler_Attack : MonoBehaviour {
 					{
 						//deal damage
 						target.HitByAttack(slamDamage, EntityType.Player);
-						Debug.Log("Heavy Slam hit something!");
+						Debug.Log("Heavy Slam hit something for: " + slamDamage + "\n Player column position is: " + column);
 					}
 				}
 			}
 
 			//yield if we attacked an enemy space
-			if (enemySpaceFound)
+			if (slamDamage > 0)
 			{
-				slamDamage -= 8; //heavy slam does less damage as it moves right
-				yield return new WaitForSeconds(slamMoveCooldown);
-			}
+				slamDamage -= slamDamageDeprecation; //heavy slam does less damage as it moves right
+                //Debug.Log("Slam damage is: " + slamDamage + "\n Column position is: " + playerEntity._gridPos.y);
+                yield return new WaitForSeconds(slamMoveCooldown);
+		    }
 			//move to the next column
 			column++;
 		}
 
 		//end of  heavy slam
-		slamDamage = 20;
+		slamDamage = slamDamageMax;
 		//start main cooldown
 		StartCoroutine(SlamCooldown());
 	}
