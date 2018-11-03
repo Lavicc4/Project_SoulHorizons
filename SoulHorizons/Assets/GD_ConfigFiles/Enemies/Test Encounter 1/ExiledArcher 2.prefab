@@ -632,6 +632,8 @@ MonoBehaviour:
   hSChargeTime: 3
   arrowRain: {fileID: 11400000, guid: 320a8358f456ced43b8ea33ecfec776c, type: 2}
   aRInterval: 6
+  attacks_SFX:
+  - {fileID: 8300000, guid: 2bd91a05162db9946a2cc8e6e3b22d23, type: 3}
 --- !u!114 &114725702907161856
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -647,12 +649,13 @@ MonoBehaviour:
   _gridPos: {x: 0, y: 0}
   _health:
     hp: 75
-    temp_hp: 0
+    shield: 0
     max_hp: 75
   _ai: {fileID: 114160683766995486}
   entityTerritory:
     name: 1
     TerrColor: {r: 0, g: 0, b: 0, a: 0}
+    TerrSprite: {fileID: 0}
   spr: {fileID: 212410729078944208}
   lerpSpeed: 15
   has_iframes: 0
@@ -662,8 +665,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1532b823ddf694242a691d5fdd4ddabc, type: 3}
   - {fileID: 8300000, guid: 636de18ebe22cb249b6d839474d96284, type: 3}
   - {fileID: 8300000, guid: d24c7b3005983c34e9dd1dbcef9a8858, type: 3}
-  dies_SFX:
-  - {fileID: 8300000, guid: 21e03962765dcc5418b13bbacb2dea5a, type: 3}
+  die_SFX: {fileID: 8300000, guid: 1532b823ddf694242a691d5fdd4ddabc, type: 3}
+  anim: {fileID: 0}
+  deathManager: {fileID: 1576292096190378, guid: 2e7f05e13f7325a4f9885b66700d913a,
+    type: 2}
 --- !u!212 &212410729078944208
 SpriteRenderer:
   m_ObjectHideFlags: 1

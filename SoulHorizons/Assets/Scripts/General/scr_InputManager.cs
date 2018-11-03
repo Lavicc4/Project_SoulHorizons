@@ -5,6 +5,7 @@ using UnityEngine;
 public static class scr_InputManager {
 
 	public static bool disableInput = false; //set to true to prevent the player from getting input
+	public static bool disableMovement = false; //set to true to prevent the player from inputting movement
 
 	// -- Axis
 	/// <summary>
@@ -14,14 +15,14 @@ public static class scr_InputManager {
 	/// <returns>returns -1 for left, 1 for right, 0 for neither, only on the frame the axis is pressed</returns>
 	public static int MainHorizontal()
 	{
-		if(disableInput)
+		if(disableInput || disableMovement)
 		{
 			return 0;
 		}
 
 		float r = 0.0f;
 		r += Input.GetAxis("J_MainHorizontal");
-		//r += Input.GetAxis("J_SecondHorizontal");
+		r += Input.GetAxis("J_DHorizontal");
 		r += Input.GetAxis("K_MainHorizontal");
 		/*
 		if (!Input.GetButtonDown("J_MainHorizontal")){
@@ -47,14 +48,14 @@ public static class scr_InputManager {
 	/// <returns>returns -1 for down, 1 for up, 0 for neither</returns>
 	public static int MainVertical()
 	{
-		if(disableInput)
+		if(disableInput || disableMovement)
 		{
 			return 0;
 		}
 
 		float r = 0.0f;
 		r += Input.GetAxis("J_MainVertical");
-		//r += Input.GetAxis("J_SecondVertical");
+		r += Input.GetAxis("J_DVertical");
 		r += Input.GetAxis("K_MainVertical");
 		if (r < 0f)
 		{
@@ -209,6 +210,26 @@ public static class scr_InputManager {
 
 		return -1;
 
+	}
+
+	/// <summary>
+	/// Xbox one - Left trigger
+	/// Keyboard - Tab button
+	/// </summary>
+	/// <returns>returns true if currently pressed</returns>
+	public static bool Dash()
+	{
+		return (Input.GetAxis("Dash_Axis") > 0.02f) || Input.GetButton("Dash_Button");
+	}
+
+	/// <summary>
+	/// Xbox one - Right trigger
+	/// Keyboard - Space button
+	/// </summary>
+	/// <returns>returns true if currently pressed</returns>
+	public static bool CardSwap()
+	{
+		return (Input.GetAxis("CardSwap_Axis") > 0.02f) || Input.GetButton("CardSwap_Button");
 	}
 
 /* 

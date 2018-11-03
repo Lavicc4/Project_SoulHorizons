@@ -109,24 +109,36 @@ public class scr_EnemyAI_1 : scr_EntityAI
     }
 
 
-    //Disclaimer, this AI will not move to the first row (x = 0) all of the movement is randomly done based on the current position of the AI, it needs to be streamlined 
-    //I know this 
+    
 
 
 
     int PickXCoord()
     {
-        if (entity._gridPos.x == 4)                              //AI is on x = 0, so we need to move to 1 (right)                                         
-        {
-            return 5;
+        //must return int 
+        int _range = scr_Grid.GridController.xSizeMax;
+        int _currPosX = entity._gridPos.x;
 
-        }
-        else if (entity._gridPos.x == 5)                         //AI is on x = 2, so we need to move to 1  (left) 
+        if(_currPosX == _range - 1 )
         {
-            return 4;
+            return _range - 1; 
         }
-        else                                            //Should never reach this state, but as a Debug, the AI will move to x = 0
+        else if(_currPosX == _range / 2)
         {
+            return _currPosX + 1; 
+        }
+        else
+        {
+            int _temp = Random.Range(0, 2);
+            if(_temp == 0)
+            {
+                return _currPosX + 1; 
+            }
+            else if(_temp == 1)
+            {
+                return _currPosX - 1; 
+            }
+
             return 0;
         }
 

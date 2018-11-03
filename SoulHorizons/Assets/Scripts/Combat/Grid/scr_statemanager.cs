@@ -7,14 +7,16 @@ using UnityEngine.SceneManagement;
 public class scr_statemanager : MonoBehaviour {
 
     public Text RewardMessage;
-    public Text PlayerHealth;
-    public Text TempHealth;
+    //public Text PlayerHealth;
+    public Text Shield;
     public Text EffectText;
+    public Text StaminaText;
     bool endCombat = false;
     bool showEffect = false;
     string EffectString;
     GameObject player;
     scr_Entity playerEntity;
+    scr_PlayerMovement playerMovement;
     // Use this for initialization
     void Start () {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -22,12 +24,20 @@ public class scr_statemanager : MonoBehaviour {
         if (player != null)
         {
             playerEntity = player.GetComponent<scr_Entity>();
+            playerMovement = player.GetComponent<scr_PlayerMovement>();
             //load the health from the GameState
             int hp = SaveLoad.currentGame.GetPlayerHealth();
             if (hp > 0) //make sure the health has been set previously
             {
                 playerEntity._health.hp = hp;
             }
+
+            //make sure that movement is enabled
+            scr_InputManager.disableInput = false;
+            scr_InputManager.disableMovement = false;
+
+            //load the stamina from the player
+            StaminaText.text = "Stamina: " + playerMovement.GetStaminaCharges();
         }
         else
         {
@@ -68,14 +78,15 @@ public class scr_statemanager : MonoBehaviour {
 
     public void UpdateHealth()
     {
-        if (playerEntity._health.temp_hp > 0)
+        if (playerEntity._health.shield > 0)
         {
-            TempHealth.enabled = true;
-            TempHealth.color = Color.yellow;
+            Shield.enabled = true;
+            Shield.color = Color.yellow;
         }
-        else TempHealth.enabled = false;
-        TempHealth.text = "(+" + playerEntity._health.temp_hp + ")";
-        PlayerHealth.text = "Health: " + playerEntity._health.hp;
+        else Shield.enabled = false;
+        Shield.text = "(+" + playerEntity._health.shield + ")";
+        //PlayerHealth.text = "Health: " + playerEntity._health.hp;
+        StaminaText.text = "Stamina: " + playerMovement.GetStaminaCharges();
         if(playerEntity._health.hp <= 0)
         {
             scr_InputManager.disableInput = true;

@@ -29,20 +29,20 @@ public class scr_Entity : MonoBehaviour
     float invulnCounter = 0f;
 
     AudioSource Hurt_SFX;
-    AudioSource Die_SFX;
     public AudioClip[] hurts_SFX;
     private AudioClip hurt_SFX;
-    public AudioClip[] dies_SFX;
-    private AudioClip die_SFX;
+    public AudioClip die_SFX;
 
     public Animator anim;
 
+    public GameObject deathManager;
+
     public void Start()
     {
+        deathManager = GameObject.Find("DeathSFXManager");
         baseColor = spr.color;
         AudioSource[] SFX_Sources = GetComponents<AudioSource>();
         Hurt_SFX = SFX_Sources[2];
-        Die_SFX = SFX_Sources[3];
         _health.max_hp = _health.hp;
     }
     public void Update()
@@ -77,7 +77,11 @@ public class scr_Entity : MonoBehaviour
         spr.sortingOrder = -_gridPos.y;
     }
 
-    //Tells entity to move to new coordinates
+    /// <summary>
+    /// Tells entity to move to new coordinates. This only checks if an attack is in the space. It does not check the validity of the arguments otherwise.
+    /// </summary>
+    /// <param name="x"></param>
+    /// <param name="y"></param>
     public void SetTransform(int x, int y)
     {
 
@@ -88,7 +92,6 @@ public class scr_Entity : MonoBehaviour
         //Animate movement
         if (anim != null)
         {
-            Debug.Log("MOVING");
             anim.SetInteger("Movement", 1);
         }
         scr_Grid.GridController.SetTileOccupied(false, _gridPos.x, _gridPos.y, this);
@@ -113,6 +116,10 @@ public class scr_Entity : MonoBehaviour
         
     }
 
+    /// <summary>
+    /// Takes an attack object and damages the entity if the attack's type is different from the entity's type.
+    /// </summary>
+    /// <param name="_attack"></param>
     public void HitByAttack(Attack _attack)
     {
 
@@ -141,6 +148,30 @@ public class scr_Entity : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Used when an attack does not go through the attack controller system.
+    /// </summary>
+    /// <param name="damage">Damage dealt</param>
+    /// <param name="attackType">The type of the attacking entity</param>
+    public void HitByAttack(int damage, EntityType attackType)
+    {
+        if (attackType != type)
+        {
+            int index = Random.Range(0, hurts_SFX.Length);
+            hurt_SFX = hurts_SFX[index];
+            Hurt_SFX.clip = hurt_SFX;
+            Hurt_SFX.Play();
+
+            _health.TakeDamage(damage);
+            StartCoroutine(HitClock(.3f));
+            if (type == EntityType.Player)
+            {
+                //camera shake
+                CameraShaker.Instance.ShakeOnce(2f, 2f, 0.2f, 0.2f);
+            }
+        }
+    }
+
     public bool isInvincible()
     {
         return invincible;
@@ -167,12 +198,8 @@ public class scr_Entity : MonoBehaviour
 
     public void Death()
     {
-        /*
-        int index = Random.Range(0, dies_SFX.Length);
-        die_SFX = dies_SFX[index];
-        Die_SFX.clip = die_SFX;
-        Die_SFX.Play();
-        */
+        deathManager.GetComponent<AudioSource>().clip = die_SFX;
+        deathManager.GetComponent<AudioSource>().Play();
         //Debug.Log("I AM DEAD");
         scr_Grid.GridController.SetTileOccupied(false, _gridPos.x, _gridPos.y, this);
         gameObject.SetActive(false); 
@@ -193,20 +220,20 @@ public class scr_Entity : MonoBehaviour
 public class Health{
 
     public int hp = 10; //NOTE: These would be better as private variables to make mistakes less likely and to enforce the max_hp - Colin
-    public int temp_hp = 0;
+    public int shield = 0;
     public int max_hp;
 
 
     public void TakeDamage(int damage)
     {
-        if (temp_hp > 0)
+        if (shield > 0)
         {
-            temp_hp -= damage;
-            if(temp_hp < 0)
+            shield -= damage;
+            if(shield < 0)
             {
                 //Carry over extra damage to normal hp
-                hp += temp_hp;
-                temp_hp = 0;
+                hp += shield;
+                shield = 0;
             }
         }
         else

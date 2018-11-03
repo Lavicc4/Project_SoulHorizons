@@ -216,6 +216,33 @@ public class scr_Grid : MonoBehaviour{
         }
         return attack; 
     }
+
+    /// <summary>
+    /// Returns the entity at this postion on the grid or null if there is none. Also returns null if the coordinates given are not on the grid.
+    /// </summary>
+    /// <param name="x"></param>
+    /// <param name="y"></param>
+    /// <returns></returns>
+    public scr_Entity GetEntityAtPosition(int x, int y)
+    {
+        if (LocationOnGrid(x, y))
+        {
+            return grid[x,y].entityOnTile;
+        }
+        return null;
+    }
+
+    /// <summary>
+    /// Returns true if the coordinates are on the grid and unoccupied, false otherwise.
+    /// </summary>
+    /// <param name="x"></param>
+    /// <param name="y"></param>
+    /// <returns></returns>
+    public bool IsTileUnoccupied(int x, int y)
+    {
+        return LocationOnGrid(x, y) && !grid[x,y].occupied;
+    }
+
     /// <summary>
     /// 
     /// </summary>

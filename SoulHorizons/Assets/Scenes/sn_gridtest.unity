@@ -230,6 +230,7 @@ MonoBehaviour:
   - {fileID: 535620529}
   - {fileID: 452376908}
   - {fileID: 1802866426}
+  handPanel: {fileID: 1533865064}
   soulManager: {fileID: 1431935930}
   doublePressWindow: 0.3
   cardChange_SFX: {fileID: 0}
@@ -262,6 +263,7 @@ MonoBehaviour:
   cardMapping: {fileID: 11400000, guid: 7fd815c874a2e11489c9eedb255bd7dd, type: 2}
   deckList: {fileID: 4900000, guid: e4d0755a0b712244fb08fb3303a823c6, type: 3}
   hand: []
+  backupHand: []
 --- !u!82 &283017073
 AudioSource:
   m_ObjectHideFlags: 0
@@ -270,7 +272,8 @@ AudioSource:
   m_GameObject: {fileID: 283017069}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243954260065389876, guid: 7117f9058e0f8104c8d7218cd2b06d74,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -509,6 +512,22 @@ Prefab:
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114163332788533310, guid: 3857e857903f6324899fd94903c78bca,
+        type: 2}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114163332788533310, guid: 3857e857903f6324899fd94903c78bca,
+        type: 2}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114907099769211070, guid: 3857e857903f6324899fd94903c78bca,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a830cbe74c30a1e4cbfa9683221555fb,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3857e857903f6324899fd94903c78bca, type: 2}
   m_IsPrefabAsset: 0
@@ -763,6 +782,22 @@ Prefab:
       propertyPath: m_Name
       value: Card_2
       objectReference: {fileID: 0}
+    - target: {fileID: 114163332788533310, guid: 3857e857903f6324899fd94903c78bca,
+        type: 2}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114163332788533310, guid: 3857e857903f6324899fd94903c78bca,
+        type: 2}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114907099769211070, guid: 3857e857903f6324899fd94903c78bca,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8d5c820593c2c784a8cfb8edc0c2eb11,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3857e857903f6324899fd94903c78bca, type: 2}
   m_IsPrefabAsset: 0
@@ -1199,6 +1234,81 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &598787481
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 598787482}
+  - component: {fileID: 598787484}
+  - component: {fileID: 598787483}
+  m_Layer: 5
+  m_Name: PlayerStamina
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &598787482
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 598787481}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1795263027}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -768.95, y: 503.5}
+  m_SizeDelta: {x: 382.1, y: 73}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &598787483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 598787481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 64
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 6
+    m_MaxSize: 64
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'Stamina: 2'
+--- !u!222 &598787484
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 598787481}
+  m_CullTransparentMesh: 0
 --- !u!224 &616674212 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 224597350896016252, guid: 3857e857903f6324899fd94903c78bca,
@@ -1296,7 +1406,7 @@ GameObject:
   - component: {fileID: 672210162}
   - component: {fileID: 672210161}
   m_Layer: 5
-  m_Name: PlayerTempHealth
+  m_Name: PlayerShield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1357,7 +1467,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 339, y: 0}
+  m_AnchoredPosition: {x: 0, y: -82}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &817468812 stripped
@@ -1601,7 +1711,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1167945961
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1727,7 +1837,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'You''ve received [Insert reward here]! Press V to return to world map. '
+  m_Text: 'You''ve received [Insert reward here]! Press R to return to world map. '
 --- !u!222 &1182640713
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1832,6 +1942,37 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 114493093441995880, guid: 0911cfe7a9baa6c49a9fc8818e50afaa,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114493093441995880, guid: 0911cfe7a9baa6c49a9fc8818e50afaa,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114493093441995880, guid: 0911cfe7a9baa6c49a9fc8818e50afaa,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114493093441995880, guid: 0911cfe7a9baa6c49a9fc8818e50afaa,
+        type: 2}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114493093441995880, guid: 0911cfe7a9baa6c49a9fc8818e50afaa,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 238c7f7ea647f9045934b973a40471aa,
+        type: 3}
+    - target: {fileID: 114493093441995880, guid: 0911cfe7a9baa6c49a9fc8818e50afaa,
+        type: 2}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0911cfe7a9baa6c49a9fc8818e50afaa, type: 2}
   m_IsPrefabAsset: 0
@@ -1863,9 +2004,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soulTransforms:
-  - {fileID: 11400000, guid: 7cc678bc235e6134898103fd57c9690b, type: 2}
+  - {fileID: 11400000, guid: 792940a719385914faae7766fc86f342, type: 2}
   buttons:
   - {fileID: 1605766516}
+  deckManager: {fileID: 283017070}
 --- !u!4 &1431935931
 Transform:
   m_ObjectHideFlags: 0
@@ -2038,10 +2180,15 @@ Prefab:
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114748738851102368, guid: 3857e857903f6324899fd94903c78bca,
+    - target: {fileID: 114163332788533310, guid: 3857e857903f6324899fd94903c78bca,
         type: 2}
-      propertyPath: m_FillAmount
-      value: 0
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114163332788533310, guid: 3857e857903f6324899fd94903c78bca,
+        type: 2}
+      propertyPath: m_isInputParsingRequired
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3857e857903f6324899fd94903c78bca, type: 2}
@@ -2183,8 +2330,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: -75}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 0, y: -159.5}
+  m_SizeDelta: {x: 160, y: 112.7}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1719854543
 MonoBehaviour:
@@ -2226,6 +2373,48 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1719854541}
   m_CullTransparentMesh: 0
+--- !u!1001 &1790704016
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4374700160761796, guid: 2e7f05e13f7325a4f9885b66700d913a, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 3.97269
+      objectReference: {fileID: 0}
+    - target: {fileID: 4374700160761796, guid: 2e7f05e13f7325a4f9885b66700d913a, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 3.0522258
+      objectReference: {fileID: 0}
+    - target: {fileID: 4374700160761796, guid: 2e7f05e13f7325a4f9885b66700d913a, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 15.297529
+      objectReference: {fileID: 0}
+    - target: {fileID: 4374700160761796, guid: 2e7f05e13f7325a4f9885b66700d913a, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4374700160761796, guid: 2e7f05e13f7325a4f9885b66700d913a, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4374700160761796, guid: 2e7f05e13f7325a4f9885b66700d913a, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4374700160761796, guid: 2e7f05e13f7325a4f9885b66700d913a, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4374700160761796, guid: 2e7f05e13f7325a4f9885b66700d913a, type: 2}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2e7f05e13f7325a4f9885b66700d913a, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &1795263023
 GameObject:
   m_ObjectHideFlags: 0
@@ -2320,6 +2509,7 @@ RectTransform:
   - {fileID: 1719854542}
   - {fileID: 1629429046}
   - {fileID: 179241310}
+  - {fileID: 598787482}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2458,6 +2648,22 @@ Prefab:
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114163332788533310, guid: 3857e857903f6324899fd94903c78bca,
+        type: 2}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114163332788533310, guid: 3857e857903f6324899fd94903c78bca,
+        type: 2}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114907099769211070, guid: 3857e857903f6324899fd94903c78bca,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 5060bceecb6a50049b8558e3fd059ea0,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3857e857903f6324899fd94903c78bca, type: 2}
   m_IsPrefabAsset: 0
@@ -2630,9 +2836,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RewardMessage: {fileID: 1182640712}
-  PlayerHealth: {fileID: 1167945961}
-  TempHealth: {fileID: 672210161}
+  Shield: {fileID: 672210161}
   EffectText: {fileID: 1719854543}
+  StaminaText: {fileID: 598787483}
 --- !u!1001 &2110138080
 Prefab:
   m_ObjectHideFlags: 0
