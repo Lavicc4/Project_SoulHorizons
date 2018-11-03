@@ -40,6 +40,7 @@ public static class SaveLoad {
 
     public static void Save()
     {
+        currentGame.SaveInventory();
         //TODO:Need to add GameState to list?
         BinaryFormatter bf = new BinaryFormatter();
         //Application.persistentDataPath is a string, so if you wanted you can put that into debug.log if you want to know where save games are located
@@ -66,11 +67,14 @@ public static class SaveLoad {
                 if (item.lastGamePlayed)
                 {
                     currentGame = item;
+                    currentGame.LoadInventory();
                     Debug.Log("Loaded game " + currentGame.GetPlayerName());
                     Debug.Log("DUST AMOUNT: " + currentGame.GetDustAmount());
+                    scr_SceneManager.globalSceneManager.ChangeScene("sn_LocalMap");
                     return;
                 }
             }
+
         }
         //else no save file exists
         Debug.Log("No save file exists");

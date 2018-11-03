@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 [CreateAssetMenu(menuName = "Cards/HardenSoul")]
 public class scr_HardenSoul : scr_Card {
 

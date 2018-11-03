@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 [CreateAssetMenu(menuName = "Cards/Cleave")]
 public class scr_Cleave : scr_Card
 {

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 [CreateAssetMenu(menuName = "Cards/SeizeDomain")]
 public class scr_SeizeDomain : scr_Card
 {

@@ -59,6 +59,22 @@ public class GameState {
         return scr_Inventory.dustNum;
     }
 
+    public void SaveInventory()
+    {
+        inventory.dustNum = scr_Inventory.dustNum;
+        inventory.cardInv = scr_Inventory.getCardInv();
+        inventory.deckList = scr_Inventory.getDeckList();
+        inventory.deckIndex = scr_Inventory.deckIndex;
+    }
+
+    public void LoadInventory()
+    {
+        scr_Inventory.dustNum = inventory.dustNum;
+        //scr_Inventory.cardInv = inventory.cardInv;
+        //scr_Inventory.deckList = inventory.deckList;
+        scr_Inventory.deckIndex = inventory.deckIndex;
+    }
+
     /*Region specific methods. All of these take the region name as an argument*/
     /// <summary>
     /// This will run at the start of all the public methods to find the region's state. If no state exists,
@@ -126,5 +142,8 @@ public class PlayerState
 [System.Serializable]
 public class InventoryState
 {
-    public scr_Inventory inv = new scr_Inventory();
+    public int dustNum; //How much dust you have
+    public List<KeyValuePair<string, int>> cardInv; //Your list of cards
+    public List<List<KeyValuePair<string, int>>> deckList; //Your decks
+    public int deckIndex; //Index of currently equipped deck
 }

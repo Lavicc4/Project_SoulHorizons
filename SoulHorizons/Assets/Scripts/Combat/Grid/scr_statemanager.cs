@@ -40,7 +40,7 @@ public class scr_statemanager : MonoBehaviour {
         UpdateHealth();
         UpdateEffects();
         //END OF ENCOUNTER - NO MORE ENEMIES
-		if(GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
+		if(!endCombat && GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
         {
             //Debug.Log("NO ENEMIES");
             //scr_InputManager.disableInput = true;
@@ -52,7 +52,7 @@ public class scr_statemanager : MonoBehaviour {
 
             //save health
             SaveLoad.currentGame.SetPlayerHealth(playerEntity._health.hp);
-            SaveLoad.Save();
+            Debug.Log("DUST AMOUNT: " + SaveLoad.currentGame.GetDustAmount());
         }
         if (endCombat)
         {
@@ -60,6 +60,7 @@ public class scr_statemanager : MonoBehaviour {
             if (Input.GetButton("Menu_Select") || Input.GetButton("Menu_Back"))
             {
                 Debug.Log("Switching Scenes");
+                SaveLoad.Save();
                 SceneManager.LoadScene("sn_LocalMap");
             }
         }

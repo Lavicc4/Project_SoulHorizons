@@ -18,6 +18,7 @@ public class scr_Deck : MonoBehaviour {
     [HideInInspector] public List<scr_Card> hand = new List<scr_Card>();
     List<scr_Card> deck = new List<scr_Card>();
     List<scr_Card> discard = new List<scr_Card>();
+    public List<KeyValuePair<string, int>> cardList = new List<KeyValuePair<string, int>>();
 
     public void Awake()
     {
@@ -27,8 +28,9 @@ public class scr_Deck : MonoBehaviour {
             hand.Add(null);
         }
 
-        if (scr_Inventory.deckList == null)
+        if (scr_Inventory.deckList.Count == 0)
         {
+            Debug.Log("Making new deck list");
             LoadDeckList();
         }
         else
@@ -92,6 +94,7 @@ public class scr_Deck : MonoBehaviour {
 
             //add the card and quantity to an inventory card list
             scr_Inventory.addCard(nextCard, quantity);
+            cardList.Add(new KeyValuePair<string, int>(nextCard.cardName, quantity));
         }
 
 
@@ -127,6 +130,7 @@ public class scr_Deck : MonoBehaviour {
         hand = loadDeck.hand;
         deck = loadDeck.deck;
         discard = loadDeck.discard;
+        cardList = loadDeck.cardList;
 
         ShuffleHelper<scr_Card>(deck);
         CheckHandSize();

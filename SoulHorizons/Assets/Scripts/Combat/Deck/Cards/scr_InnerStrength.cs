@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
+[System.Serializable]
 [CreateAssetMenu(menuName = "Cards/InnerStrength")]
 public class scr_InnerStrength : scr_Card {
 

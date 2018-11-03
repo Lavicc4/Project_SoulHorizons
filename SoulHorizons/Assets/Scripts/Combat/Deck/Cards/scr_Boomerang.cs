@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
+[System.Serializable]
 [CreateAssetMenu(menuName = "Cards/Boomerang")]
 public class scr_Boomerang : scr_Card
 {
