@@ -865,7 +865,7 @@ MonoBehaviour:
   _gridPos: {x: 0, y: 0}
   _health:
     hp: 100
-    temp_hp: 0
+    shield: 0
     max_hp: 0
   _ai: {fileID: 114404296688108730}
   entityTerritory:
@@ -879,8 +879,9 @@ MonoBehaviour:
   invulnTime: 1
   hurts_SFX:
   - {fileID: 8300000, guid: f2e02f53e10e0c744b5214587d8e9897, type: 3}
-  dies_SFX: []
+  die_SFX: {fileID: 8300000, guid: 31da37e6cffcebd41a7d84164f6d15a2, type: 3}
   anim: {fileID: 95721540959835254}
+  deathManager: {fileID: 0}
 --- !u!114 &114818652747337174
 MonoBehaviour:
   m_ObjectHideFlags: 1

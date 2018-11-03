@@ -4,13 +4,18 @@ using UnityEngine;
 
 
 [CreateAssetMenu(menuName = "Attacks/Meteor")]
-public class atk_Meteor : Attack {
+[RequireComponent(typeof(AudioSource))]
 
+public class atk_Meteor : Attack {
+    private AudioSource PlayCardSFX;
+    public AudioClip MeteorSFX;
 
     public override Vector2Int BeginAttack(int xPos, int yPos, ActiveAttack activeAtk)
     {
-       
-        for(int i = 0; i < scr_Grid.GridController.ySizeMax; i++)
+        PlayCardSFX = GameObject.Find("DeckManager").GetComponent<AudioSource>();
+        PlayCardSFX.clip = MeteorSFX;
+        PlayCardSFX.Play();
+        for (int i = 0; i < scr_Grid.GridController.ySizeMax; i++)
         {
             scr_Grid.GridController.PrimeNextTile(xPos, i);
             activeAtk.particles[i] = Instantiate(particles, scr_Grid.GridController.GetWorldLocation(activeAtk.entity._gridPos.x, activeAtk.entity._gridPos.y) + new Vector3(0,2.5f,0), Quaternion.Euler(new Vector3(0,0,33)));
@@ -20,7 +25,7 @@ public class atk_Meteor : Attack {
     public override ActiveAttack BeginAttack(ActiveAttack activeAtk)
     {
         activeAtk.lastAttackTime += incrementSpeed;
-        return activeAtk; 
+        return activeAtk;
     }
 
     public override Vector2Int ProgressAttack(int xPos, int yPos, ActiveAttack activeAtk)

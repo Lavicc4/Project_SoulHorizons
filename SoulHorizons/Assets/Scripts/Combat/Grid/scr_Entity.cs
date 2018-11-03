@@ -223,7 +223,6 @@ public class Health{
     public int shield = 0;
     public int max_hp;
 
-
     public void TakeDamage(int damage)
     {
         if (shield > 0)
@@ -243,7 +242,6 @@ public class Health{
         if (hp <= 0)
         {
             hp = 0;
-            
         }
         Debug.Log("MY HP: " + hp);
 

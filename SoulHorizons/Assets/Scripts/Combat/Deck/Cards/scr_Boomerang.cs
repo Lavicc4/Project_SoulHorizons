@@ -1,18 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[RequireComponent(typeof(AudioSource))]
 
 [CreateAssetMenu(menuName = "Cards/Boomerang")]
 public class scr_Boomerang : scr_Card
 {
 
     public Attack boomerangAttack;
+    private AudioSource PlayCardSFX;
+    public AudioClip BoomerangSFX;
 
     public override void Activate()
     {
 
         ActivateEffects();
+        PlayCardSFX = GameObject.Find("DeckManager").GetComponent<AudioSource>();
+        PlayCardSFX.clip = BoomerangSFX;
+        PlayCardSFX.Play();
 
         scr_Entity player = GameObject.FindGameObjectWithTag("Player").GetComponent<scr_Entity>();
 

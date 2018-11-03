@@ -20,3 +20,4 @@ MonoBehaviour:
   description: Seizes a column for you to move on.
   art: {fileID: 21300000, guid: c8e4ee63a3cac99438057528b6f76ca7, type: 3}
   duration: 3
+  SeizeDomainSFX: {fileID: 8300000, guid: 1a51e922013de2848b028fe566d97c19, type: 3}

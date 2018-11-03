@@ -20,3 +20,4 @@ MonoBehaviour:
   description: 
   art: {fileID: 21300000, guid: 909aa11480efeee4cbf4a9a426eb514b, type: 3}
   Mend_hp: 5
+  MendSFX: {fileID: 8300000, guid: ab860179d3ba16f48bf234a47330a69e, type: 3}

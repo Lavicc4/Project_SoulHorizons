@@ -671,10 +671,10 @@ MonoBehaviour:
   invincible: 0
   invulnTime: 0
   hurts_SFX:
-  - {fileID: 8300000, guid: 8cc96daad9e40b34e89438f259c636ce, type: 3}
-  - {fileID: 8300000, guid: 47b6ba2ecd0b41046b04e996d8152611, type: 3}
-  - {fileID: 8300000, guid: 0b146d0b97f1b1c4cbf907bbf9e83713, type: 3}
-  die_SFX: {fileID: 0}
+  - {fileID: 8300000, guid: 39a19e3b71171d44f8674ea450365c72, type: 3}
+  - {fileID: 8300000, guid: 31756c889a7e09b4d83c7b70afcbde03, type: 3}
+  - {fileID: 8300000, guid: e154a2027eecbef4e9068d3de8ee3ae7, type: 3}
+  die_SFX: {fileID: 8300000, guid: a3b03b2ed4235ae41bded89f6d7ca807, type: 3}
   anim: {fileID: 0}
   deathManager: {fileID: 1576292096190378, guid: 2e7f05e13f7325a4f9885b66700d913a,
     type: 2}
