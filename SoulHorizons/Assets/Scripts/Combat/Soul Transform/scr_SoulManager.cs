@@ -205,7 +205,7 @@ public class scr_SoulManager : MonoBehaviour {
         foreach (MonoBehaviour script in scripts)
         {
             MonoBehaviour s = (MonoBehaviour) player.gameObject.GetComponent(script.GetType());
-            s.enabled = true;
+            s.enabled = false;
         }
 
         //enable the player default attack and movement

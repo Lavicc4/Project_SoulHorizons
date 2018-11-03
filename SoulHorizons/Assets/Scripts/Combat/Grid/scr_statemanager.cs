@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class scr_statemanager : MonoBehaviour {
 
     public Text RewardMessage;
-    public Text PlayerHealth;
+    //public Text PlayerHealth;
     public Text Shield;
     public Text EffectText;
     public Text StaminaText;
@@ -31,6 +31,10 @@ public class scr_statemanager : MonoBehaviour {
             {
                 playerEntity._health.hp = hp;
             }
+
+            //make sure that movement is enabled
+            scr_InputManager.disableInput = false;
+            scr_InputManager.disableMovement = false;
 
             //load the stamina from the player
             StaminaText.text = "Stamina: " + playerMovement.GetStaminaCharges();
@@ -77,7 +81,7 @@ public class scr_statemanager : MonoBehaviour {
         }
         else Shield.enabled = false;
         Shield.text = "(+" + playerEntity._health.shield + ")";
-        PlayerHealth.text = "Health: " + playerEntity._health.hp;
+        //PlayerHealth.text = "Health: " + playerEntity._health.hp;
         StaminaText.text = "Stamina: " + playerMovement.GetStaminaCharges();
         if(playerEntity._health.hp <= 0)
         {
