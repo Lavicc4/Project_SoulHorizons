@@ -7,9 +7,12 @@ public class scr_InvUI : MonoBehaviour {
 
     public scr_CardUI[] cardUI;
     public GameObject invPanel;
-    public GameObject deckText;
-	// Use this for initialization
-	void Start () {
+    public Text deckText;
+    public Font UIFont;
+    public float deckTextX = 600;
+    public float deckTextY = 400;
+    // Use this for initialization
+    void Start () {
 		
 	}
 
@@ -19,7 +22,7 @@ public class scr_InvUI : MonoBehaviour {
         if (invPanel.activeSelf)
         {
             SetCardGraphics();
-            //SetDeckText();
+            SetDeckText();
         }
     }
 
@@ -44,7 +47,19 @@ public class scr_InvUI : MonoBehaviour {
                 cardUI[i].SetName(scr_Inventory.cardInv[i].Key.cardName); //set the name
                 cardUI[i].SetArt(scr_Inventory.cardInv[i].Key.art); //set the card art
                 cardUI[i].SetElement(scr_Inventory.cardInv[i].Key.element); //set the card element
-                cardUI[i].SetBackupName(scr_Inventory.cardInv[i].Value.ToString());
+
+                //Find how many of this card are in your current deck 
+                List<KeyValuePair<string, int>> myDeck = scr_Inventory.deckList[scr_Inventory.deckIndex];
+                int index = -1;
+                for(int j = 0; j < myDeck.Count; j++)
+                {
+                    if(myDeck[j].Key == scr_Inventory.cardInv[i].Key.cardName)
+                    {
+                        index = j;
+                    }
+                }
+                if (index < 0) Debug.Log("CARD NOT FOUND");
+                cardUI[i].SetBackupName((scr_Inventory.cardInv[i].Value - scr_Inventory.deckList[scr_Inventory.deckIndex][index].Value).ToString()); //Set the card amount currently in inventory
             }
             else
             {
@@ -56,4 +71,17 @@ public class scr_InvUI : MonoBehaviour {
         }
     }
 
+    void SetDeckText()
+    {
+  
+        string listText = "";
+        foreach (KeyValuePair<string, int> pair in scr_Inventory.deckList[scr_Inventory.deckIndex])
+        {
+
+            listText += pair.Key + ": " + pair.Value + "\n";
+        }
+        deckText.text = listText;
+    }
+
+   
 }
