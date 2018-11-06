@@ -69,8 +69,6 @@ public class scr_SoulManager : MonoBehaviour {
             soulCharges[e] = 0;
         }
 
-        //Line for debugging. REMOVE THIS LINE ONCE DONE TESTING
-        soulCharges[Element.Earth] = 100;
 	}
 	
 	// Update is called once per frame

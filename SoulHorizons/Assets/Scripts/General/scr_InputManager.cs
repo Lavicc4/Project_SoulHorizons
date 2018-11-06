@@ -41,6 +41,24 @@ public static class scr_InputManager {
 		return 0;
 	}
 
+		public static int MenuHorizontal()
+	{
+
+		float r = 0.0f;
+		r += Input.GetAxis("J_DHorizontal");
+		r += Input.GetAxis("K_MainHorizontal");
+
+		if (r < 0f)
+		{
+			return -1;
+		}
+		else if (r > 0f)
+		{
+			return 1;
+		}
+		return 0;
+	}
+
 	/// <summary>
 	/// Xbox one - L stick / D-pad
 	/// Keyboard - WS
@@ -67,6 +85,24 @@ public static class scr_InputManager {
 		}
 		return 0;
 	}
+
+		public static int MenuVertical()
+	{
+
+		float r = 0.0f;
+		r += Input.GetAxis("J_DVertical");
+		r += Input.GetAxis("K_MainVertical");
+		if (r < 0f)
+		{
+			return 1;
+		}
+		else if (r > 0f)
+		{
+			return -1;
+		}
+		return 0;
+	}
+
 	/// <summary>
 	/// Xbox one - R stick / LT / RT
 	/// Keyboard - Mouse Wheel up/down
