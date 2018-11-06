@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class scr_Brawler_Attack : MonoBehaviour {
+	//--Art assets--
+	public SpriteRenderer particle_heavySlam;
+	public SpriteRenderer particle_furySwipe;
 	
 	//Have a general cooldown to check in Update, then specific attack cooldowns depending on what the attack does?
 	//Want to encourage the player to vary their attacks
