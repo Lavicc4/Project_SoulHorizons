@@ -131,7 +131,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &62473665
 RectTransform:
   m_ObjectHideFlags: 0
@@ -141,8 +141,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 597519808}
+  m_Children: []
   m_Father: {fileID: 2116205531}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1047,6 +1046,31 @@ Prefab:
       propertyPath: activeScenarios
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 114332813414409122, guid: 2cf796ca4d59c054eb92b7b931335da9,
+        type: 2}
+      propertyPath: buttons.Array.data[6]
+      value: 
+      objectReference: {fileID: 615034720}
+    - target: {fileID: 114332813414409122, guid: 2cf796ca4d59c054eb92b7b931335da9,
+        type: 2}
+      propertyPath: buttons.Array.data[7]
+      value: 
+      objectReference: {fileID: 1704195797}
+    - target: {fileID: 114332813414409122, guid: 2cf796ca4d59c054eb92b7b931335da9,
+        type: 2}
+      propertyPath: buttons.Array.data[8]
+      value: 
+      objectReference: {fileID: 1294894102}
+    - target: {fileID: 114332813414409122, guid: 2cf796ca4d59c054eb92b7b931335da9,
+        type: 2}
+      propertyPath: buttons.Array.data[9]
+      value: 
+      objectReference: {fileID: 1415504004}
+    - target: {fileID: 114332813414409122, guid: 2cf796ca4d59c054eb92b7b931335da9,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2cf796ca4d59c054eb92b7b931335da9, type: 2}
   m_IsPrefabAsset: 0
@@ -1193,13 +1217,13 @@ RectTransform:
   - {fileID: 1195386575}
   - {fileID: 2128949825}
   - {fileID: 2106161931}
-  m_Father: {fileID: 62473665}
-  m_RootOrder: 0
+  m_Father: {fileID: 2116205531}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000045776367, y: 56.2}
-  m_SizeDelta: {x: 0, y: 670}
+  m_AnchoredPosition: {x: -712, y: 0}
+  m_SizeDelta: {x: -1503.8, y: -54.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &597519809
 MonoBehaviour:
@@ -1553,6 +1577,12 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d8938461b55cee448d03f5ffbed4b5c, type: 2}
   m_IsPrefabAsset: 0
+--- !u!114 &1294894102 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114222698562062942, guid: 08c49fa867e77154c8f4e9b0890d66be,
+    type: 2}
+  m_PrefabInternal: {fileID: 883064682}
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1001 &1349793361
 Prefab:
   m_ObjectHideFlags: 0
@@ -1875,6 +1905,12 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 224844912404784048, guid: 08c49fa867e77154c8f4e9b0890d66be,
     type: 2}
   m_PrefabInternal: {fileID: 1356560592}
+--- !u!114 &1415504004 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114222698562062942, guid: 08c49fa867e77154c8f4e9b0890d66be,
+    type: 2}
+  m_PrefabInternal: {fileID: 2141777769}
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1001 &1615556335
 Prefab:
   m_ObjectHideFlags: 0
@@ -2066,6 +2102,12 @@ MonoBehaviour:
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   delegates: []
+--- !u!114 &1704195797 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114222698562062942, guid: 08c49fa867e77154c8f4e9b0890d66be,
+    type: 2}
+  m_PrefabInternal: {fileID: 1959667703}
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1001 &1768346001
 Prefab:
   m_ObjectHideFlags: 0
@@ -2601,6 +2643,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 62473665}
+  - {fileID: 597519808}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
