@@ -60,11 +60,7 @@ public class scr_EncounterController : MonoBehaviour {
 	
 
 	void Update () {
-
-		if (Input.GetKeyDown (KeyCode.J)) {	
-			CycleEvents (); 
-		}
-
+      
 	}
 
 	void CycleEvents(){

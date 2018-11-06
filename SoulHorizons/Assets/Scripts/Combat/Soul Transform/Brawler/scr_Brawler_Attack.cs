@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class scr_Brawler_Attack : MonoBehaviour {
+	//--Art assets--
+	public GameObject particle_heavySlam;	
+	public GameObject particle_furySwipe;
+	private float swipe_yOffset = 0.2f; //an offset to move the effect higher
 	
 	//Have a general cooldown to check in Update, then specific attack cooldowns depending on what the attack does?
 	//Want to encourage the player to vary their attacks
@@ -77,6 +81,7 @@ public class scr_Brawler_Attack : MonoBehaviour {
 
 		//play any effects
 		Debug.Log("Furry Swipe!!");
+		Instantiate(particle_furySwipe, scr_Grid.GridController.GetWorldLocation(playerEntity._gridPos.x + 1, playerEntity._gridPos.y), particle_furySwipe.transform.rotation);
 
 		//check the grid position one over; if it contains an attackable entity, deal damage; note this will return null if the player is at the far right of the grid
 		scr_Entity target = scr_Grid.GridController.GetEntityAtPosition(playerEntity._gridPos.x + 1, playerEntity._gridPos.y);
@@ -237,6 +242,12 @@ public class scr_Brawler_Attack : MonoBehaviour {
 			//iterate through the tiles in this column
 			for (int i = 0; i < scr_Grid.GridController.ySizeMax; i++)
 			{
+				if (slamDamage > 0)
+				{
+					//create the attack effect at this space
+					Instantiate(particle_heavySlam, scr_Grid.GridController.GetWorldLocation(column, i), particle_heavySlam.transform.rotation);
+				}
+
 				if (scr_Grid.GridController.grid[column,i].territory.name == TerrName.Enemy)
 				{
 					enemySpaceFound = true;

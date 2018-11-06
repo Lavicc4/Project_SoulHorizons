@@ -51,3 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db0040d3508857a43861d7291cd15e6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  particle_heavySlam: {fileID: 1870380295421076, guid: 26feaae7160a300459e746cca85ddc0a,
+    type: 2}
+  particle_furySwipe: {fileID: 1445445362041778, guid: aa708d6c132e0914db56472cb4cbb023,
+    type: 2}

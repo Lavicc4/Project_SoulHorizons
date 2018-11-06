@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Name: Atk_Boomerang
   m_EditorClassIdentifier: 
   incrementSpeed: 0.1
-  maxIncrements: 13
+  maxIncrements: 17
   damage: 20
   type: 1
   piercing: 1
   particles: {fileID: 212286977064683536, guid: 6805b2aea64a7294da92797ced98bd29,
     type: 2}
-  particlesOffset: {x: 0, y: 0.3, z: 0}
+  particlesOffset: {x: 0, y: 0.1, z: 0}
   particleSpeed: 11

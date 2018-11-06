@@ -26,13 +26,7 @@ public class scr_SceneManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        //ESCAPE to quit at any time
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Debug.Log("QUITTING");
-            //SceneManager.LoadScene("sn_MainMenu");
-            Application.Quit();
-        }
+       
 	}
 
 	public void ChangeScene(string sceneName){

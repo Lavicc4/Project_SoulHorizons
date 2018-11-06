@@ -9,6 +9,7 @@ public class scr_PlayerMovement : scr_EntityAI
 
     AudioSource Footsteps_SFX;
     public AudioClip[] movements_SFX;
+    public GameObject dashEffect; //the particle effect that plays when the player dashes
     private AudioClip movement_SFX;
 
     [SerializeField] private int staminaCharges = 2; //the number of times that the player can dash without recharging
@@ -72,6 +73,7 @@ public class scr_PlayerMovement : scr_EntityAI
             if (inputX != 0 && scr_InputManager.Dash() && staminaCharges > 0)
             {
                 staminaCharges--; //spend a stamina charge
+                Instantiate(dashEffect, transform.position, dashEffect.transform.rotation);
                 StartCoroutine(StaminaRecharge()); //recharge the stamina after waiting the recharge time
 
                 //dash in the direction of the movement
@@ -119,6 +121,7 @@ public class scr_PlayerMovement : scr_EntityAI
             if (inputY != 0 && scr_InputManager.Dash() && staminaCharges > 0)
             {
                 staminaCharges--; //spend a charge
+                Instantiate(dashEffect, transform.position, dashEffect.transform.rotation);
                 StartCoroutine(StaminaRecharge()); //recharge the stamina after waiting the recharge time
 
                 //dash in the direction of the movement
