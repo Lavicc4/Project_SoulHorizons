@@ -819,6 +819,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 9a02af71efc42914c9d053e32ecbd1e0, type: 3}
   - {fileID: 8300000, guid: 172e053e3eb8c9f4d8be0137f3853ff7, type: 3}
   - {fileID: 8300000, guid: 9c688beb21075494db57ee14d120ec36, type: 3}
+  dashEffect: {fileID: 1732062955175564, guid: 8082eb11f4a30e447bd201f0ce0c8ade, type: 2}
+  staminaCharges: 2
+  staminaRechargeTime: 1.5
 --- !u!114 &114627260013859230
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -865,7 +868,7 @@ MonoBehaviour:
   _gridPos: {x: 0, y: 0}
   _health:
     hp: 100
-    temp_hp: 0
+    shield: 0
     max_hp: 0
   _ai: {fileID: 114404296688108730}
   entityTerritory:
@@ -879,8 +882,9 @@ MonoBehaviour:
   invulnTime: 1
   hurts_SFX:
   - {fileID: 8300000, guid: f2e02f53e10e0c744b5214587d8e9897, type: 3}
-  dies_SFX: []
+  die_SFX: {fileID: 0}
   anim: {fileID: 95721540959835254}
+  deathManager: {fileID: 0}
 --- !u!114 &114818652747337174
 MonoBehaviour:
   m_ObjectHideFlags: 1
