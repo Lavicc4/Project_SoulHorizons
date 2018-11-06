@@ -43,6 +43,48 @@ public static class scr_Inventory{
         cardInv.Add(new KeyValuePair<scr_Card, int>(card, quantity));
     }
 
+    //ADDS A SINGLE CARD TO A DECK
+    public static void addCardToDeck(string cardName)
+    {
+        foreach (KeyValuePair<string, int> pair in deckList[deckIndex])
+        {
+            if (pair.Key == cardName)
+            {
+                int prevNum = pair.Value;
+                if(prevNum + 1 > cardInv[getIndex(cardName)].Value)
+                {
+                    Debug.Log("CAN'T ADD TO FROM NOTHING");
+                    return;
+                }
+                deckList[deckIndex].Remove(pair);
+                deckList[deckIndex].Add(new KeyValuePair<string, int>(pair.Key, 1 + prevNum));
+                return;
+            }
+        }
+        Debug.Log("CARD CAN'T BE ADDED, NOT FOUND");
+    }
+
+    //REMOVES A SINGLE CARD TO A DECK
+    public static void removeCardFromDeck(string cardName)
+    {
+        foreach (KeyValuePair<string, int> pair in deckList[deckIndex])
+        {
+            if (pair.Key == cardName)
+            {
+                int prevNum = pair.Value;
+                if(prevNum - 1 < 0)
+                {
+                    Debug.Log("CAN'T TAKE AWAY FROM NOTHING");
+                    return;
+                }
+                deckList[deckIndex].Remove(pair);
+                deckList[deckIndex].Add(new KeyValuePair<string, int>(pair.Key, prevNum-1));
+                return;
+            }
+        }
+        Debug.Log("CARD CAN'T BE ADDED, NOT FOUND");
+    }
+
     public static void addDust(int num)
     {
         dustNum += num;
@@ -69,5 +111,18 @@ public static class scr_Inventory{
         return deckList;
     }
 
+    //gets the index of the card in card inventory
+    public static int getIndex(string cardName)
+    {
+        for (int i = 0; i < cardInv.Count; i++)
+        {
+            if (cardInv[i].Key.cardName == cardName)
+            {
+                return i;
+            }
+        }
+        Debug.Log("CAN'T FIND INDEX");
+        return -1;
+    }
  
 }

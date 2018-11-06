@@ -48,6 +48,11 @@ public class scr_CardUI : MonoBehaviour {
 		cardName.text = name;
 	}
 
+    public string getName()
+    {
+        return cardName.text;
+    }
+
 	public void SetDescription(string description)
 	{
 		this.description.text = description;

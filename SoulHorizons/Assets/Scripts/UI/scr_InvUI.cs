@@ -35,6 +35,7 @@ public class scr_InvUI : MonoBehaviour {
         else
         {
             invPanel.SetActive(false);
+            SaveLoad.Save();
         }
     }
 

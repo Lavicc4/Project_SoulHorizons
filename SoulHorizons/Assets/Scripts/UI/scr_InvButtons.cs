@@ -15,12 +15,25 @@ public class scr_InvButtons : MonoBehaviour {
 	}
     public void addCard()
     {
-        GameObject myCard = gameObject.transform.parent.gameObject;
-        myCard.GetComponent<scr_CardUI>();
+        scr_CardUI myCard = gameObject.transform.parent.gameObject.GetComponent<scr_CardUI>();
+        foreach(KeyValuePair<string, int> pair in scr_Inventory.deckList[scr_Inventory.deckIndex])
+        {
+            if(pair.Key == myCard.getName())
+            {
+                scr_Inventory.addCardToDeck(pair.Key);
+            }
+        }
     }
 
     public void removeCard()
     {
-        GameObject myCard = gameObject.transform.parent.gameObject;
+        scr_CardUI myCard = gameObject.transform.parent.gameObject.GetComponent<scr_CardUI>();
+        foreach (KeyValuePair<string, int> pair in scr_Inventory.deckList[scr_Inventory.deckIndex])
+        {
+            if (pair.Key == myCard.getName())
+            {
+                scr_Inventory.removeCardFromDeck(pair.Key);
+            }
+        }
     }
 }
