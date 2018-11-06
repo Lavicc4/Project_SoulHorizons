@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -50,7 +51,8 @@ public class scr_SoulManager : MonoBehaviour {
              MonoBehaviour[] scripts = item.scriptHolder.GetComponents<MonoBehaviour>();
              foreach (MonoBehaviour script in scripts)
              {
-                 MonoBehaviour s = (MonoBehaviour) player.gameObject.AddComponent(script.GetType());
+                 //MonoBehaviour s = (MonoBehaviour) player.gameObject.AddComponent(script.GetType());
+                 MonoBehaviour s = CopyComponent<MonoBehaviour>(script, player.gameObject); //copy the values from the prefab; needed for particle references
                  s.enabled = false;
              }
 
@@ -253,5 +255,30 @@ public class scr_SoulManager : MonoBehaviour {
             }
         }
     }
+
+         public void CopyClassValues(MonoBehaviour sourceComp, MonoBehaviour targetComp) {
+             Debug.Log("Copying values");
+          FieldInfo[] sourceFields = sourceComp.GetType().GetFields(BindingFlags.Public | 
+                                                           BindingFlags.NonPublic | 
+                                                           BindingFlags.Instance);
+          int i = 0;
+          for(i = 0; i < sourceFields.Length; i++) {
+              Debug.Log("Copying values loop");
+               var value = sourceFields[i].GetValue(sourceComp);
+           sourceFields[i].SetValue(targetComp, value);
+          }
+     }
+
+      T CopyComponent<T>(T original, GameObject destination) where T : Component
+        {
+            System.Type type = original.GetType();
+            Component copy = destination.AddComponent(type);
+            System.Reflection.FieldInfo[] fields = type.GetFields();
+            foreach (System.Reflection.FieldInfo field in fields)
+            {
+                field.SetValue(copy, field.GetValue(original));
+            }
+            return copy as T;
+        }
 
 }
