@@ -7,15 +7,27 @@ public static class scr_Inventory{
 
     public static int dustNum = 0; //How much dust you have
     public static List<KeyValuePair<scr_Card, int>> cardInv = new List<KeyValuePair<scr_Card, int>>(); //Your list of cards
-    public static List<scr_Deck> deckList = new List<scr_Deck>(); //Your decks
+    public static List<List<KeyValuePair<string, int>>> deckList = new List<List<KeyValuePair<string, int>>>(); //Your decks
     public static int deckIndex = 0; //Index of currently equipped deck
+    public static int numDecks = 0; //number of decks
 
-    public static void addDeck(scr_Deck deck)
+    /*public static void addDeck(scr_Deck deck)
     {
         Debug.Log("DECK ADDED");
         deckList.Add(deck);
-    }
+        Debug.Log("CHECKING DECKS: " + deckList.Count);
+        Debug.Log(deckList[0]);
+    }*/
 
+    public static void addDeck(List<KeyValuePair<string, int>> deck)
+    {
+        Debug.Log("DECK ADDED");
+        deckList.Add(deck);
+        Debug.Log("CHECKING DECKS: " + deckList.Count);
+        Debug.Log(deckList[0]);
+        numDecks++;
+    }
+    //ADDS CARD TO INVENTORY
     public static void addCard(scr_Card card, int quantity)
     {
         foreach(KeyValuePair<scr_Card, int> pair in cardInv)
@@ -46,22 +58,16 @@ public static class scr_Inventory{
         }
         return cardList;
     }
-
+    //returns serializable object of deck
     public static List<List<KeyValuePair<string, int>>> getDeckList()
     {
-        List<List<KeyValuePair<string, int>>> decks = new List<List<KeyValuePair<string, int>>>();
+        /*List<List<KeyValuePair<string, int>>> decks = new List<List<KeyValuePair<string, int>>>();
         foreach(scr_Deck myDeck in deckList)
         {
             decks.Add(myDeck.cardList);
-        }
-        return decks;
+        }*/
+        return deckList;
     }
 
-    public static void setCardInv(List<KeyValuePair<string, int>> myCards)
-    {
-        foreach (KeyValuePair<string, int> pair in myCards)
-        {
-
-        }
-    }
+ 
 }

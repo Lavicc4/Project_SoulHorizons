@@ -29,24 +29,35 @@ public class scr_Deck : MonoBehaviour {
             hand.Add(null);
             backupHand.Add(null);
         }
-
-        if (scr_Inventory.deckList.Count == 0)
+        if (scr_Inventory.numDecks == 0)
         {
             Debug.Log("Making new deck list");
-            LoadDeckList();
+            LoadNewDeck();
+            SaveLoad.Save();
         }
         else
         {
-            LoadDeckList(scr_Inventory.deckList[scr_Inventory.deckIndex]);
+            Debug.Log("Old deck");
+            LoadDeck();
         }
 
     }
 
+    public void Start()
+    {
+        /*Debug.Log("MAKING A DECK...?");
+        if (scr_Inventory.numDecks == 0)
+        {
+            Debug.Log("Making new deck list");
+            LoadDeckList();
+        }*/
+    }
     /// <summary>
     /// Load the deck list from the file, shuffle, then draw a starting hand.
     /// </summary>
-    void LoadDeckList()
+    public void LoadNewDeck()
     {
+        Debug.Log("Making new deck list");
         //Debug.Log("Loading deck list");
         /*
         //load the list, use cardMapping to get the card object from the name in the list and put the cards in the deck
@@ -117,7 +128,9 @@ public class scr_Deck : MonoBehaviour {
         ShuffleHelper<scr_Card>(deck);
         CheckHandSize();
 
-        scr_Inventory.addDeck(this);
+        scr_Inventory.addDeck(cardList);
+    
+
     }
 
     /// <summary>
@@ -139,10 +152,42 @@ public class scr_Deck : MonoBehaviour {
     }
 
     /// <summary>
-    /// Pass a string telling the method what list to shuffle. Options are "deck", "discard", "discard into deck", and "all".
+    /// Load the deck list from the inventory deck
     /// </summary>
-    /// <param name="list"></param>
-    public void Shuffle(string list)
+    public void LoadDeck()
+    {
+        List<KeyValuePair<string, int>> cards = scr_Inventory.deckList[scr_Inventory.deckIndex];
+        foreach (KeyValuePair<string, int> pair in cards)
+        {
+            scr_Card nextCard = cardMapping.ConvertNameToCard(pair.Key);
+            if (nextCard == null)
+            {
+                continue;
+            }
+            //add that card to the list a number of times equal to the quantity
+            for (int i = 0; i < pair.Value; i++)
+            {
+                deck.Add(nextCard);
+            }
+            cardList.Add(new KeyValuePair<string, int>(nextCard.cardName, pair.Value));
+        }
+
+        if (deck.Count != deckSize)
+        {
+            Debug.Log("DeckSize is " + deckSize + ", but " + deck.Count + " cards were added to the deck");
+        }
+
+        ShuffleHelper<scr_Card>(deck);
+        CheckHandSize();
+
+
+    }
+
+        /// <summary>
+        /// Pass a string telling the method what list to shuffle. Options are "deck", "discard", "discard into deck", and "all".
+        /// </summary>
+        /// <param name="list"></param>
+        public void Shuffle(string list)
     {
         if (list.Equals("deck"))
         {

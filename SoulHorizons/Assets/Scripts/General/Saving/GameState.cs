@@ -65,16 +65,27 @@ public class GameState {
         inventory.cardInv = scr_Inventory.getCardInv();
         inventory.deckList = scr_Inventory.getDeckList();
         inventory.deckIndex = scr_Inventory.deckIndex;
+        inventory.numDecks = scr_Inventory.numDecks;
     }
 
     public void LoadInventory()
     {
         scr_Inventory.dustNum = inventory.dustNum;
         //scr_Inventory.cardInv = inventory.cardInv;
-        //scr_Inventory.deckList = inventory.deckList;
+        scr_Inventory.deckList = inventory.deckList;
         scr_Inventory.deckIndex = inventory.deckIndex;
+        scr_Inventory.numDecks = inventory.numDecks;
     }
 
+    public List<KeyValuePair<string, int>> GetCardList()
+    {
+        return inventory.cardInv;
+    }
+
+    public List<List<KeyValuePair<string, int>>> GetDeckList()
+    {
+        return inventory.deckList;
+    }
     /*Region specific methods. All of these take the region name as an argument*/
     /// <summary>
     /// This will run at the start of all the public methods to find the region's state. If no state exists,
@@ -146,4 +157,5 @@ public class InventoryState
     public List<KeyValuePair<string, int>> cardInv; //Your list of cards
     public List<List<KeyValuePair<string, int>>> deckList; //Your decks
     public int deckIndex; //Index of currently equipped deck
+    public int numDecks;
 }
