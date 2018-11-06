@@ -4064,6 +4064,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RewardMessage: {fileID: 1182640712}
+  rewardPanel: {fileID: 427037935}
   Shield: {fileID: 672210161}
   EffectText: {fileID: 1719854543}
   StaminaText: {fileID: 598787483}

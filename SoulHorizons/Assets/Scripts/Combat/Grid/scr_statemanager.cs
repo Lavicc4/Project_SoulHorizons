@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class scr_statemanager : MonoBehaviour {
 
     public Text RewardMessage;
+    public Image rewardPanel; 
     //public Text PlayerHealth;
     public Text Shield;
     public Text EffectText;
@@ -19,6 +20,7 @@ public class scr_statemanager : MonoBehaviour {
     scr_PlayerMovement playerMovement;
     // Use this for initialization
     void Start () {
+        rewardPanel.enabled = false; 
         player = GameObject.FindGameObjectWithTag("Player");
         EffectText.enabled = false;
         if (player != null)
@@ -54,6 +56,7 @@ public class scr_statemanager : MonoBehaviour {
             //Debug.Log("NO ENEMIES");
             //scr_InputManager.disableInput = true;
             RewardMessage.enabled = true;
+            rewardPanel.enabled = true; 
             endCombat = true;
 
             //save health
@@ -88,6 +91,7 @@ public class scr_statemanager : MonoBehaviour {
             scr_InputManager.disableInput = true;
             RewardMessage.text = "Oh no you died! Press V to return to the Local Map";
             RewardMessage.enabled = true;
+            rewardPanel.enabled = true; 
             endCombat = true;
         }
     }
