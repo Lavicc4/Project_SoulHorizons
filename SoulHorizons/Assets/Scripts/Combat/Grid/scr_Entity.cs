@@ -69,8 +69,6 @@ public class scr_Entity : MonoBehaviour
 
     public void InitPosition(int x, int y)
     {
-
-        //scr_Grid.GridController.SetTileOccupied(false, x, y);
         _gridPos = new Vector2Int(x, y);
         transform.position = scr_Grid.GridController.GetWorldLocation(_gridPos.x, _gridPos.y); 
         scr_Grid.GridController.SetTileOccupied(true, x, y, this);
