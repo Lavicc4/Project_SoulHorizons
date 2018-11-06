@@ -9,7 +9,16 @@ public class scr_PlayerMovement : scr_EntityAI
 
     AudioSource Footsteps_SFX;
     public AudioClip[] movements_SFX;
+    public GameObject dashEffect; //the particle effect that plays when the player dashes
     private AudioClip movement_SFX;
+
+    [SerializeField] private int staminaCharges = 2; //the number of times that the player can dash without recharging
+    [SerializeField] private float staminaRechargeTime = 1.5f; //how long it takes to recharge 1 stamina
+
+    public int GetStaminaCharges()
+    {
+        return staminaCharges;
+    }
   
     public override void Move()
     {
@@ -60,8 +69,40 @@ public class scr_PlayerMovement : scr_EntityAI
 
         if(inputX != scr_InputManager.MainHorizontal())
         {
-            _x += scr_InputManager.MainHorizontal();
             inputX = scr_InputManager.MainHorizontal();
+            if (inputX != 0 && scr_InputManager.Dash() && staminaCharges > 0)
+            {
+                staminaCharges--; //spend a stamina charge
+                Instantiate(dashEffect, transform.position, dashEffect.transform.rotation);
+                StartCoroutine(StaminaRecharge()); //recharge the stamina after waiting the recharge time
+
+                //dash in the direction of the movement
+                if (inputX < 0)
+                {
+                    //move to the left end of the grid
+                    _x = 0;
+                }
+                else
+                {
+                    //move to the rightmost player space
+                    //get the rightmost player tile on this row
+                    for (int x = _x; x  < scr_Grid.GridController.xSizeMax; x++)
+                    {
+                        if (scr_Grid.GridController.ReturnTerritory(x,_y).name == entity.entityTerritory.name)
+                        {
+                            _x = x; //if we found a valid space then this becomes the new space to move to
+                        }
+                        else
+                        {
+                            break; //stop searching once we hit enemy territory
+                        }
+                    }
+                }
+            }
+            else //perform normal movement
+            {
+                _x += scr_InputManager.MainHorizontal();
+            }
             axisPressed = true;
             if (scr_InputManager.MainHorizontal() == 0)
             {
@@ -76,8 +117,40 @@ public class scr_PlayerMovement : scr_EntityAI
 
         if (inputY != scr_InputManager.MainVertical())
         {
-            _y += scr_InputManager.MainVertical();
             inputY = scr_InputManager.MainVertical();
+            if (inputY != 0 && scr_InputManager.Dash() && staminaCharges > 0)
+            {
+                staminaCharges--; //spend a charge
+                Instantiate(dashEffect, transform.position, dashEffect.transform.rotation);
+                StartCoroutine(StaminaRecharge()); //recharge the stamina after waiting the recharge time
+
+                //dash in the direction of the movement
+                if (inputY < 0)
+                {
+                    //move to the left end of the grid
+                    _y = 0;
+                }
+                else
+                {
+                    //move to the rightmost player space
+                    //get the rightmost player tile on this row
+                    for (int y = _y; y  < scr_Grid.GridController.ySizeMax; y++)
+                    {
+                        if (scr_Grid.GridController.ReturnTerritory(_x,y).name == entity.entityTerritory.name)
+                        {
+                            _y = y; //if we found a valid space then this becomes the new space to move to
+                        }
+                        else
+                        {
+                            break; //stop searching once we hit enemy territory
+                        }
+                    }
+                }
+            }
+            else //perform normal movement
+            {
+                _y += scr_InputManager.MainVertical();
+            }
             axisPressed = true;
             if (scr_InputManager.MainVertical() == 0)
             {
@@ -96,34 +169,21 @@ public class scr_PlayerMovement : scr_EntityAI
             axisPressed = false;
         }
 
-        /*
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            //move up 
-            _y ++;
-            
-        }
-        if(Input.GetKeyDown(KeyCode.A))
-        {
-            //move left
-            _x --;
-        }
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            _y--;
-        }
-        if(Input.GetKeyDown(KeyCode.D))
-        {
-            _x++; 
-        }
-         */
-
         if (scr_Grid.GridController.LocationOnGrid(_x, _y) &&  scr_Grid.GridController.ReturnTerritory(_x,_y).name == entity.entityTerritory.name)
         {
            
             entity.SetTransform(_x, _y);
         }
 
+    }
+
+    ///<summary>
+    ///Recharge 1 stamina after waiting the recharge time
+    ///</summary>
+    private IEnumerator StaminaRecharge()
+    {
+        yield return new WaitForSeconds(staminaRechargeTime);
+        staminaCharges++;
     }
 
 }

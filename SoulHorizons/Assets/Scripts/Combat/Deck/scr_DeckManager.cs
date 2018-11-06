@@ -120,7 +120,7 @@ public class scr_DeckManager : MonoBehaviour {
     int lastCardPressed = -1; //the last value returned from play card
     float timeSincePressed = 0; //the time since the last card was pressed
     /// <summary>
-    /// Handles input for the cards. Determines if a card has been pressed once or double pressed.
+    /// Handles input for the cards. (TODO? - Determines if a card has been pressed once or double pressed.)
     /// </summary>
     void CardInput()
     {
@@ -129,68 +129,60 @@ public class scr_DeckManager : MonoBehaviour {
 
         if (input != -1)
         {
-            for (int i = 0; i < cardUI.Length; i++)
+            //play or swap the current card
+            PlayOrSwap(input);
+        }
+        
+
+        /* NOTE: This section is for double press to play and single press to highlight
+        //check for double press
+        if (doublePress)
+        {
+            //start cooldown to be able to cast another card; could use an argument from the card to get variable cooldowns
+            StartCoroutine(CastCooldown(cooldown));
+            //play this card
+            deck_scr.Activate(0);
+
+            //reset the time
+            timeSincePressed = 0f;
+        }
+        else
+        {
+            if (lastCardPressed == 0)
             {
-                cardUI[i].StartCooldown(deck_scr.hand[input].cooldown);
+                //turn off the highlighting
+            }
+            else
+            {
+                //turn on area of effect highlighting
             }
         }
-        //determine what card has been pressed, then decide what to do about it
-        switch (input)
-        {
-            case 0:
-                /* NOTE: This section is for double press to play and single press to highlight
-                //check for double press
-                if (doublePress)
-                {
-                    //start cooldown to be able to cast another card; could use an argument from the card to get variable cooldowns
-                    StartCoroutine(CastCooldown(cooldown));
-                    //play this card
-                    deck_scr.Activate(0);
+        */
+    }
 
-                    //reset the time
-                    timeSincePressed = 0f;
-                }
-                else
-                {
-                    if (lastCardPressed == 0)
-                    {
-                        //turn off the highlighting
-                    }
-                    else
-                    {
-                        //turn on area of effect highlighting
-                    }
-                }
-                 */
-                //start cooldown to be able to cast another card
-                StartCoroutine(CastCooldown(deck_scr.hand[0].cooldown));
-                //charge the soul transform
-                soulManager.ChargeSoulTransform(deck_scr.hand[0].element, deck_scr.hand[0].chargeAmount);
-                deck_scr.Activate(0);
-                break;
-            case 1:
-                //start cooldown to be able to cast another card
-                StartCoroutine(CastCooldown(deck_scr.hand[1].cooldown));
-                //charge the soul transform
-                soulManager.ChargeSoulTransform(deck_scr.hand[1].element, deck_scr.hand[1].chargeAmount);
-                deck_scr.Activate(1);
-                break;
-            case 2:
-                //start cooldown to be able to cast another card
-                StartCoroutine(CastCooldown(deck_scr.hand[2].cooldown));
-                //charge the soul transform
-                soulManager.ChargeSoulTransform(deck_scr.hand[2].element, deck_scr.hand[2].chargeAmount);
-                deck_scr.Activate(2);
-                break;
-            case 3:
-                //start cooldown to be able to cast another card
-                StartCoroutine(CastCooldown(deck_scr.hand[3].cooldown));
-                //charge the soul transform
-                soulManager.ChargeSoulTransform(deck_scr.hand[3].element, deck_scr.hand[3].chargeAmount);
-                deck_scr.Activate(3);
-                break;
-            default:
-                break;
+    /// <summary>
+    /// This will either play a card or swap a card depending on the swap card input.
+    /// </summary>
+    /// <param name="index"></param>
+    private void PlayOrSwap(int index)
+    {
+        if (scr_InputManager.CardSwap())
+        {
+            deck_scr.Swap(index);
+        }
+        else
+        {
+            //start the cooldown animation on the cardUI
+            for (int i = 0; i < cardUI.Length; i++)
+            {
+                cardUI[i].StartCooldown(deck_scr.hand[index].cooldown);
+            }
+
+            //start cooldown to be able to cast another card
+            StartCoroutine(CastCooldown(deck_scr.hand[index].cooldown));
+            //charge the soul transform
+            soulManager.ChargeSoulTransform(deck_scr.hand[index].element, deck_scr.hand[index].chargeAmount);
+            deck_scr.Activate(index);
         }
     }
 
@@ -204,16 +196,6 @@ public class scr_DeckManager : MonoBehaviour {
         //start an animation on the currently selected card if it was played
         //shift cards if one was played
         //give the UI element the information for a newly drawn card; play animation for loading
-
-        //highlight the current card
-        /* NOTE: We currently do not have a current card, so no selection is performed
-        for (int i = 0; i < cardUI.Length; i++)
-        {  
-            //cardNames[i].color = textColor;
-            cardUI[i].SetSelected(false);
-        }
-        cardUI[currentCard].SetSelected(true);
-         */
 
         SetCardGraphics();
         //TODO: need to check if the UI matches the current hand. If not, need to start a fade out animation for the out of date cards, followed by a fade in for their replacement
@@ -231,6 +213,16 @@ public class scr_DeckManager : MonoBehaviour {
                 cardUI[i].SetName(deck_scr.hand[i].cardName); //set the name
                 cardUI[i].SetArt(deck_scr.hand[i].art); //set the card art
                 cardUI[i].SetElement(deck_scr.hand[i].element); //set the card element
+            }
+
+            //update the backup hand slot
+            if (deck_scr.backupHand[i] != null)
+            {
+                cardUI[i].SetBackupName(deck_scr.backupHand[i].cardName);
+            }
+            else
+            {
+                cardUI[i].SetBackupName(null);
             }
         }
     }

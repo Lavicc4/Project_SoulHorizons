@@ -15,5 +15,7 @@ MonoBehaviour:
   basicAttack: {fileID: 11500000, guid: db0040d3508857a43861d7291cd15e6a, type: 3}
   hasMovement: 0
   movement: {fileID: 0}
+  scriptHolder: {fileID: 1772583064105408, guid: 1eb35448791129842864ddf9ac4fb939,
+    type: 2}
   shieldGain: 60
   shieldDrainRate: 1

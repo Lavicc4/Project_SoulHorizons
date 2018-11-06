@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class scr_EncounterController : MonoBehaviour {
 
+    public static scr_EncounterController globalEncounterController; 
     public scr_SceneManager sceneManager;
     public Button[] buttons = new Button[10];
 	public int activeScenarios;
@@ -16,9 +17,24 @@ public class scr_EncounterController : MonoBehaviour {
     public Encounter[] tier3Encounters = new Encounter[3];
    
     private Button[] listeners;
+ 
 
 	void Start () {
-        
+
+        if (globalEncounterController != null && globalEncounterController != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            globalEncounterController = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+
+                
+
+
+        /*
         listeners = new Button[totalButtons];
 
         //for Loop to deactivate all of the buttons
@@ -38,17 +54,13 @@ public class scr_EncounterController : MonoBehaviour {
             //listeners[i].onClick.AddListener(delegate { GoToEncounter(tier1Encounters[num]); });
 
         }
+        */
 
-
-	}
+    }
 	
 
 	void Update () {
-
-		if (Input.GetKeyDown (KeyCode.J)) {	
-			CycleEvents (); 
-		}
-
+      
 	}
 
 	void CycleEvents(){
@@ -86,4 +98,10 @@ public class scr_EncounterController : MonoBehaviour {
         scr_SceneManager.globalSceneManager.currentEncounter = encounterName;
         scr_SceneManager.globalSceneManager.ChangeScene(encounterName.sceneName);  
     }
+
+
 }
+
+
+
+

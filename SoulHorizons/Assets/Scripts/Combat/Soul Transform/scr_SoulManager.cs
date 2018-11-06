@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,9 +16,14 @@ public class scr_SoulManager : MonoBehaviour {
     private scr_Entity player; // a referenct to the player
     public scr_DeckManager deckManager; //a reference to the deck manager. This is needed to disable the deck when a transform is active
 
+    public GameObject transformAbilityUI;
+
     private IDictionary<Element, int> soulCharges = new Dictionary<Element, int>(); //the charges
     private IDictionary<Element, Button> elementButtons = new Dictionary<Element, Button>(); //a list of the buttons in terms of their element; this is so we can update them with the charge
     //TODO: need to get references to the UI buttons so they can be updated with sprites and animations can occur when they get chaged
+
+    //--Art assets--
+    public Sprite[] earth_soulOrb = new Sprite[4]; //an array of the different sprites for the soul orb based on charge
 
 	void Start () {
         //find the player
@@ -34,6 +40,7 @@ public class scr_SoulManager : MonoBehaviour {
             buttons[i].onClick.AddListener(delegate {Transformation(item); });
 
             //add the components in the soulTransform to the player
+            /*
             MonoBehaviour attack = (MonoBehaviour) player.gameObject.AddComponent(item.basicAttack.GetClass());
             attack.enabled = false;
             if (item.hasMovement) //don't try to add the component unless there is new movement with this transform
@@ -41,6 +48,15 @@ public class scr_SoulManager : MonoBehaviour {
                 MonoBehaviour movement = (MonoBehaviour) player.gameObject.AddComponent(item.movement.GetClass());
                 movement.enabled = false;
             }
+             */
+
+             MonoBehaviour[] scripts = item.scriptHolder.GetComponents<MonoBehaviour>();
+             foreach (MonoBehaviour script in scripts)
+             {
+                 //MonoBehaviour s = (MonoBehaviour) player.gameObject.AddComponent(script.GetType());
+                 MonoBehaviour s = CopyComponent<MonoBehaviour>(script, player.gameObject); //copy the values from the prefab; needed for particle references
+                 s.enabled = false;
+             }
 
             //add the button to the dictionary with the transform's element as the key
             elementButtons[item.element] = buttons[i];
@@ -55,9 +71,11 @@ public class scr_SoulManager : MonoBehaviour {
             soulCharges[e] = 0;
         }
 
-        //Line for debugging. REMOVE THIS LINE ONCE DONE TESTING
+        //Temporary Start off with Charge
         soulCharges[Element.Earth] = 100;
-	}
+        elementButtons[Element.Earth].GetComponent<Image>().sprite = earth_soulOrb[3];
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -113,7 +131,20 @@ public class scr_SoulManager : MonoBehaviour {
             if (soulCharges[e] >= 100)
             {
                 soulCharges[e] = 100;
-                //TODO: change the corresponding soul button to indicate that it is full
+                //change the corresponding soul button to indicate that it is full
+                if(e == Element.Earth) elementButtons[e].GetComponent<Image>().sprite = earth_soulOrb[3];
+            }
+            else if (soulCharges[e] >= 70)
+            {
+                if(e == Element.Earth) elementButtons[e].GetComponent<Image>().sprite = earth_soulOrb[2];
+            }
+            else if (soulCharges[e] >= 40)
+            {
+                if(e == Element.Earth) elementButtons[e].GetComponent<Image>().sprite = earth_soulOrb[1];
+            }
+            else
+            {
+                if(e == Element.Earth) elementButtons[e].GetComponent<Image>().sprite = earth_soulOrb[0];
             }
         }
     }
@@ -135,14 +166,19 @@ public class scr_SoulManager : MonoBehaviour {
         //disable the deck system
         deckManager.Disable(true);
 
+        //Enable Transform Ability UI
+        transformAbilityUI.SetActive(true);
+
         //reduce the charge
         soulCharges[soul.element] -= 50; //reduce to 50%
+        elementButtons[soul.element].GetComponent<Image>().sprite = earth_soulOrb[1];
 
 
         //disable the player attack and movement
         //player.gameObject.GetComponent<scr_PlayerBlaster>().enabled = false;
         player.gameObject.GetComponent<scr_PlayerMovement>().enabled = false;
 
+        /*
         //enable the transform's attack and movement
         MonoBehaviour attack = (MonoBehaviour) player.gameObject.GetComponent(soul.basicAttack.GetClass());
         attack.enabled = true;
@@ -151,6 +187,14 @@ public class scr_SoulManager : MonoBehaviour {
         {   
             MonoBehaviour movement = (MonoBehaviour)player.gameObject.GetComponent(soul.movement.GetClass());
             movement.enabled = true;
+        }
+         */
+
+        MonoBehaviour[] scripts = soul.scriptHolder.GetComponents<MonoBehaviour>();
+        foreach (MonoBehaviour script in scripts)
+        {
+            MonoBehaviour s = (MonoBehaviour) player.gameObject.GetComponent(script.GetType());
+            s.enabled = true;
         }
 
         //add the shield to the player
@@ -168,10 +212,15 @@ public class scr_SoulManager : MonoBehaviour {
     {
         Debug.Log("End Transformation Start");
 
+        //Disable Transform Ability UI
+        transformAbilityUI.SetActive(false);
+
         //enable the deck system
         deckManager.Disable(false);
-        
+
+
         //disable the current transform's components on the player
+        /*
         MonoBehaviour attack = (MonoBehaviour)player.gameObject.GetComponent(currentTransform.basicAttack.GetClass());
         attack.enabled = false;
 
@@ -179,6 +228,14 @@ public class scr_SoulManager : MonoBehaviour {
         {   
             MonoBehaviour movement = (MonoBehaviour)player.gameObject.GetComponent(currentTransform.movement.GetClass());
             movement.enabled = false;
+        }
+         */
+
+        MonoBehaviour[] scripts = currentTransform.scriptHolder.GetComponents<MonoBehaviour>();
+        foreach (MonoBehaviour script in scripts)
+        {
+            MonoBehaviour s = (MonoBehaviour) player.gameObject.GetComponent(script.GetType());
+            s.enabled = false;
         }
 
         //enable the player default attack and movement
@@ -209,5 +266,30 @@ public class scr_SoulManager : MonoBehaviour {
             }
         }
     }
+
+         public void CopyClassValues(MonoBehaviour sourceComp, MonoBehaviour targetComp) {
+             Debug.Log("Copying values");
+          FieldInfo[] sourceFields = sourceComp.GetType().GetFields(BindingFlags.Public | 
+                                                           BindingFlags.NonPublic | 
+                                                           BindingFlags.Instance);
+          int i = 0;
+          for(i = 0; i < sourceFields.Length; i++) {
+              Debug.Log("Copying values loop");
+               var value = sourceFields[i].GetValue(sourceComp);
+           sourceFields[i].SetValue(targetComp, value);
+          }
+     }
+
+      T CopyComponent<T>(T original, GameObject destination) where T : Component
+        {
+            System.Type type = original.GetType();
+            Component copy = destination.AddComponent(type);
+            System.Reflection.FieldInfo[] fields = type.GetFields();
+            foreach (System.Reflection.FieldInfo field in fields)
+            {
+                field.SetValue(copy, field.GetValue(original));
+            }
+            return copy as T;
+        }
 
 }

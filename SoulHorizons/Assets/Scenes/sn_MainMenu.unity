@@ -146,7 +146,7 @@ MonoBehaviour:
   m_SubmitButton: Submit
   m_CancelButton: Cancel
   m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
+  m_RepeatDelay: 0.3
   m_ForceModuleActive: 0
 --- !u!114 &22465937
 MonoBehaviour:
@@ -159,7 +159,7 @@ MonoBehaviour:
   m_Script: {fileID: -619905303, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 1877252476}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &22465938
@@ -539,7 +539,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 371055000}
+        - m_Target: {fileID: 0}
           m_MethodName: DeselectOnPointerEnter
           m_Mode: 1
           m_Arguments:
@@ -564,7 +564,6 @@ GameObject:
   - component: {fileID: 371054998}
   - component: {fileID: 371054997}
   - component: {fileID: 371054996}
-  - component: {fileID: 371055000}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -651,22 +650,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &371055000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 371054995}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7a17ad0cbcee5f478b61f0941dcbc08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttons:
-  - {fileID: 1877252478}
-  - {fileID: 1333149469}
-  - {fileID: 328393261}
-  - {fileID: 1547103028}
 --- !u!1 &556193896
 GameObject:
   m_ObjectHideFlags: 0
@@ -982,7 +965,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 371055000}
+        - m_Target: {fileID: 0}
           m_MethodName: DeselectOnPointerEnter
           m_Mode: 1
           m_Arguments:
@@ -1212,7 +1195,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 371055000}
+        - m_Target: {fileID: 0}
           m_MethodName: DeselectOnPointerEnter
           m_Mode: 1
           m_Arguments:
@@ -1530,7 +1513,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 371055000}
+        - m_Target: {fileID: 0}
           m_MethodName: DeselectOnPointerEnter
           m_Mode: 1
           m_Arguments:

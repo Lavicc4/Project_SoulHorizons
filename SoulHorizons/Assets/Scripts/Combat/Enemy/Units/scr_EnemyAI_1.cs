@@ -36,6 +36,7 @@ public class scr_EnemyAI_1 : scr_EntityAI
     }
     public override void UpdateAI()
     {
+        scr_Grid.GridController.SetTileOccupied(true, entity._gridPos.x, entity._gridPos.y, this.entity);
         if (completedTask)
         {
             StartCoroutine(Brain()); 
@@ -44,7 +45,6 @@ public class scr_EnemyAI_1 : scr_EntityAI
 
     public override void Die()
     {
-        Debug.Log("ARGHH");
         entity.Death();
     }
 

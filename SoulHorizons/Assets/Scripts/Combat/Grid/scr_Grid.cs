@@ -8,8 +8,10 @@ public class scr_Grid : MonoBehaviour{
 
     public int xSizeMax; 
     public int ySizeMax;
+    [Tooltip("Use to move the center of the grid along the x axis")]
     public float xOffset = 0;
-    public float yOffset = 0;
+    [Tooltip("Use to move the center of the grid along the y axis")]
+    public float yOffset = 0; 
     public Vector2 tileSpacing;
     public scr_Tile[,] grid;
     public scr_Tile tile;

@@ -7,27 +7,39 @@ using UnityEngine.SceneManagement;
 public class scr_statemanager : MonoBehaviour {
 
     public Text RewardMessage;
-    public Text PlayerHealth;
+    public Image rewardPanel; 
+    //public Text PlayerHealth;
     public Text Shield;
     public Text EffectText;
+    public Text StaminaText;
     bool endCombat = false;
     bool showEffect = false;
     string EffectString;
     GameObject player;
     scr_Entity playerEntity;
+    scr_PlayerMovement playerMovement;
     // Use this for initialization
     void Start () {
+        rewardPanel.enabled = false; 
         player = GameObject.FindGameObjectWithTag("Player");
         EffectText.enabled = false;
         if (player != null)
         {
             playerEntity = player.GetComponent<scr_Entity>();
+            playerMovement = player.GetComponent<scr_PlayerMovement>();
             //load the health from the GameState
             int hp = SaveLoad.currentGame.GetPlayerHealth();
             if (hp > 0) //make sure the health has been set previously
             {
                 playerEntity._health.hp = hp;
             }
+
+            //make sure that movement is enabled
+            scr_InputManager.disableInput = false;
+            scr_InputManager.disableMovement = false;
+
+            //load the stamina from the player
+            StaminaText.text = "Stamina: " + playerMovement.GetStaminaCharges();
         }
         else
         {
@@ -44,10 +56,13 @@ public class scr_statemanager : MonoBehaviour {
             //Debug.Log("NO ENEMIES");
             //scr_InputManager.disableInput = true;
             RewardMessage.enabled = true;
+            rewardPanel.enabled = true; 
             endCombat = true;
 
             //save health
             //SaveLoad.currentGame.SetPlayerHealth(playerEntity._health.hp);
+
+
         }
         if (endCombat)
         {
@@ -69,12 +84,14 @@ public class scr_statemanager : MonoBehaviour {
         }
         else Shield.enabled = false;
         Shield.text = "(+" + playerEntity._health.shield + ")";
-        PlayerHealth.text = "Health: " + playerEntity._health.hp;
+        //PlayerHealth.text = "Health: " + playerEntity._health.hp;
+        StaminaText.text = "Stamina: " + playerMovement.GetStaminaCharges();
         if(playerEntity._health.hp <= 0)
         {
             scr_InputManager.disableInput = true;
             RewardMessage.text = "Oh no you died! Press V to return to the Local Map";
             RewardMessage.enabled = true;
+            rewardPanel.enabled = true; 
             endCombat = true;
         }
     }

@@ -18,10 +18,7 @@ public class scr_CooldownOverlay : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            StartCooldown();
-        }
+        
 	}
 
     public static GameObject FindGameObjectInChildWithTag(GameObject parent, string tag)
