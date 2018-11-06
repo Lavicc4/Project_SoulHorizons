@@ -19,6 +19,9 @@ public class scr_SoulManager : MonoBehaviour {
     private IDictionary<Element, Button> elementButtons = new Dictionary<Element, Button>(); //a list of the buttons in terms of their element; this is so we can update them with the charge
     //TODO: need to get references to the UI buttons so they can be updated with sprites and animations can occur when they get chaged
 
+    //--Art assets--
+    public Sprite[] earth_soulOrb = new Sprite[4]; //an array of the different sprites for the soul orb based on charge
+
 	void Start () {
         //find the player
         GameObject p = GameObject.FindGameObjectWithTag("Player");
@@ -122,7 +125,20 @@ public class scr_SoulManager : MonoBehaviour {
             if (soulCharges[e] >= 100)
             {
                 soulCharges[e] = 100;
-                //TODO: change the corresponding soul button to indicate that it is full
+                //change the corresponding soul button to indicate that it is full
+                if(e == Element.Earth) elementButtons[e].GetComponent<Image>().sprite = earth_soulOrb[3];
+            }
+            else if (soulCharges[e] >= 70)
+            {
+                if(e == Element.Earth) elementButtons[e].GetComponent<Image>().sprite = earth_soulOrb[2];
+            }
+            else if (soulCharges[e] >= 40)
+            {
+                if(e == Element.Earth) elementButtons[e].GetComponent<Image>().sprite = earth_soulOrb[1];
+            }
+            else
+            {
+                if(e == Element.Earth) elementButtons[e].GetComponent<Image>().sprite = earth_soulOrb[0];
             }
         }
     }
@@ -146,6 +162,7 @@ public class scr_SoulManager : MonoBehaviour {
 
         //reduce the charge
         soulCharges[soul.element] -= 50; //reduce to 50%
+        elementButtons[soul.element].GetComponent<Image>().sprite = earth_soulOrb[1];
 
 
         //disable the player attack and movement
