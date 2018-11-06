@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Name: Atk_Boomerang
   m_EditorClassIdentifier: 
   incrementSpeed: 0.1
-  maxIncrements: 17
-  damage: 20
+  maxIncrements: 13
+  damage: 10
   type: 1
   piercing: 1
   particles: {fileID: 212286977064683536, guid: 6805b2aea64a7294da92797ced98bd29,

@@ -18,5 +18,5 @@ MonoBehaviour:
   castingTime: 0
   cooldown: 1.5
   description: 
-  art: {fileID: 21300000, guid: 607a9f77bd29d694882163ec29b010d3, type: 3}
+  art: {fileID: 21300000, guid: dfbac7c3950fdef49b7dbdd17a1cf6bc, type: 3}
   duration: 3

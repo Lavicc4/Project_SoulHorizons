@@ -9,7 +9,7 @@ public class scr_ExiledArcher : scr_EntityAI {
     public Attack hunterShot;
     public float hSChargeTime;
     private bool hSOnCD = false;   //On Cooldown 
-    private float hSCooldownTime = 3f; 
+    private float hSCooldownTime = 1.5f; 
 
 
 
@@ -42,10 +42,10 @@ public class scr_ExiledArcher : scr_EntityAI {
         {
             StartCoroutine(HunterShot());
         }
-        if (canArrowRain)
-        {
-            StartCoroutine(ArrowRain(aRInterval)); 
-        }
+        //if (canArrowRain)
+        //{
+        //    StartCoroutine(ArrowRain(aRInterval)); 
+        //}
     }
 
     public override void Die()
