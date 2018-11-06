@@ -774,12 +774,12 @@ Prefab:
     - target: {fileID: 224813954284204352, guid: 76efc3e24df01dd4ab8a920ee7dec3f5,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: -193
+      value: 553
       objectReference: {fileID: 0}
     - target: {fileID: 224813954284204352, guid: 76efc3e24df01dd4ab8a920ee7dec3f5,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 300
+      value: 324.15
       objectReference: {fileID: 0}
     - target: {fileID: 224813954284204352, guid: 76efc3e24df01dd4ab8a920ee7dec3f5,
         type: 2}
@@ -4064,7 +4064,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RewardMessage: {fileID: 1182640712}
-  rewardPanel: {fileID: 427037935}
+  rewardPanel: {fileID: 0}
   Shield: {fileID: 672210161}
   EffectText: {fileID: 1719854543}
   StaminaText: {fileID: 598787483}
