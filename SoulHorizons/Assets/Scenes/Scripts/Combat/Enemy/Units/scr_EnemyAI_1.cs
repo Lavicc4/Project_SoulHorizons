@@ -8,7 +8,8 @@ public class scr_EnemyAI_1 : scr_EntityAI
 
     public float basicAttackChance;
     public float chargeAttackChance;
-    public float chargeTime;
+    public float chargeTimeUpper;
+    public float chargeTimeLower; 
     public float movementIntervalLower;
     public float movementIntervalUpper;
     bool waiting = false;
@@ -24,7 +25,8 @@ public class scr_EnemyAI_1 : scr_EntityAI
     private bool canMove = true;
     private bool charging = false;
     private int state = 2;
-    private bool completedTask = true; 
+    private bool completedTask = true;
+    private bool broken = false; //This is to check if something has caused their AI to stop working 
 
     public override void Move()
     {
@@ -64,6 +66,7 @@ public class scr_EnemyAI_1 : scr_EntityAI
         int _y = entity._gridPos.y;
         int _tries = 0; 
         
+        
 
         while(_tries < 10)
         {
@@ -88,6 +91,11 @@ public class scr_EnemyAI_1 : scr_EntityAI
             else
             {
                 _tries++;
+                if (_tries >= 10)
+                {
+                    broken = true;
+                    Debug.Log("I think I am broken");
+                }
             }
         }
         completedTask = true;
@@ -119,9 +127,9 @@ public class scr_EnemyAI_1 : scr_EntityAI
         int _range = scr_Grid.GridController.xSizeMax;
         int _currPosX = entity._gridPos.x;
 
-        if(_currPosX == _range - 1 )
+        if(_currPosX == _range - 1)
         {
-            return _range - 1; 
+            return (_currPosX - 1); 
         }
         else if(_currPosX == _range / 2)
         {
@@ -227,7 +235,8 @@ public class scr_EnemyAI_1 : scr_EntityAI
 
             case 4:
                 completedTask = false;
-                yield return new WaitForSecondsRealtime(chargeTime); 
+                float _thisTime = Random.Range(chargeTimeLower, chargeTimeUpper);
+                yield return new WaitForSecondsRealtime(_thisTime); 
                 Attack2();
                 yield return new WaitForSecondsRealtime(2f);
                 state = 0;

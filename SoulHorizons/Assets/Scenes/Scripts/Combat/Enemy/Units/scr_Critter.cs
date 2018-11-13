@@ -8,7 +8,9 @@ public class scr_Critter : scr_EntityAI {
 
 
     public float decisionTime;
-    public float burrowedTime; 
+    public float decisionTimeLower; 
+    public float burrowedTime;
+    public float burrowedTimeLower; 
     public Color burrowedColor;
     public Color normalColor; 
     bool taskComplete = true; 
@@ -102,7 +104,9 @@ public class scr_Critter : scr_EntityAI {
                 entity.spr.color = burrowedColor;
                 taskComplete = false; 
                 Movement();                                                     //Set new position
-                yield return new WaitForSecondsRealtime(burrowedTime);          //in case we want him to be hidden/burrowed for an amount of time
+                float _thatTime;
+                _thatTime = Random.Range(burrowedTimeLower, burrowedTime);
+                yield return new WaitForSecondsRealtime(_thatTime);          //in case we want him to be hidden/burrowed for an amount of time
                 state = 3;                                                      //go to un-burrowing
                 entity.spr.color = burrowedColor;
                 taskComplete = true; 
@@ -110,7 +114,9 @@ public class scr_Critter : scr_EntityAI {
             case 1:                                                             //On a tile, waiting to do a thing
                 entity.invincible = false;
                 taskComplete = false;
-                yield return new WaitForSecondsRealtime(decisionTime);      
+                float _thisTime;
+                _thisTime = Random.Range(decisionTimeLower, decisionTime);
+                yield return new WaitForSecondsRealtime(_thisTime);      
                 state = 2;                                                      //go to burrowing                                            
                 taskComplete = true; 
                 break;

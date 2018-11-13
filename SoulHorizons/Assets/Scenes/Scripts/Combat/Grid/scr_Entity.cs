@@ -241,7 +241,7 @@ public class Health{
         {
             hp = 0;
         }
-        Debug.Log("MY HP: " + hp);
+        //Debug.Log("MY HP: " + hp);  This was bothering me, uncomment if you desire 
 
     }
 

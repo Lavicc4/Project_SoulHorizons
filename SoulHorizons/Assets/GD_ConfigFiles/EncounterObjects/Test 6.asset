@@ -24,7 +24,7 @@ MonoBehaviour:
       type: 2}
     x: 1
     y: 1
-  - _entity: {fileID: 114725702907161856, guid: 65259edbaf4751d4080a9de1c4ee0b78,
+  - _entity: {fileID: 114725702907161856, guid: 2e48af5c2d92a1043acb3c262a5cc78b,
       type: 2}
     x: 6
     y: 2
@@ -32,7 +32,7 @@ MonoBehaviour:
       type: 2}
     x: 6
     y: 1
-  - _entity: {fileID: 114725702907161856, guid: 914cff6f87aa281418992a6a842e0671,
+  - _entity: {fileID: 114725702907161856, guid: 974c207dd73715e47b75e772ec393f45,
       type: 2}
     x: 5
     y: 0

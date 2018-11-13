@@ -28,11 +28,11 @@ MonoBehaviour:
       type: 2}
     x: 5
     y: 0
-  - _entity: {fileID: 114725702907161856, guid: 65259edbaf4751d4080a9de1c4ee0b78,
+  - _entity: {fileID: 114725702907161856, guid: 2e48af5c2d92a1043acb3c262a5cc78b,
       type: 2}
     x: 5
     y: 2
-  - _entity: {fileID: 114725702907161856, guid: 81c69c091cca8b249a86dc4ad3c27ec8,
+  - _entity: {fileID: 114725702907161856, guid: 2e48af5c2d92a1043acb3c262a5cc78b,
       type: 2}
     x: 4
     y: 1
@@ -40,42 +40,60 @@ MonoBehaviour:
   - territoryRow:
     - name: 0
       TerrColor: {r: 0.6117647, g: 0.38039216, b: 0.32156864, a: 1}
+      TerrSprite: {fileID: 0}
     - name: 0
       TerrColor: {r: 0.6117647, g: 0.38039216, b: 0.32156864, a: 1}
+      TerrSprite: {fileID: 0}
     - name: 0
       TerrColor: {r: 0.6117647, g: 0.38039216, b: 0.32156864, a: 1}
+      TerrSprite: {fileID: 0}
   - territoryRow:
     - name: 0
       TerrColor: {r: 0.6117647, g: 0.38039216, b: 0.32156864, a: 1}
+      TerrSprite: {fileID: 0}
     - name: 0
       TerrColor: {r: 0.6117647, g: 0.38039216, b: 0.32156864, a: 1}
+      TerrSprite: {fileID: 0}
     - name: 0
       TerrColor: {r: 0.6117647, g: 0.38039216, b: 0.32156864, a: 1}
+      TerrSprite: {fileID: 0}
   - territoryRow:
     - name: 0
       TerrColor: {r: 0.6117647, g: 0.38039216, b: 0.32156864, a: 1}
+      TerrSprite: {fileID: 0}
     - name: 0
       TerrColor: {r: 0.6117647, g: 0.38039216, b: 0.32156864, a: 1}
+      TerrSprite: {fileID: 0}
     - name: 0
       TerrColor: {r: 0.6117647, g: 0.38039216, b: 0.32156864, a: 1}
+      TerrSprite: {fileID: 0}
   - territoryRow:
     - name: 1
       TerrColor: {r: 0.18431373, g: 0.05490196, b: 0.050980393, a: 1}
+      TerrSprite: {fileID: 0}
     - name: 1
       TerrColor: {r: 0.18431373, g: 0.05490196, b: 0.050980393, a: 1}
+      TerrSprite: {fileID: 0}
     - name: 1
       TerrColor: {r: 0.18431373, g: 0.05490196, b: 0.050980393, a: 1}
+      TerrSprite: {fileID: 0}
   - territoryRow:
     - name: 1
       TerrColor: {r: 0.18431373, g: 0.05490196, b: 0.050980393, a: 1}
+      TerrSprite: {fileID: 0}
     - name: 1
       TerrColor: {r: 0.18431373, g: 0.05490196, b: 0.050980393, a: 1}
+      TerrSprite: {fileID: 0}
     - name: 1
       TerrColor: {r: 0.18431373, g: 0.05490196, b: 0.050980393, a: 1}
+      TerrSprite: {fileID: 0}
   - territoryRow:
     - name: 1
       TerrColor: {r: 0.18431373, g: 0.05490196, b: 0.050980393, a: 1}
+      TerrSprite: {fileID: 0}
     - name: 1
       TerrColor: {r: 0.18431373, g: 0.05490196, b: 0.050980393, a: 1}
+      TerrSprite: {fileID: 0}
     - name: 1
       TerrColor: {r: 0.18431373, g: 0.05490196, b: 0.050980393, a: 1}
+      TerrSprite: {fileID: 0}
