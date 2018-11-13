@@ -51,7 +51,8 @@ public class scr_statemanager : MonoBehaviour {
 	void Update () {
         UpdateHealth();
         UpdateEffects();
-		if(GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
+        //END OF ENCOUNTER - NO MORE ENEMIES
+		if(!endCombat && GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
         {
             //Debug.Log("NO ENEMIES");
             //scr_InputManager.disableInput = true;
@@ -59,10 +60,12 @@ public class scr_statemanager : MonoBehaviour {
             rewardPanel.enabled = true; 
             endCombat = true;
 
+            //GIVE REWARDS
+            scr_Inventory.dustNum += 50;
+
             //save health
-            //SaveLoad.currentGame.SetPlayerHealth(playerEntity._health.hp);
-
-
+            SaveLoad.currentGame.SetPlayerHealth(playerEntity._health.hp);
+            Debug.Log("DUST AMOUNT: " + SaveLoad.currentGame.GetDustAmount());
         }
         if (endCombat)
         {
@@ -70,6 +73,7 @@ public class scr_statemanager : MonoBehaviour {
             if (Input.GetButton("Menu_Select") || Input.GetButton("Menu_Back"))
             {
                 Debug.Log("Switching Scenes");
+                SaveLoad.Save();
                 SceneManager.LoadScene("sn_LocalMap");
             }
         }

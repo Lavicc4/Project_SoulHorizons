@@ -10,6 +10,7 @@ using UnityEngine;
         Void,
         Wind
     }
+[System.Serializable]
 public abstract class scr_Card : ScriptableObject {
 
 

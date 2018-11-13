@@ -21,6 +21,7 @@ public class GameState {
         //creating a new save file; initialize things as needed
         //initialize player object
         player = new PlayerState();
+        player.name = "Kana";
         player.playerLevel = 1;
         player.currentHealth = -1; //use -1 as an indicator to not take this number on encounter load
 
@@ -52,7 +53,39 @@ public class GameState {
         player.currentHealth = health;
     }
 
+    /*Inventory related methods */
+    public int GetDustAmount()
+    {
+        return scr_Inventory.dustNum;
+    }
 
+    public void SaveInventory()
+    {
+        inventory.dustNum = scr_Inventory.dustNum;
+        inventory.cardInv = scr_Inventory.getCardInv();
+        inventory.deckList = scr_Inventory.getDeckList();
+        inventory.deckIndex = scr_Inventory.deckIndex;
+        inventory.numDecks = scr_Inventory.numDecks;
+    }
+
+    public void LoadInventory()
+    {
+        scr_Inventory.dustNum = inventory.dustNum;
+        //scr_Inventory.cardInv = inventory.cardInv;
+        scr_Inventory.deckList = inventory.deckList;
+        scr_Inventory.deckIndex = inventory.deckIndex;
+        scr_Inventory.numDecks = inventory.numDecks;
+    }
+
+    public List<KeyValuePair<string, int>> GetCardList()
+    {
+        return inventory.cardInv;
+    }
+
+    public List<List<KeyValuePair<string, int>>> GetDeckList()
+    {
+        return inventory.deckList;
+    }
     /*Region specific methods. All of these take the region name as an argument*/
     /// <summary>
     /// This will run at the start of all the public methods to find the region's state. If no state exists,
@@ -120,5 +153,9 @@ public class PlayerState
 [System.Serializable]
 public class InventoryState
 {
-
+    public int dustNum; //How much dust you have
+    public List<KeyValuePair<string, int>> cardInv; //Your list of cards
+    public List<List<KeyValuePair<string, int>>> deckList; //Your decks
+    public int deckIndex; //Index of currently equipped deck
+    public int numDecks;
 }
