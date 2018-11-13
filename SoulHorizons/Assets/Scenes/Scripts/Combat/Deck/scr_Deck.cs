@@ -229,7 +229,10 @@ public class scr_Deck : MonoBehaviour {
     /// <param name="index"></param>
     public void Activate(int index)
     {
-
+        if (hand[index] == null)
+        {
+            return;
+        }
         StartCoroutine(ActivateHelper(index));
     }
 
@@ -251,6 +254,37 @@ public class scr_Deck : MonoBehaviour {
         hand[index] = null;
         //make sure hand size is correct
         CheckHandSize();
+    }
+
+    /// <summary>
+    /// Play the selected card, then move it to the discard pile.
+    /// </summary>
+    /// <param name="index"></param>
+    public void ActivateBackup(int index)
+    {
+        if (backupHand[index] == null)
+        {
+            return;
+        }
+        StartCoroutine(ActivateBackupHelper(index));
+    }
+
+    private IEnumerator ActivateBackupHelper(int index)
+    {
+        scr_Card cardToPlay = backupHand[index];
+        //wait however long is required
+        if (cardToPlay.castingTime != 0)
+        {
+            //start initial effects and stop player input
+            cardToPlay.StartCastingEffects();
+            scr_InputManager.disableInput = true;
+            yield return new WaitForSeconds(cardToPlay.castingTime);
+        }
+        scr_InputManager.disableInput = false;
+        backupHand[index].Activate();
+        discard.Add(cardToPlay);
+        //hand.Remove(cardToPlay);
+        backupHand[index] = null;
     }
 
     /// <summary>

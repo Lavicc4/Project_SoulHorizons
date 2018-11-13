@@ -249,7 +249,7 @@ public static class scr_InputManager {
 	}
 
 	/// <summary>
-	/// Xbox one - Left trigger
+	/// Xbox one - Right trigger
 	/// Keyboard - Tab button
 	/// </summary>
 	/// <returns>returns true if currently pressed</returns>
@@ -259,7 +259,7 @@ public static class scr_InputManager {
 	}
 
 	/// <summary>
-	/// Xbox one - Right trigger
+	/// Xbox one - Left trigger
 	/// Keyboard - Space button
 	/// </summary>
 	/// <returns>returns true if currently pressed</returns>

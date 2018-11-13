@@ -88,7 +88,7 @@ public class scr_DeckManager : MonoBehaviour {
         }
          */
 
-        if (scr_InputManager.PlayCard() != -1 && readyToCast)
+        if (scr_InputManager.PlayCard() != -1)
         {
             CardInput();
             return true;
@@ -166,11 +166,21 @@ public class scr_DeckManager : MonoBehaviour {
     /// <param name="index"></param>
     private void PlayOrSwap(int index)
     {
-        if (scr_InputManager.CardSwap())
+        if (scr_InputManager.CardSwap() && scr_InputManager.Dash() && readyToCast) //both triggers are down and the player can cast
+        {
+            //play the backup slot
+            //start cooldown to be able to cast another card
+            StartCoroutine(CastCooldown(deck_scr.backupHand[index].cooldown));
+            //charge the soul transform
+            soulManager.ChargeSoulTransform(deck_scr.backupHand[index].element, deck_scr.backupHand[index].chargeAmount);
+            deck_scr.ActivateBackup(index);
+
+        }
+        else if (scr_InputManager.CardSwap()) //if the player swap is pressed
         {
             deck_scr.Swap(index);
         }
-        else
+        else if(readyToCast) //if swap is not pressed and the player is ready to cast
         {
             //start the cooldown animation on the cardUI
             for (int i = 0; i < cardUI.Length; i++)

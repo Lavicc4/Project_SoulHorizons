@@ -208,7 +208,7 @@ public class scr_SoulManager : MonoBehaviour {
     /// <summary>
     /// Called when the player's shield runs out and they revert back to their default state
     /// </summary>
-    private void EndTransformation()
+    public void EndTransformation()
     {
         Debug.Log("End Transformation Start");
 

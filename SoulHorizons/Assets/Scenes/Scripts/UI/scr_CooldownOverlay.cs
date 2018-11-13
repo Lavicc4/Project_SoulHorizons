@@ -8,7 +8,7 @@ public class scr_CooldownOverlay : MonoBehaviour {
     private Image overlay;
     private GameObject overlayGameObject;
     private bool onCooldown = false;
-    private float rate = 0.01f; 
+    private float time = 1.5f;
 
 	// Use this for initialization
 	void Start () {
@@ -18,7 +18,15 @@ public class scr_CooldownOverlay : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        
+        if (onCooldown)
+        {
+            overlay.fillAmount -= 1.0f / time * Time.deltaTime;
+
+            if (overlay.fillAmount <= 0f)
+            {
+                onCooldown = false;
+            }
+        }
 	}
 
     public static GameObject FindGameObjectInChildWithTag(GameObject parent, string tag)
@@ -43,34 +51,12 @@ public class scr_CooldownOverlay : MonoBehaviour {
     /// <param name="time"></param>
     public void SetTime(float time)
     {
-        //1 - decrement/cooldown - alternate rate formula
-        rate = .02f / time;
+        this.time = time;
     }
 
     public void StartCooldown()
     {
-        StartCoroutine(CR_StartCooldown());
-    }
-
-    public IEnumerator CR_StartCooldown()
-    {
-        if(onCooldown == true)
-        {
-            yield return 0; 
-        }
-
         overlay.fillAmount = 1;
         onCooldown = true;
-        while (overlay.fillAmount > 0)
-        {
-            overlay.fillAmount -= rate;
-            yield return new WaitForSeconds(0.01f);
-        }
-        if(overlay.fillAmount <= 0)
-        {
-            overlay.fillAmount = 0; 
-            onCooldown = false;
-            
-        }
     }
 }
