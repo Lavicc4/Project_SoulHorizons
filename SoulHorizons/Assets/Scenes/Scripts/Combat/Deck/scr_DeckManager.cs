@@ -34,7 +34,13 @@ public class scr_DeckManager : MonoBehaviour {
     void Awake()
     {
         //get references
+        //Debug.Log("CHECKING DECKS: " + scr_Inventory.deckList.Count);
+        Debug.Log("DECK INDEX: " + scr_Inventory.deckIndex);
         deck_scr = GetComponent<scr_Deck>();
+        if(deck_scr == null)
+        {
+            Debug.Log("NO DECK");
+        }
         /* Removed since the CardUI script was added
         cardNames = new TextMeshProUGUI[cardUI.Length];
         int i = 0;

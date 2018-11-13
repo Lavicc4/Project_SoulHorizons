@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
+[System.Serializable]
 [CreateAssetMenu(menuName = "Cards/Meteor")]
 public class scr_Meteor : scr_Card {
 
