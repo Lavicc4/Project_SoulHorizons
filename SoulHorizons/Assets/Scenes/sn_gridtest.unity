@@ -231,6 +231,7 @@ MonoBehaviour:
   - {fileID: 1511446449}
   - {fileID: 1012515256}
   handPanel: {fileID: 1533865064}
+  anim: {fileID: 95721540959835254, guid: ac588191e5f641a42aa1bbaff8497605, type: 2}
   soulManager: {fileID: 1431935930}
   doublePressWindow: 0.3
   cardChange_SFX: {fileID: 0}
@@ -1695,7 +1696,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1167945960
 GameObject:
@@ -2875,7 +2876,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4374700160761796, guid: 2e7f05e13f7325a4f9885b66700d913a, type: 2}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e7f05e13f7325a4f9885b66700d913a, type: 2}
@@ -3175,7 +3176,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1912121590
 MonoBehaviour:
@@ -3628,7 +3629,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4010520458062352, guid: 4d8938461b55cee448d03f5ffbed4b5c, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1276222675584692, guid: 4d8938461b55cee448d03f5ffbed4b5c, type: 2}
       propertyPath: m_IsActive
