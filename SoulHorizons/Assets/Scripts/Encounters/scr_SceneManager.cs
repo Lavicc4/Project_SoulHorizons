@@ -26,7 +26,7 @@ public class scr_SceneManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-       
+        LockCursor(); 
 	}
 
 	public void ChangeScene(string sceneName){
@@ -49,5 +49,11 @@ public class scr_SceneManager : MonoBehaviour {
         //Deletes save files if you press the quit button - Used for debugging, delete line when done
         SaveLoad.Clear();
         Debug.Log("quit"); 
+    }
+
+    void LockCursor()
+    {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked; 
     }
 }
