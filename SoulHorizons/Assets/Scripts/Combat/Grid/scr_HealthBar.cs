@@ -10,11 +10,10 @@ public class scr_HealthBar : MonoBehaviour {
     float _health;
     float _maxHp;
     float _shield;
-    float _stamina; 
     public GameObject pivot;
     public GameObject bluePivot;
     public TextMeshProUGUI healthDisplay;
-    public TextMeshProUGUI stamDisplay; 
+    public TextMeshProUGUI shieldDisplay; 
     
 
 	void Start () {
@@ -32,7 +31,15 @@ public class scr_HealthBar : MonoBehaviour {
         {
             bluePivot.transform.localScale = new Vector3(_shield / _maxHp, 1, 1);
             healthDisplay.text = _health.ToString();
-            stamDisplay.text = _stamina.ToString(); 
+            shieldDisplay.text = _shield.ToString();
+            if(_shield == 0)
+            {
+                shieldDisplay.enabled = false; 
+            }
+            else
+            {
+                shieldDisplay.enabled = true; 
+            }
         }
         
     }
