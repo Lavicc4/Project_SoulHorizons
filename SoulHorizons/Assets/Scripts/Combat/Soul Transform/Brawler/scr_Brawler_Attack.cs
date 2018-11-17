@@ -80,8 +80,8 @@ public class scr_Brawler_Attack : MonoBehaviour {
 		}
 
 		//play any effects
-		Debug.Log("Furry Swipe!!");
 		Instantiate(particle_furySwipe, scr_Grid.GridController.GetWorldLocation(playerEntity._gridPos.x + 1, playerEntity._gridPos.y), particle_furySwipe.transform.rotation);
+        scr_Grid.GridController.BriefActivateTile(playerEntity._gridPos.x + 1, playerEntity._gridPos.y, 0.1f);
 
 		//check the grid position one over; if it contains an attackable entity, deal damage; note this will return null if the player is at the far right of the grid
 		scr_Entity target = scr_Grid.GridController.GetEntityAtPosition(playerEntity._gridPos.x + 1, playerEntity._gridPos.y);
@@ -244,9 +244,21 @@ public class scr_Brawler_Attack : MonoBehaviour {
 			{
 				if (slamDamage > 0)
 				{
-					//create the attack effect at this space
-					Instantiate(particle_heavySlam, scr_Grid.GridController.GetWorldLocation(column, i), particle_heavySlam.transform.rotation);
-				}
+                    //create the attack effect at this space
+                    GameObject particle =  Instantiate(particle_heavySlam, scr_Grid.GridController.GetWorldLocation(column, i), particle_heavySlam.transform.rotation);
+                    if (slamDamage == slamDamageMax - slamDamageDeprecation)
+                    {
+                        //second row
+                        particle.transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
+                    }
+                    else if (slamDamage == slamDamageMax - 2 * slamDamageDeprecation)
+                    {
+                        //third row
+                        particle.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
+                    }
+                    scr_Grid.GridController.BriefActivateTile(column, i, 0.28f);
+
+                }
 
 				if (scr_Grid.GridController.grid[column,i].territory.name == TerrName.Enemy)
 				{
