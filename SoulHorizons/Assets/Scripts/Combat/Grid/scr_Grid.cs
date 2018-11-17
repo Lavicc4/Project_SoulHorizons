@@ -115,8 +115,9 @@ public class scr_Grid : MonoBehaviour{
         if(LocationOnGrid(x , y ))
             grid[x, y].Prime(); 
     }
+
     /// <summary>
-    /// 
+    /// Indicates that the tile is currently being attacked/affected
     /// </summary>
     /// <param name="x"></param>
     /// <param name="y"></param>
@@ -134,6 +135,27 @@ public class scr_Grid : MonoBehaviour{
         {
             grid[x, y].Activate(activeAttack);
 
+        }
+    }
+
+    /// <summary>
+    /// Use this if you want to activate a tile for a set period of time, then have it deactivate.
+    /// </summary>
+    /// <param name="x"></param>
+    /// <param name="y"></param>
+    /// <param name="time"></param>
+    public void BriefActivateTile(int x, int y, float time)
+    {
+        StartCoroutine(BriefActivateTile_Coroutine(x, y, time));
+    }
+
+    private IEnumerator BriefActivateTile_Coroutine(int x, int y, float time)
+    {
+        if (LocationOnGrid(x, y))
+        {
+            grid[x, y].Activate();
+            yield return new WaitForSeconds(time);
+            grid[x, y].Deactivate();
         }
     }
 
