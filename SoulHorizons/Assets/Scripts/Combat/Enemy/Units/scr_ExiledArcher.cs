@@ -42,10 +42,14 @@ public class scr_ExiledArcher : scr_EntityAI {
         {
             StartCoroutine(HunterShot());
         }
-        //if (canArrowRain)
-        //{
-        //    StartCoroutine(ArrowRain(aRInterval)); 
-        //}
+
+        /*
+        if (canArrowRain)
+        {
+            StartCoroutine(ArrowRain(aRInterval)); 
+        }
+        */
+
     }
 
     public override void Die()
