@@ -15,6 +15,7 @@ public class scr_SoulManager : MonoBehaviour {
     private bool transformed = false;
     private scr_Entity player; // a referenct to the player
     public scr_DeckManager deckManager; //a reference to the deck manager. This is needed to disable the deck when a transform is active
+    Animator anim; //animator to control soul transform animations
 
     public GameObject transformAbilityUI;
 
@@ -29,8 +30,9 @@ public class scr_SoulManager : MonoBehaviour {
         //find the player
         GameObject p = GameObject.FindGameObjectWithTag("Player");
         player = p.GetComponent<scr_Entity>();
+        anim = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Animator>();
 
-		//TODO: Set all the button sprites according to the soul transforms given
+        //TODO: Set all the button sprites according to the soul transforms given
 
         //add an on click to the button that triggers the transform
         int i = 0;
@@ -156,6 +158,7 @@ public class scr_SoulManager : MonoBehaviour {
     /// <param name="soul"></param>
     private void Transformation(SoulTransform soul)
     {
+        anim.SetBool("BearTransform", true);
         //TODO: Should enable/disable the buttons based on this validation, so this method is only called under valid circumstances
         if (transformed || soulCharges[soul.element] < 100)
         {
@@ -211,6 +214,7 @@ public class scr_SoulManager : MonoBehaviour {
     public void EndTransformation()
     {
         Debug.Log("End Transformation Start");
+        anim.SetBool("BearTransform", false);
 
         //Disable Transform Ability UI
         transformAbilityUI.SetActive(false);
