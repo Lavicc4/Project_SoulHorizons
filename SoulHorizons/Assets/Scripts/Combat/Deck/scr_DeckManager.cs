@@ -42,6 +42,10 @@ public class scr_DeckManager : MonoBehaviour {
         {
             Debug.Log("NO DECK");
         }
+        if(anim == null)
+        {
+            Debug.Log("NO ANIMATOR");
+        }
         /* Removed since the CardUI script was added
         cardNames = new TextMeshProUGUI[cardUI.Length];
         int i = 0;
@@ -59,6 +63,7 @@ public class scr_DeckManager : MonoBehaviour {
 	void Start ()
     {
         AudioSource SFX_Source = GetComponent<AudioSource>();
+        anim = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Animator>();
         CardChange_SFX = SFX_Source;
         UpdateGUI();
 	}
