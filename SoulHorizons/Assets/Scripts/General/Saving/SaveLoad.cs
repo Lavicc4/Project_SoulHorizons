@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
+using System;
 //Colin 9/15/18
 
 public static class SaveLoad {
@@ -40,7 +41,14 @@ public static class SaveLoad {
 
     public static void Save()
     {
-        currentGame.SaveInventory();
+        try
+        {
+            currentGame.SaveInventory();
+        }
+        catch (NullReferenceException e)
+        {
+            Debug.Log("This is a " + e);
+        }
         //TODO:Need to add GameState to list?
         BinaryFormatter bf = new BinaryFormatter();
         //Application.persistentDataPath is a string, so if you wanted you can put that into debug.log if you want to know where save games are located
