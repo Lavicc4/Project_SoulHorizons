@@ -288,9 +288,9 @@ MonoBehaviour:
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 0.037908107, y: 0.7748369, z: 1.2406985}
+    m_Target: {x: 888.53436, y: 819.6104, z: -2.4166665}
     speed: 2
-    m_Value: {x: 0.037908107, y: 0.7748369, z: 1.2406985}
+    m_Value: {x: 888.53436, y: 819.6104, z: -2.4166665}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -322,9 +322,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 9.929605
+    m_Target: 1569.4381
     speed: 2
-    m_Value: 9.929605
+    m_Value: 1569.4381
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -575,7 +575,7 @@ MonoBehaviour:
   m_LastFolders:
   - Assets/Prefabs/Enemies
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: C:\Users\phh160030\Documents\Project_SoulHorizons\SoulHorizons
+  m_LastProjectPath: C:\Users\cmh150030\Documents\Project_SoulHorizons\SoulHorizons
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
