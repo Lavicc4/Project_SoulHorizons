@@ -3838,9 +3838,9 @@ MonoBehaviour:
   ySizeMax: 3
   xOffset: 0
   yOffset: -0.7
-  tileSpacing: {x: 0.79, y: 0.6}
+  tileSpacing: {x: 0.79, y: 0.65}
   tile: {fileID: 114124032091846856, guid: c0f8ab25b0d628140b13fe6f1ec791c8, type: 2}
-  tile_sprites: {fileID: 21300000, guid: e5310ef6a587fda46a085dea86a78947, type: 3}
+  tile_sprites: {fileID: 21300000, guid: b9493c4e0e29b2d449c3b6e7ef2f6556, type: 3}
   activeEntities: []
   camera: {fileID: 222816441}
 --- !u!114 &2115534118
