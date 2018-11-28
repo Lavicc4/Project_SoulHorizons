@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI; 
 
-public class scr_ButtonLines : MonoBehaviour {
+public class scr_EncounterButtons : MonoBehaviour {
 
-    public int previousEncounterNum;
-    public int myEncounterNum;
-    public Material material; 
+
+    public Material material;
+    public Button unlock1;
+    public Button unlock2; 
+
 
     public GameObject prevEncounter;
     private GameObject myEncounter;
@@ -15,6 +18,7 @@ public class scr_ButtonLines : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+
         myEncounter = this.gameObject;
         // Add a Line Renderer to the GameObject
         line = this.gameObject.AddComponent<LineRenderer>();
@@ -30,9 +34,11 @@ public class scr_ButtonLines : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        DrawConnection(myEncounter, prevEncounter);
+
+
     }
 
+    /*
     public void DrawConnection(GameObject endPoint1, GameObject endPoint2)
     {
         if (endPoint1 != null && endPoint2 != null)
@@ -45,5 +51,16 @@ public class scr_ButtonLines : MonoBehaviour {
         {
             return;
         }
+    }
+    */
+
+    public void LockButton(Button _thisButton)
+    {
+        _thisButton.interactable = false; 
+    }
+
+    public void OpenButton()
+    {
+
     }
 }
