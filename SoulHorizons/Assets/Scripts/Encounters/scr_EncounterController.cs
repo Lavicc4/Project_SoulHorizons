@@ -9,23 +9,29 @@ public class scr_EncounterController : MonoBehaviour {
 
     public static scr_EncounterController globalEncounterController; 
     public scr_SceneManager sceneManager;
-    public Button button0; 
 
-    /*
+    public EncounterSave[] encounterArray;
+
+
+
+
+    
+    public int totalButtons;
     public Button[] buttons = new Button[10];
-	public int activeScenarios;
-    public int totalButtons; 
 
-    /*
-    public Encounter[] tier1Encounters = new Encounter[10];
-    public Encounter[] tier2Encounters = new Encounter[5];
-    public Encounter[] tier3Encounters = new Encounter[3];
+    public GameObject buttonPrefab; 
+
+    
+    public Encounter[] tier1Encounters = new Encounter[1];
+    public Encounter[] tier2Encounters = new Encounter[1];
+    public Encounter[] tier3Encounters = new Encounter[1];
    
-    private Button[] listeners;
+    
  
-    */
+    
 	void Start () {
 
+        
         if (globalEncounterController != null && globalEncounterController != this)
         {
             Destroy(gameObject);
@@ -36,41 +42,28 @@ public class scr_EncounterController : MonoBehaviour {
             DontDestroyOnLoad(this.gameObject);
         }
 
-                
+        encounterArray = new EncounterSave[totalButtons];
 
-
-        /*
-        listeners = new Button[totalButtons];
-
-        //for Loop to deactivate all of the buttons
-        for (int i = 0; i < buttons.Length; i++) {
-			buttons [i].gameObject.SetActive(false); 
-		}
-
-
-        for(int i = 0; i < buttons.Length; i++)
+        if(SaveLoad.currentGame.encounterSaves == null)  //might be null, check if length is 0?
         {
-            listeners[i] = buttons[i].GetComponent<Button>();
-            //need to make sure we dont pick the same Encounter 2x. 
-            //here is where we will decide if the button gets to be a t1, t2 or t3 encounter.
-            int num = Random.Range(0, tier1Encounters.Length);
+            BuildMap();
+            GenerateButtons();
             
-            //THIS STATEMENT BELOW WILL PICK A RANDOM TIER 1 ENCOUNTER IN ADDITION TO WHATEVER WE ATTACHED TO THE BUTTON 
-            //listeners[i].onClick.AddListener(delegate { GoToEncounter(tier1Encounters[num]); });
 
         }
-        */
+        else
+        {
+            GetSaveData(SaveLoad.currentGame.encounterSaves);
+        }
+
+        
 
     }
 	
 
 	void Update () {
 
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            scr_EncounterButtons _button = button0.GetComponent<scr_EncounterButtons>();
-
-        }
+        
       
 	}
 
@@ -89,13 +82,81 @@ public class scr_EncounterController : MonoBehaviour {
     public void BuildMap()
     {
 
+        for(int i = 0; i < buttons.Length; i++)
+        {
+            
+            //need to make sure we dont pick the same Encounter 2x. 
+            //here is where we will decide if the button gets to be a t1, t2 or t3 encounter.
+            if(encounterArray[i].tier == 1)
+            {
+                int num = Random.Range(0, tier1Encounters.Length);
+                encounterArray[i].encounterNumber = num;
+            }
+            else if (encounterArray[i].tier == 1)
+            {
+                int num = Random.Range(0, tier2Encounters.Length);
+                encounterArray[i].encounterNumber = num;
+            }
+            else if (encounterArray[i].tier == 1)
+            {
+                int num = Random.Range(0, tier3Encounters.Length);
+                encounterArray[i].encounterNumber = num;
+            }
+
+
+            //THIS STATEMENT BELOW WILL PICK A RANDOM TIER 1 ENCOUNTER IN ADDITION TO WHATEVER WE ATTACHED TO THE BUTTON 
+            //listeners[i].onClick.AddListener(delegate { GoToEncounter(tier1Encounters[num]); });
+
+
+
+
+
+        }
+        
+
+
+
     }
 
-    public void OpenMap()
+    public void GetSaveData(EncounterSave[] _encounters)
     {
 
+        encounterArray = new EncounterSave[_encounters.Length];
+
+
+        for (int i = 0; i < _encounters.Length; i++)
+        {
+            encounterArray[i].encounterNumber = _encounters[i].encounterNumber;
+            encounterArray[i].tier = _encounters[i].tier;
+        }
+        GenerateButtons(); 
+
     }
 
+    public void GenerateButtons()
+    {
+        GameObject encounterCanvas = GameObject.FindWithTag("EncounterCanvas");
+
+        for (int i = 0; i < totalButtons - 1; i++)
+        {
+            GameObject newButton = Instantiate(buttonPrefab);
+            newButton.transform.parent = encounterCanvas.transform;
+            if (encounterArray[i].tier == 1)
+            {
+                newButton.GetComponent<Button>().onClick.AddListener(delegate { GoToEncounter(tier1Encounters[encounterArray[i].encounterNumber]); });
+            }
+            else if(encounterArray[i].tier == 2)
+            {
+                newButton.GetComponent<Button>().onClick.AddListener(delegate { GoToEncounter(tier2Encounters[encounterArray[i].encounterNumber]); });
+            }
+            else if (encounterArray[i].tier == 3)
+            {
+                newButton.GetComponent<Button>().onClick.AddListener(delegate { GoToEncounter(tier3Encounters[encounterArray[i].encounterNumber]); });
+            }
+
+
+        }
+    }
 
 
 

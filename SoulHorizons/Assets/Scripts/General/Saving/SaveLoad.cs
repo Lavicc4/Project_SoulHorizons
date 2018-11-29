@@ -11,6 +11,8 @@ public static class SaveLoad {
     public static GameState[] savedGames = new GameState[3];
     public static GameState currentGame;
 
+    
+
     /// <summary>
     /// Create a new save file. Limit how many they can have?
     /// </summary>
@@ -44,11 +46,25 @@ public static class SaveLoad {
         try
         {
             currentGame.SaveInventory();
+
         }
         catch (NullReferenceException e)
         {
             Debug.Log("This is a " + e);
         }
+
+
+        try
+        {
+            currentGame.encounterSaves = scr_EncounterController.globalEncounterController.encounterArray;
+
+        }
+        catch (NullReferenceException e)
+        {
+            Debug.Log("This is a " + e);
+        }
+        
+        savedGames[0] = currentGame; 
         //TODO:Need to add GameState to list?
         BinaryFormatter bf = new BinaryFormatter();
         //Application.persistentDataPath is a string, so if you wanted you can put that into debug.log if you want to know where save games are located
@@ -82,6 +98,7 @@ public static class SaveLoad {
                     return;
                 }
             }
+            //scr_EncounterController.GetSaveData(currentGame.encounterSaves);
 
         }
         //else no save file exists
@@ -95,4 +112,15 @@ public static class SaveLoad {
             File.Delete(Application.persistentDataPath + "/savedGames.gd");
         }
     }
+}
+
+
+[System.Serializable]
+public class EncounterSave
+{
+    public int tier;
+    public int encounterNumber; 
+
+
+
 }
