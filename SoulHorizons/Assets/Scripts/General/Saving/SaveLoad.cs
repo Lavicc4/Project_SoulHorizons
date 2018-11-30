@@ -38,6 +38,7 @@ public static class SaveLoad {
             }
         }
         Save();
+        scr_EncounterController.globalEncounterController.OnNewGame(); 
 
     }
 
@@ -54,16 +55,6 @@ public static class SaveLoad {
         }
 
 
-        try
-        {
-            Debug.Log("Saving Encounters");
-            currentGame.encounterSaves = scr_EncounterController.globalEncounterController.encounterArray;
-
-        }
-        catch (NullReferenceException e)
-        {
-            Debug.Log("This is a " + e);
-        }
         
         savedGames[0] = currentGame; 
         //TODO:Need to add GameState to list?
@@ -101,7 +92,6 @@ public static class SaveLoad {
                 }
             }
 
-            //scr_EncounterController.GetSaveData(currentGame.encounterSaves);
 
         }
         //else no save file exists
@@ -118,12 +108,3 @@ public static class SaveLoad {
 }
 
 
-[System.Serializable]
-public class EncounterSave
-{
-    public int tier;
-    public int encounterNumber; 
-
-
-
-}

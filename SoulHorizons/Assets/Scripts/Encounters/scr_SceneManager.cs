@@ -26,7 +26,7 @@ public class scr_SceneManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        LockCursor(); 
+        //LockCursor(); 
 	}
 
 	public void ChangeScene(string sceneName){
@@ -55,5 +55,10 @@ public class scr_SceneManager : MonoBehaviour {
     {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked; 
+    }
+    public string ReturnSceneName()
+    {
+        Debug.Log(SceneManager.GetActiveScene().name);
+        return SceneManager.GetActiveScene().name;
     }
 }

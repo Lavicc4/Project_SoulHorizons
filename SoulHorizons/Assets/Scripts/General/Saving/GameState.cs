@@ -16,8 +16,6 @@ public class GameState {
     List<RegionState> regions = new List<RegionState>();
     public bool lastGamePlayed;
 
-    //Cameron 11/28/2018
-    public EncounterSave[] encounterSaves;
 
     public GameState()
     {

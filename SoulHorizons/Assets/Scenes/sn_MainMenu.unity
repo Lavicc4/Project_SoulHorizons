@@ -1052,8 +1052,13 @@ Prefab:
     m_Modifications:
     - target: {fileID: 114332813414409122, guid: 2cf796ca4d59c054eb92b7b931335da9,
         type: 2}
+      propertyPath: encounterArray.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114332813414409122, guid: 2cf796ca4d59c054eb92b7b931335da9,
+        type: 2}
       propertyPath: tier1Encounters.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114332813414409122, guid: 2cf796ca4d59c054eb92b7b931335da9,
         type: 2}
@@ -1130,6 +1135,12 @@ Prefab:
       propertyPath: tier3Encounters.Array.data[0]
       value: 
       objectReference: {fileID: 11400000, guid: c58da183e3e04b1448c4f221d424c663,
+        type: 2}
+    - target: {fileID: 114332813414409122, guid: 2cf796ca4d59c054eb92b7b931335da9,
+        type: 2}
+      propertyPath: tier1Encounters.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 3901fb268d76ab34f9097f735546fe80,
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2cf796ca4d59c054eb92b7b931335da9, type: 2}
