@@ -35,7 +35,7 @@ public class scr_InvController : MonoBehaviour {
     void LoadInv()
     {
 
-        Debug.Log("Loading");
+        Debug.Log("Loading Inventory");
         //LOAD CARD LIST
         try
         {

@@ -2572,6 +2572,11 @@ Prefab:
       value: 
       objectReference: {fileID: 1318350694274488, guid: 08c49fa867e77154c8f4e9b0890d66be,
         type: 2}
+    - target: {fileID: 114332813414409122, guid: 2cf796ca4d59c054eb92b7b931335da9,
+        type: 2}
+      propertyPath: sceneManager
+      value: 
+      objectReference: {fileID: 712826664}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2cf796ca4d59c054eb92b7b931335da9, type: 2}
   m_IsPrefabAsset: 0
@@ -5081,6 +5086,12 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 707480350}
   m_CullTransparentMesh: 0
+--- !u!114 &712826664 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114420744322883032, guid: 50a29c5521521bb46a851340eca76195,
+    type: 2}
+  m_PrefabInternal: {fileID: 142143997}
+  m_Script: {fileID: 11500000, guid: f16baffa14386e84d8bcb6755e36a18f, type: 3}
 --- !u!1 &733073201
 GameObject:
   m_ObjectHideFlags: 0

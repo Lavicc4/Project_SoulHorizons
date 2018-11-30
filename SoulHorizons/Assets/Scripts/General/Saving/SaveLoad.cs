@@ -56,6 +56,7 @@ public static class SaveLoad {
 
         try
         {
+            Debug.Log("Saving Encounters");
             currentGame.encounterSaves = scr_EncounterController.globalEncounterController.encounterArray;
 
         }
@@ -78,6 +79,7 @@ public static class SaveLoad {
     /// </summary>
     public static void Load()
     {
+        Debug.Log("Load");
         if (File.Exists(Application.persistentDataPath + "/savedGames.gd"))
         {
             BinaryFormatter bf = new BinaryFormatter();
@@ -98,6 +100,7 @@ public static class SaveLoad {
                     return;
                 }
             }
+
             //scr_EncounterController.GetSaveData(currentGame.encounterSaves);
 
         }

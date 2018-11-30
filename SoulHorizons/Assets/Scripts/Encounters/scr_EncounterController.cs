@@ -81,12 +81,29 @@ public class scr_EncounterController : MonoBehaviour {
 
     public void BuildMap()
     {
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            if(i < 3)
+            {
+                encounterArray[i].tier = 1; 
+            }
+            else if (i >= 3  && i <= 7)
+            {
+                encounterArray[i].tier = 2;
+            }
+            else if(i > 7)
+            {
+                encounterArray[i].tier = 3;
+            }
+                
+        }
 
-        for(int i = 0; i < buttons.Length; i++)
+
+
+        for (int i = 0; i < buttons.Length; i++)
         {
             
             //need to make sure we dont pick the same Encounter 2x. 
-            //here is where we will decide if the button gets to be a t1, t2 or t3 encounter.
             if(encounterArray[i].tier == 1)
             {
                 int num = Random.Range(0, tier1Encounters.Length);
@@ -102,14 +119,6 @@ public class scr_EncounterController : MonoBehaviour {
                 int num = Random.Range(0, tier3Encounters.Length);
                 encounterArray[i].encounterNumber = num;
             }
-
-
-            //THIS STATEMENT BELOW WILL PICK A RANDOM TIER 1 ENCOUNTER IN ADDITION TO WHATEVER WE ATTACHED TO THE BUTTON 
-            //listeners[i].onClick.AddListener(delegate { GoToEncounter(tier1Encounters[num]); });
-
-
-
-
 
         }
         
@@ -153,7 +162,7 @@ public class scr_EncounterController : MonoBehaviour {
             {
                 newButton.GetComponent<Button>().onClick.AddListener(delegate { GoToEncounter(tier3Encounters[encounterArray[i].encounterNumber]); });
             }
-
+            buttons[i] = newButton.GetComponent<Button>();
 
         }
     }
