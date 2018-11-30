@@ -1058,17 +1058,17 @@ Prefab:
     - target: {fileID: 114332813414409122, guid: 2cf796ca4d59c054eb92b7b931335da9,
         type: 2}
       propertyPath: tier1Encounters.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114332813414409122, guid: 2cf796ca4d59c054eb92b7b931335da9,
         type: 2}
       propertyPath: tier2Encounters.Array.size
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 114332813414409122, guid: 2cf796ca4d59c054eb92b7b931335da9,
         type: 2}
       propertyPath: tier3Encounters.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4719619266096008, guid: 2cf796ca4d59c054eb92b7b931335da9, type: 2}
       propertyPath: m_LocalPosition.x
@@ -1134,13 +1134,37 @@ Prefab:
         type: 2}
       propertyPath: tier3Encounters.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: c58da183e3e04b1448c4f221d424c663,
+      objectReference: {fileID: 11400000, guid: 1ea3f71c4d41ba7459e1cf49e49d96d9,
         type: 2}
     - target: {fileID: 114332813414409122, guid: 2cf796ca4d59c054eb92b7b931335da9,
         type: 2}
       propertyPath: tier1Encounters.Array.data[1]
       value: 
       objectReference: {fileID: 11400000, guid: 3901fb268d76ab34f9097f735546fe80,
+        type: 2}
+    - target: {fileID: 114332813414409122, guid: 2cf796ca4d59c054eb92b7b931335da9,
+        type: 2}
+      propertyPath: tier2Encounters.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: c58da183e3e04b1448c4f221d424c663,
+        type: 2}
+    - target: {fileID: 114332813414409122, guid: 2cf796ca4d59c054eb92b7b931335da9,
+        type: 2}
+      propertyPath: tier2Encounters.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 276926aded5e6fa47a8481d4d7142e06,
+        type: 2}
+    - target: {fileID: 114332813414409122, guid: 2cf796ca4d59c054eb92b7b931335da9,
+        type: 2}
+      propertyPath: tier2Encounters.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: e92a3fe3e41ecf44e9d99028f74bc0b8,
+        type: 2}
+    - target: {fileID: 114332813414409122, guid: 2cf796ca4d59c054eb92b7b931335da9,
+        type: 2}
+      propertyPath: tier3Encounters.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: af460fe552103074288c5407c99ce765,
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2cf796ca4d59c054eb92b7b931335da9, type: 2}

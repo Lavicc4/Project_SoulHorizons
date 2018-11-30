@@ -129,11 +129,11 @@ public class scr_EncounterController : MonoBehaviour {
         List<Encounter> selectedEncounters = new List<Encounter>(); 
         for (int i = 0; i < totalButtons; i++)
         {
-            if(i < 3)
+            if(i < 1)
             {
                 encounterArray[i].tier = 1; 
             }
-            else if (i >= 3  && i <= 7)
+            else if (i >= 1  && i <= 7)
             {
                 encounterArray[i].tier = 2;
             }
@@ -153,6 +153,7 @@ public class scr_EncounterController : MonoBehaviour {
             //need to make sure we dont pick the same Encounter 2x. 
             if (encounterArray[i].tier == 1)
             {
+                /*
                 while (!_goodPick  && _tries < 10)
                 {
                     num = UnityEngine.Random.Range(0, tier1Encounters.Length);
@@ -162,16 +163,17 @@ public class scr_EncounterController : MonoBehaviour {
                     }
                     _tries++; 
                 }
-                
+                */
+                num = UnityEngine.Random.Range(0, tier1Encounters.Length);
                 encounterArray[i].encounterNumber = num;
-                selectedEncounters.Add(tier1Encounters[num]);
+                //selectedEncounters.Add(tier1Encounters[num]);
             }
-            else if (encounterArray[i].tier == 1)
+            else if (encounterArray[i].tier == 2)
             {
                 num = UnityEngine.Random.Range(0, tier2Encounters.Length);
                 encounterArray[i].encounterNumber = num;
             }
-            else if (encounterArray[i].tier == 1)
+            else if (encounterArray[i].tier == 3)
             {
                 num = UnityEngine.Random.Range(0, tier3Encounters.Length);
                 encounterArray[i].encounterNumber = num;
