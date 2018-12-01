@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
 using UnityEngine.UI;
+[RequireComponent(typeof(AudioSource))]
 
 /// <summary>
 /// Update the UI, take in user input, and manage information on the available soul transforms
@@ -25,7 +26,10 @@ public class scr_SoulManager : MonoBehaviour {
     //--Art assets--
     public Sprite[] earth_soulOrb = new Sprite[4]; //an array of the different sprites for the soul orb based on charge
 
-	void Start () {
+    AudioSource Transform_SFX;
+    public AudioClip transform_SFX;
+
+    void Start () {
         //find the player
         GameObject p = GameObject.FindGameObjectWithTag("Player");
         player = p.GetComponent<scr_Entity>();
@@ -162,6 +166,9 @@ public class scr_SoulManager : MonoBehaviour {
             Debug.Log("Did not meet transform conditions");
             return; //don't transform if the player is already transformed or the element is not charged
         }
+        AudioSource Transform_SFX = GetComponent<AudioSource>();
+        Transform_SFX.clip = transform_SFX;
+        Transform_SFX.Play();
 
         //disable the deck system
         deckManager.Disable(true);

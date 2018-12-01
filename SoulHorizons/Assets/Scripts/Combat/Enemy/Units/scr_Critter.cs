@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+[RequireComponent(typeof(AudioSource))]
 
 public class scr_Critter : scr_EntityAI {
 
@@ -18,7 +19,11 @@ public class scr_Critter : scr_EntityAI {
     float t = 0;
     float t2 = 0;
     float lerpDuration = .5f;
-    Color tempColor; 
+    Color tempColor;
+
+    AudioSource Footsteps_SFX;
+    public AudioClip[] movements_SFX;
+    private AudioClip movement_SFX;
 
     public override void Move()
     {
@@ -61,6 +66,12 @@ public class scr_Critter : scr_EntityAI {
 
     private void Movement()
     {
+        AudioSource[] SFX_Sources = GetComponents<AudioSource>();
+        Footsteps_SFX = SFX_Sources[0];
+        int index = Random.Range(0, movements_SFX.Length);
+        movement_SFX = movements_SFX[index];
+        Footsteps_SFX.clip = movement_SFX;
+        Footsteps_SFX.Play();
         int _x = GenerateCoord(scr_Grid.GridController.xSizeMax/2, scr_Grid.GridController.xSizeMax);
         int _y = GenerateCoord(0, scr_Grid.GridController.ySizeMax);
 

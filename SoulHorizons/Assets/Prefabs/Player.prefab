@@ -1157,9 +1157,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entity: {fileID: 114787085351951448}
   movements_SFX:
-  - {fileID: 8300000, guid: 9a02af71efc42914c9d053e32ecbd1e0, type: 3}
-  - {fileID: 8300000, guid: 172e053e3eb8c9f4d8be0137f3853ff7, type: 3}
-  - {fileID: 8300000, guid: 9c688beb21075494db57ee14d120ec36, type: 3}
+  - {fileID: 8300000, guid: 40636dd6aad1f5d43a5a1b335b327688, type: 3}
   dashEffect: {fileID: 1732062955175564, guid: 8082eb11f4a30e447bd201f0ce0c8ade, type: 2}
   staminaCharges: 2
   staminaRechargeTime: 1.5
@@ -1238,7 +1236,7 @@ MonoBehaviour:
   invincible: 0
   invulnTime: 1
   hurts_SFX:
-  - {fileID: 8300000, guid: f2e02f53e10e0c744b5214587d8e9897, type: 3}
+  - {fileID: 8300000, guid: 581b613c37917dc4696d6f2460976993, type: 3}
   die_SFX: {fileID: 8300000, guid: 31da37e6cffcebd41a7d84164f6d15a2, type: 3}
   anim: {fileID: 95721540959835254}
   deathManager: {fileID: 0}

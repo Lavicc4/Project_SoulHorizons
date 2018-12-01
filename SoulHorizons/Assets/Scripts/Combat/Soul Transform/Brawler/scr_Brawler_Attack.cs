@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+[RequireComponent(typeof(AudioSource))]
 
 public class scr_Brawler_Attack : MonoBehaviour {
 	//--Art assets--
@@ -39,7 +40,13 @@ public class scr_Brawler_Attack : MonoBehaviour {
 	//references
 	scr_Entity playerEntity; //use to get position
 
-	void Awake()
+    AudioSource TransformAttack_SFX;
+    public AudioClip furySwipes_SFX;
+    public AudioClip shoulderDash_SFX;
+    public AudioClip tankUp_SFX;
+    public AudioClip heavySlam_SFX;
+
+    void Awake()
 	{
 		playerEntity = GetComponent<scr_Entity>();
 	}
@@ -74,13 +81,16 @@ public class scr_Brawler_Attack : MonoBehaviour {
 	/// </summary>
 	private void FurySwipe()
 	{
-		if (!meleeReady)
+        if (!meleeReady)
 		{
-			return;
+            return;
 		}
+        TransformAttack_SFX = GameObject.Find("SoulManager").GetComponent<AudioSource>();
+        TransformAttack_SFX.clip = furySwipes_SFX;
+        TransformAttack_SFX.Play();
 
-		//play any effects
-		Instantiate(particle_furySwipe, scr_Grid.GridController.GetWorldLocation(playerEntity._gridPos.x + 1, playerEntity._gridPos.y), particle_furySwipe.transform.rotation);
+        //play any effects
+        Instantiate(particle_furySwipe, scr_Grid.GridController.GetWorldLocation(playerEntity._gridPos.x + 1, playerEntity._gridPos.y), particle_furySwipe.transform.rotation);
         scr_Grid.GridController.BriefActivateTile(playerEntity._gridPos.x + 1, playerEntity._gridPos.y, 0.1f);
 
 		//check the grid position one over; if it contains an attackable entity, deal damage; note this will return null if the player is at the far right of the grid
@@ -109,12 +119,11 @@ public class scr_Brawler_Attack : MonoBehaviour {
 	/// </summary>
 	private void ShoulderDash()
 	{
-		if (dashing)
+        if (dashing)
 		{
 			return;
 		}
-
-		dashing = true;
+        dashing = true;
 		meleeCooldown -= 0.3f; //speed up the attack rate while dashing
 		scr_InputManager.disableMovement = true;
 		startPos.x = playerEntity._gridPos.x; 
@@ -126,8 +135,12 @@ public class scr_Brawler_Attack : MonoBehaviour {
 	{
 		while (dashing && scr_Grid.GridController.LocationOnGrid(playerEntity._gridPos.x + 1, playerEntity._gridPos.y))
 		{
-			//move any enemies out of the way
-			Push();
+            TransformAttack_SFX = GameObject.Find("DeckManager").GetComponent<AudioSource>();
+            TransformAttack_SFX.clip = shoulderDash_SFX;
+            TransformAttack_SFX.Play();
+
+            //move any enemies out of the way
+            Push();
 
 			//move
 			playerEntity.SetTransform(playerEntity._gridPos.x + 1, playerEntity._gridPos.y);
@@ -202,11 +215,14 @@ public class scr_Brawler_Attack : MonoBehaviour {
 	/// </summary>
 	private void TankUp()
 	{
-		if (!tankReady)
+        if (!tankReady)
 		{
 			return;
 		}
-		playerEntity._health.shield += tankShieldGain;
+        TransformAttack_SFX = GameObject.Find("DeckManager").GetComponent<AudioSource>();
+        TransformAttack_SFX.clip = tankUp_SFX;
+        TransformAttack_SFX.Play();
+        playerEntity._health.shield += tankShieldGain;
 		
 		//start the cooldown
 		StartCoroutine(TankCooldown());
@@ -224,12 +240,15 @@ public class scr_Brawler_Attack : MonoBehaviour {
 	/// </summary>
 	private void HeavySlam()
 	{
-		if (!slamReady)
+        if (!slamReady)
 		{
 			return;
 		}
-		//start a coroutine which hits a column every __ seconds
-		StartCoroutine(HeavySlamRoutine());
+        TransformAttack_SFX = GameObject.Find("DeckManager").GetComponent<AudioSource>();
+        TransformAttack_SFX.clip = heavySlam_SFX;
+        TransformAttack_SFX.Play();
+        //start a coroutine which hits a column every __ seconds
+        StartCoroutine(HeavySlamRoutine());
 	}
 
 	private IEnumerator HeavySlamRoutine()

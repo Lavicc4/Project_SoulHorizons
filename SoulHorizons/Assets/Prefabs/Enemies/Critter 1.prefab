@@ -622,6 +622,10 @@ MonoBehaviour:
   burrowedTimeLower: 0.5
   burrowedColor: {r: 0, g: 0, b: 0, a: 0}
   normalColor: {r: 1, g: 1, b: 1, a: 1}
+  movements_SFX:
+  - {fileID: 8300000, guid: 80b2c6c4ff0767047bd78791fc9bbbf7, type: 3}
+  - {fileID: 8300000, guid: 115bedd7a324c7d45b9433d193e86bdc, type: 3}
+  - {fileID: 8300000, guid: 330f9a63efbc6514aa5960292d26bd22, type: 3}
 --- !u!114 &114725702907161856
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -650,10 +654,10 @@ MonoBehaviour:
   invincible: 0
   invulnTime: 0
   hurts_SFX:
-  - {fileID: 8300000, guid: 39a19e3b71171d44f8674ea450365c72, type: 3}
-  - {fileID: 8300000, guid: 31756c889a7e09b4d83c7b70afcbde03, type: 3}
-  - {fileID: 8300000, guid: e154a2027eecbef4e9068d3de8ee3ae7, type: 3}
-  die_SFX: {fileID: 8300000, guid: 39a19e3b71171d44f8674ea450365c72, type: 3}
+  - {fileID: 8300000, guid: 338c597140c217c42a56f6133edc5605, type: 3}
+  - {fileID: 8300000, guid: 330f9a63efbc6514aa5960292d26bd22, type: 3}
+  - {fileID: 8300000, guid: b27eec3da95423441b178b84d1096006, type: 3}
+  die_SFX: {fileID: 8300000, guid: b27eec3da95423441b178b84d1096006, type: 3}
   anim: {fileID: 0}
   deathManager: {fileID: 1576292096190378, guid: 2e7f05e13f7325a4f9885b66700d913a,
     type: 2}
@@ -670,6 +674,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pivot: {fileID: 1650102032847892}
   bluePivot: {fileID: 0}
+  healthDisplay: {fileID: 0}
+  shieldDisplay: {fileID: 0}
 --- !u!212 &212125513680702886
 SpriteRenderer:
   m_ObjectHideFlags: 1
