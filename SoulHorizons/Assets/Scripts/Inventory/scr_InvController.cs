@@ -16,12 +16,13 @@ public class scr_InvController : MonoBehaviour {
         {
             Destroy(gameObject);
         }
-        else
+        else if(invController == null)
         {
             invController = this;
             DontDestroyOnLoad(this.gameObject);
+            LoadInv();
         }
-        LoadInv();
+      
     }
     // Use this for initialization
     void Start () {
