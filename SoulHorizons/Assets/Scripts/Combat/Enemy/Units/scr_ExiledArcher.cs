@@ -25,6 +25,7 @@ public class scr_ExiledArcher : scr_EntityAI {
     {
         AudioSource[] SFX_Sources = GetComponents<AudioSource>();
         Attack_SFX = SFX_Sources[1];
+        anim = gameObject.GetComponentInChildren<Animator>();
     }
 
     public override void Move()
@@ -77,6 +78,7 @@ public class scr_ExiledArcher : scr_EntityAI {
         attack_SFX = attacks_SFX[index];
         Attack_SFX.clip = attack_SFX;
         Attack_SFX.Play();
+        anim.SetBool("Attack", true);
         scr_AttackController.attackController.AddNewAttack(hunterShot, entity._gridPos.x, entity._gridPos.y, entity);
         yield return new WaitForSecondsRealtime(hSCooldownTime);
         hSOnCD = false; 
@@ -84,6 +86,7 @@ public class scr_ExiledArcher : scr_EntityAI {
 
     private IEnumerator ArrowRain(float _aRInterval)
     {
+        
         //TELEGRAPH 
         canArrowRain = false; 
         yield return new WaitForSecondsRealtime(1f);
