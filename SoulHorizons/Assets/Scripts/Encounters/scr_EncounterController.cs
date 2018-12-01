@@ -5,7 +5,8 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using System;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement; 
+using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 //Cameron Made this 
 
@@ -208,27 +209,33 @@ public class scr_EncounterController : MonoBehaviour {
 
         for (int i = 0; i < totalButtons; i++)
         {
-            GameObject newButton = Instantiate(buttonPrefab);
-            newButton.transform.parent = encounterCanvas.transform;
-            Encounter newEncounter = new Encounter(); 
-            if (encounterArray[i].tier == 1)
+         if(encounterCanvas.gameObject != null)
             {
-                newEncounter = tier1Encounters[encounterArray[i].encounterNumber];
-            }
-            else if(encounterArray[i].tier == 2)
-            {
-                newEncounter = tier2Encounters[encounterArray[i].encounterNumber];
-            }
-            else if (encounterArray[i].tier == 3)
-            {
-                newEncounter = tier3Encounters[encounterArray[i].encounterNumber];
-            }
-            //DO IT HERE COLOR/COMPLETIONOVERLAY/ETC 
-            int temp = i; 
-            newButton.GetComponent<Button>().onClick.AddListener(delegate { GoToEncounter(newEncounter,temp);});
-            buttons[i] = newButton.GetComponent<Button>();
+                GameObject newButton = Instantiate(buttonPrefab);
+                newButton.transform.SetParent(encounterCanvas.GetComponent<RectTransform>());
+                Encounter newEncounter = new Encounter();
+                if (encounterArray[i].tier == 1)
+                {
+                    newEncounter = tier1Encounters[encounterArray[i].encounterNumber];
+                }
+                else if (encounterArray[i].tier == 2)
+                {
+                    newEncounter = tier2Encounters[encounterArray[i].encounterNumber];
+                }
+                else if (encounterArray[i].tier == 3)
+                {
+                    newEncounter = tier3Encounters[encounterArray[i].encounterNumber];
+                }
+                //DO IT HERE COLOR/COMPLETIONOVERLAY/ETC 
+                int temp = i;
+                newButton.GetComponent<Button>().onClick.AddListener(delegate { GoToEncounter(newEncounter, temp); });
+                buttons[i] = newButton.GetComponent<Button>();
+            }   
+            
 
         }
+        GameObject _eventSystem = GameObject.Find("/EventSystem");
+        _eventSystem.GetComponent<EventSystem>().firstSelectedGameObject = buttons[0].gameObject;
     }
 
 

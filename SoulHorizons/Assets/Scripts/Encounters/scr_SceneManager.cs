@@ -26,7 +26,7 @@ public class scr_SceneManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        //LockCursor(); 
+        LockCursor(); 
 	}
 
 	public void ChangeScene(string sceneName){
