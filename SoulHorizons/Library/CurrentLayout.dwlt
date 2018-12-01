@@ -283,9 +283,8 @@ MonoBehaviour:
   m_ActualView: {fileID: 20}
   m_Panes:
   - {fileID: 20}
-  - {fileID: 21}
   m_Selected: 0
-  m_LastSelected: 1
+  m_LastSelected: 0
 --- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -309,8 +308,9 @@ MonoBehaviour:
   m_ActualView: {fileID: 22}
   m_Panes:
   - {fileID: 22}
+  - {fileID: 21}
   m_Selected: 0
-  m_LastSelected: 0
+  m_LastSelected: 1
 --- !u!114 &14
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -494,14 +494,14 @@ MonoBehaviour:
     height: 752
   m_PersistentViewDataDictionary: {fileID: 0}
   m_SceneLighting: 1
-  lastFramingTime: 884.4886257422381
+  lastFramingTime: 1280.2834506988597
   m_2DMode: 1
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 902.3938, y: 300.5527, z: -9.5}
+    m_Target: {x: 1094.288, y: 329.2685, z: -0.07865689}
     speed: 2
-    m_Value: {x: 902.3938, y: 300.5527, z: -9.5}
+    m_Value: {x: 1094.288, y: 329.2685, z: -0.07865689}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -533,9 +533,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 1660.1311
+    m_Target: 10.944142
     speed: 2
-    m_Value: 1660.1311
+    m_Value: 10.944142
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -567,10 +567,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 224
+    x: 423.33334
     y: 92
-    width: 1157
-    height: 769
+    width: 735
+    height: 756
   m_PersistentViewDataDictionary: {fileID: 0}
 --- !u!114 &19
 MonoBehaviour:
@@ -592,25 +592,26 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 411.33334
+    x: 423.33334
     y: 92
-    width: 715
-    height: 824
+    width: 735
+    height: 756
   m_PersistentViewDataDictionary: {fileID: 0}
   m_ViewTransforms:
     m_KeySerializationHelper:
     - {fileID: 1107190170795030408, guid: 54af4ffc7f6ecfa48866867f041cd8ce, type: 2}
     - {fileID: 1107078190600848314, guid: 67325f0e424bb67468c0bf991ae4ea2c, type: 2}
     - {fileID: 1107643772579194746, guid: e328e3c204f169946952453298224655, type: 2}
+    - {fileID: 1107628162476698774, guid: cd8b56913b581374ab90de9e72c91208, type: 2}
     m_ValueSerializationHelper:
-    - e00: 0.72478235
+    - e00: 0.70752835
       e01: 0
       e02: 0
-      e03: 5.7026787
+      e03: 233.48434
       e10: 0
-      e11: 0.72478235
+      e11: 0.70752835
       e12: 0
-      e13: 386.0023
+      e13: 436.78546
       e20: 0
       e21: 0
       e22: 1
@@ -635,14 +636,30 @@ MonoBehaviour:
       e31: 0
       e32: 0
       e33: 1
-    - e00: 1.19531
+    - e00: 0.43052632
       e01: 0
       e02: 0
-      e03: -351.7852
+      e03: -6.5263214
       e10: 0
-      e11: 1.19531
+      e11: 0.43052632
       e12: 0
-      e13: 512.4929
+      e13: 349.73685
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    - e00: 0.6547767
+      e01: 0
+      e02: 0
+      e03: -98.79205
+      e10: 0
+      e11: 0.6547767
+      e12: 0
+      e13: 388.14465
       e20: 0
       e21: 0
       e22: 1
@@ -700,7 +717,7 @@ MonoBehaviour:
     m_ReferencingInstanceIDs: 
     m_ScenePaths: []
     m_ShowAllHits: 0
-    m_SearchArea: 1
+    m_SearchArea: 0
     m_Folders:
     - Assets/Scenes
   m_ViewMode: 1

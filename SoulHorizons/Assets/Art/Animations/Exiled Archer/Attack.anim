@@ -5,7 +5,7 @@ AnimationClip:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: BearFadeIn
+  m_Name: Attack
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -19,18 +19,22 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: d11afbd59b851c743b5d30104ef37f3e, type: 3}
-    - time: 0.016666668
-      value: {fileID: 21300000, guid: d11afbd59b851c743b5d30104ef37f3e, type: 3}
-    - time: 0.033333335
-      value: {fileID: 21300000, guid: 9d54a433e4a5ea046911dd2a709370ca, type: 3}
-    - time: 0.05
-      value: {fileID: 21300000, guid: 70fa70c4d37d18c4399e0e8a3575da89, type: 3}
+      value: {fileID: 21300000, guid: d7d82c8e4e801e94bba04f84bac11f87, type: 3}
+    - time: 0.083333336
+      value: {fileID: 21300000, guid: 952ab83daebb92448accce6df1bb6b4b, type: 3}
+    - time: 0.16666667
+      value: {fileID: 21300000, guid: 38ab951496698b242bc312e20faf337a, type: 3}
+    - time: 0.25
+      value: {fileID: 21300000, guid: 144b9f9187bbfe74ca8961086b56cd96, type: 3}
+    - time: 0.33333334
+      value: {fileID: 21300000, guid: 706571060dc1cb442aa7ce85bd88a0a2, type: 3}
+    - time: 0.41666666
+      value: {fileID: 21300000, guid: ce4cf6af3a748b34ba3abf3a5be0cb4d, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
     script: {fileID: 0}
-  m_SampleRate: 60
+  m_SampleRate: 12
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -45,16 +49,18 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 21300000, guid: d11afbd59b851c743b5d30104ef37f3e, type: 3}
-    - {fileID: 21300000, guid: d11afbd59b851c743b5d30104ef37f3e, type: 3}
-    - {fileID: 21300000, guid: 9d54a433e4a5ea046911dd2a709370ca, type: 3}
-    - {fileID: 21300000, guid: 70fa70c4d37d18c4399e0e8a3575da89, type: 3}
+    - {fileID: 21300000, guid: d7d82c8e4e801e94bba04f84bac11f87, type: 3}
+    - {fileID: 21300000, guid: 952ab83daebb92448accce6df1bb6b4b, type: 3}
+    - {fileID: 21300000, guid: 38ab951496698b242bc312e20faf337a, type: 3}
+    - {fileID: 21300000, guid: 144b9f9187bbfe74ca8961086b56cd96, type: 3}
+    - {fileID: 21300000, guid: 706571060dc1cb442aa7ce85bd88a0a2, type: 3}
+    - {fileID: 21300000, guid: ce4cf6af3a748b34ba3abf3a5be0cb4d, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.06666667
+    m_StopTime: 0.5
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -75,8 +81,8 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_GenerateMotionCurves: 0
   m_Events:
-  - time: 0.05
-    functionName: backToIdle
+  - time: 0.41666666
+    functionName: doneAttack
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
