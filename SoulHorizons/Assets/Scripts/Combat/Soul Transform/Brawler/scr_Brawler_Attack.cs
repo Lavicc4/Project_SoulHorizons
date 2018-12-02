@@ -76,15 +76,15 @@ public class scr_Brawler_Attack : MonoBehaviour {
 		}
 	}
 
-	/// <summary>
-	/// Attack the space in front of the player.
-	/// </summary>
-	private void FurySwipe()
-	{
+    /// <summary>
+    /// Attack the space in front of the player.
+    /// </summary>
+    private void FurySwipe()
+    {
         if (!meleeReady)
-		{
+        {
             return;
-		}
+        }
         TransformAttack_SFX = GameObject.Find("SoulManager").GetComponent<AudioSource>();
         TransformAttack_SFX.clip = furySwipes_SFX;
         TransformAttack_SFX.Play();
@@ -138,6 +138,7 @@ public class scr_Brawler_Attack : MonoBehaviour {
             TransformAttack_SFX = GameObject.Find("DeckManager").GetComponent<AudioSource>();
             TransformAttack_SFX.clip = shoulderDash_SFX;
             TransformAttack_SFX.Play();
+
 
             //move any enemies out of the way
             Push();
@@ -219,7 +220,7 @@ public class scr_Brawler_Attack : MonoBehaviour {
 		{
 			return;
 		}
-        TransformAttack_SFX = GameObject.Find("DeckManager").GetComponent<AudioSource>();
+        TransformAttack_SFX = GameObject.Find("DeathSFXManager").GetComponent<AudioSource>();
         TransformAttack_SFX.clip = tankUp_SFX;
         TransformAttack_SFX.Play();
         playerEntity._health.shield += tankShieldGain;
@@ -244,7 +245,7 @@ public class scr_Brawler_Attack : MonoBehaviour {
 		{
 			return;
 		}
-        TransformAttack_SFX = GameObject.Find("DeckManager").GetComponent<AudioSource>();
+        TransformAttack_SFX = GameObject.Find("SoulManager").GetComponent<AudioSource>();
         TransformAttack_SFX.clip = heavySlam_SFX;
         TransformAttack_SFX.Play();
         //start a coroutine which hits a column every __ seconds

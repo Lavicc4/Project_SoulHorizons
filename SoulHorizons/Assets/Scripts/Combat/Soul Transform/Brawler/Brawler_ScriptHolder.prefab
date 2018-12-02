@@ -152,7 +152,7 @@ MonoBehaviour:
     type: 2}
   particle_furySwipe: {fileID: 1161724096288676, guid: 7919646b653c7fb4da3a671731d6bc5c,
     type: 2}
-  furySwipes_SFX: {fileID: 8300000, guid: 85403bd1bd721c14583714c57c65b5c8, type: 3}
-  shoulderDash_SFX: {fileID: 8300000, guid: 11ab92eb9ea4f4d4da9ba714ce96060b, type: 3}
+  furySwipes_SFX: {fileID: 8300000, guid: a625bdc5a013dc14caa64af6619699db, type: 3}
+  shoulderDash_SFX: {fileID: 8300000, guid: efc95deb145990649a395f6a03bfcb69, type: 3}
   tankUp_SFX: {fileID: 8300000, guid: ab860179d3ba16f48bf234a47330a69e, type: 3}
   heavySlam_SFX: {fileID: 8300000, guid: c5ca85d9af8a6e8418dcb8b46d80ee76, type: 3}
