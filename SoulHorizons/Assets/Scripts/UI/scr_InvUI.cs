@@ -60,7 +60,7 @@ public class scr_InvUI : MonoBehaviour {
                     }
                 }
                 if (index < 0) Debug.Log("CARD NOT FOUND");
-                cardUI[i].SetBackupName((scr_Inventory.cardInv[i].Value - scr_Inventory.deckList[scr_Inventory.deckIndex][index].Value).ToString()); //Set the card amount currently in inventory
+                cardUI[i].SetBackupName(scr_Inventory.deckList[scr_Inventory.deckIndex][index].Value.ToString() + "/" + scr_Inventory.cardInv[i].Value.ToString()); //Set the card amount currently in inventory
             }
             else
             {

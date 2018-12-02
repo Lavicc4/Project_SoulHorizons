@@ -198,6 +198,10 @@ public class scr_Entity : MonoBehaviour
     {
         deathManager.GetComponent<AudioSource>().clip = die_SFX;
         deathManager.GetComponent<AudioSource>().Play();
+        if (anim != null)
+        {
+            anim.SetBool("Dead", true);
+        }
         //Debug.Log("I AM DEAD");
         scr_Grid.GridController.SetTileOccupied(false, _gridPos.x, _gridPos.y, this);
         gameObject.SetActive(false); 

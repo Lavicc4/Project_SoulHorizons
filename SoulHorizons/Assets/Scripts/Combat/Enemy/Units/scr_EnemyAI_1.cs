@@ -28,6 +28,11 @@ public class scr_EnemyAI_1 : scr_EntityAI
     private bool completedTask = true;
     private bool broken = false; //This is to check if something has caused their AI to stop working 
 
+    public void Start()
+    {
+        anim = gameObject.GetComponentInChildren<Animator>();
+    }
+
     public override void Move()
     {
 
@@ -104,6 +109,7 @@ public class scr_EnemyAI_1 : scr_EntityAI
 
     void Attack1()
     {
+        anim.SetBool("Attack", true);
         //make sure we do a check condition for the attack : if(chargedAttack.CheckCondition(entity))
         scr_AttackController.attackController.AddNewAttack(attack1, entity._gridPos.x, entity._gridPos.y, entity);
         int index2 = Random.Range(0, attacks_SFX.Length);
@@ -113,6 +119,7 @@ public class scr_EnemyAI_1 : scr_EntityAI
     }
     void Attack2()
     {
+        anim.SetBool("Attack", true);
         scr_AttackController.attackController.AddNewAttack(chargedAttack, entity._gridPos.x, entity._gridPos.y, entity);
     }
 

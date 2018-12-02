@@ -56,4 +56,9 @@ public class scr_SceneManager : MonoBehaviour {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked; 
     }
+    public string ReturnSceneName()
+    {
+        Debug.Log(SceneManager.GetActiveScene().name);
+        return SceneManager.GetActiveScene().name;
+    }
 }

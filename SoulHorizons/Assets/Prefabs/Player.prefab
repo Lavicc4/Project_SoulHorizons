@@ -246,7 +246,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1546032312897718}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.3135557, y: -2.3610687, z: 0}
+  m_LocalPosition: {x: 1092.3823, y: 330.81482, z: 0}
   m_LocalScale: {x: 1.1254174, y: 1.1254174, z: 0}
   m_Children:
   - {fileID: 4138731860164270}
@@ -1156,6 +1156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entity: {fileID: 114787085351951448}
+  anim: {fileID: 0}
   movements_SFX:
   - {fileID: 8300000, guid: 40636dd6aad1f5d43a5a1b335b327688, type: 3}
   dashEffect: {fileID: 1732062955175564, guid: 8082eb11f4a30e447bd201f0ce0c8ade, type: 2}

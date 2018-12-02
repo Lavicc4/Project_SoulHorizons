@@ -30,6 +30,7 @@ public static class scr_Inventory{
     //ADDS CARD TO INVENTORY
     public static void addCard(scr_Card card, int quantity)
     {
+        Debug.Log("ADDING CARD");
         foreach(KeyValuePair<scr_Card, int> pair in cardInv)
         {
             if(pair.Key.cardName == card.cardName)

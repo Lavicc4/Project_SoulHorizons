@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -12,15 +13,17 @@ public class scr_statemanager : MonoBehaviour {
     public Text Shield;
     public Text EffectText;
     public Text StaminaText;
+    private int hp = 100;
     bool endCombat = false;
     bool showEffect = false;
     string EffectString;
     GameObject player;
     scr_Entity playerEntity;
     scr_PlayerMovement playerMovement;
+
     // Use this for initialization
     void Start () {
-        rewardPanel.enabled = false; 
+        //rewardPanel.enabled = false; 
         player = GameObject.FindGameObjectWithTag("Player");
         EffectText.enabled = false;
         if (player != null)
@@ -28,7 +31,15 @@ public class scr_statemanager : MonoBehaviour {
             playerEntity = player.GetComponent<scr_Entity>();
             playerMovement = player.GetComponent<scr_PlayerMovement>();
             //load the health from the GameState
-            int hp = SaveLoad.currentGame.GetPlayerHealth();
+
+            try
+            {
+                hp = SaveLoad.currentGame.GetPlayerHealth();
+            }
+            catch (NullReferenceException e)
+            {
+                Debug.Log("This is a " + e);
+            }
             if (hp > 0) //make sure the health has been set previously
             {
                 playerEntity._health.hp = hp;
@@ -57,15 +68,22 @@ public class scr_statemanager : MonoBehaviour {
             //Debug.Log("NO ENEMIES");
             //scr_InputManager.disableInput = true;
             RewardMessage.enabled = true;
-            rewardPanel.enabled = true; 
+            //rewardPanel.enabled = true; 
             endCombat = true;
 
             //GIVE REWARDS
             scr_Inventory.dustNum += 50;
 
             //save health
-            SaveLoad.currentGame.SetPlayerHealth(playerEntity._health.hp);
-            Debug.Log("DUST AMOUNT: " + SaveLoad.currentGame.GetDustAmount());
+            try
+            {
+                SaveLoad.currentGame.SetPlayerHealth(playerEntity._health.hp);
+            }
+            catch (NullReferenceException e)
+            {
+                Debug.Log("This is a " + e);
+            }
+            //Debug.Log("DUST AMOUNT: " + SaveLoad.currentGame.GetDustAmount());
         }
         if (endCombat)
         {
@@ -92,10 +110,10 @@ public class scr_statemanager : MonoBehaviour {
         StaminaText.text = "Stamina: " + playerMovement.GetStaminaCharges();
         if(playerEntity._health.hp <= 0)
         {
-            scr_InputManager.disableInput = true;
-            RewardMessage.text = "Oh no you died! Press V to return to the Local Map";
+            //scr_InputManager.disableInput = true;
+            //RewardMessage.text = "Oh no you died! Press V to return to the Local Map";
             RewardMessage.enabled = true;
-            rewardPanel.enabled = true; 
+            //rewardPanel.enabled = true; 
             endCombat = true;
         }
     }

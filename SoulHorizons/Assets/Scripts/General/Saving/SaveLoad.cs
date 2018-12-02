@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
+using System;
 //Colin 9/15/18
 
 public static class SaveLoad {
 
     public static GameState[] savedGames = new GameState[3];
     public static GameState currentGame;
+
+    
 
     /// <summary>
     /// Create a new save file. Limit how many they can have?
@@ -35,12 +38,25 @@ public static class SaveLoad {
             }
         }
         Save();
+        scr_EncounterController.globalEncounterController.OnNewGame(); 
 
     }
 
     public static void Save()
     {
-        currentGame.SaveInventory();
+        try
+        {
+            currentGame.SaveInventory();
+
+        }
+        catch (NullReferenceException e)
+        {
+            Debug.Log("This is a " + e);
+        }
+
+
+        
+        savedGames[0] = currentGame; 
         //TODO:Need to add GameState to list?
         BinaryFormatter bf = new BinaryFormatter();
         //Application.persistentDataPath is a string, so if you wanted you can put that into debug.log if you want to know where save games are located
@@ -54,6 +70,7 @@ public static class SaveLoad {
     /// </summary>
     public static void Load()
     {
+        Debug.Log("Load");
         if (File.Exists(Application.persistentDataPath + "/savedGames.gd"))
         {
             BinaryFormatter bf = new BinaryFormatter();
@@ -75,6 +92,7 @@ public static class SaveLoad {
                 }
             }
 
+
         }
         //else no save file exists
         Debug.Log("No save file exists");
@@ -88,3 +106,5 @@ public static class SaveLoad {
         }
     }
 }
+
+

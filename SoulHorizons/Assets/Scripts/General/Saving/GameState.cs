@@ -16,6 +16,7 @@ public class GameState {
     List<RegionState> regions = new List<RegionState>();
     public bool lastGamePlayed;
 
+
     public GameState()
     {
         //creating a new save file; initialize things as needed

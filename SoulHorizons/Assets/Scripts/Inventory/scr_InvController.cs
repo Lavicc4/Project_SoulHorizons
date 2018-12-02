@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class scr_InvController : MonoBehaviour {
@@ -8,18 +9,20 @@ public class scr_InvController : MonoBehaviour {
     public static scr_InvController invController;
     public TextAsset deckList;
 
+
     private void Awake()
     {
         if (invController != null && invController != this)
         {
             Destroy(gameObject);
         }
-        else
+        else if(invController == null)
         {
             invController = this;
             DontDestroyOnLoad(this.gameObject);
+            LoadInv();
         }
-        LoadInv();
+      
     }
     // Use this for initialization
     void Start () {
@@ -33,18 +36,25 @@ public class scr_InvController : MonoBehaviour {
     void LoadInv()
     {
 
-        Debug.Log("Loading");
+        Debug.Log("Loading Inventory");
         //LOAD CARD LIST
-        foreach (KeyValuePair<string, int> pair in SaveLoad.currentGame.GetCardList())
+        try
         {
-            //attempt to retrieve the object reference from cardMapping
-            scr_Card nextCard = cardMapping.ConvertNameToCard(pair.Key);
-            if (nextCard == null)
+            foreach (KeyValuePair<string, int> pair in SaveLoad.currentGame.GetCardList())
             {
-                continue;
+                //attempt to retrieve the object reference from cardMapping
+                scr_Card nextCard = cardMapping.ConvertNameToCard(pair.Key);
+                if (nextCard == null)
+                {
+                    continue;
+                }
+                //add the card and quantity to an inventory card list
+                scr_Inventory.addCard(nextCard, pair.Value);
             }
-            //add the card and quantity to an inventory card list
-            scr_Inventory.addCard(nextCard, pair.Value);
+        }
+        catch (NullReferenceException e)
+        {
+            Debug.Log("This is a " + e);
         }
 
         //MAKES A NEW DECK IF NEW GAME

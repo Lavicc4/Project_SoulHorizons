@@ -14,8 +14,6 @@ public class Encounter : ScriptableObject {
     [Header("Grid Size")]
     public int xWidth = 3;
     public int yHeight = 3;
-    public bool completed;
-    public bool active;
     [Header("Terrain")]
     public string defaultTerrain;
     public List<Terrain_Entry> tiles = new List<Terrain_Entry>();

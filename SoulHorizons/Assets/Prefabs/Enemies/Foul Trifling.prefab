@@ -36,6 +36,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4710732812831620}
   - component: {fileID: 212410729078944208}
+  - component: {fileID: 95383577856842134}
+  - component: {fileID: 114046856536850596}
   m_Layer: 0
   m_Name: SpriteRenderer
   m_TagString: Untagged
@@ -134,7 +136,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1116592492456940}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.064618, y: -4.4, z: 0}
+  m_LocalPosition: {x: -0.060730502, y: -1.3520576, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0}
   m_Children:
   - {fileID: 4710732812831620}
@@ -604,6 +606,36 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &95383577856842134
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1099033517750084}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e328e3c204f169946952453298224655, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114046856536850596
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1099033517750084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b30cb5074d4cadc40b8b84e8568d4dcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 95383577856842134}
 --- !u!114 &114373111611885714
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -616,6 +648,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entity: {fileID: 114725702907161856}
+  anim: {fileID: 0}
   basicAttackChance: 55
   chargeAttackChance: 10
   chargeTimeUpper: 2
@@ -679,7 +712,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 47b6ba2ecd0b41046b04e996d8152611, type: 3}
   - {fileID: 8300000, guid: 0b146d0b97f1b1c4cbf907bbf9e83713, type: 3}
   die_SFX: {fileID: 8300000, guid: a3b03b2ed4235ae41bded89f6d7ca807, type: 3}
-  anim: {fileID: 0}
+  anim: {fileID: 95383577856842134}
   deathManager: {fileID: 1576292096190378, guid: 2e7f05e13f7325a4f9885b66700d913a,
     type: 2}
 --- !u!212 &212410729078944208
