@@ -40,6 +40,7 @@ public class scr_Pause : MonoBehaviour {
         //If you hit escape, it pauses
         if (paused)
         {
+            Debug.Log("You've paused the game");
             //Show pause panel
             Time.timeScale = 0f;
             scr_InputManager.disableInput = true;
@@ -55,9 +56,15 @@ public class scr_Pause : MonoBehaviour {
     }
 
     //Get paused value
-    public bool getPaused()
+    public static bool getPaused()
     {
         return paused;
+    }
+
+    //Set paused value
+    public static void setPaused(bool value)
+    {
+        paused = value;
     }
 
     //Toggles pause panel
