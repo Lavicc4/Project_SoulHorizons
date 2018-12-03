@@ -16,7 +16,7 @@ public class scr_Pause : MonoBehaviour {
 
     private void Start()
     {
-        //pausePanel = GameObject.FindWithTag("PausePanel");
+       
     }
 
     void Update () {
