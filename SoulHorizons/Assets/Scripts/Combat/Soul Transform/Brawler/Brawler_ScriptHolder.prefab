@@ -55,3 +55,4 @@ MonoBehaviour:
     type: 2}
   particle_furySwipe: {fileID: 1161724096288676, guid: 7919646b653c7fb4da3a671731d6bc5c,
     type: 2}
+  uiPrefab: {fileID: 1503525539069684, guid: e933f88d59ccd4f47a36db3118f5ad1a, type: 2}

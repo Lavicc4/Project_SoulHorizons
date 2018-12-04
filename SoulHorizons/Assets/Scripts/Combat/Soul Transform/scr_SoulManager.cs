@@ -17,7 +17,7 @@ public class scr_SoulManager : MonoBehaviour {
     public scr_DeckManager deckManager; //a reference to the deck manager. This is needed to disable the deck when a transform is active
     Animator anim; //animator to control soul transform animations
 
-    public GameObject transformAbilityUI;
+    //public GameObject transformAbilityUI;
 
     private IDictionary<Element, int> soulCharges = new Dictionary<Element, int>(); //the charges
     private IDictionary<Element, Button> elementButtons = new Dictionary<Element, Button>(); //a list of the buttons in terms of their element; this is so we can update them with the charge
@@ -158,19 +158,19 @@ public class scr_SoulManager : MonoBehaviour {
     /// <param name="soul"></param>
     private void Transformation(SoulTransform soul)
     {
-        anim.SetBool("BearTransform", true);
         //TODO: Should enable/disable the buttons based on this validation, so this method is only called under valid circumstances
         if (transformed || soulCharges[soul.element] < 100)
         {
             Debug.Log("Did not meet transform conditions");
             return; //don't transform if the player is already transformed or the element is not charged
         }
+        anim.SetBool("BearTransform", true);
 
         //disable the deck system
         deckManager.Disable(true);
 
         //Enable Transform Ability UI
-        transformAbilityUI.SetActive(true);
+        //transformAbilityUI.SetActive(true);
 
         //reduce the charge
         soulCharges[soul.element] -= 50; //reduce to 50%
@@ -217,7 +217,7 @@ public class scr_SoulManager : MonoBehaviour {
         anim.SetBool("BearTransform", false);
 
         //Disable Transform Ability UI
-        transformAbilityUI.SetActive(false);
+        //transformAbilityUI.SetActive(false);
 
         //enable the deck system
         deckManager.Disable(false);

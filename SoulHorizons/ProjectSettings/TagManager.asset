@@ -11,6 +11,7 @@ TagManager:
   - PausePanel
   - CooldownOverlay
   - EncounterCanvas
+  - TransformUI
   layers:
   - Default
   - TransparentFX
