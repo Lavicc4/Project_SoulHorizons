@@ -19,6 +19,7 @@ public class scr_Brawler_Attack : MonoBehaviour {
     private int meleeDamage = 8;
 	private float meleeCooldown = 0.4f; //have these on separate cooldowns, so you can melee attack with the projectile in motion
 	private bool meleeReady = true;
+    private bool leftSlash = false;     //Used to alternate slahes
 
 	/*Shoulder Dash */
 	private int shoulderDamage = 15;
@@ -108,8 +109,17 @@ public class scr_Brawler_Attack : MonoBehaviour {
         TransformAttack_SFX.Play();
 
         //play any effects
-        Instantiate(particle_furySwipe, scr_Grid.GridController.GetWorldLocation(playerEntity._gridPos.x + 1, playerEntity._gridPos.y), particle_furySwipe.transform.rotation);
-        scr_Grid.GridController.BriefActivateTile(playerEntity._gridPos.x + 1, playerEntity._gridPos.y, 0.1f);
+        if (leftSlash)
+        {
+            Instantiate(particle_furySwipe, scr_Grid.GridController.GetWorldLocation(playerEntity._gridPos.x + 1, playerEntity._gridPos.y), particle_furySwipe.transform.rotation);
+            scr_Grid.GridController.BriefActivateTile(playerEntity._gridPos.x + 1, playerEntity._gridPos.y, 0.1f);
+            leftSlash = !leftSlash;
+        }
+        else
+        {
+            Instantiate(particle_furySwipe, scr_Grid.GridController.GetWorldLocation(playerEntity._gridPos.x + 1, playerEntity._gridPos.y), particle_furySwipe.transform.rotation);
+            scr_Grid.GridController.BriefActivateTile(playerEntity._gridPos.x + 1, playerEntity._gridPos.y, 0.1f);
+        }
 
 		//check the grid position one over; if it contains an attackable entity, deal damage; note this will return null if the player is at the far right of the grid
 		scr_Entity target = scr_Grid.GridController.GetEntityAtPosition(playerEntity._gridPos.x + 1, playerEntity._gridPos.y);
