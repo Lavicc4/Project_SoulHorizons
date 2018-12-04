@@ -220,7 +220,7 @@ public class scr_Brawler_Attack : MonoBehaviour {
 		{
 			return;
 		}
-        TransformAttack_SFX = GameObject.Find("DeathSFXManager").GetComponent<AudioSource>();
+        TransformAttack_SFX = GameObject.Find("SoulManager").GetComponent<AudioSource>();
         TransformAttack_SFX.clip = tankUp_SFX;
         TransformAttack_SFX.Play();
         playerEntity._health.shield += tankShieldGain;

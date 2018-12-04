@@ -616,6 +616,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entity: {fileID: 114725702907161856}
+  anim: {fileID: 0}
   decisionTime: 3
   decisionTimeLower: 1
   burrowedTime: 1.5
@@ -655,9 +656,8 @@ MonoBehaviour:
   invulnTime: 0
   hurts_SFX:
   - {fileID: 8300000, guid: 338c597140c217c42a56f6133edc5605, type: 3}
-  - {fileID: 8300000, guid: 330f9a63efbc6514aa5960292d26bd22, type: 3}
-  - {fileID: 8300000, guid: b27eec3da95423441b178b84d1096006, type: 3}
-  die_SFX: {fileID: 8300000, guid: b27eec3da95423441b178b84d1096006, type: 3}
+  - {fileID: 8300000, guid: 26fb9ff7413851e4d946785fba0d13c3, type: 3}
+  die_SFX: {fileID: 8300000, guid: 26fb9ff7413851e4d946785fba0d13c3, type: 3}
   anim: {fileID: 0}
   deathManager: {fileID: 1576292096190378, guid: 2e7f05e13f7325a4f9885b66700d913a,
     type: 2}

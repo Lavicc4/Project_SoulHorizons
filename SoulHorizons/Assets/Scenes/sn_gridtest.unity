@@ -3881,13 +3881,13 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1276222675584692, guid: 4d8938461b55cee448d03f5ffbed4b5c, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 82602084663091530, guid: 4d8938461b55cee448d03f5ffbed4b5c,
         type: 2}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 4be9fb0d8bfe5cf4b8354d3ac213344d, type: 3}
+      objectReference: {fileID: 8300000, guid: 31afd665cd225c542b113bc0df609a2c, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d8938461b55cee448d03f5ffbed4b5c, type: 2}
   m_IsPrefabAsset: 0

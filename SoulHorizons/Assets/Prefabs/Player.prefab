@@ -798,7 +798,8 @@ AudioSource:
   m_GameObject: {fileID: 1546032312897718}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243216082829990118, guid: 7117f9058e0f8104c8d7218cd2b06d74,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -1158,7 +1159,7 @@ MonoBehaviour:
   entity: {fileID: 114787085351951448}
   anim: {fileID: 0}
   movements_SFX:
-  - {fileID: 8300000, guid: 40636dd6aad1f5d43a5a1b335b327688, type: 3}
+  - {fileID: 8300000, guid: 601da0aeeb76e554cb6695762e85361a, type: 3}
   dashEffect: {fileID: 1732062955175564, guid: 8082eb11f4a30e447bd201f0ce0c8ade, type: 2}
   staminaCharges: 2
   staminaRechargeTime: 1.5

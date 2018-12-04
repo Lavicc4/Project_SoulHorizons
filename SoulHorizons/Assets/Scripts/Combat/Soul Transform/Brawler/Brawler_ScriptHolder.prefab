@@ -154,5 +154,5 @@ MonoBehaviour:
     type: 2}
   furySwipes_SFX: {fileID: 8300000, guid: a625bdc5a013dc14caa64af6619699db, type: 3}
   shoulderDash_SFX: {fileID: 8300000, guid: efc95deb145990649a395f6a03bfcb69, type: 3}
-  tankUp_SFX: {fileID: 8300000, guid: ab860179d3ba16f48bf234a47330a69e, type: 3}
+  tankUp_SFX: {fileID: 0}
   heavySlam_SFX: {fileID: 8300000, guid: c5ca85d9af8a6e8418dcb8b46d80ee76, type: 3}
