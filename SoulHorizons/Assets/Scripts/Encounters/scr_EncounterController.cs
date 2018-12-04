@@ -10,9 +10,10 @@ using UnityEngine.EventSystems;
 
 //Cameron Made this 
 
-public class scr_EncounterController : MonoBehaviour {
+public class scr_EncounterController : MonoBehaviour
+{
 
-    public static scr_EncounterController globalEncounterController; 
+    public static scr_EncounterController globalEncounterController;
     public scr_SceneManager sceneManager;
 
     public EncounterSave[] encounterArray = new EncounterSave[10];
@@ -20,18 +21,18 @@ public class scr_EncounterController : MonoBehaviour {
 
 
 
-    
+
     public int totalButtons;
     public Button[] buttons;
 
-    public GameObject buttonPrefab; 
+    public GameObject buttonPrefab;
 
-    
+
     public Encounter[] tier1Encounters = new Encounter[1];
     public Encounter[] tier2Encounters = new Encounter[1];
     public Encounter[] tier3Encounters = new Encounter[1];
-    public int currentEncounterIndex; 
-   
+    public int currentEncounterIndex;
+
     void OnSceneChange(Scene _scene, LoadSceneMode _mode)
     {
         if (_scene.name == "sn_LocalMap")
@@ -48,7 +49,7 @@ public class scr_EncounterController : MonoBehaviour {
                 Save();
             }
         }
-    }   
+    }
 
     public void OnNewGame()
     {
@@ -57,21 +58,22 @@ public class scr_EncounterController : MonoBehaviour {
         Save();
     }
 
-    public void SetEncounterComplete(int _index,bool _completionState)
+    public void SetEncounterComplete(int _index, bool _completionState)
     {
         encounterArray[_index].completed = _completionState;
-        Save(); 
+        Save();
     }
     public void SetCurrentEncounterComplete()
     {
         encounterArray[currentEncounterIndex].completed = true;
-        Save(); 
+        Save();
     }
- 
-    
-	void Start () {
 
-        
+
+    void Start()
+    {
+
+
         if (globalEncounterController != null && globalEncounterController != this)
         {
             Destroy(gameObject);
@@ -84,7 +86,7 @@ public class scr_EncounterController : MonoBehaviour {
 
         SceneManager.sceneLoaded += OnSceneChange;
 
-        
+
 
 
 
@@ -104,13 +106,14 @@ public class scr_EncounterController : MonoBehaviour {
         */
 
     }
-	
 
-	void Update () {
 
-        
-      
-	}
+    void Update()
+    {
+
+
+
+    }
 
 
 
@@ -120,37 +123,37 @@ public class scr_EncounterController : MonoBehaviour {
         //Here is where we will put all of our info about the encounter
         //SceneManager.LoadScene or whatever (encounterName.Scene); 
         string nameOfEncounter = encounterName.name;
-        Debug.Log(nameOfEncounter);
         scr_SceneManager.globalSceneManager.currentEncounter = encounterName;
-        scr_SceneManager.globalSceneManager.ChangeScene(encounterName.sceneName);  
+        scr_SceneManager.globalSceneManager.currentEncounterNumber = index;
+        scr_SceneManager.globalSceneManager.ChangeScene(encounterName.sceneName);
     }
 
     public void BuildMap()
     {
-        List<Encounter> selectedEncounters = new List<Encounter>(); 
+        List<Encounter> selectedEncounters = new List<Encounter>();
         for (int i = 0; i < totalButtons; i++)
         {
-            if(i < 1)
+            if (i < 1)
             {
-                encounterArray[i].tier = 1; 
+                encounterArray[i].tier = 1;
             }
-            else if (i >= 1  && i <= 7)
+            else if (i >= 1 && i <= 7)
             {
                 encounterArray[i].tier = 2;
             }
-            else if(i > 7)
+            else if (i > 7)
             {
                 encounterArray[i].tier = 3;
             }
-                
+
         }
 
 
         for (int i = 0; i < buttons.Length; i++)
         {
             bool _goodPick = false;
-            int _tries = 0; 
-            int num = 0; 
+            int _tries = 0;
+            int num = 0;
             //need to make sure we dont pick the same Encounter 2x. 
             if (encounterArray[i].tier == 1)
             {
@@ -181,7 +184,7 @@ public class scr_EncounterController : MonoBehaviour {
             }
 
         }
-        
+
 
 
 
@@ -197,8 +200,9 @@ public class scr_EncounterController : MonoBehaviour {
         {
             encounterArray[i].encounterNumber = _encounters[i].encounterNumber;
             encounterArray[i].tier = _encounters[i].tier;
+            encounterArray[i].completed = _encounters[i].completed;
         }
-        GenerateButtons(); 
+        GenerateButtons();
 
     }
 
@@ -209,9 +213,10 @@ public class scr_EncounterController : MonoBehaviour {
 
         for (int i = 0; i < totalButtons; i++)
         {
-         if(encounterCanvas.gameObject != null)
+            if (encounterCanvas.gameObject != null)
             {
                 GameObject newButton = Instantiate(buttonPrefab);
+                newButton.GetComponent<scr_EncounterButtons>().GatherInfo(encounterArray[i].encounterNumber, encounterArray[i].tier, encounterArray[i].completed);
                 newButton.transform.SetParent(encounterCanvas.GetComponent<RectTransform>());
                 Encounter newEncounter = new Encounter();
                 if (encounterArray[i].tier == 1)
@@ -230,12 +235,15 @@ public class scr_EncounterController : MonoBehaviour {
                 int temp = i;
                 newButton.GetComponent<Button>().onClick.AddListener(delegate { GoToEncounter(newEncounter, temp); });
                 buttons[i] = newButton.GetComponent<Button>();
-            }   
-            
+
+            }
+
 
         }
         GameObject _eventSystem = GameObject.Find("/EventSystem");
         _eventSystem.GetComponent<EventSystem>().firstSelectedGameObject = buttons[0].gameObject;
+
+
     }
 
 
@@ -246,7 +254,7 @@ public class scr_EncounterController : MonoBehaviour {
         data.encounters = new EncounterSave[totalButtons];
         for (int i = 0; i < totalButtons; i++)
         {
-            data.encounters[i] = new EncounterSave(); 
+            data.encounters[i] = new EncounterSave();
             data.encounters[i].Clone(encounterArray[i]);
         }
         BinaryFormatter bf = new BinaryFormatter();
@@ -262,21 +270,21 @@ public class scr_EncounterController : MonoBehaviour {
         {
             BinaryFormatter bf = new BinaryFormatter();
             FileStream file = File.Open(Application.persistentDataPath + "/encounterShit.json", FileMode.Open);
-            EncounterData data = new EncounterData(); 
+            EncounterData data = new EncounterData();
             data = (EncounterData)bf.Deserialize(file);
             file.Close();
             totalButtons = data.encounters.Length;
             encounterArray = new EncounterSave[data.encounters.Length];
             for (int i = 0; i < totalButtons; i++)
             {
-                encounterArray[i] = new EncounterSave(); 
+                encounterArray[i] = new EncounterSave();
                 encounterArray[i].Clone(data.encounters[i]);
             }
-            return true; 
+            return true;
         }
         else
         {
-            return false; 
+            return false;
         }
     }
 
@@ -326,18 +334,19 @@ public class EncounterSave
 {
     public int tier;
     public int encounterNumber;
-    public bool completed; 
+    public bool completed;
+
     public EncounterSave()
     {
-        completed = false; 
-        tier = 0; 
-        encounterNumber = 0; 
+        completed = false;
+        tier = 0;
+        encounterNumber = 0;
     }
     public void Clone(EncounterSave _encounter)
     {
-        completed = _encounter.completed; 
+        completed = _encounter.completed;
         tier = _encounter.tier;
-        encounterNumber = _encounter.encounterNumber; 
+        encounterNumber = _encounter.encounterNumber;
     }
 
 
@@ -346,9 +355,10 @@ public class EncounterSave
 [System.Serializable]
 public class EncounterData
 {
-    public EncounterSave[] encounters; 
+    public EncounterSave[] encounters;
 
 
 
 }
+
 
