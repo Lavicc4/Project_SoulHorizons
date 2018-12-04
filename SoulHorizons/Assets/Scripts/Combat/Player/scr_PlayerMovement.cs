@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 [RequireComponent(typeof(AudioSource))]
 
 public class scr_PlayerMovement : scr_EntityAI
@@ -11,7 +12,13 @@ public class scr_PlayerMovement : scr_EntityAI
     public AudioClip[] movements_SFX;
     public GameObject dashEffect; //the particle effect that plays when the player dashes
     private AudioClip movement_SFX;
+    public GameObject dashMeter;
+    public GameObject dashIcon;
+    public Sprite dashOn;
+    public Sprite dashOff;
+    List<GameObject> dashes = new List<GameObject>(); //array holding dash icons to update
 
+    [SerializeField] private int staminaChargesMax = 2;
     [SerializeField] private int staminaCharges = 2; //the number of times that the player can dash without recharging
     [SerializeField] private float staminaRechargeTime = 1.5f; //how long it takes to recharge 1 stamina
 
@@ -31,18 +38,36 @@ public class scr_PlayerMovement : scr_EntityAI
     public override void UpdateAI()
     {
         MovementCheck();
-        
+        UpdateDash();
     }
     public override void Die()
     {
         //throw new System.NotImplementedException();
     }
 
-
+    public void UpdateDash()
+    {
+        for(int i = 0; i < staminaChargesMax; i++)
+        {
+            dashes[i].GetComponent<SpriteRenderer>().sprite = dashOn;
+        }
+        for(int i = staminaChargesMax-1; i > staminaCharges-1; i--)
+        {
+            dashes[i].GetComponent<SpriteRenderer>().sprite = dashOff;
+        }
+    }
     void Start()
     {
-
-
+        float tempX = dashMeter.transform.position.x;
+        float tempY = dashMeter.transform.position.y;
+        for (int i = 0; i < staminaChargesMax; i++)
+        {
+            Debug.Log("Making a dash: " + i);
+            GameObject dashSprite = Instantiate(dashIcon, new Vector3(tempX, tempY, 0), Quaternion.identity);
+            dashSprite.transform.SetParent(dashMeter.transform);
+            dashes.Add(dashSprite);
+            tempY -= .1f;
+        }
     }
 
     int inputX;
