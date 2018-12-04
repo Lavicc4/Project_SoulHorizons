@@ -155,5 +155,5 @@ MonoBehaviour:
   uiPrefab: {fileID: 1503525539069684, guid: e933f88d59ccd4f47a36db3118f5ad1a, type: 2}
   furySwipes_SFX: {fileID: 8300000, guid: a625bdc5a013dc14caa64af6619699db, type: 3}
   shoulderDash_SFX: {fileID: 8300000, guid: efc95deb145990649a395f6a03bfcb69, type: 3}
-  tankUp_SFX: {fileID: 0}
+  tankUp_SFX: {fileID: 8300000, guid: 0fa904e78be69f14bbaa9a25e09b3cb2, type: 3}
   heavySlam_SFX: {fileID: 8300000, guid: c5ca85d9af8a6e8418dcb8b46d80ee76, type: 3}
