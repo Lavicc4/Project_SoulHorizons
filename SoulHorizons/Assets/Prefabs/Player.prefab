@@ -111,6 +111,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1497959155307814
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4175381813954620}
+  m_Layer: 0
+  m_Name: DashBar
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1546032312897718
 GameObject:
   m_ObjectHideFlags: 0
@@ -240,7 +255,7 @@ Transform:
   m_LocalScale: {x: 0.989, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4270750817129084}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4138731860164270
 Transform:
@@ -253,7 +268,7 @@ Transform:
   m_LocalScale: {x: 2.7193599, y: 2.7193599, z: 2}
   m_Children: []
   m_Father: {fileID: 4270750817129084}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4148210152047172
 Transform:
@@ -269,6 +284,19 @@ Transform:
   m_Father: {fileID: 4474598973650892}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4175381813954620
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1497959155307814}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.334, y: 1.06, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4270750817129084}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4270750817129084
 Transform:
   m_ObjectHideFlags: 1
@@ -276,9 +304,10 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1546032312897718}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1319.7292, y: 596.2386, z: 0}
+  m_LocalPosition: {x: 1295.1598, y: 700.2508, z: 0}
   m_LocalScale: {x: 1.1254174, y: 1.1254174, z: 0}
   m_Children:
+  - {fileID: 4175381813954620}
   - {fileID: 4138731860164270}
   - {fileID: 4048943330831102}
   - {fileID: 4474598973650892}
@@ -300,7 +329,7 @@ Transform:
   - {fileID: 4551538285530930}
   - {fileID: 224411997450310054}
   m_Father: {fileID: 4270750817129084}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4551538285530930
 Transform:
@@ -1210,6 +1239,11 @@ MonoBehaviour:
   movements_SFX:
   - {fileID: 8300000, guid: 601da0aeeb76e554cb6695762e85361a, type: 3}
   dashEffect: {fileID: 1732062955175564, guid: 8082eb11f4a30e447bd201f0ce0c8ade, type: 2}
+  dashMeter: {fileID: 1497959155307814}
+  dashIcon: {fileID: 1884565677383304, guid: 49b395e0c40117748b2175a1081b6b36, type: 2}
+  dashOn: {fileID: 21300000, guid: b3779f9011fba614e8d45f970f06acb3, type: 3}
+  dashOff: {fileID: 21300000, guid: c049e3644d5fe7a4b87ffc7c38902adc, type: 3}
+  staminaChargesMax: 2
   staminaCharges: 2
   staminaRechargeTime: 1.5
 --- !u!114 &114627260013859230
