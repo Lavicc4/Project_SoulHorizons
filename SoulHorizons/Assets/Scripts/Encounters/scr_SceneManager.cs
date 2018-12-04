@@ -8,7 +8,7 @@ public class scr_SceneManager : MonoBehaviour {
     public Encounter currentEncounter;
     public static scr_SceneManager globalSceneManager;
     public int currentEncounterNumber;
-
+    public static bool canSwitch = true;
 	
 	void Start () {
 
@@ -31,7 +31,7 @@ public class scr_SceneManager : MonoBehaviour {
 	}
 
 	public void ChangeScene(string sceneName){
-		SceneManager.LoadScene (sceneName);
+		if(canSwitch)SceneManager.LoadScene (sceneName);
 	}
 
     public void EnableSettings()

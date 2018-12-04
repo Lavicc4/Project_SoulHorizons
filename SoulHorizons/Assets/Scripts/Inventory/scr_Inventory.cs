@@ -126,4 +126,15 @@ public static class scr_Inventory{
         return -1;
     }
  
+    public static int getDeckSize()
+    {
+        int deckSize = 0;
+        foreach (KeyValuePair<string, int> pair in deckList[deckIndex])
+        {
+            deckSize += pair.Value;
+        }
+        return deckSize;
+
+    }
+
 }
