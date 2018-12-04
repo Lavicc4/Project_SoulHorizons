@@ -38,6 +38,9 @@ MonoBehaviour:
       type: 2}
     x: 3
     y: 1
+  mouse: 2
+  mush: 0
+  archer: 0
   territoryColumn:
   - territoryRow:
     - name: 0

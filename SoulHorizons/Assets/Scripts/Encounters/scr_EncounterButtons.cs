@@ -13,15 +13,28 @@ public class scr_EncounterButtons : MonoBehaviour
     public bool complete = false;
     public bool locked;
     public GameObject nextEncounter;
-    public Image infoPanel; 
+    public Image infoPanel;
+
+
+    private int mouseNum;
+    private int mushNum;
+    private int archerNum; 
+
+    public Text mouseText;
+    public Text mushText;
+    public Text archerText; 
 
     private GameObject eventSystem; 
 
 
     void Start()
     {
-        infoPanel.enabled = false; 
-        eventSystem = GameObject.Find("/EventSystem"); 
+        infoPanel.enabled = false;
+        Active(false); 
+        eventSystem = GameObject.Find("/EventSystem");
+        mouseText.text = "x " + mouseNum;
+        mushText.text = "x " + mushNum;
+        archerText.text = "x " + archerNum;
     }
 
 
@@ -42,12 +55,14 @@ public class scr_EncounterButtons : MonoBehaviour
         
         if(eventSystem.GetComponent<EventSystem>().currentSelectedGameObject == this.gameObject)
         {
-            infoPanel.enabled = true; 
+            infoPanel.enabled = true;
+            Active(true); 
 
         }
         else
         {
-            infoPanel.enabled = false;         
+            infoPanel.enabled = false;
+            Active(false); 
         }
         
 
@@ -64,5 +79,19 @@ public class scr_EncounterButtons : MonoBehaviour
         encounterNumber = _encounterNumber;
         tier = _tier;
         complete = _complete;
+    }
+
+    public void GatherEnemyInfo(int mouse, int mush, int archer)
+    {
+        mouseNum = mouse;
+        mushNum = mush;
+        archerNum = archer; 
+    }
+
+    public void Active(bool _active)
+    {
+        infoPanel.transform.GetChild(0).gameObject.SetActive(_active);
+        infoPanel.transform.GetChild(1).gameObject.SetActive(_active);
+        infoPanel.transform.GetChild(2).gameObject.SetActive(_active);
     }
 }

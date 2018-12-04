@@ -220,6 +220,7 @@ public class scr_EncounterController : MonoBehaviour
                 {
                     GameObject newButton = Instantiate(buttonPrefab);
                     newButton.GetComponent<scr_EncounterButtons>().GatherInfo(encounterArray[i].encounterNumber, encounterArray[i].tier, encounterArray[i].completed);
+                    
                     newButton.transform.SetParent(encounterCanvas.GetComponent<RectTransform>());
                     Encounter newEncounter = new Encounter();
                     if (encounterArray[i].tier == 1)
@@ -236,6 +237,7 @@ public class scr_EncounterController : MonoBehaviour
                     }
                     //DO IT HERE COLOR/COMPLETIONOVERLAY/ETC 
                     int temp = i;
+                    newButton.GetComponent<scr_EncounterButtons>().GatherEnemyInfo(newEncounter.mouse,newEncounter.mush,newEncounter.archer);
                     newButton.GetComponent<Button>().onClick.AddListener(delegate { GoToEncounter(newEncounter, temp); });
                     buttons[i] = newButton.GetComponent<Button>();
 

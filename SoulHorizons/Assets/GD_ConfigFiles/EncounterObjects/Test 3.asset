@@ -15,8 +15,6 @@ MonoBehaviour:
   sceneName: sn_GridTest
   xWidth: 6
   yHeight: 3
-  completed: 0
-  active: 0
   defaultTerrain: 
   tiles: []
   entities:
@@ -36,6 +34,9 @@ MonoBehaviour:
       type: 2}
     x: 4
     y: 1
+  mouse: 0
+  mush: 1
+  archer: 2
   territoryColumn:
   - territoryRow:
     - name: 0

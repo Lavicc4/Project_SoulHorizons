@@ -18,12 +18,15 @@ public class Encounter : ScriptableObject {
     public string defaultTerrain;
     public List<Terrain_Entry> tiles = new List<Terrain_Entry>();
     [Header("Assets")]
-    public EntitySpawnLocation[] entities; 
+    public EntitySpawnLocation[] entities;
+    public int mouse;
+    public int mush;
+    public int archer;
 
     [Header("Territory")]
     public TerritoryRow[] territoryColumn;
 
-    
+
 
 
     /*
