@@ -7,6 +7,9 @@ public class scr_Brawler_Attack : MonoBehaviour {
 	//--Art assets--
 	public GameObject particle_heavySlam;	
 	public GameObject particle_furySwipe;
+	public GameObject uiPrefab; //a reference to the prefab to be created
+	private scr_Transform_BearUI bearUI; //a reference to the script on the prefab after it is created
+
 	private float swipe_yOffset = 0.2f; //an offset to move the effect higher
 	
 	//Have a general cooldown to check in Update, then specific attack cooldowns depending on what the attack does?
@@ -53,8 +56,23 @@ public class scr_Brawler_Attack : MonoBehaviour {
 
 	void Start () {
         Debug.Log("Brawler attack added");
+		//Create the UI
+		GameObject location = GameObject.FindGameObjectWithTag("TransformUI"); //find the transformation UI parent object
+		bearUI =  Instantiate(uiPrefab, location.transform).GetComponent<scr_Transform_BearUI>(); //create the UI and get the UI script
         slamDamageMax = slamDamage;
     }
+
+	private void OnEnable()
+	{
+		//activate the UI
+		bearUI.gameObject.SetActive(true);
+	}
+
+	private void OnDisable()
+	{
+		//deactivate the UI
+		bearUI.gameObject.SetActive(false);
+	}
 	
 	void Update () {
 		int input = scr_InputManager.PlayCard();
@@ -104,6 +122,7 @@ public class scr_Brawler_Attack : MonoBehaviour {
 
 		//start the cooldown
 		StartCoroutine(FurySwipeCooldown());
+		bearUI.cooldownA(meleeCooldown); //all attacks go on cooldown after this one?
 
 	}
 
@@ -227,6 +246,7 @@ public class scr_Brawler_Attack : MonoBehaviour {
 		
 		//start the cooldown
 		StartCoroutine(TankCooldown());
+		bearUI.cooldownY(tankCooldown);
 	}
 
 	private IEnumerator TankCooldown()
@@ -311,6 +331,7 @@ public class scr_Brawler_Attack : MonoBehaviour {
 		slamDamage = slamDamageMax;
 		//start main cooldown
 		StartCoroutine(SlamCooldown());
+		bearUI.cooldownB(slamCooldown);
 	}
 
 	private IEnumerator SlamCooldown()

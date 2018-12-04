@@ -76,6 +76,11 @@ public class scr_Grid : MonoBehaviour{
     {
         return grid[x, y].occupied;
     }
+    public bool CheckIfActive(int x, int y, ActiveAttack _activeAttack)
+    {
+
+        return grid[x, y].isActive; 
+    }
 
 
     public void SetNewGrid(int new_xSizeMax, int new_ySizeMax)

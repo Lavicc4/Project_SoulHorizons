@@ -82,16 +82,19 @@ public class scr_Entity : MonoBehaviour
     /// <param name="y"></param>
     public void SetTransform(int x, int y)
     {
-
+        //Check if you are already on this tile
         if (_gridPos == new Vector2Int(x, y))
         {                                                                                                         //if we set transform, and we havent moved
             return;                                                                                                                                    //return
         }
+
         //Animate movement
         if (anim != null)
         {
             anim.SetInteger("Movement", 1);
         }
+
+        //Check if tile is occupied
         scr_Grid.GridController.SetTileOccupied(false, _gridPos.x, _gridPos.y, this);
         _gridPos = new Vector2Int(x, y);
         

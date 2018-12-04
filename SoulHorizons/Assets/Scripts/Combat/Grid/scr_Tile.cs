@@ -146,6 +146,5 @@ public class scr_Tile : MonoBehaviour{
         
          
     }
-    
    
 }

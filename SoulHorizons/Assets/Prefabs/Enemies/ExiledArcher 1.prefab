@@ -656,6 +656,9 @@ MonoBehaviour:
   hSChargeTime: 3
   arrowRain: {fileID: 11400000, guid: 320a8358f456ced43b8ea33ecfec776c, type: 2}
   aRInterval: 5
+  movementIntervalLower: 3
+  movementIntervalUpper: 5
+  dodgeChance: 60
   attacks_SFX:
   - {fileID: 8300000, guid: 22734ed54445ec54f8f3c99b2db34d69, type: 3}
 --- !u!114 &114257315432824886

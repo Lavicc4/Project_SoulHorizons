@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 235b256c4f790a248b0f11ccabc6218c, type: 3}
   m_Name: Atk_Boomerang
   m_EditorClassIdentifier: 
-  incrementSpeed: 0.1
+  incrementSpeed: 0.05
   maxIncrements: 13
   damage: 10
   type: 1
