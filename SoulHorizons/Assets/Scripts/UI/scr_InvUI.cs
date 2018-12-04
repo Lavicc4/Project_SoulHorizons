@@ -12,6 +12,8 @@ public class scr_InvUI : MonoBehaviour {
     public GameObject BannerSpawn;
     public Canvas c;
     public Font UIFont;
+    public int minDeckSize = 30;
+    public Text deckNum;
     public float deckTextX = 600;
     public float deckTextY = 400;
     // Use this for initialization
@@ -19,6 +21,8 @@ public class scr_InvUI : MonoBehaviour {
     void Start () {
         SetDeckText();
         UpdateBanners();
+        GUIStyle style = new GUIStyle();
+        style.richText = true;
     }
 
     // Update is called once per frame
@@ -39,9 +43,12 @@ public class scr_InvUI : MonoBehaviour {
         }
         else
         {
-            invPanel.SetActive(false);
-            UpdateBanners();
-            SaveLoad.Save();
+            if (scr_Inventory.getDeckSize() >= minDeckSize)
+            {
+                invPanel.SetActive(false);
+                UpdateBanners();
+                SaveLoad.Save();
+            }
         }
     }
 
@@ -118,7 +125,16 @@ public class scr_InvUI : MonoBehaviour {
             tempCount++;
         }
 
-
+        if (scr_Inventory.getDeckSize() < minDeckSize)
+        {
+            scr_SceneManager.canSwitch = false;
+            deckNum.text = "<color=red>" + scr_Inventory.getDeckSize() + "</color> / " + minDeckSize;
+        }
+        else
+        {
+            scr_SceneManager.canSwitch = true;
+            deckNum.text = scr_Inventory.getDeckSize() + " / " + minDeckSize;
+        }
     }
 
 }
