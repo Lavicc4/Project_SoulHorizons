@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 public class scr_SceneManager : MonoBehaviour {
 
     public Encounter currentEncounter;
-    public static scr_SceneManager globalSceneManager; 
+    public static scr_SceneManager globalSceneManager;
+    public int currentEncounterNumber;
 
 	
 	void Start () {
