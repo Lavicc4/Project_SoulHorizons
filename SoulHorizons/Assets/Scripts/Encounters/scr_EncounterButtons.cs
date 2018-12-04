@@ -9,7 +9,7 @@ public class scr_EncounterButtons : MonoBehaviour
 
     public int encounterNumber;
     public int tier;
-    public bool complete;
+    public bool complete = false;
     public bool locked;
     public GameObject nextEncounter;
 
@@ -27,6 +27,10 @@ public class scr_EncounterButtons : MonoBehaviour
         {
             GetComponent<Image>().color = Color.red;
             //GetComponent<Button>().interactable = false; 
+        }
+        else
+        {
+            GetComponent<Image>().color = Color.white;
         }
     }
 
