@@ -53,7 +53,6 @@ public class scr_EncounterController : MonoBehaviour
 
     public void OnNewGame()
     {
-        Debug.Log("NEW FUCKING GAME"); 
         BuildMap();
         GenerateButtons();
         Save();
