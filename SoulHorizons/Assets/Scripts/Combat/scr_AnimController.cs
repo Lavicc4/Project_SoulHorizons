@@ -37,4 +37,12 @@ public class scr_AnimController : MonoBehaviour {
             anim.SetBool("Attack", false);
         }
     }
+
+    public void doneAttack2()
+    {
+        if (anim != null)
+        {
+            anim.SetBool("Attack2", false);
+        }
+    }
 }

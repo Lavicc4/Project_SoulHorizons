@@ -22,13 +22,13 @@ AnimationClip:
       value: {fileID: 21300000, guid: 47d95ecc47644784c9e09f4a09a05787, type: 3}
     - time: 0.16666667
       value: {fileID: 21300000, guid: fda1f91418d625945adefb2d05c1fd0a, type: 3}
-    - time: 0.33333334
+    - time: 0.41666666
       value: {fileID: 21300000, guid: e6edd5ecdd9a83b48bb5cba7d593d8d9, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
     script: {fileID: 0}
-  m_SampleRate: 6
+  m_SampleRate: 12
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -72,8 +72,15 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_GenerateMotionCurves: 0
   m_Events:
-  - time: 0.33333334
+  - time: 0.5
     functionName: doneAttack
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.5
+    functionName: Attack1
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

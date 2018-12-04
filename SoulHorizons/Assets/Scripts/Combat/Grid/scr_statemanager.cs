@@ -104,8 +104,13 @@ public class scr_statemanager : MonoBehaviour {
         {
             Shield.enabled = true;
             Shield.color = Color.yellow;
+            player.transform.Find("Shield").gameObject.SetActive(true);
         }
-        else Shield.enabled = false;
+        else
+        {
+            Shield.enabled = false;
+            player.transform.Find("Shield").gameObject.SetActive(false);
+        }
         Shield.text = "(+" + playerEntity._health.shield + ")";
         //PlayerHealth.text = "Health: " + playerEntity._health.hp;
         StaminaText.text = "Stamina: " + playerMovement.GetStaminaCharges();

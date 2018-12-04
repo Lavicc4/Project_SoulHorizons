@@ -28,7 +28,7 @@ AnimationClip:
       value: {fileID: 21300000, guid: 144b9f9187bbfe74ca8961086b56cd96, type: 3}
     - time: 0.33333334
       value: {fileID: 21300000, guid: 706571060dc1cb442aa7ce85bd88a0a2, type: 3}
-    - time: 0.41666666
+    - time: 0.6666667
       value: {fileID: 21300000, guid: ce4cf6af3a748b34ba3abf3a5be0cb4d, type: 3}
     attribute: m_Sprite
     path: 
@@ -60,7 +60,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.5
+    m_StopTime: 0.75
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -81,8 +81,15 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_GenerateMotionCurves: 0
   m_Events:
-  - time: 0.41666666
+  - time: 0.6666667
     functionName: doneAttack
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.6666667
+    functionName: StartHunterShot
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

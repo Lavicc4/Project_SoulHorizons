@@ -109,7 +109,6 @@ public class scr_EnemyAI_1 : scr_EntityAI
 
     void Attack1()
     {
-        anim.SetBool("Attack", true);
         //make sure we do a check condition for the attack : if(chargedAttack.CheckCondition(entity))
         scr_AttackController.attackController.AddNewAttack(attack1, entity._gridPos.x, entity._gridPos.y, entity);
         int index2 = Random.Range(0, attacks_SFX.Length);
@@ -119,12 +118,18 @@ public class scr_EnemyAI_1 : scr_EntityAI
     }
     void Attack2()
     {
-        anim.SetBool("Attack", true);
         scr_AttackController.attackController.AddNewAttack(chargedAttack, entity._gridPos.x, entity._gridPos.y, entity);
+    }
+    void StartAttack1()
+    {
+        anim.SetBool("Attack", true);
+    }
+    void StartAttack2()
+    {
+        anim.SetBool("Attack2", true);
     }
 
 
-    
 
 
 
@@ -234,7 +239,7 @@ public class scr_EnemyAI_1 : scr_EntityAI
             case 3:
                 completedTask = false;
                 yield return new WaitForSecondsRealtime(.75f); 
-                Attack1();
+                StartAttack1();
                 yield return new WaitForSecondsRealtime(2);
                 state = 0;
                 completedTask = true;
@@ -244,7 +249,7 @@ public class scr_EnemyAI_1 : scr_EntityAI
                 completedTask = false;
                 float _thisTime = Random.Range(chargeTimeLower, chargeTimeUpper);
                 yield return new WaitForSecondsRealtime(_thisTime); 
-                Attack2();
+                StartAttack2();
                 yield return new WaitForSecondsRealtime(2f);
                 state = 0;
                 completedTask = true;

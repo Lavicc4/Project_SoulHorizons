@@ -6,15 +6,20 @@ using UnityEngine.UI;
 public class scr_InvUI : MonoBehaviour {
 
     public scr_CardUI[] cardUI;
+    public List<GameObject> banners;
     public GameObject invPanel;
-    public Text deckText;
+    public GameObject cardBanner;
+    public GameObject BannerSpawn;
+    public Canvas c;
     public Font UIFont;
     public float deckTextX = 600;
     public float deckTextY = 400;
     // Use this for initialization
+
     void Start () {
-		
-	}
+        SetDeckText();
+        UpdateBanners();
+    }
 
     // Update is called once per frame
     void Update()
@@ -22,7 +27,7 @@ public class scr_InvUI : MonoBehaviour {
         if (invPanel.activeSelf)
         {
             SetCardGraphics();
-            SetDeckText();
+            UpdateBanners();
         }
     }
 
@@ -35,6 +40,7 @@ public class scr_InvUI : MonoBehaviour {
         else
         {
             invPanel.SetActive(false);
+            UpdateBanners();
             SaveLoad.Save();
         }
     }
@@ -74,15 +80,45 @@ public class scr_InvUI : MonoBehaviour {
 
     void SetDeckText()
     {
-  
-        string listText = "";
+
+        float tempX = BannerSpawn.transform.position.x;
+        float tempY = BannerSpawn.transform.position.y;
         foreach (KeyValuePair<string, int> pair in scr_Inventory.deckList[scr_Inventory.deckIndex])
         {
-
-            listText += pair.Key + ": " + pair.Value + "\n";
+            GameObject banner = Instantiate(cardBanner, new Vector3(tempX, tempY, 0), Quaternion.identity);
+            string tempTxt = "CardOverlay/" + pair.Key;
+            banner.transform.GetChild(2).GetComponent<Image>().sprite = Resources.Load<Sprite>(tempTxt);
+            banner.transform.GetChild(3).GetComponent<Text>().text = pair.Key + ": " + pair.Value + "\n";
+            banner.transform.SetParent(c.transform);         
+            banners.Add(banner);
+            tempY -= 75;
         }
-        deckText.text = listText;
+        
     }
 
-   
+    void UpdateBanners()
+    {
+        float tempX = BannerSpawn.transform.position.x;
+        float tempY = BannerSpawn.transform.position.y;
+        int tempCount = 0;
+        foreach (KeyValuePair<string, int> pair in scr_Inventory.deckList[scr_Inventory.deckIndex])
+        {
+            string tempTxt = "CardOverlay/" + pair.Key;
+            banners[tempCount].transform.GetChild(2).GetComponent<Image>().sprite = Resources.Load<Sprite>(tempTxt);
+            banners[tempCount].transform.GetChild(3).GetComponent<Text>().text = pair.Key + ": " + pair.Value + "\n";
+            tempY -= 75;
+            if (invPanel.activeSelf)
+            {
+                banners[tempCount].SetActive(true);
+            }
+            else
+            {
+                banners[tempCount].SetActive(false);
+            }
+            tempCount++;
+        }
+
+
+    }
+
 }
