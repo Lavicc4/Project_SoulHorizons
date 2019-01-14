@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{0E27DD01-CE7A-42B8-8837-25C5B0B91203}" SchemaVersion="89">
+	<AudioObjects>
+		<WorkUnit Name="Default Work Unit" ID="{0E27DD01-CE7A-42B8-8837-25C5B0B91203}" PersistMode="Standalone">
+			<ChildrenList>
+				<Sound Name="RockSpikes" ID="{CB0A47BA-367C-49F2-BC69-D64DD56F8F15}" ShortID="491529937">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{D7ED6981-4241-462E-A9D9-F69766339B2A}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{2D7A760A-B111-4120-BAE6-1FF4F72EF835}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="RockSpikes" ID="{6B864FE4-F795-47CA-81A9-B13B24F6F1F6}" ShortID="626701430">
+							<Language>SFX</Language>
+							<AudioFile>RockSpikes.wav</AudioFile>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="RockSpikes" ID="{6B864FE4-F795-47CA-81A9-B13B24F6F1F6}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+			</ChildrenList>
+		</WorkUnit>
+	</AudioObjects>
+</WwiseDocument>

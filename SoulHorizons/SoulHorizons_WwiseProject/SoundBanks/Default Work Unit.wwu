@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{849029D2-5CB8-4633-8E11-CDE6C1072CC6}" SchemaVersion="89">
+	<SoundBanks>
+		<WorkUnit Name="Default Work Unit" ID="{849029D2-5CB8-4633-8E11-CDE6C1072CC6}" PersistMode="Standalone">
+			<ChildrenList>
+				<SoundBank Name="MAIN" ID="{8038AF41-57BA-4033-9C9B-2413D7E98A7D}">
+					<ObjectInclusionList>
+						<ObjectRef Name="Card_RockSpikes" ID="{552A08A6-5EAF-4E42-9A29-F60D30A3B318}" WorkUnitID="{B3C56FB9-D0D4-475F-951E-C9C851386332}" Filter="7" Origin="Manual"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+			</ChildrenList>
+		</WorkUnit>
+	</SoundBanks>
+</WwiseDocument>

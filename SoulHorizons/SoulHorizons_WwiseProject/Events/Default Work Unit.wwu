@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{B3C56FB9-D0D4-475F-951E-C9C851386332}" SchemaVersion="89">
+	<Events>
+		<WorkUnit Name="Default Work Unit" ID="{B3C56FB9-D0D4-475F-951E-C9C851386332}" PersistMode="Standalone">
+			<ChildrenList>
+				<Event Name="Card_RockSpikes" ID="{552A08A6-5EAF-4E42-9A29-F60D30A3B318}">
+					<ChildrenList>
+						<Action Name="" ID="{F3945B2F-78C0-4E78-AD54-6065457CB7B0}" ShortID="1039142480">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="RockSpikes" ID="{CB0A47BA-367C-49F2-BC69-D64DD56F8F15}" WorkUnitID="{0E27DD01-CE7A-42B8-8837-25C5B0B91203}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>

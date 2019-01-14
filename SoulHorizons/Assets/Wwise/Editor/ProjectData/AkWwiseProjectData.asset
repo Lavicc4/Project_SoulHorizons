@@ -1,0 +1,90 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1889d176b8c9c6c45a9ee697602f19f0, type: 3}
+  m_Name: AkWwiseProjectData
+  m_EditorClassIdentifier: 
+  AcousticTextureWwu:
+  - PhysicalPath: Virtual Acoustics\Default Work Unit.wwu
+    ParentPhysicalPath: 
+    guid: 52d828f719ecf24eb040c016d77e5ca4
+    m_lastTime: -8586541818553787085
+    List: []
+  AuxBusWwu:
+  - PhysicalPath: Master-Mixer Hierarchy\Default Work Unit.wwu
+    ParentPhysicalPath: 
+    guid: 0a767a2d11b12041bae61ff4f72ef835
+    m_lastTime: -8586541818554146137
+    List: []
+  BankWwu:
+  - PhysicalPath: SoundBanks\Default Work Unit.wwu
+    ParentPhysicalPath: 
+    guid: d2299084b85c33468e11cde6c1072cc6
+    m_lastTime: -8586541811217205476
+    List:
+    - name: MAIN
+      guid: 41af3880ba5733409c9b2413d7e98a7d
+      id: 3161908922
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: MAIN
+        ObjectType: 7
+      Path: Default Work Unit\MAIN
+  EventWwu:
+  - PhysicalPath: Events\Default Work Unit.wwu
+    ParentPhysicalPath: 
+    guid: b96fc5b3d4d05f47951ec9c851386332
+    m_lastTime: -8586541811217086139
+    List:
+    - name: Card_RockSpikes
+      guid: a6082a55af5e424e9a29f60d30a3b318
+      id: 1669153292
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Card_RockSpikes
+        ObjectType: 3
+      Path: Default Work Unit\Card_RockSpikes
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+  RtpcWwu:
+  - PhysicalPath: Game Parameters\Default Work Unit.wwu
+    ParentPhysicalPath: 
+    guid: f19052fc0daf0242b188d2653f0bb851
+    m_lastTime: -8586541818552420392
+    List: []
+  StateWwu:
+  - PhysicalPath: States\Default Work Unit.wwu
+    ParentPhysicalPath: 
+    guid: 2b09737cf4bed34db8c2aff52cafc427
+    m_lastTime: -8586541818552530080
+    List: []
+  SwitchWwu:
+  - PhysicalPath: Switches\Default Work Unit.wwu
+    ParentPhysicalPath: 
+    guid: fcc78d1fa8f20e4c8d8e987e0acd2f5c
+    m_lastTime: -8586541818553517820
+    List: []
+  TriggerWwu:
+  - PhysicalPath: Triggers\Default Work Unit.wwu
+    ParentPhysicalPath: 
+    guid: 1c73abe086ee604997a093f6dabf1fbf
+    m_lastTime: -8586541818553408117
+    List: []
+  ExpandedItems:
+  - /SoulHorizons_WwiseProject
+  - /SoulHorizons_WwiseProject/Events
+  - /SoulHorizons_WwiseProject/Events/Default Work Unit
+  - /SoulHorizons_WwiseProject/SoundBanks
+  - /SoulHorizons_WwiseProject/SoundBanks/Default Work Unit
+  autoPopulateEnabled: 1
+  CurrentPluginConfig: 
